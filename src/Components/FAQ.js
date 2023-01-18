@@ -26,7 +26,7 @@ export const FAQ = () => {
         color: 'white',
         textAlign: 'center',
         mb: '30px',
-      }}>Join our community now to get free updates and also alot of freebies are waiting for you or <Box component='span' sx={{textDecoration: 'underline', textDecorationThickness: '1px', textUnderlinePosition: 'under',}}>Contact Support</Box></Box>
+      }}>Join our community now to get free updates and also alot of freebies are waiting for you or <Box component='span' sx={{textDecoration: 'underline', textDecorationThickness: '1px', cursor: 'pointer', textUnderlinePosition: 'under',}}>Contact Support</Box></Box>
       {
         names?.map((name, index) => (
           <Accordion sx={{
