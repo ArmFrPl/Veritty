@@ -1,0 +1,58 @@
+.ticketCountCont {
+  position: relative;
+  width: 830px;
+  font-weight: 700;
+}
+
+.ticketCountCont::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  border-radius: 20px;
+  border: 5px solid transparent;
+  background: linear-gradient(143deg, #FFAC33 22%, #FFFDF8 43.86%, #FFD057 64.73%) border-box;
+  -webkit-mask: linear-gradient(#fff 0 0) padding-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: destination-out;
+  mask-composite: exclude;
+}
+
+
+.secRoundRow{
+  /*font-family: Epilogue;*/
+  font-weight: 700 !important;
+  font-style: normal;
+  font-size: 21px !important;
+  line-height: 28px !important;
+  color: #F8F8F8;
+}
+
+.prizeTable{
+  width: 100%;
+  margin-top: 28px;
+  display: flex;
+  justify-content: center;
+  background: url("data:image/svg+xml,%3csvg width='100%25' height='100%25' xmlns='http://www.w3.org/2000/svg'%3e%3crect width='100%25' height='100%25' fill='none' stroke='%23FFD057FF' stroke-width='4' stroke-dasharray='5%2c 11' stroke-dashoffset='15' stroke-linecap='square'/%3e%3c/svg%3e") no-repeat top;
+  background-size: 94% .5%;
+}
+
+.prizeTable tbody{
+  margin-top: 30px;
+}
+
+.secRoundFAQ{
+  width: 100%;
+  margin-top: 45px;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  background: url("data:image/svg+xml,%3csvg width='100%25' height='100%25' xmlns='http://www.w3.org/2000/svg'%3e%3crect width='100%25' height='100%25' fill='none' stroke='%23FFD057FF' stroke-width='4' stroke-dasharray='5%2c 11' stroke-dashoffset='15' stroke-linecap='square'/%3e%3c/svg%3e") no-repeat top !important;
+  background-size: 94% .5% !important;
+}
+
+.MuiAccordionSummary-content{
+  flex-grow: 0 !important;
+}

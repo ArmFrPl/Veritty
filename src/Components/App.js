@@ -3,6 +3,7 @@ import {Navbar} from "./Navbar";
 import {Header} from "./Header";
 import {Footer} from "./Footer";
 import {FAQ} from "./FAQ";
+import {Lottery} from "./Lottery";
 
 function App() {
   return (
@@ -10,7 +11,9 @@ function App() {
       <Navbar />
       <div className='cont'>
         <Header />
-        <div className='page'></div>
+        <div className='page'>
+          <Lottery />
+        </div>
         <FAQ />
         <Footer />
       </div>
