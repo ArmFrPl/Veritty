@@ -16,34 +16,25 @@
   align-items: center;
   color: #FFFFFF;
 }
-/*.connectButton{*/
-/*  border: 2px solid transparent !important;*/
-/*  border-radius: 8px !important;*/
-/*  border-image-source: linear-gradient(114.44deg, #FEDC00 2.6%, #9F03FF 48.96%, #9F03FF 52.08%, #FFE603 98.96%) !important;*/
-/*  border-image-slice: 10 !important;*/
-/*  display: flex !important;*/
-/*  flex-direction: row;*/
-/*  justify-content: center !important;*/
-/*  align-items: center !important;*/
-/*  padding: 15px 80px 13px !important;*/
-/*  gap: 8px;*/
-/*  height: 40px;*/
-/*  width: 239px;*/
-/*}*/
 
-/*.buttonText{*/
-/*  font-family: 'Epilogue';*/
-/*  font-style: normal;*/
-/*  font-weight: 700;*/
-/*  font-size: 16px;*/
-/*  line-height: 28px;*/
-/*  background: linear-gradient(174.11deg, #CE9400 4.67%, #FFD057 75.94%);*/
-/*  -webkit-background-clip: text;*/
-/*  -webkit-text-fill-color: transparent;*/
-/*  text-fill-color: transparent;*/
-/*  flex: none;*/
-/*  order: 1;*/
-/*  flex-grow: 0;*/
-/*  text-transform: none;*/
-/*}*/
+.connectButton {
+  position: relative;
+  width: 239px;
+  height: 40px;
+  font-weight: 700;
+}
 
+.connectButton::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  border-radius: 8px;
+  border: 2px solid transparent;
+  background: linear-gradient(335deg, #FEDC00 2.6%, #9F03FF 48.96%, #9F03FF 52.08%, #FFE603 98.96%) border-box;
+  -webkit-mask: linear-gradient(#fff 0 0) padding-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: destination-out;
+  mask-composite: exclude;
+}

@@ -76,10 +76,8 @@ export const Navbar = () => {
               </Box>
               <Box sx={{display: 'flex', alignItems: 'center'}}>
                 <SocialLinks/>
-                {/*<Button className='connectButton'><Typography className='buttonText'>Connect Wallet</Typography></Button>*/}
-                <Link to='/'>
-                  <Box component='img' src={ConnectWalletOutline}/>
-                  <Box sx={{
+                <Link to='/' style={{textDecoration: 'none'}}>
+                  <Button className='connectButton'><Box sx={{
                     fontFamily: 'Epilogue',
                     fontStyle: 'normal',
                     fontWeight: '700',
@@ -92,10 +90,7 @@ export const Navbar = () => {
                     order: 1,
                     flexGrow: 0,
                     textTransform: 'none',
-                    position: 'absolute',
-                    right: '3.4em',
-                    top: '1.1em'
-                  }}>Connect Wallet</Box>
+                  }}>Connect Wallet</Box></Button>
                 </Link>
               </Box>
             </Box>
