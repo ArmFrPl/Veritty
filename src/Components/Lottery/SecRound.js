@@ -1,10 +1,14 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {Accordion, AccordionDetails, AccordionSummary, Box, Typography} from "@mui/material";
 import '../../Styles/SecRound.css';
 import ArrowDropDownIcon from "@mui/icons-material/ArrowDropDown";
 
 export const SecRound = () => {
+  const [expanded, setExpanded] = useState(false);
 
+  const handleChange = (panel) => (event, isExpanded) => {
+    setExpanded(isExpanded ? panel : false);
+  };
   const accardionTitle = ['Yes', 'How it works?', 'How to Participate?', 'To buy or sell non-winning tickets?'];
 
   const prizes = [
@@ -94,7 +98,7 @@ export const SecRound = () => {
           }}>Смогу ли я продать свой билет в случае если я не выиграю ничего?</Box>
           {
             accardionTitle?.map((name, index) => (
-              <Accordion sx={{
+              <Accordion key={index} expanded={expanded === `panel${index}`} onChange={handleChange(`panel${index}`)} sx={{
                 width: '700px',
                 background: 'transparent',
                 color: '#FFAC33',

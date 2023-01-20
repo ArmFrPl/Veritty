@@ -1,14 +1,13 @@
-import React from "react";
+import React, {useState} from "react";
 import '../Styles/Navbar.css';
-import {AppBar, Box, Button, Container, IconButton, Toolbar, Typography} from "@mui/material";
+import {AppBar, Box, Button, Container, IconButton, Toolbar} from "@mui/material";
 import MenuIcon from '@mui/icons-material/Menu';
 import Logo from '../Images/VERITTY.png';
-import ConnectWalletOutline from '../Images/ConnectWallet.png';
 import {Link} from "react-router-dom";
 import {SocialLinks} from "./SocialLinks";
 
-export const Navbar = () => {
-  const [anchorElNav, setAnchorElNav] = React.useState(null);
+export const Navbar = ({isLoggedIn}) => {
+  const [anchorElNav, setAnchorElNav] = useState(null);
 
   const pages = ['WINNERS', 'TICKETS', 'FAQ', 'AUDIT'];
 
@@ -90,7 +89,7 @@ export const Navbar = () => {
                     order: 1,
                     flexGrow: 0,
                     textTransform: 'none',
-                  }}>Connect Wallet</Box></Button>
+                  }}>{!isLoggedIn ? 'Connect Wallet' : '0x008475..55c55'}</Box></Button>
                 </Link>
               </Box>
             </Box>

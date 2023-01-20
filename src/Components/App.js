@@ -1,22 +1,17 @@
+import React from "react";
 import '../Styles/App.css';
-import {Navbar} from "./Navbar";
-import {Header} from "./Header";
-import {Footer} from "./Footer";
-import {FAQ} from "./FAQ";
 import {Lottery} from "./Lottery";
+import {Results} from "./Results";
+import {Leaderboards} from "./Leaderboards";
+import {Dashboard} from "./Dashboard";
+import {Layout} from "./Layout";
+import {Route, Routes} from "react-router-dom";
 
 function App() {
+
   return (
     <div className="App">
-      <Navbar />
-      <div className='cont'>
-        <Header />
-        <div className='page'>
-          <Lottery />
-        </div>
-        <FAQ />
-        <Footer />
-      </div>
+      <Layout />
     </div>
   );
 }

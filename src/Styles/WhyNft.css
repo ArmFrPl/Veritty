@@ -9,7 +9,7 @@
   width: 90em;
   transform: rotate(90deg);
   margin-bottom: 13%;
-  margin-right: 4%;
+  margin-right: 3.9%;
   position: absolute;
 
 }
@@ -49,4 +49,19 @@
   font-size: 18px !important;
   line-height: 27px !important;
   color: #F8F8F8;
+}
+
+@media screen and (max-width: 1037px) {
+  .dividerHor{
+    width: 95em !important;
+    margin-bottom: 18% !important;
+    margin-right: 5.5% !important;
+  }
+}
+@media screen and (max-width: 1225px) {
+  .dividerHor{
+    width: 93.2em;
+    margin-bottom: 17%;
+    margin-right: 5%;
+  }
 }

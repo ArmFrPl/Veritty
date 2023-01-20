@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState} from "react";
 import {Box} from "@mui/material";
 import '../../Styles/WhyNft.css';
 
@@ -75,7 +75,7 @@ export const WhyNft = () => {
           <tbody>
           {
             diffs?.map((d, index) => (
-              <tr key={index} style={{display: "flex", marginTop: '40px', marginLeft: '3%', justifyContent: 'center'}}>
+              <tr key={index} style={{display: "flex", marginTop: '40px', marginLeft: '3%', justifyContent: 'center', maxHeight: '110px'}}>
                 <td className='diffsRow' style={{textAlign: 'right', width: '28%', marginRight: '3%'}}>{d.classic}</td>
                 <td className='diffsRow' style={{textAlign: 'left', width: '28%', marginLeft: '3%'}}>{d.nft}</td>
               </tr>
