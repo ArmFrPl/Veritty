@@ -20,6 +20,7 @@ export const Layout = () => {
           <Header isLoggedIn={isLoggedIn} />
           <div className='page'>
             <Routes>
+              <Route path="/" element={<Lottery />} />
               <Route path="/lottery" element={<Lottery />} />
               <Route path="/results" element={<Results />}/>
               <Route path="/leaderboard" element={<Leaderboards />} />
