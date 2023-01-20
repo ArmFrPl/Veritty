@@ -69,13 +69,13 @@ export const Navbar = ({isLoggedIn}) => {
               <Box component="img" sx={{height: 16, width: 113}} alt="Veritty Logo" src={Logo}/>
               <Box display='flex' alignItems='center' justifyContent='center' ml='19em'>
                 {pages?.map((page, index) => (
-                  <Link to='/' style={{marginRight: '40px', textDecoration: 'none'}} className='menuItem'
+                  <Link to='#' style={{marginRight: '40px', textDecoration: 'none'}} className='menuItem'
                         key={index}>{page}</Link>
                 ))}
               </Box>
               <Box sx={{display: 'flex', alignItems: 'center'}}>
                 <SocialLinks/>
-                <Link to='/' style={{textDecoration: 'none'}}>
+                <Link to='#' style={{textDecoration: 'none'}}>
                   <Button className='connectButton'><Box sx={{
                     fontFamily: 'Epilogue',
                     fontStyle: 'normal',
