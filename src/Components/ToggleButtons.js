@@ -1,11 +1,11 @@
-import React, {useState} from 'react';
+import React from 'react';
 import ToggleButton from '@mui/material/ToggleButton';
 import ToggleButtonGroup from '@mui/material/ToggleButtonGroup';
 import '../Styles/ToggleButtons.css';
 import {Link} from "react-router-dom";
+import {Button} from "@mui/material";
 
-export default function ToggleButtons({isLoggedIn}) {
-  const [view, setView] = useState('lottery');
+export default function ToggleButtons({isLoggedIn, view, setView}) {
 
   const handleView = (event, newView) => {
     if (newView !== null) {
@@ -14,6 +14,124 @@ export default function ToggleButtons({isLoggedIn}) {
   };
 
   return (
+    <>
+      <ToggleButtonGroup
+        sx={{
+          color: 'white',
+          backgroundColor: '#FFFFFF1A',
+          border: '1.5px solid #958C9F',
+          borderRadius: '13px',
+          width: '80%',
+          height: '42px',
+          boxShadow: '0px 0px 15px 0px #958c9f80',
+          display: {xs: 'flex', md: 'none'},
+        }}
+        value={view}
+        exclusive
+        onChange={handleView}
+        aria-label="page view"
+        className='pageView'
+      >
+        <ToggleButton value="lottery" aria-label="Lottery" sx={{
+          color: 'white',
+          fontFamily: 'Epilogue',
+          fontStyle: "normal",
+          fontWeight: 700,
+          fontSize: "14px",
+          lineHeight: '22px',
+          borderRight: '2px solid #958C9F',
+          borderBottomLeftRadius: '13px',
+          borderTopLeftRadius: '13px',
+          padding: '0px',
+          display: 'flex',
+          justifyContent: 'center',
+          alignItems: 'center',
+          width: '100%',
+          height: 'inherit',
+        }}>
+          <Link to='/lottery' style={{
+            width: 'inherit',
+            height: 'inherit',
+            position: 'absolute',
+          }}></Link>
+          LOTTERY
+        </ToggleButton>
+        <ToggleButton value="results" aria-label="Results" sx={{
+          color: 'white',
+          fontFamily: 'Epilogue',
+          fontStyle: "normal",
+          fontWeight: 700,
+          fontSize: "14px",
+          lineHeight: '22px',
+          borderRight: '2px solid #958C9F',
+          padding: '0px',
+          display: 'flex',
+          justifyContent: 'center',
+          alignItems: 'center',
+          width: '100%',
+          height: 'inherit',
+        }}>
+          <Link to='/results' style={{
+            width: 'inherit',
+            height: 'inherit',
+            position: 'absolute',
+          }}></Link>
+          RESULTS
+        </ToggleButton>
+        <ToggleButton value="leaderboard" aria-label="Leaderboard" sx={{
+          color: 'white',
+          fontFamily: 'Epilogue',
+          fontStyle: "normal",
+          fontWeight: 700,
+          fontSize: "14px",
+          lineHeight: '22px',
+          borderRight: null,
+          borderBottomRightRadius: '13px',
+          borderTopRightRadius: '13px',
+          padding: '0px 10px',
+          display: 'flex',
+          justifyContent: 'center',
+          alignItems: 'center',
+          width: '100%',
+          height: 'inherit',
+        }}>
+          <Link to='/leaderboard' style={{
+            width: 'inherit',
+            height: 'inherit',
+            position: 'absolute',
+          }}></Link>
+          LEADERBOARD
+        </ToggleButton>
+
+        {!isLoggedIn ? null :
+          <>
+            <Button value="dashboard" aria-label="Dashboard" sx={{
+              color: 'white',
+              fontFamily: 'Epilogue',
+              fontStyle: "normal",
+              fontWeight: 700,
+              fontSize: "20px",
+              margin: '0 !important',
+              lineHeight: '33px',
+              borderBottomRightRadius: '13px',
+              borderTopRightRadius: '13px',
+              display: {xs: 'flex', md: 'none'},
+            }}>
+              <Link to='/dashboard' style={{
+                width: 'inherit',
+                height: 'inherit',
+                position: 'absolute',
+              }}></Link>
+              DASHBOARD
+            </Button>
+          </>
+        }
+      </ToggleButtonGroup>
+
+
+    {/*Desktop*/}
+
+
     <ToggleButtonGroup
       sx={{
         color: 'white',
@@ -22,7 +140,8 @@ export default function ToggleButtons({isLoggedIn}) {
         borderRadius: '13px',
         width: 'fit-content',
         height: '65px',
-        boxShadow: '0px 0px 15px 0px #958c9f80'
+        boxShadow: '0px 0px 15px 0px #958c9f80',
+        display: {xs: 'none', md: 'flex'},
       }}
       value={view}
       exclusive
@@ -106,5 +225,6 @@ export default function ToggleButtons({isLoggedIn}) {
         </ToggleButton>
       }
     </ToggleButtonGroup>
+    </>
   );
 }

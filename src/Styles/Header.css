@@ -14,7 +14,6 @@
   margin-right: 40px;
 }
 
-
 .prizeFund {
   position: relative;
   width: 328px;
@@ -42,4 +41,31 @@
   mask-composite: exclude;
 }
 
+.headerModalHeader{
+  padding: 5px 5px 0 0;
+  color: #FFFFFF;
+}
 
+.headerModalBody{
+  display: inline-flex;
+  color: white;
+  align-items: center;
+}
+
+.mobHeaderCont{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.mobHeaderText{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.mobile{
+  width: 194px;
+  height: 85px;
+  margin-right: 0px !important;
+}

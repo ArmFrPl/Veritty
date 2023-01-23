@@ -7,10 +7,10 @@ import CooliconLogo from "../Images/coolicon.svg";
 
 export const SocialLinks = () => {
   return(
-    <Box sx={{display: 'flex', alignItems: 'center'}}>
+    <Box sx={{display: 'flex', alignItems: 'center', justifyContent: 'center'}}>
       <Link style={{marginRight:'30px'}} to='#'><Box component="img" alt="Twitter Logo" src={TwitterLogo}/></Link>
       <Link style={{marginRight:'30px'}} to='#'><Box component="img" alt="Discord Logo" src={DiscordLogo}/></Link>
-      <Link style={{marginRight:'43px'}} to='#'><Box component="img" alt="Coolicon Logo" src={CooliconLogo}/></Link>
+      <Link style={{marginRight: 0}} to='#'><Box component="img" alt="Coolicon Logo" src={CooliconLogo}/></Link>
     </Box>
   )
 }

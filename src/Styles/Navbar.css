@@ -16,12 +16,23 @@
   align-items: center;
   color: #FFFFFF;
 }
+.mobMenuItem{
+  font-family: Epilogue;
+  font-style: normal;
+  font-weight: 700;
+  font-size: 32px;
+  line-height: 36px;
+  display: flex;
+  color: #FFFFFF;
+  margin-top: 24px;
+}
 
 .connectButton {
   position: relative;
   width: 239px;
   height: 40px;
-  font-weight: 700;
+  font-weight: 700 !important;
+  margin-left: 43px;
 }
 
 .connectButton::before {

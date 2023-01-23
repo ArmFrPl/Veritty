@@ -1,5 +1,5 @@
 import React from "react";
-import {Avatar, Icon} from "@mui/material";
+import {Avatar, Box, Icon} from "@mui/material";
 import GoToIcon from "../Images/goToIcon.svg";
 
 export const TableRowWithAvatar = ({data, index, frameColor}) => {
@@ -13,20 +13,20 @@ export const TableRowWithAvatar = ({data, index, frameColor}) => {
       <Avatar sx={{
         background: 'transparent',
         border: `2.5px solid ${frameColor}`,
-        width: '30px',
-        height: '30px',
+        width: {xs: '24px', md:'30px'},
+        height:  {xs: '24px', md:'30px'},
         ml: '-10px',
         boxShadow: `0px 0px 4px ${frameColor}`
       }}>
-        <td className='leaderRows'
-            style={{textAlign: 'center', width: '4%', marginRight: '10px'}}>{index + 1}</td>
+        <Box component='td' className='leaderRows'
+            sx={{textAlign: 'center', width: '4%', marginRight: '10px', fontSize: {xs: '16px !important', md: '18px !important'}, lineHeight: {xs: '22px !important', md: '35px !important'}}}>{index + 1}</Box>
       </Avatar>
-      <td className='leaderRows thin'
-          style={{textAlign: 'center', width: '60%',}}>{data.id}<Icon
-        sx={{ml: '12px'}}><img
-        src={GoToIcon} height={10} width={10}/></Icon></td>
-      <td className='leaderRows'
-          style={{textAlign: 'right', width: '32%', marginLeft: '10px', color: '#FFAC33'}}>{data.winning}</td>
+      <Box component='td' className='leaderRows thin'
+          sx={{textAlign: 'center', width: '60%',fontSize: {xs: '16px !important', md: '18px !important'}, lineHeight: {xs: '28px !important', md: '35px !important'}}}>{data.id}<Icon
+        sx={{ml: {xs: 0, md:'12px'}, }}><img alt='arrow'
+        src={GoToIcon} height={10} width={10}/></Icon></Box>
+      <Box component='td' className='leaderRows'
+          sx={{textAlign: 'right', width: {xs: '40%', md: '32%'},  marginLeft: '10px', color: '#FFAC33', fontSize: {xs: '16px !important', md: '18px !important'}, lineHeight: {xs: '22px !important', md:'35px !important'}}}>{data.winning}</Box>
     </tr>
   )
 }

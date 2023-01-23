@@ -2,6 +2,7 @@
   position: relative;
   width: 830px;
   font-weight: 700;
+  transition-duration: .2s;
 }
 
 .ticketCountCont::before {
@@ -28,6 +29,13 @@
   line-height: 28px !important;
   color: #F8F8F8;
 }
+.mobileSecRoundRow{
+  font-weight: 700 !important;
+  font-style: normal;
+  font-size: 16px !important;
+  line-height: 22px !important;
+  color: #F8F8F8;
+}
 
 .prizeTable{
   width: 100%;
@@ -51,6 +59,9 @@
   align-items: center;
   background: url("data:image/svg+xml,%3csvg width='100%25' height='100%25' xmlns='http://www.w3.org/2000/svg'%3e%3crect width='100%25' height='100%25' fill='none' stroke='%23FFD057FF' stroke-width='4' stroke-dasharray='5%2c 11' stroke-dashoffset='15' stroke-linecap='square'/%3e%3c/svg%3e") no-repeat top !important;
   background-size: 94% .5% !important;
+}
+.mobileSecRound{
+  margin-top: 31px;
 }
 
 .MuiAccordionSummary-content{

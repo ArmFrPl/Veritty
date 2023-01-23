@@ -1,17 +1,29 @@
 .divider{
   width: 90em;
-  height: 100px;
+  height: 150px;
   background: url("data:image/svg+xml,%3csvg width='100%25' height='100%25' xmlns='http://www.w3.org/2000/svg'%3e%3crect width='100%25' height='100%25' fill='none' stroke='%23FFD057FF' stroke-width='4' stroke-dasharray='5%2c 11' stroke-dashoffset='15' stroke-linecap='square'/%3e%3c/svg%3e") no-repeat top;
   background-size: 64% 0.5%;
 }
-
+.mobileDiv{
+  width: 355px !important;
+  background-size: 100% 0.5%;
+  bottom: 100px !important;
+}
 .dividerHor{
   width: 90em;
   transform: rotate(90deg);
   margin-bottom: 13%;
   margin-right: 3.9%;
   position: absolute;
+}
 
+.mobileHor{
+  width: 330% !important;
+  transform: rotate(90deg);
+  margin-bottom: 70%;
+  margin-right: 34%;
+  position: absolute;
+  background-size: 71% 0.5%;
 }
 
 .bottomDiv{
@@ -49,6 +61,12 @@
   font-size: 18px !important;
   line-height: 27px !important;
   color: #F8F8F8;
+}
+
+.mobileRows{
+
+  font-size: 12px !important;
+  line-height: 18px !important;
 }
 
 @media screen and (max-width: 1037px) {

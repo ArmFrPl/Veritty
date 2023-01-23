@@ -1,6 +1,6 @@
 import React from 'react';
 import {
-  Box,
+  Box, Divider,
   LinearProgress,
 } from "@mui/material";
 import '../../Styles/TicketsCount.css';
@@ -47,12 +47,83 @@ export const TicketsCount = () => {
 
   return (
     <>
+      {/*mobile*/}
+      <Box className='ticketCountCont mobileTickets' sx={{
+        width: '85%',
+        height: '448px',
+        background: 'linear-gradient(0deg, #111032 1.69%, rgba(9, 9, 18, 0) 102.54%)',
+        padding: '37px 0 0 0',
+        display: {xs: 'flex', md: 'none'},
+        flexDirection: 'column',
+        justifyContent: 'space-between'
+      }}>
+        <Box sx={{
+          display: 'flex',
+          flexDirection: 'column',
+          alignItems: 'center',
+        }}>
+          <Box sx={{
+            fontFamily: 'Epilogue',
+            fontStyle: "normal",
+            fontSize: "22.5px",
+            lineHeight: '26px',
+            background: 'linear-gradient(180deg, #FF9700 0%, #FFD057 66.15%), #FFD057',
+            backgroundClip: 'text',
+            textFillColor: 'transparent',
+            // mt: '37px'
+          }}>JACKPOT</Box>
+          <Box sx={{
+            fontFamily: 'Epilogue',
+            fontStyle: "normal",
+            fontSize: "30px",
+            lineHeight: '26px',
+            textAlign: 'center',
+            color: '#FFD057',
+            mt: '10px',
+          }}>50.000 USTD x1</Box>
+
+          <table style={{marginTop: '29px'}}>
+            <tbody>
+            {
+              winnings.map((w, index) => (
+                <tr key={index} style={{display: "flex", marginTop: '5px'}}>
+                  <td className='mobileRow' style={{textAlign: 'right', width: '110px'}}>{w.winning}</td>
+                  <td className='mobileRow' style={{textAlign: 'center', color: '#FFD057', width: '30px'}}>x</td>
+                  <td className='mobileRow' style={{textAlign: 'left', width: '45px'}}>{w.left}</td>
+                  <td className='mobileRow lastRow'
+                      style={{textAlign: 'left', width: '80px'}}>{`(left - ${w.left})`}</td>
+                </tr>
+              ))
+            }
+            </tbody>
+          </table>
+        </Box>
+        <Divider />
+        <Box className='progressBarCont'>
+          <Box sx={{
+            fontFamily: 'Epilogue',
+            fontStyle: "normal",
+            fontSize: "16px",
+            lineHeight: '18px',
+            textAlign: 'center',
+            color: '#F8F8F8',
+            mr: '25px',
+          }}>Sold Tickets</Box>
+          <LinearProgress className='mobileProgress progressBar' variant='determinate' value={80}
+                          valueBuffer={100}>32</LinearProgress>
+        </Box>
+      </Box>
+
+
+      {/*desktop*/}
+
+
       <Box className='ticketCountCont' sx={{
         width: '830px',
         height: '556px',
         background: 'linear-gradient(0deg, #111032 1.69%, rgba(9, 9, 18, 0) 102.54%)',
         padding: '37px 0 0 0',
-        display: 'flex',
+        display: {xs: 'none', md: 'flex'},
         flexDirection: 'column',
         justifyContent: 'space-between'
       }}>

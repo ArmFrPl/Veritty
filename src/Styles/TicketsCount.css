@@ -43,7 +43,11 @@
   line-height: 28px !important;
   color: #F8F8F8;
 }
-
+.mobileRow{
+  color: #F8F8F8;
+  font-size: 16.2px !important;
+  line-height: 22px !important;
+}
 .lastRow{
   font-weight: 400 !important;
 }
@@ -54,10 +58,20 @@
   background: rgba(255, 255, 255, 0.1) !important;
   border-radius: 8px;
 }
+.mobileProgress {
+  width: 151px;
+  height: 20px !important;
+}
 .MuiLinearProgress-bar{
   background: linear-gradient(180deg, #D29230 0%, #81642C 56.25%, #DEA40E 100%), linear-gradient(159.44deg, #FFAC33 13.64%, #FFD057 63.64%);;
 }
-
+.mobileProgress:before{
+  font-size: 12px !important;
+  line-height: 18px !important;
+  width:70%;
+  align-items:center;
+  justify-content:center;
+}
 .progressBar::before{
   position:absolute;
   height:25px;
@@ -79,6 +93,7 @@
   color: #F8F8F8;
   text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 }
+
 
 .progressBarCont{
   width: 100%;

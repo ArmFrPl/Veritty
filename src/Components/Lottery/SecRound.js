@@ -39,99 +39,203 @@ export const SecRound = () => {
   ]
 
   return (
-    <Box className='ticketCountCont' sx={{
-      width: '830px',
-      height: '837px',
-      background: 'linear-gradient(0deg, #111032 1.69%, rgba(9, 9, 18, 0) 102.54%)',
-      padding: '45px 0 0 0',
-      display: 'flex',
-      flexDirection: 'column',
-      justifyContent: 'space-between'
-    }}>
-      <Box sx={{
-        display: 'flex',
+    <>
+      <Box className='ticketCountCont' sx={{
+        width: '85%',
+        height: expanded ? '795px' : '600px',
+        background: 'linear-gradient(0deg, #111032 1.69%, rgba(9, 9, 18, 0) 102.54%)',
+        padding: '45px 0 0 0',
+        display: {xs: 'flex', md: 'none'},
         flexDirection: 'column',
-        alignItems: 'center',
+        justifyContent: 'space-between'
       }}>
         <Box sx={{
-          fontFamily: 'Epilogue',
-          fontStyle: "normal",
-          fontWeight: 700,
-          fontSize: "28px",
-          lineHeight: '33px',
-          background: 'linear-gradient(180deg, #FF9700 0%, #FFD057 66.15%), #FFD057',
-          backgroundClip: 'text',
-          textFillColor: 'transparent',
-        }}>23.000 USTD</Box>
-        <Box sx={{
-          fontFamily: 'Epilogue',
-          fontStyle: "normal",
-          fontWeight: 700,
-          fontSize: "24px",
-          lineHeight: '33px',
-          color: '#F8F8F8',
-          mt: '5px',
-        }}>Second Round For Non-Winners</Box>
-
-        <table className='prizeTable' style={{marginTop: '29px',}}>
-          <tbody>
-          {
-            prizes.map((p, index) => (
-              <tr key={index} style={{display: "flex", marginTop: '5px'}}>
-                <td className='secRoundRow' style={{textAlign: 'right', width: '120px'}}>{p.place}</td>
-                <td className='secRoundRow' style={{textAlign: 'center', color: '#FFD057', width: '70px'}}>-</td>
-                <td className='secRoundRow' style={{textAlign: 'left', width: '140px'}}>{p.prize}</td>
-              </tr>
-            ))
-          }
-          </tbody>
-        </table>
-        <Box className='secRoundFAQ'>
-          <Box className='FAQTitle' sx={{
+          display: 'flex',
+          flexDirection: 'column',
+          alignItems: 'center',
+        }}>
+          <Box sx={{
+            fontFamily: 'Epilogue',
             fontStyle: "normal",
             fontWeight: 700,
-            fontSize: "20px",
-            lineHeight: '28px',
+            fontSize: "22.5px",
+            lineHeight: '26px',
+            background: 'linear-gradient(180deg, #FF9700 0%, #FFD057 66.15%), #FFD057',
+            backgroundClip: 'text',
+            textFillColor: 'transparent',
+          }}>23.000 USTD</Box>
+          <Box sx={{
+            fontFamily: 'Epilogue',
+            fontStyle: "normal",
+            fontWeight: 700,
+            fontSize: "18px",
+            lineHeight: '27px',
             color: '#F8F8F8',
-            mt: '43px',
-            mb: '33px',
-          }}>Смогу ли я продать свой билет в случае если я не выиграю ничего?</Box>
-          {
-            accardionTitle?.map((name, index) => (
-              <Accordion key={index} expanded={expanded === `panel${index}`} onChange={handleChange(`panel${index}`)} sx={{
-                width: '700px',
-                background: 'transparent',
-                color: '#FFAC33',
-                boxShadow: 0,
-                flexGrow: 0,
-                borderBottom: '1px solid',
-              }}>
-                <AccordionSummary
-                  sx={{
-                    height: '51px',
-                  }}
-                  expandIcon={<ArrowDropDownIcon sx={{color: '#FFAC33'}} />}
-                  aria-controls={`panel${index}a-content`}
-                  id={`panel${index}a-header`}
-                >
-                  <Typography sx={{
-                    fontFamily: 'Epilogue',
-                    fontStyle: "normal",
-                    fontWeight: 700,
-                    fontSize: "20px",
-                    lineHeight: '22px',
-                  }}>{name}</Typography>
-                </AccordionSummary>
-                <AccordionDetails>
-                  <Typography sx={{color: 'white'}}>
-                    После окончания лотереи мы делаем второй розыгрыш 23.000 USDT для владельцев наибольшего количество проигришных билетов. {index}
-                  </Typography>
-                </AccordionDetails>
-              </Accordion>
-            ))
-          }
+            mt: '5px',
+          }}>Second Round For Non-Winners</Box>
+
+          <table className='prizeTable' style={{marginTop: '23px',}}>
+            <tbody>
+            {
+              prizes.map((p, index) => (
+                <tr key={index} style={{display: "flex", marginTop: '5px'}}>
+                  <td className='mobileSecRoundRow' style={{textAlign: 'right', width: '95px'}}>{p.place}</td>
+                  <td className='mobileSecRoundRow' style={{textAlign: 'center', color: '#FFD057', width: '30px'}}>-</td>
+                  <td className='mobileSecRoundRow' style={{textAlign: 'left', width: '110px'}}>{p.prize}</td>
+                </tr>
+              ))
+            }
+            </tbody>
+          </table>
+          <Box className='secRoundFAQ mobileSecRound'>
+            <Box className='FAQTitle' sx={{
+              fontStyle: "normal",
+              fontWeight: 700,
+              fontSize: "14px",
+              lineHeight: '22px',
+              textAlign: 'center',
+              width: '276px',
+              color: '#F8F8F8',
+              mt: '20px',
+              mb: '15px',
+            }}>Смогу ли я продать свой билет в случае если я не выиграю ничего?</Box>
+            {
+              accardionTitle?.map((name, index) => (
+                <Accordion key={index} expanded={expanded === `panel${index}`} onChange={handleChange(`panel${index}`)}
+                           sx={{
+                             width: '88%',
+                             background: 'transparent',
+                             color: '#FFAC33',
+                             boxShadow: 0,
+                             flexGrow: 0,
+                             borderBottom: '1px solid',
+                           }}>
+                  <AccordionSummary
+                    sx={{
+                      height: '39px',
+                      minHeight: 0,
+                    }}
+                    expandIcon={<ArrowDropDownIcon sx={{color: '#FFAC33'}}/>}
+                    aria-controls={`panel${index}a-content`}
+                    id={`panel${index}a-header`}
+                  >
+                    <Typography sx={{
+                      fontFamily: 'Epilogue',
+                      fontStyle: "normal",
+                      fontWeight: 700,
+                      fontSize: "14px",
+                      lineHeight: '18px',
+                    }}>{name}</Typography>
+                  </AccordionSummary>
+                  <AccordionDetails>
+                    <Typography sx={{color: 'white'}}>
+                      После окончания лотереи мы делаем второй розыгрыш 23.000 USDT для владельцев наибольшего количество проигришных билетов. {index}
+                    </Typography>
+                  </AccordionDetails>
+                </Accordion>
+              ))
+            }
+          </Box>
         </Box>
       </Box>
-    </Box>
+
+      {/*desktop*/}
+      <Box className='ticketCountCont' sx={{
+        width: '830px',
+        height: '837px',
+        background: 'linear-gradient(0deg, #111032 1.69%, rgba(9, 9, 18, 0) 102.54%)',
+        padding: '45px 0 0 0',
+        display: {xs: 'none', md: 'flex'},
+        flexDirection: 'column',
+        justifyContent: 'space-between'
+      }}>
+        <Box sx={{
+          display: 'flex',
+          flexDirection: 'column',
+          alignItems: 'center',
+        }}>
+          <Box sx={{
+            fontFamily: 'Epilogue',
+            fontStyle: "normal",
+            fontWeight: 700,
+            fontSize: "28px",
+            lineHeight: '33px',
+            background: 'linear-gradient(180deg, #FF9700 0%, #FFD057 66.15%), #FFD057',
+            backgroundClip: 'text',
+            textFillColor: 'transparent',
+          }}>23.000 USTD</Box>
+          <Box sx={{
+            fontFamily: 'Epilogue',
+            fontStyle: "normal",
+            fontWeight: 700,
+            fontSize: "24px",
+            lineHeight: '33px',
+            color: '#F8F8F8',
+            mt: '5px',
+          }}>Second Round For Non-Winners</Box>
+
+          <table className='prizeTable' style={{marginTop: '29px',}}>
+            <tbody>
+            {
+              prizes.map((p, index) => (
+                <tr key={index} style={{display: "flex", marginTop: '5px'}}>
+                  <td className='secRoundRow' style={{textAlign: 'right', width: '120px'}}>{p.place}</td>
+                  <td className='secRoundRow' style={{textAlign: 'center', color: '#FFD057', width: '70px'}}>-</td>
+                  <td className='secRoundRow' style={{textAlign: 'left', width: '140px'}}>{p.prize}</td>
+                </tr>
+              ))
+            }
+            </tbody>
+          </table>
+          <Box className='secRoundFAQ'>
+            <Box className='FAQTitle' sx={{
+              fontStyle: "normal",
+              fontWeight: 700,
+              fontSize: "20px",
+              lineHeight: '28px',
+              color: '#F8F8F8',
+              mt: '43px',
+              mb: '33px',
+            }}>Смогу ли я продать свой билет в случае если я не выиграю ничего?</Box>
+            {
+              accardionTitle?.map((name, index) => (
+                <Accordion key={index} expanded={expanded === `panel${index}`} onChange={handleChange(`panel${index}`)}
+                           sx={{
+                             width: '700px',
+                             background: 'transparent',
+                             color: '#FFAC33',
+                             boxShadow: 0,
+                             flexGrow: 0,
+                             borderBottom: '1px solid',
+                           }}>
+                  <AccordionSummary
+                    sx={{
+                      height: '51px',
+                    }}
+                    expandIcon={<ArrowDropDownIcon sx={{color: '#FFAC33'}}/>}
+                    aria-controls={`panel${index}a-content`}
+                    id={`panel${index}a-header`}
+                  >
+                    <Typography sx={{
+                      fontFamily: 'Epilogue',
+                      fontStyle: "normal",
+                      fontWeight: 700,
+                      fontSize: "20px",
+                      lineHeight: '22px',
+                    }}>{name}</Typography>
+                  </AccordionSummary>
+                  <AccordionDetails>
+                    <Typography sx={{color: 'white'}}>
+                      После окончания лотереи мы делаем второй розыгрыш 23.000 USDT для владельцев наибольшего
+                      количество проигришных билетов. {index}
+                    </Typography>
+                  </AccordionDetails>
+                </Accordion>
+              ))
+            }
+          </Box>
+        </Box>
+      </Box>
+    </>
   )
 }

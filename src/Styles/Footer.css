@@ -23,3 +23,39 @@
   justify-content: center;
   align-items: center;
 }
+
+.footerModalHeader{
+  font-family: 'Epilogue';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 29.0379px;
+  line-height: 39px;
+  display: flex;
+  align-items: center;
+  letter-spacing: 0.01em;
+  color: #F8F8F8;
+  justify-content: space-between;
+  padding-right: 29px;
+  margin-bottom: 25px;
+}
+
+.footerModalBody{
+  height: 680px;
+  padding-right: 70px;
+  color: white;
+  font-family: 'Epilogue';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16.9388px;
+  line-height: 27px;
+  overflow: scroll;
+
+}
+
+.mobileFooterCont{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+}
