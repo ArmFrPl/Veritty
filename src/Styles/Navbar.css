@@ -34,7 +34,10 @@
   font-weight: 700 !important;
   margin-left: 43px;
 }
-
+.mobileMenu{
+  width: 144px;
+  height: 24px;
+}
 .connectButton::before {
   content: "";
   position: absolute;

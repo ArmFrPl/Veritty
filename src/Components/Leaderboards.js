@@ -8,6 +8,7 @@ import {TableRowWithAvatar} from "./TableRowWithAvatar";
 export const Leaderboards = () => {
   const [inputText, setInputText] = useState("");
   const leadersRef = useRef(null);
+  const mobileLeadersRef = useRef(null);
 
   let inputHandler = (e) => {
     let lowerCase = e.target.value.toLowerCase();
@@ -18,7 +19,10 @@ export const Leaderboards = () => {
     console.log(leadersRef.current)
     leadersRef.current?.scrollIntoView({behavior: "smooth", block: 'nearest', inline: 'start'})
   }
-
+  const mobileScrollToBottom = () => {
+    console.log(leadersRef.current)
+    mobileLeadersRef.current?.scrollIntoView({behavior: "smooth", block: 'nearest', inline: 'start'})
+  }
 
   const leaders = [
     {
@@ -224,7 +228,7 @@ export const Leaderboards = () => {
                   }
                 })
               }
-              <div ref={leadersRef}/>
+              <div ref={mobileLeadersRef} />
             </div>
             </tbody>
           </table>
@@ -232,8 +236,8 @@ export const Leaderboards = () => {
             display: 'flex',
             justifyContent: 'center',
             cursor: 'pointer'
-          }} onClick={scrollToBottom}>
-            <Icon sx={{width: '30px', height: '30px'}}><img alt='arrow' src={GoDown} height={30} width={30}/></Icon>
+          }}>
+            <Icon sx={{width: '30px', height: '30px'}} onClick={mobileScrollToBottom}><img alt='arrow' src={GoDown} height={30} width={30}/></Icon>
           </Box>
         </Box>
 

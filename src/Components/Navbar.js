@@ -6,19 +6,23 @@ import Logo from '../Images/VERITTY.png';
 import {Link} from "react-router-dom";
 import {SocialLinks} from "./SocialLinks";
 
-export const Navbar = ({isLoggedIn, faqRef, setMenuOpen, menuOpen}) => {
+export const Navbar = ({isLoggedIn, faqRef, mobileFaqRef, setMenuOpen, menuOpen}) => {
 
   const handleOpenNavMenu = () => setMenuOpen(!menuOpen);
 
   const scrollToFaq = () => {
-    console.log(faqRef)
     faqRef?.current?.scrollIntoView({behavior: "smooth", block: 'nearest', inline: 'start'})
   }
+
+  const mobileScrollToFaq = () => {
+    mobileFaqRef?.current?.scrollIntoView({behavior: "smooth", block: 'nearest', inline: 'start'})
+  }
+
   return (
     <div className='navbar'>
       <AppBar position="static">
         <Container maxWidth="xl" sx={{padding: 0}}>
-          <Toolbar disableGutters sx={{alignItems: {xs: 'start', md: 'center'}, }}>
+          <Toolbar disableGutters sx={{alignItems: {xs: 'start', md: 'center'},}}>
             <Box sx={{flexGrow: 1, display: {xs: 'flex', md: 'none'},}}>
               <Box sx={{
                 width: '100%',
@@ -34,21 +38,43 @@ export const Navbar = ({isLoggedIn, faqRef, setMenuOpen, menuOpen}) => {
                 }}>
 
                   <Box component="img" sx={{height: 16, width: 113, padding: '12px'}} alt="Veritty Logo" src={Logo}/>
-                  <IconButton
-                    size="large"
-                    aria-label="account of current user"
-                    aria-controls="menu-appbar"
-                    aria-haspopup="true"
-                    onClick={handleOpenNavMenu}
-                    color="inherit"
-                    sx={{
-                      justifyContent: 'end',
-                      background: menuOpen ? 'black !important' : 'transparent',
-                      borderRadius: '0px',
-                    }}
-                  >
-                    <MenuIcon/>
-                  </IconButton>
+                  <Box sx={{
+                    display: 'flex',
+                    alignItems: 'center',
+                  }}>
+                    <Link to='#' style={{textDecoration: 'none', display: 'flex', justifyContent: 'center',}}>
+                      <Button className='connectButton mobileMenu'><Box sx={{
+                        fontFamily: 'Epilogue',
+                        fontStyle: 'normal',
+                        fontWeight: '700',
+                        fontSize: '9.6px',
+                        lineHeight: '17px',
+                        background: 'linear-gradient(174.11deg, #CE9400 4.67%, #FFD057 75.94%)',
+                        textFillColor: 'transparent',
+                        backgroundClip: 'text',
+                        flex: 'none',
+                        order: 1,
+                        flexGrow: 0,
+                        textTransform: 'none',
+                      }}>{!isLoggedIn ? 'Connect Wallet' : '0x008475..55c55'}</Box></Button>
+                    </Link>
+                    <IconButton
+                      size="large"
+                      aria-label="account of current user"
+                      aria-controls="menu-appbar"
+                      aria-haspopup="true"
+                      onClick={handleOpenNavMenu}
+                      color="inherit"
+                      sx={{
+                        justifyContent: 'end',
+                        background: menuOpen ? 'black !important' : 'transparent',
+                        borderRadius: '0px',
+                        transitionDuration: '.3s'
+                      }}
+                    >
+                      <MenuIcon/>
+                    </IconButton>
+                  </Box>
                 </Box>
                 <Box sx={{
                   display: menuOpen ? 'flex' : 'none',
@@ -56,26 +82,31 @@ export const Navbar = ({isLoggedIn, faqRef, setMenuOpen, menuOpen}) => {
                   height: '100vh',
                   background: 'black',
                   justifyContent: 'center',
-                  flexDirection:'column',
+                  flexDirection: 'column',
                   zIndex: 999,
                 }}>
                   <Box sx={{
-                    display:'flex',
-                    alignItems:'center',
-                    flexDirection:'column',
-                    justifyContent:'center',
+                    display: 'flex',
+                    alignItems: 'center',
+                    flexDirection: 'column',
+                    justifyContent: 'center',
                     mb: '42px',
                   }}>
-                    <Link to='/leaderboard' style={{ textDecoration: 'none'}}
+                    <Link to='/leaderboard' style={{textDecoration: 'none'}}
                           className='mobMenuItem' onClick={handleOpenNavMenu}>Winners</Link>
                     <Link to='/dashboard' style={{textDecoration: 'none'}}
                           className='mobMenuItem' onClick={handleOpenNavMenu}>Tickets</Link>
-                    <Link to='#' style={{ textDecoration: 'none'}} className='mobMenuItem'
-                          onClick={scrollToFaq && handleOpenNavMenu}>FAQ</Link>
+                    <Link to='#' style={{textDecoration: 'none'}} className='mobMenuItem'
+                          onClick={() => {
+                            mobileScrollToFaq();
+                            handleOpenNavMenu();
+                          }}>FAQ</Link>
                   </Box>
-                  <SocialLinks menuOpen={menuOpen} />
-                  <Link to='#' style={{ textDecoration: 'none', justifyContent: 'center', mt: '30px'}} className='mobMenuItem'>Smart Contract</Link>
-                  <Link to='#' style={{textDecoration: 'none', display: 'flex', justifyContent: 'center', marginTop: '100px'}}>
+                  <SocialLinks menuOpen={menuOpen}/>
+                  <Link to='#' style={{textDecoration: 'none', justifyContent: 'center', mt: '30px'}}
+                        className='mobMenuItem'>Smart Contract</Link>
+                  <Link to='#'
+                        style={{textDecoration: 'none', display: 'flex', justifyContent: 'center', marginTop: '100px'}}>
                     <Button className='connectButton'><Box sx={{
                       fontFamily: 'Epilogue',
                       fontStyle: 'normal',
@@ -95,6 +126,8 @@ export const Navbar = ({isLoggedIn, faqRef, setMenuOpen, menuOpen}) => {
               </Box>
 
             </Box>
+
+            {/*desktop*/}
 
             <Box sx={{
               flexGrow: 1,

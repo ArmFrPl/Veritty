@@ -3,11 +3,11 @@ import {Accordion, AccordionDetails, AccordionSummary, Box, Typography} from "@m
 import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
 import '../Styles/FAQ.css';
 
-export const FAQ = ({faqRef}) => {
+export const FAQ = ({faqRef, mobileFaqRef}) => {
   const names = ['General', 'How does it Work', 'How to start', 'How to connect Wallet', 'How to get my NFT'];
   return (
     <>
-      <Box ref={faqRef} sx={{
+      <Box ref={mobileFaqRef} sx={{
         display: {xs: 'flex', md: 'none'},
         justifyContent: 'center',
         flexDirection: 'column',

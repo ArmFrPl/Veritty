@@ -1,5 +1,5 @@
 import React from 'react';
-import {Box, Fade, Popover, Typography} from "@mui/material";
+import {Box, Button, Fade, Popover, Typography} from "@mui/material";
 import '../Styles/Header.css'
 import MintTicketImg from '../Images/Tickets/Mint Ticket.png';
 import ToggleButtons from "./ToggleButtons";
@@ -10,6 +10,8 @@ import {SocialLinks} from "./SocialLinks";
 
 export const Header = ({isLoggedIn, view, setView, menuOpen}) => {
   const [anchorEl, setAnchorEl] = React.useState(null);
+  const [mobileAnchorEl, setMobileAnchorEl] = React.useState(null);
+  console.log(anchorEl)
 
   const handleOpenWinning = (event) => {
     setAnchorEl(event.currentTarget);
@@ -18,9 +20,18 @@ export const Header = ({isLoggedIn, view, setView, menuOpen}) => {
   const handleCloseWinning = () => {
     setAnchorEl(null);
   };
+  const handleMobileOpenWinning = (event) => {
+    setMobileAnchorEl(event.currentTarget);
+  };
+
+  const handleMobileCloseWinning = () => {
+    setMobileAnchorEl(null);
+  };
 
   const openWinning = Boolean(anchorEl);
+  const openMobileWinning = Boolean(mobileAnchorEl);
   const id = openWinning ? 'simple-popover' : undefined;
+  const mobileId = openMobileWinning ? 'simple-popover' : undefined;
 
   return (
     <>
@@ -69,12 +80,38 @@ export const Header = ({isLoggedIn, view, setView, menuOpen}) => {
               }}>247.500 USTD</Box>
             </Box>
           </Box>
-          <Box component={"img"} src={MintTicketImg} width={354} height={541} onClick={handleOpenWinning}/>
+          <Box sx={{
+            position: 'relative',
+          }}>
+            <Button onClick={handleMobileOpenWinning} sx={{
+              flexDirection: 'row',
+              justifyContent: 'center',
+              alignItems: 'center',
+              gap: '8px',
+              background: 'linear-gradient(93.96deg, #FFAC33 4.32%, #FFE53B 44.39%, #FAA933 103.38%), linear-gradient(94.1deg, #FFE53B 17.43%, #FFE53B 56.82%, #FAA933 96.21%)',
+              borderRadius: '8px',
+              width: '234px',
+              height: '40px',
+              fontFamily: 'Epilogue',
+              fontStyle: 'normal',
+              fontWeight: 700,
+              fontSize: '16px',
+              lineHeight: '28px',
+              color: '#000000',
+              flex: 'none',
+              order: 1,
+              flexGrow: 0,
+              position: 'absolute',
+              bottom: '30%',
+              left: '21.5%',
+            }}> MINT TICKET 0.059 ETH </Button>
+            <Box component={"img"} src={MintTicketImg}/>
+          </Box>
           <Popover
-            id={id}
-            open={openWinning}
-            anchorEl={anchorEl}
-            onClose={handleCloseWinning}
+            id={mobileId}
+            open={openMobileWinning}
+            anchorEl={mobileAnchorEl}
+            onClose={handleMobileCloseWinning}
             anchorOrigin={{
               vertical: 'bottom',
               horizontal: 'left',
@@ -83,27 +120,26 @@ export const Header = ({isLoggedIn, view, setView, menuOpen}) => {
               display: 'flex',
               justifyContent: 'center',
               alignItems: 'center',
-              backgroundColor: 'transparent !important'
             }}
           >
-            <Fade in={openWinning}>
+            <Fade in={openMobileWinning}>
               <Box className='headerModalCont' sx={{
-                width: '343px',
-                height: '88px',
+                width: '252px',
+                height: '65px',
                 background: '#101010',
                 border: '1px solid #00DF74',
                 borderRadius: '16px',
                 display: 'flex',
               }}>
                 <Box className="headerModalBody">
-                  <CheckCircleOutlineRoundedIcon sx={{color: '#00DF74', mr: '15px', pl: '24px',}}/>
+                  <CheckCircleOutlineRoundedIcon sx={{color: '#00DF74', mr: '14px', pl: '10px', width: '22px', height: '22px'}}/>
                   <Box>
                     <Typography sx={{
                       fontFamily: 'Epilogue',
                       fontStyle: 'normal',
                       fontWeight: '700',
-                      fontSize: '14px',
-                      lineHeight: '18px',
+                      fontSize: '10px',
+                      lineHeight: '14px',
                       display: 'flex',
                       alignItems: 'center',
                       letterSpacing: '0.01em',
@@ -113,7 +149,7 @@ export const Header = ({isLoggedIn, view, setView, menuOpen}) => {
                       fontFamily: 'Epilogue',
                       fontStyle: 'normal',
                       fontWeight: '400',
-                      fontSize: '16px',
+                      fontSize: '12px',
                       lineHeight: '24px',
                       display: 'flex',
                       alignItems: 'center',
@@ -123,7 +159,7 @@ export const Header = ({isLoggedIn, view, setView, menuOpen}) => {
                       fontFamily: 'Epilogue',
                       fontStyle: 'normal',
                       fontWeight: '400',
-                      fontSize: '14px',
+                      fontSize: '9px',
                       lineHeight: '1',
                       display: 'flex',
                       alignItems: 'center',
@@ -137,13 +173,13 @@ export const Header = ({isLoggedIn, view, setView, menuOpen}) => {
                     display: 'flex',
                     flexDirection: 'column',
                     alignItems: 'end',
-                    margin: '0 5px 20px 20px'
+                    margin: '0 5px 10px 10px'
                   }}>
                     <Box sx={{
                       fontFamily: 'Epilogue',
                       fontStyle: 'normal',
                       fontWeight: '400',
-                      fontSize: '14px',
+                      fontSize: '10px',
                       display: 'flex',
                       lineHeight: '22px',
                       alignItems: 'center',
@@ -155,7 +191,7 @@ export const Header = ({isLoggedIn, view, setView, menuOpen}) => {
                       fontFamily: 'Epilogue',
                       fontStyle: 'normal',
                       fontWeight: '700',
-                      fontSize: '20px',
+                      fontSize: '15px',
                       lineHeight: '1',
                       display: 'flex',
                       alignItems: 'center',
@@ -166,7 +202,7 @@ export const Header = ({isLoggedIn, view, setView, menuOpen}) => {
                 </Box>
 
                 <Box className='headerModalHeader'>
-                  <CloseIcon onClick={handleCloseWinning} cursor='pointer'/>
+                  <CloseIcon onClick={handleMobileCloseWinning} cursor='pointer'/>
                 </Box>
               </Box>
             </Fade>
@@ -174,6 +210,9 @@ export const Header = ({isLoggedIn, view, setView, menuOpen}) => {
         </Box>
         <ToggleButtons isLoggedIn={isLoggedIn} view={view} setView={setView} menuOpen={menuOpen}/>
       </Box>
+
+      {/*desktop*/}
+
       <Box sx={{display: {xs: 'none', md: 'flex'}, flexDirection: 'column', alignItems: 'center'}}>
         <Box className='headerCont'>
           <Box className='headerText'>
@@ -216,7 +255,34 @@ export const Header = ({isLoggedIn, view, setView, menuOpen}) => {
               }}>247.500 USTD</Box>
             </Box>
           </Box>
-          <Box component={"img"} src={MintTicketImg} onClick={handleOpenWinning}/>
+          <Box sx={{
+            position: 'relative',
+            maxWidth: '234px',
+          }}>
+          <Button onClick={handleOpenWinning} sx={{
+            flexDirection: 'row',
+            justifyContent: 'center',
+            alignItems: 'center',
+            gap: '8px',
+            background: 'linear-gradient(93.96deg, #FFAC33 4.32%, #FFE53B 44.39%, #FAA933 103.38%), linear-gradient(94.1deg, #FFE53B 17.43%, #FFE53B 56.82%, #FAA933 96.21%)',
+            borderRadius: '8px',
+            width: '234px',
+            height: '40px',
+            fontFamily: 'Epilogue',
+            fontStyle: 'normal',
+            fontWeight: 700,
+            fontSize: '16px',
+            lineHeight: '28px',
+            color: '#000000',
+            flex: 'none',
+            order: 1,
+            flexGrow: 0,
+            position: 'absolute',
+            bottom: '30%',
+            left: '37%',
+          }}> MINT TICKET 0.059 ETH </Button>
+          <Box component={"img"} src={MintTicketImg}/>
+          </Box>
           <Popover
             id={id}
             open={openWinning}

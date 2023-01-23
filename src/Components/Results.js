@@ -3,6 +3,7 @@ import {Accordion, AccordionDetails, AccordionSummary, Box, Typography} from "@m
 import '../Styles/Results.css';
 import NorthEastIcon from "@mui/icons-material/NorthEast";
 import ArrowDropDownIcon from "@mui/icons-material/ArrowDropDown";
+import GoToIcon from "../Images/goToIcon.svg";
 
 export const Results = () => {
   const [expanded, setExpanded] = useState(false);
@@ -82,7 +83,8 @@ export const Results = () => {
                   {
                     [0, 1, 2].map(() => (
                       <Typography sx={{color: 'white'}}>
-                        0x017858849..6765qww1 <NorthEastIcon/>
+                        0x017858849..6765qww1 <img src={GoToIcon} alt='arrow' height={8} width={8}
+                                                   style={{marginLeft: '5px'}}/>
                       </Typography>
                     ))
                   }
@@ -164,7 +166,8 @@ export const Results = () => {
                 {
                   [0, 1, 2].map(() => (
                     <Typography sx={{color: 'white'}}>
-                      0x017858849..6765qww1 <NorthEastIcon/>
+                      0x017858849..6765qww1 <img src={GoToIcon} alt='arrow' height={8} width={8}
+                                                 style={{marginLeft: '5px'}}/>
                     </Typography>
                   ))
                 }
