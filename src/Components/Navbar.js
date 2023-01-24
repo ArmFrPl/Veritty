@@ -5,6 +5,7 @@ import MenuIcon from '@mui/icons-material/Menu';
 import Logo from '../Images/VERITTY.png';
 import {Link} from "react-router-dom";
 import {SocialLinks} from "./SocialLinks";
+import { ConnectButton } from '@rainbow-me/rainbowkit';
 
 export const Navbar = ({isLoggedIn, faqRef, mobileFaqRef, setMenuOpen, menuOpen}) => {
 
@@ -162,6 +163,8 @@ export const Navbar = ({isLoggedIn, faqRef, mobileFaqRef, setMenuOpen, menuOpen}
                     flexGrow: 0,
                     textTransform: 'none',
                   }}>{!isLoggedIn ? 'Connect Wallet' : '0x008475..55c55'}</Box></Button>
+                  <ConnectButton />
+
                 </Link>
               </Box>
             </Box>
