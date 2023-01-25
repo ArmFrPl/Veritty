@@ -8,14 +8,27 @@ import {Lottery} from "./Lottery";
 import {Results} from "./Results";
 import {Leaderboards} from "./Leaderboards";
 import {Dashboard} from "./Dashboard";
+import { useSigner } from "wagmi";
+import {ethers} from "ethers";
+import RaffleImpl from "../RaffleImpl.json";
 
-export const Layout = () => {
+
+export const Layout = async () => {
   const [isLoggedIn, setLoggedIn] = useState(true);
   const [menuOpen, setMenuOpen] = useState(false);
   const [view, setView] = useState('lottery');
   const location = useLocation();
   const faqRef = useRef();
   const mobileFaqRef = useRef();
+
+  const { signer } = useSigner();
+  const abi = RaffleImpl.abi;
+  console.log(abi)
+
+  const contract = new ethers.Contract('0x1608E80C75A2b4C34E6f3D62aaC127489535b04A', abi, signer)
+
+  const tx = await contract.getTicketsLeft();
+  await tx.wait()
 
   useEffect(() => {
     setView(location.pathname.slice(1))

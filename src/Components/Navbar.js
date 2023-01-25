@@ -149,20 +149,20 @@ export const Navbar = ({isLoggedIn, faqRef, mobileFaqRef, setMenuOpen, menuOpen}
               <Box sx={{display: 'flex', alignItems: 'center'}}>
                 <SocialLinks/>
                 <Link to='#' style={{textDecoration: 'none'}}>
-                  <Button className='connectButton'><Box sx={{
-                    fontFamily: 'Epilogue',
-                    fontStyle: 'normal',
-                    fontWeight: '700',
-                    fontSize: '16px',
-                    lineHeight: '28px',
-                    background: 'linear-gradient(174.11deg, #CE9400 4.67%, #FFD057 75.94%)',
-                    textFillColor: 'transparent',
-                    backgroundClip: 'text',
-                    flex: 'none',
-                    order: 1,
-                    flexGrow: 0,
-                    textTransform: 'none',
-                  }}>{!isLoggedIn ? 'Connect Wallet' : '0x008475..55c55'}</Box></Button>
+                  {/*<Button className='connectButton'><Box sx={{*/}
+                  {/*  fontFamily: 'Epilogue',*/}
+                  {/*  fontStyle: 'normal',*/}
+                  {/*  fontWeight: '700',*/}
+                  {/*  fontSize: '16px',*/}
+                  {/*  lineHeight: '28px',*/}
+                  {/*  background: 'linear-gradient(174.11deg, #CE9400 4.67%, #FFD057 75.94%)',*/}
+                  {/*  textFillColor: 'transparent',*/}
+                  {/*  backgroundClip: 'text',*/}
+                  {/*  flex: 'none',*/}
+                  {/*  order: 1,*/}
+                  {/*  flexGrow: 0,*/}
+                  {/*  textTransform: 'none',*/}
+                  {/*}}>{!isLoggedIn ? 'Connect Wallet' : '0x008475..55c55'}</Box></Button>*/}
                   <ConnectButton />
 
                 </Link>
