@@ -1,0 +1,3 @@
+.socialLink:hover{
+  filter: brightness(0) saturate(100%) invert(98%) sepia(64%) saturate(6121%) hue-rotate(314deg) brightness(103%) contrast(104%);
+}
