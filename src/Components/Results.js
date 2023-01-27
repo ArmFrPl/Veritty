@@ -160,12 +160,13 @@ export const Results = () => {
                   fontWeight: 700,
                   fontSize: "20px",
                   lineHeight: '22px',
+                  textAlign: 'center',
                 }}>{name}</Typography>
               </AccordionSummary>
               <AccordionDetails>
                 {
                   [0, 1, 2].map(() => (
-                    <Typography sx={{color: 'white'}}>
+                    <Typography sx={{color: 'white', textAlign: 'center',}}>
                       0x017858849..6765qww1 <img src={GoToIcon} alt='arrow' height={8} width={8}
                                                  style={{marginLeft: '5px'}}/>
                     </Typography>

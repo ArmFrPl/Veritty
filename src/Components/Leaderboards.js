@@ -4,11 +4,15 @@ import '../Styles/Leaderboards.css';
 import GoDown from '../Images/goDown.svg';
 import {TableRow} from "./TableRow";
 import {TableRowWithAvatar} from "./TableRowWithAvatar";
+import useGetLeaders from "../Hooks/getLeaders";
 
-export const Leaderboards = () => {
+export function Leaderboards({winnersRef,mobileWinnersRef}){
+
   const [inputText, setInputText] = useState("");
   const leadersRef = useRef(null);
   const mobileLeadersRef = useRef(null);
+  // const leaders = await useGetLeaders();
+  // console.log(leaders)
 
   let inputHandler = (e) => {
     let lowerCase = e.target.value.toLowerCase();
@@ -16,11 +20,9 @@ export const Leaderboards = () => {
   }
 
   const scrollToBottom = () => {
-    console.log(leadersRef.current)
     leadersRef.current?.scrollIntoView({behavior: "smooth", block: 'nearest', inline: 'start'})
   }
   const mobileScrollToBottom = () => {
-    console.log(leadersRef.current)
     mobileLeadersRef.current?.scrollIntoView({behavior: "smooth", block: 'nearest', inline: 'start'})
   }
 
@@ -133,7 +135,7 @@ export const Leaderboards = () => {
 
   return (
     <>
-      <Box className='leadersCont' sx={{
+      <Box className='leadersCont' ref={mobileWinnersRef} sx={{
         display: {xs: 'flex', md: 'none'}
       }}>
         <Box sx={{
@@ -207,6 +209,7 @@ export const Leaderboards = () => {
               margin: '19px 0 17px 0',
               boxSizing: 'border-box',
             }}>
+              {/*{console.log(leaders.length)}*/}
               {
                 filteredLeaders?.map((l, index) => {
                   if (index + 1 === 1) {
@@ -248,7 +251,7 @@ export const Leaderboards = () => {
       {/*Desktop*/}
 
 
-      <Box className='leadersCont' sx={{
+      <Box className='leadersCont' ref={winnersRef} sx={{
         display: {xs: 'none', md: 'flex'}
       }}>
         <Box sx={{
@@ -326,19 +329,19 @@ export const Leaderboards = () => {
                 filteredLeaders?.map((l, index) => {
                   if (index + 1 === 1) {
                     return (
-                      <TableRowWithAvatar data={l} index={index} frameColor='#FFD057'/>
+                      <TableRowWithAvatar data={l} index={index} frameColor='#FFD057' leaders={leaders}/>
                     )
                   } else if (index + 1 === 2) {
                     return (
-                      <TableRowWithAvatar data={l} index={index} frameColor='#D9D9D9'/>
+                      <TableRowWithAvatar data={l} index={index} frameColor='#D9D9D9' leaders={leaders}/>
                     )
                   } else if (index + 1 === 3) {
                     return (
-                      <TableRowWithAvatar data={l} index={index} frameColor='#C18640'/>
+                      <TableRowWithAvatar data={l} index={index} frameColor='#C18640' leaeders={leaders}/>
                     )
                   } else {
                     return (
-                      <TableRow data={l} index={index}/>
+                      <TableRow data={l} index={index} leaeders={leaders}/>
                     )
                   }
                 })

@@ -16,6 +16,9 @@
   align-items: center;
   color: #FFFFFF;
 }
+.menuItem:hover{
+  color: #FFD057;
+}
 .mobMenuItem{
   font-family: Epilogue;
   font-style: normal;
@@ -27,15 +30,9 @@
   margin-top: 24px;
 }
 
-/*.ju367v9c{*/
-/*  color: transparent !important;*/
-/*   border: 1px solid red ;*/
-/*  width: 239px;*/
-/*  top: -40px;*/
-/*}*/
-/*.ju367va{*/
-/*  position: absolute;*/
-/*}*/
+.ju367v1n{
+  margin-left: 43px;
+}
 
 .connectButton {
   position: relative;

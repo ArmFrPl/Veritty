@@ -3,7 +3,7 @@ import {Box, Icon} from "@mui/material";
 import '../Styles/Dashboard.css';
 import GoToIcon from "../Images/goToIcon.svg";
 
-export const Dashboard = () => {
+export const Dashboard = ({ticketsRef, mobileTicketsRef}) => {
   const history = [
     {
       winning: '50 USTD',
@@ -22,7 +22,7 @@ export const Dashboard = () => {
   return (
     <>
 
-      <Box className='dashboardCont' sx={{
+      <Box className='dashboardCont' ref={mobileTicketsRef} sx={{
         display: {xs: 'flex', md: 'none'}
       }}>
         <Box sx={{
@@ -147,7 +147,7 @@ export const Dashboard = () => {
 
 
 
-    <Box className='dashboardCont' sx={{
+    <Box className='dashboardCont' ref={ticketsRef} sx={{
       display: {xs: 'none', md: 'flex'}
     }}>
       <Box sx={{

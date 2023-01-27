@@ -2,15 +2,28 @@ import React from "react";
 import '../Styles/Navbar.css';
 import {AppBar, Box, Button, Container, IconButton, Toolbar,} from "@mui/material";
 import MenuIcon from '@mui/icons-material/Menu';
-import Logo from '../Images/VERITTY.png';
+import Logo from '../Images/VERITTY.svg';
 import {Link} from "react-router-dom";
 import {SocialLinks} from "./SocialLinks";
 import { ConnectButton } from '@rainbow-me/rainbowkit';
 
-export const Navbar = ({isLoggedIn, faqRef, mobileFaqRef, setMenuOpen, menuOpen}) => {
+export const Navbar = ({isLoggedIn, faqRef, mobileFaqRef, setMenuOpen, menuOpen, winnersRef, mobileWinnersRef, mobileTicketsRef, ticketsRef}) => {
 
   const handleOpenNavMenu = () => setMenuOpen(!menuOpen);
 
+  const scrollToWinners = () => {
+    winnersRef?.current?.scrollIntoView({behavior: "smooth", block: 'nearest', inline: 'start'})
+  }
+  const mobileScrollToWinners = () => {
+    mobileWinnersRef?.current?.scrollIntoView({behavior: "smooth", block: 'nearest', inline: 'start'})
+  }
+  const scrollToTickets = () => {
+    ticketsRef?.current?.scrollIntoView({behavior: "smooth", block: 'nearest', inline: 'start'})
+  }
+
+  const mobileScrollToTickets = () => {
+    mobileTicketsRef?.current?.scrollIntoView({behavior: "smooth", block: 'nearest', inline: 'start'})
+  }
   const scrollToFaq = () => {
     faqRef?.current?.scrollIntoView({behavior: "smooth", block: 'nearest', inline: 'start'})
   }
@@ -44,20 +57,21 @@ export const Navbar = ({isLoggedIn, faqRef, mobileFaqRef, setMenuOpen, menuOpen}
                     alignItems: 'center',
                   }}>
                     <Link to='#' style={{textDecoration: 'none', display: 'flex', justifyContent: 'center',}}>
-                      <Button className='connectButton mobileMenu'><Box sx={{
-                        fontFamily: 'Epilogue',
-                        fontStyle: 'normal',
-                        fontWeight: '700',
-                        fontSize: '9.6px',
-                        lineHeight: '17px',
-                        background: 'linear-gradient(174.11deg, #CE9400 4.67%, #FFD057 75.94%)',
-                        textFillColor: 'transparent',
-                        backgroundClip: 'text',
-                        flex: 'none',
-                        order: 1,
-                        flexGrow: 0,
-                        textTransform: 'none',
-                      }}>{!isLoggedIn ? 'Connect Wallet' : '0x008475..55c55'}</Box></Button>
+                      {/*<Button className='connectButton mobileMenu'><Box sx={{*/}
+                      {/*  fontFamily: 'Epilogue',*/}
+                      {/*  fontStyle: 'normal',*/}
+                      {/*  fontWeight: '700',*/}
+                      {/*  fontSize: '9.6px',*/}
+                      {/*  lineHeight: '17px',*/}
+                      {/*  background: 'linear-gradient(174.11deg, #CE9400 4.67%, #FFD057 75.94%)',*/}
+                      {/*  textFillColor: 'transparent',*/}
+                      {/*  backgroundClip: 'text',*/}
+                      {/*  flex: 'none',*/}
+                      {/*  order: 1,*/}
+                      {/*  flexGrow: 0,*/}
+                      {/*  textTransform: 'none',*/}
+                      {/*}}>{!isLoggedIn ? 'Connect Wallet' : '0x008475..55c55'}</Box></Button>*/}
+                      <ConnectButton />
                     </Link>
                     <IconButton
                       size="large"
@@ -94,9 +108,15 @@ export const Navbar = ({isLoggedIn, faqRef, mobileFaqRef, setMenuOpen, menuOpen}
                     mb: '42px',
                   }}>
                     <Link to='/leaderboard' style={{textDecoration: 'none'}}
-                          className='mobMenuItem' onClick={handleOpenNavMenu}>Winners</Link>
+                          className='mobMenuItem' onClick={() => {
+                            mobileScrollToWinners();
+                            handleOpenNavMenu();
+                          }}>Winners</Link>
                     <Link to='/dashboard' style={{textDecoration: 'none'}}
-                          className='mobMenuItem' onClick={handleOpenNavMenu}>Tickets</Link>
+                          className='mobMenuItem' onClick={() => {
+                            mobileScrollToTickets();
+                            handleOpenNavMenu();
+                    }}>Tickets</Link>
                     <Link to='#' style={{textDecoration: 'none'}} className='mobMenuItem'
                           onClick={() => {
                             mobileScrollToFaq();
@@ -108,20 +128,22 @@ export const Navbar = ({isLoggedIn, faqRef, mobileFaqRef, setMenuOpen, menuOpen}
                         className='mobMenuItem'>Smart Contract</Link>
                   <Link to='#'
                         style={{textDecoration: 'none', display: 'flex', justifyContent: 'center', marginTop: '100px'}}>
-                    <Button className='connectButton'><Box sx={{
-                      fontFamily: 'Epilogue',
-                      fontStyle: 'normal',
-                      fontWeight: '700',
-                      fontSize: '16px',
-                      lineHeight: '28px',
-                      background: 'linear-gradient(174.11deg, #CE9400 4.67%, #FFD057 75.94%)',
-                      textFillColor: 'transparent',
-                      backgroundClip: 'text',
-                      flex: 'none',
-                      order: 1,
-                      flexGrow: 0,
-                      textTransform: 'none',
-                    }}>{!isLoggedIn ? 'Connect Wallet' : '0x008475..55c55'}</Box></Button>
+                    {/*<Button className='connectButton'><Box sx={{*/}
+                    {/*  fontFamily: 'Epilogue',*/}
+                    {/*  fontStyle: 'normal',*/}
+                    {/*  fontWeight: '700',*/}
+                    {/*  fontSize: '16px',*/}
+                    {/*  lineHeight: '28px',*/}
+                    {/*  background: 'linear-gradient(174.11deg, #CE9400 4.67%, #FFD057 75.94%)',*/}
+                    {/*  textFillColor: 'transparent',*/}
+                    {/*  backgroundClip: 'text',*/}
+                    {/*  flex: 'none',*/}
+                    {/*  order: 1,*/}
+                    {/*  flexGrow: 0,*/}
+                    {/*  textTransform: 'none',*/}
+                    {/*}}>{!isLoggedIn ? 'Connect Wallet' : '0x008475..55c55'}</Box></Button>*/}
+                    <ConnectButton />
+
                   </Link>
                 </Box>
               </Box>
@@ -139,9 +161,9 @@ export const Navbar = ({isLoggedIn, faqRef, mobileFaqRef, setMenuOpen, menuOpen}
               <Box component="img" sx={{height: 16, width: 113}} alt="Veritty Logo" src={Logo}/>
               <Box display='flex' alignItems='center' justifyContent='center' ml='19em'>
                 <Link to='/leaderboard' style={{marginRight: '40px', textDecoration: 'none'}}
-                      className='menuItem'>WINNERS</Link>
+                      className='menuItem' onClick={() => {scrollToWinners()}}>WINNERS</Link>
                 <Link to='/dashboard' style={{marginRight: '40px', textDecoration: 'none'}}
-                      className='menuItem'>TICKETS</Link>
+                      className='menuItem' onClick={() => {scrollToTickets()}}>TICKETS</Link>
                 <Link to='#' style={{marginRight: '40px', textDecoration: 'none'}} className='menuItem'
                       onClick={scrollToFaq}>FAQ</Link>
                 <Link to='#' style={{marginRight: '40px', textDecoration: 'none'}} className='menuItem'>AUDIT</Link>

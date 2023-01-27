@@ -8,10 +8,9 @@ import CheckCircleOutlineRoundedIcon from '@mui/icons-material/CheckCircleOutlin
 import GoToIcon from "../Images/goToIcon.svg";
 import {SocialLinks} from "./SocialLinks";
 
-export const Header = ({isLoggedIn, view, setView, menuOpen}) => {
+export const Header = ({isLoggedIn, view, setView, menuOpen, getTicket}) => {
   const [anchorEl, setAnchorEl] = React.useState(null);
   const [mobileAnchorEl, setMobileAnchorEl] = React.useState(null);
-  console.log(anchorEl)
 
   const handleOpenWinning = (event) => {
     setAnchorEl(event.currentTarget);
@@ -259,7 +258,7 @@ export const Header = ({isLoggedIn, view, setView, menuOpen}) => {
             position: 'relative',
             maxWidth: '234px',
           }}>
-          <Button onClick={handleOpenWinning} sx={{
+          <Button onClick={handleOpenWinning} className='mintButton' sx={{
             flexDirection: 'row',
             justifyContent: 'center',
             alignItems: 'center',
@@ -281,7 +280,7 @@ export const Header = ({isLoggedIn, view, setView, menuOpen}) => {
             bottom: '30%',
             left: '37%',
           }}> MINT TICKET 0.059 ETH </Button>
-          <Box component={"img"} src={MintTicketImg}/>
+          <Box component={"img"} src={MintTicketImg} className='mintTicket'/>
           </Box>
           <Popover
             id={id}

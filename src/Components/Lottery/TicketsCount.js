@@ -1,50 +1,65 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import {
   Box, Divider,
   LinearProgress,
 } from "@mui/material";
 import '../../Styles/TicketsCount.css';
+import {ethers} from "ethers";
+import RaffleImpl from "../../RaffleImpl.json";
 
 export const TicketsCount = () => {
+  const [ticketCounts, setTicketCounts] = useState([]);
+  let ticketCountsSum = 0;
+  const provider = ethers.getDefaultProvider("https://eth-goerli.g.alchemy.com/v2/Fvr4iHEEClnFhZtgTB8ITVSen4GPwOls")
+  const abi = RaffleImpl.abi;
+  const contract = new ethers.Contract('0x1608E80C75A2b4C34E6f3D62aaC127489535b04A', abi, provider);
+
+  useEffect(() => {
+    let counts = [];
+    async function fetchData() {
+      const res = await contract.getTicketsLeft();
+      res.map(ticket => {
+        counts.push(ticket.toString())
+        setTicketCounts(counts);
+      })
+    }
+    fetchData();
+  }, [])
+
+  const countTickets = () => {
+    ticketCountsSum = 0;
+    ticketCounts?.forEach((ticket) => {
+      ticketCountsSum += parseInt(ticket)
+      console.log(ticketCountsSum)
+    })
+    return ticketCountsSum;
+  }
 
   const winnings = [
     {
       winning: '20.000 USTD',
-      left: 2
     },
     {
       winning: '10.000 USTD',
-      left: 3
     },
     {
       winning: '5.000 USTD',
-      left: 4
     },
     {
       winning: '2.500 USTD',
-      left: 5
-    },
-    {
-      winning: '1.500 USTD',
-      left: 10
     },
     {
       winning: '1.000 USTD',
-      left: 15
     },
     {
       winning: '500 USTD',
-      left: 20
     },
     {
       winning: '200 USTD',
-      left: 50
     },
     {
       winning: '100 USTD',
-      left: 100
     }];
-
   return (
     <>
       {/*mobile*/}
@@ -89,16 +104,16 @@ export const TicketsCount = () => {
                 <tr key={index} style={{display: "flex", marginTop: '5px'}}>
                   <td className='mobileRow' style={{textAlign: 'right', width: '110px'}}>{w.winning}</td>
                   <td className='mobileRow' style={{textAlign: 'center', color: '#FFD057', width: '30px'}}>x</td>
-                  <td className='mobileRow' style={{textAlign: 'left', width: '45px'}}>{w.left}</td>
-                  <td className='mobileRow lastRow'
-                      style={{textAlign: 'left', width: '80px'}}>{`(left - ${w.left})`}</td>
+                  {/*<td className='mobileRow' style={{textAlign: 'left', width: '45px'}}>{ticketCounts[index]}</td>*/}
+                  {/*<td className='mobileRow lastRow'*/}
+                  {/*    style={{textAlign: 'left', width: '80px'}}>{`(left - ${ticketCounts[index]})`}</td>*/}
                 </tr>
               ))
             }
             </tbody>
           </table>
         </Box>
-        <Divider />
+        <Divider/>
         <Box className='progressBarCont'>
           <Box sx={{
             fontFamily: 'Epilogue',
@@ -150,8 +165,7 @@ export const TicketsCount = () => {
             textAlign: 'center',
             color: '#FFD057',
             mt: '10px',
-          }}>50.000 USTD x1</Box>
-
+          }}>50.000 USTD x {ticketCounts[0]}</Box>
           <table style={{marginTop: '29px'}}>
             <tbody>
             {
@@ -159,8 +173,9 @@ export const TicketsCount = () => {
                 <tr key={index} style={{display: "flex", marginTop: '5px'}}>
                   <td className='row' style={{textAlign: 'right', width: '130px'}}>{w.winning}</td>
                   <td className='row' style={{textAlign: 'center', color: '#FFD057', width: '60px'}}>x</td>
-                  <td className='row' style={{textAlign: 'left', width: '45px'}}>{w.left}</td>
-                  <td className='row lastRow' style={{textAlign: 'left', width: '110px'}}>{`(left - ${w.left})`}</td>
+                  <td className='row' style={{textAlign: 'left', width: '45px'}}>{ticketCounts[index+1]}</td>
+                  <td className='row lastRow'
+                      style={{textAlign: 'left', width: '110px'}}>{`(left - ${ticketCounts[index+1]})`}</td>
                 </tr>
               ))
             }
@@ -177,7 +192,16 @@ export const TicketsCount = () => {
             color: '#F8F8F8',
             mr: '25px',
           }}>Sold Tickets</Box>
-          <LinearProgress className='progressBar' variant='determinate' value={80} valueBuffer={100}>32</LinearProgress>
+          <LinearProgress className='progressBar' variant='determinate' value={Math.floor(countTickets()/108.88)} sx={{position: 'relative'}} />
+            <Box sx={{
+              position: 'absolute',
+              color: 'inherit',
+              marginLeft: '150px',
+              width: '253px',
+              textAlign: 'center',
+            }}>
+              {countTickets()}/10888
+            </Box>
         </Box>
       </Box>
     </>

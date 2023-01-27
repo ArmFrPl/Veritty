@@ -59,3 +59,7 @@
   justify-content: center;
   height: 100%;
 }
+
+.footerItem:hover{
+  color: #FFD057 !important;
+}

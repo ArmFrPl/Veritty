@@ -1,5 +1,5 @@
 import React, {useState} from "react";
-import Logo from "../Images/VERITTY.png";
+import Logo from "../Images/VERITTY.svg";
 import {Box, Button, Fade, Modal} from "@mui/material";
 import {SocialLinks} from "./SocialLinks";
 import CloseIcon from '@mui/icons-material/Close';
@@ -13,6 +13,9 @@ export const Footer = () => {
   const [openTerms, setOpenTerms] = useState(false);
   const handleOpenTerms = () => setOpenTerms(true);
   const handleCloseTerms = () => setOpenTerms(false);
+
+  const date = new Date();
+  const year = date.getFullYear();
 
   return (
     <>
@@ -368,7 +371,7 @@ export const Footer = () => {
             fontWeight: '500',
             fontSize: '18px',
             lineHeight: '20px',
-          }}>© 2022 Veritty</Box>
+          }}>© {year} Veritty</Box>
         </Box>
       </Box>
 
@@ -720,7 +723,7 @@ export const Footer = () => {
             fontWeight: '500',
             fontSize: '18px',
             lineHeight: '20px',
-          }}>© 2022 Veritty</Box>
+          }}>© {year} Veritty</Box>
         </Box>
       </Box>
     </>

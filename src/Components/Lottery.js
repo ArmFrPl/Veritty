@@ -6,6 +6,7 @@ import {WhyNft} from "./Lottery/WhyNft";
 import {Box} from "@mui/material";
 
 export const Lottery = ({menuOpen}) => {
+
   return(
     <Box className='lotteryCont' sx={{
       // display: {xs: 'none', md: 'flex'}

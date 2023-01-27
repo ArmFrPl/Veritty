@@ -2,7 +2,8 @@ import React from "react";
 import {Avatar, Box, Icon} from "@mui/material";
 import GoToIcon from "../Images/goToIcon.svg";
 
-export const TableRowWithAvatar = ({data, index, frameColor}) => {
+export const TableRowWithAvatar = ({data, index, frameColor, leaders}) => {
+  console.log(leaders)
   return(
     <tr style={{
       display: "flex",
@@ -19,10 +20,10 @@ export const TableRowWithAvatar = ({data, index, frameColor}) => {
         boxShadow: `0px 0px 4px ${frameColor}`
       }}>
         <Box component='td' className='leaderRows'
-            sx={{textAlign: 'center', width: '4%', marginRight: '10px', fontSize: {xs: '16px !important', md: '18px !important'}, lineHeight: {xs: '22px !important', md: '35px !important'}}}>{index + 1}</Box>
+            sx={{textAlign: 'center', width: '100%', marginTop: '3px', fontSize: {xs: '16px !important', md: '18px !important'}, lineHeight: {xs: '22px !important', md: '35px !important'}, display: 'flex', justifyContent: 'center'}}>{index + 1}</Box>
       </Avatar>
       <Box component='td' className='leaderRows thin'
-          sx={{textAlign: 'center', width: '60%',fontSize: {xs: '16px !important', md: '18px !important'}, lineHeight: {xs: '28px !important', md: '35px !important'}}}>{data.id}<Icon
+          sx={{textAlign: 'center', width: '60%',fontSize: {xs: '16px !important', md: '18px !important'}, lineHeight: {xs: '28px !important', md: '35px !important'}, "&:hover": {color: '#FDD057', filter: 'brightness(0) saturate(100%) invert(98%) sepia(64%) saturate(6121%) hue-rotate(314deg) brightness(103%) contrast(104%);'}}}>{data.id}<Icon
         sx={{ml: {xs: 0, md:'12px'}, }}><img alt='arrow'
         src={GoToIcon} height={10} width={10}/></Icon></Box>
       <Box component='td' className='leaderRows'
