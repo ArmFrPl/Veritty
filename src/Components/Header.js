@@ -1,42 +1,30 @@
-import React from 'react';
-import {Box, Button, Fade, Popover, Typography} from "@mui/material";
-import '../Styles/Header.css'
-import MintTicketImg from '../Images/Tickets/Mint Ticket.png';
-import ToggleButtons from "./ToggleButtons";
+import React, {useState} from 'react';
+import {Box, Button, Fade, Popover, Snackbar, Typography} from "@mui/material";
+import {useConnectModal} from "@rainbow-me/rainbowkit";
 import CloseIcon from "@mui/icons-material/Close";
 import CheckCircleOutlineRoundedIcon from '@mui/icons-material/CheckCircleOutlineRounded';
-import GoToIcon from "../Images/goToIcon.svg";
+import ToggleButtons from "./ToggleButtons";
 import {SocialLinks} from "./SocialLinks";
+import '../Styles/Header.css'
+import MintTicketImg from '../Images/Tickets/Mint Ticket.png';
+import GoToIcon from "../Images/goToIcon.svg";
 
 export const Header = ({isLoggedIn, view, setView, menuOpen, getTicket}) => {
-  const [anchorEl, setAnchorEl] = React.useState(null);
-  const [mobileAnchorEl, setMobileAnchorEl] = React.useState(null);
+  const [isWinnerOpen, setWinnerOpen] = useState(false);
+  const {openConnectModal} = useConnectModal();
 
-  const handleOpenWinning = (event) => {
-    setAnchorEl(event.currentTarget);
+  const handleOpenWinner = () => {
+    setWinnerOpen(true)
   };
-
-  const handleCloseWinning = () => {
-    setAnchorEl(null);
+  const handleCloseWinner = () => {
+    setWinnerOpen(false)
   };
-  const handleMobileOpenWinning = (event) => {
-    setMobileAnchorEl(event.currentTarget);
-  };
-
-  const handleMobileCloseWinning = () => {
-    setMobileAnchorEl(null);
-  };
-
-  const openWinning = Boolean(anchorEl);
-  const openMobileWinning = Boolean(mobileAnchorEl);
-  const id = openWinning ? 'simple-popover' : undefined;
-  const mobileId = openMobileWinning ? 'simple-popover' : undefined;
 
   return (
     <>
       <Box sx={{display: {xs: 'flex', md: 'none'}, flexDirection: 'column', alignItems: 'center'}}>
         <Box className='mobHeaderCont' sx={{mt: '12px'}}>
-          <SocialLinks menuOpen={menuOpen} />
+          <SocialLinks menuOpen={menuOpen}/>
           <Box className='mobHeaderText'>
             <Box sx={{
               fontFamily: 'Epilogue',
@@ -82,7 +70,7 @@ export const Header = ({isLoggedIn, view, setView, menuOpen, getTicket}) => {
           <Box sx={{
             position: 'relative',
           }}>
-            <Button onClick={handleMobileOpenWinning} sx={{
+            <Button onClick={handleOpenWinner} sx={{
               flexDirection: 'row',
               justifyContent: 'center',
               alignItems: 'center',
@@ -106,22 +94,19 @@ export const Header = ({isLoggedIn, view, setView, menuOpen, getTicket}) => {
             }}> MINT TICKET 0.059 ETH </Button>
             <Box component={"img"} src={MintTicketImg}/>
           </Box>
-          <Popover
-            id={mobileId}
-            open={openMobileWinning}
-            anchorEl={mobileAnchorEl}
-            onClose={handleMobileCloseWinning}
-            anchorOrigin={{
-              vertical: 'bottom',
-              horizontal: 'left',
-            }}
+          <Snackbar
+            className='popup'
+            open={isWinnerOpen}
+            onClose={handleCloseWinner}
+            autoHideDuration={150000}
+            anchorOrigin={{vertical: 'bottom', horizontal: 'right'}}
             sx={{
-              display: 'flex',
-              justifyContent: 'center',
-              alignItems: 'center',
+              width: '252px',
+              '> .css-1eqdgzv-MuiPaper-root-MuiSnackbarContent-root': {
+                width: '252px'
+              }
             }}
-          >
-            <Fade in={openMobileWinning}>
+            message={
               <Box className='headerModalCont' sx={{
                 width: '252px',
                 height: '65px',
@@ -155,10 +140,11 @@ export const Header = ({isLoggedIn, view, setView, menuOpen, getTicket}) => {
                       color: '#F8F8F8',
                     }}>0x038467..33</Typography>
                     <Typography sx={{
+                      "&:hover": {color: '#FFD057 !important'},
                       fontFamily: 'Epilogue',
                       fontStyle: 'normal',
                       fontWeight: '400',
-                      fontSize: '9px',
+                      fontSize: '8px',
                       lineHeight: '1',
                       display: 'flex',
                       alignItems: 'center',
@@ -172,7 +158,7 @@ export const Header = ({isLoggedIn, view, setView, menuOpen, getTicket}) => {
                     display: 'flex',
                     flexDirection: 'column',
                     alignItems: 'end',
-                    margin: '0 5px 10px 10px'
+                    margin: '0 5px 20px 20px'
                   }}>
                     <Box sx={{
                       fontFamily: 'Epilogue',
@@ -201,11 +187,11 @@ export const Header = ({isLoggedIn, view, setView, menuOpen, getTicket}) => {
                 </Box>
 
                 <Box className='headerModalHeader'>
-                  <CloseIcon onClick={handleMobileCloseWinning} cursor='pointer'/>
+                  <CloseIcon onClick={handleCloseWinner} cursor='pointer'/>
                 </Box>
               </Box>
-            </Fade>
-          </Popover>
+            }
+          />
         </Box>
         <ToggleButtons isLoggedIn={isLoggedIn} view={view} setView={setView} menuOpen={menuOpen}/>
       </Box>
@@ -258,47 +244,37 @@ export const Header = ({isLoggedIn, view, setView, menuOpen, getTicket}) => {
             position: 'relative',
             maxWidth: '234px',
           }}>
-          <Button onClick={handleOpenWinning} className='mintButton' sx={{
-            flexDirection: 'row',
-            justifyContent: 'center',
-            alignItems: 'center',
-            gap: '8px',
-            background: 'linear-gradient(93.96deg, #FFAC33 4.32%, #FFE53B 44.39%, #FAA933 103.38%), linear-gradient(94.1deg, #FFE53B 17.43%, #FFE53B 56.82%, #FAA933 96.21%)',
-            borderRadius: '8px',
-            width: '234px',
-            height: '40px',
-            fontFamily: 'Epilogue',
-            fontStyle: 'normal',
-            fontWeight: 700,
-            fontSize: '16px',
-            lineHeight: '28px',
-            color: '#000000',
-            flex: 'none',
-            order: 1,
-            flexGrow: 0,
-            position: 'absolute',
-            bottom: '30%',
-            left: '37%',
-          }}> MINT TICKET 0.059 ETH </Button>
-          <Box component={"img"} src={MintTicketImg} className='mintTicket'/>
-          </Box>
-          <Popover
-            id={id}
-            open={openWinning}
-            anchorEl={anchorEl}
-            onClose={handleCloseWinning}
-            anchorOrigin={{
-              vertical: 'bottom',
-              horizontal: 'left',
-            }}
-            sx={{
-              display: 'flex',
+            <Button onClick={isLoggedIn ? handleOpenWinner : openConnectModal} className='mintButton' sx={{
+              flexDirection: 'row',
               justifyContent: 'center',
               alignItems: 'center',
-              backgroundColor: 'transparent !important'
-            }}
-          >
-            <Fade in={openWinning}>
+              gap: '8px',
+              background: 'linear-gradient(93.96deg, #FFAC33 4.32%, #FFE53B 44.39%, #FAA933 103.38%), linear-gradient(94.1deg, #FFE53B 17.43%, #FFE53B 56.82%, #FAA933 96.21%)',
+              borderRadius: '8px',
+              width: '234px',
+              height: '40px',
+              fontFamily: 'Epilogue',
+              fontStyle: 'normal',
+              fontWeight: 700,
+              fontSize: '16px',
+              lineHeight: '28px',
+              color: '#000000',
+              flex: 'none',
+              order: 1,
+              flexGrow: 0,
+              position: 'absolute',
+              bottom: '30%',
+              left: '37%',
+            }}> MINT TICKET 0.059 ETH </Button>
+            <Box component={"img"} src={MintTicketImg} className='mintTicket'/>
+          </Box>
+          <Snackbar
+            className='popup'
+            open={isWinnerOpen}
+            onClose={handleCloseWinner}
+            autoHideDuration={150000}
+            anchorOrigin={{vertical: 'bottom', horizontal: 'right'}}
+            message={
               <Box className='headerModalCont' sx={{
                 width: '343px',
                 height: '88px',
@@ -378,11 +354,11 @@ export const Header = ({isLoggedIn, view, setView, menuOpen, getTicket}) => {
                 </Box>
 
                 <Box className='headerModalHeader'>
-                  <CloseIcon onClick={handleCloseWinning} cursor='pointer'/>
+                  <CloseIcon onClick={handleCloseWinner} cursor='pointer'/>
                 </Box>
               </Box>
-            </Fade>
-          </Popover>
+            }
+          />
         </Box>
         <ToggleButtons isLoggedIn={isLoggedIn} view={view} setView={setView}/>
       </Box>

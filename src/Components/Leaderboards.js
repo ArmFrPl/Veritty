@@ -6,13 +6,12 @@ import {TableRow} from "./TableRow";
 import {TableRowWithAvatar} from "./TableRowWithAvatar";
 import useGetLeaders from "../Hooks/getLeaders";
 
-export function Leaderboards({winnersRef,mobileWinnersRef}){
-
+export const Leaderboards = (props) => {
   const [inputText, setInputText] = useState("");
+  const [leadersBoard, setLeadersBoard] = useState([]);
   const leadersRef = useRef(null);
   const mobileLeadersRef = useRef(null);
-  // const leaders = await useGetLeaders();
-  // console.log(leaders)
+  useGetLeaders().then(res => setLeadersBoard(res));
 
   let inputHandler = (e) => {
     let lowerCase = e.target.value.toLowerCase();
@@ -21,121 +20,19 @@ export function Leaderboards({winnersRef,mobileWinnersRef}){
 
   const scrollToBottom = () => {
     leadersRef.current?.scrollIntoView({behavior: "smooth", block: 'nearest', inline: 'start'})
+    console.log(leadersBoard)
   }
   const mobileScrollToBottom = () => {
     mobileLeadersRef.current?.scrollIntoView({behavior: "smooth", block: 'nearest', inline: 'start'})
   }
 
-  const leaders = [
-    {
-      winning: '20.000 USTD',
-      id: '0x0643367...c56c'
-    },
-    {
-      winning: '10.000 USTD',
-      id: '0x0643367...c56c'
-    },
-    {
-      winning: '5.000 USTD',
-      id: '0x0643367...c56c'
-    },
-    {
-      winning: '5.000 USTD',
-      id: '0x0643367...c56c'
-    },
-    {
-      winning: '5.000 USTD',
-      id: '0x0643367...c56c'
-    },
-    {
-      winning: '5.000 USTD',
-      id: '0x0643367...c56c'
-    },
-    {
-      winning: '5.000 USTD',
-      id: '0x0643367...c56c'
-    },
-    {
-      winning: '5.000 USTD',
-      id: '0x0643367...c56c'
-    },
-    {
-      winning: '5.000 USTD',
-      id: '0x0643367...c56c'
-    },
-    {
-      winning: '5.000 USTD',
-      id: '0x0643367...c56c'
-    },
-    {
-      winning: '5.000 USTD',
-      id: '0x0643367...c56c'
-    },
-    {
-      winning: '5.000 USTD',
-      id: '0x0643367...c56c'
-    },
-    {
-      winning: '5.000 USTD',
-      id: '0x0643367...c56c'
-    },
-    {
-      winning: '5.000 USTD',
-      id: '0x0643367...c56c'
-    },
-    {
-      winning: '2.500 USTD',
-      id: '0x0643367...c56c'
-    },
-    {
-      winning: '2.500 USTD',
-      id: '0x0643367...c56c'
-    },
-    {
-      winning: '2.500 USTD',
-      id: '0x0643367...c56c'
-    },
-    {
-      winning: '1.500 USTD',
-      id: '0x0643367...c56c'
-    },
-    {
-      winning: '1.500 USTD',
-      id: '0x0643367...c56c'
-    },
-    {
-      winning: '1.000 USTD',
-      id: '0x0643367...c56c'
-    },
-    {
-      winning: '500 USTD',
-      id: '0x0643367...c56c'
-    },
-    {
-      winning: '200 USTD',
-      id: '0x0643367...c56c'
-    },
-    {
-      winning: '100 USTD',
-      id: '0x0643367...c56c'
-    },
-    {
-      winning: '50 USTD',
-      id: '0x0643367...c56c'
-    },
-    {
-      winning: '50 USTD',
-      id: '0x0643367...c56c'
-    },
-  ];
-
-  const filteredLeaders = leaders.filter((el) => {
+  const filteredLeaders = leadersBoard.filter((el) => {
     return inputText === '' ? el : el.id.toLowerCase().includes(inputText);
   })
 
   return (
     <>
-      <Box className='leadersCont' ref={mobileWinnersRef} sx={{
+      <Box className='leadersCont' ref={props.mobileWinnersRef} sx={{
         display: {xs: 'flex', md: 'none'}
       }}>
         <Box sx={{
@@ -205,7 +102,7 @@ export function Leaderboards({winnersRef,mobileWinnersRef}){
               height: '515px',
               overflow: 'scroll',
               width: '100%',
-              padding: '0 28px 0 30px',
+              padding: '0 28px 0 15px',
               margin: '19px 0 17px 0',
               boxSizing: 'border-box',
             }}>
@@ -251,7 +148,7 @@ export function Leaderboards({winnersRef,mobileWinnersRef}){
       {/*Desktop*/}
 
 
-      <Box className='leadersCont' ref={winnersRef} sx={{
+      <Box className='leadersCont' ref={props.winnersRef} sx={{
         display: {xs: 'none', md: 'flex'}
       }}>
         <Box sx={{
@@ -329,19 +226,19 @@ export function Leaderboards({winnersRef,mobileWinnersRef}){
                 filteredLeaders?.map((l, index) => {
                   if (index + 1 === 1) {
                     return (
-                      <TableRowWithAvatar data={l} index={index} frameColor='#FFD057' leaders={leaders}/>
+                      <TableRowWithAvatar data={l} index={index} frameColor='#FFD057'/>
                     )
                   } else if (index + 1 === 2) {
                     return (
-                      <TableRowWithAvatar data={l} index={index} frameColor='#D9D9D9' leaders={leaders}/>
+                      <TableRowWithAvatar data={l} index={index} frameColor='#D9D9D9'/>
                     )
                   } else if (index + 1 === 3) {
                     return (
-                      <TableRowWithAvatar data={l} index={index} frameColor='#C18640' leaeders={leaders}/>
+                      <TableRowWithAvatar data={l} index={index} frameColor='#C18640'/>
                     )
                   } else {
                     return (
-                      <TableRow data={l} index={index} leaeders={leaders}/>
+                      <TableRow data={l} index={index}/>
                     )
                   }
                 })

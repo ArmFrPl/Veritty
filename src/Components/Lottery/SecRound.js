@@ -123,7 +123,7 @@ export const SecRound = () => {
                       fontFamily: 'Epilogue',
                       fontStyle: "normal",
                       fontWeight: 700,
-                      fontSize: "14px",
+                      fontSize: "10px",
                       lineHeight: '18px',
                     }}>{name}</Typography>
                   </AccordionSummary>

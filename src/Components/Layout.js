@@ -11,7 +11,6 @@ import {Leaderboards} from "./Leaderboards";
 import {Dashboard} from "./Dashboard";
 
 export const Layout = () => {
-  const [isLoggedIn, setLoggedIn] = useState(true);
   const [menuOpen, setMenuOpen] = useState(false);
   const [view, setView] = useState('lottery');
   const location = useLocation();
@@ -22,8 +21,6 @@ export const Layout = () => {
   const mobileWinnersRef = useRef();
   const mobileFaqRef = useRef();
   const { address, isConnected } = useAccount();
-
-  console.log(isConnected)
 
   useEffect(() => {
     setView(location.pathname.slice(1))

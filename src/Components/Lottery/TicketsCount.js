@@ -95,7 +95,7 @@ export const TicketsCount = () => {
             textAlign: 'center',
             color: '#FFD057',
             mt: '10px',
-          }}>50.000 USTD x1</Box>
+          }}>50.000 USTD x{ticketCounts[0]}</Box>
 
           <table style={{marginTop: '29px'}}>
             <tbody>
@@ -104,9 +104,9 @@ export const TicketsCount = () => {
                 <tr key={index} style={{display: "flex", marginTop: '5px'}}>
                   <td className='mobileRow' style={{textAlign: 'right', width: '110px'}}>{w.winning}</td>
                   <td className='mobileRow' style={{textAlign: 'center', color: '#FFD057', width: '30px'}}>x</td>
-                  {/*<td className='mobileRow' style={{textAlign: 'left', width: '45px'}}>{ticketCounts[index]}</td>*/}
-                  {/*<td className='mobileRow lastRow'*/}
-                  {/*    style={{textAlign: 'left', width: '80px'}}>{`(left - ${ticketCounts[index]})`}</td>*/}
+                  <td className='mobileRow' style={{textAlign: 'left', width: '45px'}}>{ticketCounts[index + 1]}</td>
+                  <td className='mobileRow lastRow'
+                      style={{textAlign: 'left', width: '80px'}}>{`(left - ${ticketCounts[index] + 1})`}</td>
                 </tr>
               ))
             }
@@ -124,8 +124,16 @@ export const TicketsCount = () => {
             color: '#F8F8F8',
             mr: '25px',
           }}>Sold Tickets</Box>
-          <LinearProgress className='mobileProgress progressBar' variant='determinate' value={80}
-                          valueBuffer={100}>32</LinearProgress>
+          <LinearProgress className='progressBar mobileProgress' variant='determinate' value={Math.floor(countTickets()/108.88)} sx={{position: 'relative'}} />
+          <Box sx={{
+            position: 'absolute',
+            color: 'inherit',
+            marginLeft: '125px',
+            width: '151px',
+            textAlign: 'center',
+          }}>
+            {countTickets()}/10888
+          </Box>
         </Box>
       </Box>
 

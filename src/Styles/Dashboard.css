@@ -9,6 +9,8 @@
   font-weight: 400 !important;
   font-style: normal;
   color: #f8f8ffb3;
+  display: flex;
+  align-items: center;
 }
 
 .bold{

@@ -170,7 +170,7 @@ export const Navbar = ({isLoggedIn, faqRef, mobileFaqRef, setMenuOpen, menuOpen,
               </Box>
               <Box sx={{display: 'flex', alignItems: 'center'}}>
                 <SocialLinks/>
-                <Link to='#' style={{textDecoration: 'none'}}>
+                <Link to='#' style={{textDecoration: 'none', marginLeft: '43px'}}>
                   {/*<Button className='connectButton'><Box sx={{*/}
                   {/*  fontFamily: 'Epilogue',*/}
                   {/*  fontStyle: 'normal',*/}
