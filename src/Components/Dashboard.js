@@ -68,7 +68,9 @@ export const Dashboard = ({ticketsRef, mobileTicketsRef}) => {
             lineHeight: '22px',
             color: '#F8F8F8',
             textAlign: 'left',
-          }}>Total tickets: <Box component='span' sx={{color: '#FFAC33', fontSize: '14px', ml: '10px'}}>{userHistory.totalTickets}</Box> </Box>
+          }}>Total tickets: <Box component='span'
+                                 sx={{color: '#FFAC33', fontSize: '14px', ml: '10px'}}>{userHistory.totalTickets}</Box>
+          </Box>
           <Box sx={{
             fontFamily: 'Epilogue',
             fontStyle: "normal",
@@ -78,7 +80,11 @@ export const Dashboard = ({ticketsRef, mobileTicketsRef}) => {
             color: '#F8F8F8',
             textAlign: 'left',
             mt: '13px',
-          }}>Total winnings USDT: <Box component='span' sx={{color: '#FFAC33', fontSize: '14px', ml: '10px'}}>{userHistory.totalSum} USDT</Box> </Box>
+          }}>Total winnings USDT: <Box component='span' sx={{
+            color: '#FFAC33',
+            fontSize: '14px',
+            ml: '10px'
+          }}>{userHistory.totalSum} USDT</Box> </Box>
         </Box>
         <Box sx={{
           width: '90%',
@@ -211,7 +217,9 @@ export const Dashboard = ({ticketsRef, mobileTicketsRef}) => {
             lineHeight: '28px',
             color: '#F8F8F8',
             textAlign: 'left',
-          }}>Total tickets: <Box component='span' sx={{color: '#FFAC33', fontSize: '18px', ml: '10px'}}>{userHistory.totalTickets}</Box> </Box>
+          }}>Total tickets: <Box component='span'
+                                 sx={{color: '#FFAC33', fontSize: '18px', ml: '10px'}}>{userHistory.totalTickets}</Box>
+          </Box>
           <Box sx={{
             fontFamily: 'Epilogue',
             fontStyle: "normal",
@@ -221,7 +229,11 @@ export const Dashboard = ({ticketsRef, mobileTicketsRef}) => {
             color: '#F8F8F8',
             textAlign: 'left',
             mt: '13px',
-          }}>Total winnings USDT: <Box component='span' sx={{color: '#FFAC33', fontSize: '18px', ml: '10px'}}>{userHistory.totalSum} USTD</Box> </Box>
+          }}>Total winnings USDT: <Box component='span' sx={{
+            color: '#FFAC33',
+            fontSize: '18px',
+            ml: '10px'
+          }}>{userHistory.totalSum} USTD</Box> </Box>
         </Box>
         <Box sx={{
           width: '435px',
@@ -258,35 +270,38 @@ export const Dashboard = ({ticketsRef, mobileTicketsRef}) => {
             justifyContent: 'center',
             alignItems: 'center',
           }}>
-            <table className='history' style={{width: '70%'}}>
-              <tbody>
-              {
-                userHistory.txns?.map((h, index) => (
-                  <tr style={{
-                    display: "flex",
-                    marginTop: '0px',
-                    alignItems: 'center',
-                    justifyContent: 'space-between',
-                  }}>
-                    <td className='historyRows'
-                        style={{textAlign: 'left', width: '4%', marginRight: '15px'}}>{index + 1}</td>
-                    <td className='historyRows bold'
-                        style={{textAlign: 'left', width: '50%',}}>{h.sum} USTD
-                    </td>
-                    <td className='historyRows'
-                        style={{textAlign: 'left', width: '65%', marginLeft: '30px'}}>{h.timestamp} <Link href={h.link}><Icon sx={{
-                      display: 'flex',
+            <Box sx={{width: '100%', height: '100px', overflow: 'scroll', display: 'flex', justifyContent: 'center'}}>
+              <table className='history' style={{width: '70%'}}>
+                <tbody>
+                {
+                  userHistory.txns?.map((h, index) => (
+                    <tr style={{
+                      display: "flex",
+                      marginTop: '0px',
                       alignItems: 'center',
-                      color: '#FFFFFF',
-                      ml: '10px',
-                      '&:hover': {filter: 'brightness(0) saturate(100%) invert(98%) sepia(64%) saturate(6121%) hue-rotate(314deg) brightness(103%) contrast(104%);'}
-                    }}><img alt='arrow'
-                            src={GoToIcon} height={10} width={10}/></Icon></Link></td>
-                  </tr>
-                ))
-              }
-              </tbody>
-            </table>
+                      justifyContent: 'space-between',
+                    }}>
+                      <td className='historyRows'
+                          style={{textAlign: 'left', width: '4%', marginRight: '15px'}}>{index + 1}</td>
+                      <td className='historyRows bold'
+                          style={{textAlign: 'left', width: '50%',}}>{h.sum} USTD
+                      </td>
+                      <td className='historyRows'
+                          style={{textAlign: 'left', width: '65%', marginLeft: '30px'}}>{h.timestamp} <Link
+                        href={h.link}><Icon sx={{
+                        display: 'flex',
+                        alignItems: 'center',
+                        color: '#FFFFFF',
+                        ml: '10px',
+                        '&:hover': {filter: 'brightness(0) saturate(100%) invert(98%) sepia(64%) saturate(6121%) hue-rotate(314deg) brightness(103%) contrast(104%);'}
+                      }}><img alt='arrow'
+                              src={GoToIcon} height={10} width={10}/></Icon></Link></td>
+                    </tr>
+                  ))
+                }
+                </tbody>
+              </table>
+            </Box>
           </Box>
         </Box>
         <div className='blankSpace'></div>
