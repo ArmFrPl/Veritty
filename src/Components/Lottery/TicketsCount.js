@@ -105,8 +105,6 @@ export const TicketsCount = () => {
                   <td className='mobileRow' style={{textAlign: 'right', width: '110px'}}>{w.winning}</td>
                   <td className='mobileRow' style={{textAlign: 'center', color: '#FFD057', width: '30px'}}>x</td>
                   <td className='mobileRow' style={{textAlign: 'left', width: '45px'}}>{ticketCounts[index + 1]}</td>
-                  <td className='mobileRow lastRow'
-                      style={{textAlign: 'left', width: '80px'}}>{`(left - ${ticketCounts[index] + 1})`}</td>
                 </tr>
               ))
             }
@@ -182,8 +180,6 @@ export const TicketsCount = () => {
                   <td className='row' style={{textAlign: 'right', width: '130px'}}>{w.winning}</td>
                   <td className='row' style={{textAlign: 'center', color: '#FFD057', width: '60px'}}>x</td>
                   <td className='row' style={{textAlign: 'left', width: '45px'}}>{ticketCounts[index+1]}</td>
-                  <td className='row lastRow'
-                      style={{textAlign: 'left', width: '110px'}}>{`(left - ${ticketCounts[index+1]})`}</td>
                 </tr>
               ))
             }
