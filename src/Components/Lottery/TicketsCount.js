@@ -31,7 +31,6 @@ export const TicketsCount = () => {
     ticketCountsSum = 0;
     ticketCounts?.forEach((ticket) => {
       ticketCountsSum += parseInt(ticket)
-      console.log(ticketCountsSum)
     })
     return ticketCountsSum;
   }
@@ -125,7 +124,7 @@ export const TicketsCount = () => {
             color: '#F8F8F8',
             mr: '25px',
           }}>Sold Tickets</Box>
-          <LinearProgress className='progressBar mobileProgress' variant='determinate' value={Math.floor(countTickets()/10888 * 100)} sx={{position: 'relative'}} />
+          <LinearProgress className='progressBar mobileProgress' variant='determinate' value={(10888 - countTickets())/10888*100} sx={{position: 'relative'}} />
           <Box sx={{
             position: 'absolute',
             color: 'inherit',
@@ -201,7 +200,7 @@ export const TicketsCount = () => {
             color: '#F8F8F8',
             mr: '25px',
           }}>Sold Tickets</Box>
-          <LinearProgress className='progressBar' variant='determinate' value={100 - Math.floor(((10888 - countTickets())/10888 ) * 100 )} sx={{position: 'relative'}} />
+          <LinearProgress className='progressBar' variant='determinate' value={(10888 - countTickets())/10888*100} sx={{position: 'relative'}} />
             <Box sx={{
               position: 'absolute',
               color: 'inherit',

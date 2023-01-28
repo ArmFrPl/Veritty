@@ -29,7 +29,7 @@ export const Header = ({isLoggedIn, view, setView, menuOpen}) => {
 
   const mintTicket = async () => {
     const entranceFee = await contract.entranceFee()
-    const txResponse = await contract.enterRaffle({value: entranceFee})
+    const txResponse = await contract.enterRaffle({value: entranceFee, gasLimit: 800000})
     await txResponse.wait()
   }
 
