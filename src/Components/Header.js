@@ -70,7 +70,7 @@ export const Header = ({isLoggedIn, view, setView, menuOpen, getTicket}) => {
           <Box sx={{
             position: 'relative',
           }}>
-            <Button onClick={handleOpenWinner} sx={{
+            <Button onClick={isLoggedIn ? handleOpenWinner : openConnectModal} sx={{
               flexDirection: 'row',
               justifyContent: 'center',
               alignItems: 'center',
@@ -95,7 +95,7 @@ export const Header = ({isLoggedIn, view, setView, menuOpen, getTicket}) => {
             <Box component={"img"} src={MintTicketImg}/>
           </Box>
           <Snackbar
-            className='popup'
+            className='popupMobile'
             open={isWinnerOpen}
             onClose={handleCloseWinner}
             autoHideDuration={150000}
@@ -274,6 +274,12 @@ export const Header = ({isLoggedIn, view, setView, menuOpen, getTicket}) => {
             onClose={handleCloseWinner}
             autoHideDuration={150000}
             anchorOrigin={{vertical: 'bottom', horizontal: 'right'}}
+            sx={{
+              width: '343px',
+              '> .css-1eqdgzv-MuiPaper-root-MuiSnackbarContent-root': {
+                width: '343px'
+              }
+            }}
             message={
               <Box className='headerModalCont' sx={{
                 width: '343px',

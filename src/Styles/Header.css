@@ -76,10 +76,17 @@
   color: #F8F8F8 !important;
 }
 
-.popup .css-1eqdgzv-MuiPaper-root-MuiSnackbarContent-root{
+.popup > .css-1eqdgzv-MuiPaper-root-MuiSnackbarContent-root{
   padding: 0;
   border-radius: 16px;
 }
-.popup .css-1eqdgzv-MuiPaper-root-MuiSnackbarContent-root .css-1exqwzz-MuiSnackbarContent-message{
+.popup > .css-1eqdgzv-MuiPaper-root-MuiSnackbarContent-root > .css-1exqwzz-MuiSnackbarContent-message{
+  padding: 0 !important;
+}
+.popupMobile > .css-1eqdgzv-MuiPaper-root-MuiSnackbarContent-root{
+  padding: 0;
+  border-radius: 16px;
+}
+.popupMobile > .css-1eqdgzv-MuiPaper-root-MuiSnackbarContent-root > .css-1exqwzz-MuiSnackbarContent-message{
   padding: 0 !important;
 }
