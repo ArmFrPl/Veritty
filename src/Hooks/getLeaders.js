@@ -3,7 +3,7 @@ import axios from "axios";
 
 async function useGetLeaders() {
 
-  const res = await axios.get(`http://localhost:5001/leaderboard`);
+  const res = await axios.get(`https://veritty-backend.herokuapp.com/leaderboard`);
   return res.data;
 }
 

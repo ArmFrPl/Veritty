@@ -6,19 +6,32 @@ import CheckCircleOutlineRoundedIcon from '@mui/icons-material/CheckCircleOutlin
 import ToggleButtons from "./ToggleButtons";
 import {SocialLinks} from "./SocialLinks";
 import '../Styles/Header.css'
-import MintTicketImg from '../Images/Tickets/Mint Ticket.png';
+import MintTicketImg from '../Images/Tickets/Ticket MINT.svg';
+import MintTicketFront from '../Images/mintTickertFront.svg';
 import GoToIcon from "../Images/goToIcon.svg";
+import {useSigner} from "wagmi";
+import {ethers} from "ethers";
+import RaffleImpl from "../RaffleImpl.json";
+import {ethAddress} from "../constants";
 
-export const Header = ({isLoggedIn, view, setView, menuOpen, getTicket}) => {
+export const Header = ({isLoggedIn, view, setView, menuOpen}) => {
   const [isWinnerOpen, setWinnerOpen] = useState(false);
   const {openConnectModal} = useConnectModal();
-
+  const signer = useSigner();
+  const abi = RaffleImpl.abi;
+  const contract = new ethers.Contract(ethAddress, abi, signer.data);
   const handleOpenWinner = () => {
     setWinnerOpen(true)
   };
   const handleCloseWinner = () => {
     setWinnerOpen(false)
   };
+
+  const mintTicket = async () => {
+    const entranceFee = await contract.entranceFee()
+    const txResponse = await contract.enterRaffle({value: entranceFee})
+    await txResponse.wait()
+  }
 
   return (
     <>
@@ -70,7 +83,7 @@ export const Header = ({isLoggedIn, view, setView, menuOpen, getTicket}) => {
           <Box sx={{
             position: 'relative',
           }}>
-            <Button onClick={isLoggedIn ? handleOpenWinner : openConnectModal} sx={{
+            <Button onClick={isLoggedIn ? mintTicket : openConnectModal} sx={{
               flexDirection: 'row',
               justifyContent: 'center',
               alignItems: 'center',
@@ -244,7 +257,7 @@ export const Header = ({isLoggedIn, view, setView, menuOpen, getTicket}) => {
             position: 'relative',
             maxWidth: '234px',
           }}>
-            <Button onClick={isLoggedIn ? handleOpenWinner : openConnectModal} className='mintButton' sx={{
+            <Button onClick={isLoggedIn ? mintTicket : openConnectModal} className='mintButton' sx={{
               flexDirection: 'row',
               justifyContent: 'center',
               alignItems: 'center',
@@ -265,7 +278,31 @@ export const Header = ({isLoggedIn, view, setView, menuOpen, getTicket}) => {
               position: 'absolute',
               bottom: '30%',
               left: '37%',
+              zIndex: 10,
             }}> MINT TICKET 0.059 ETH </Button>
+            <Box component='span' sx={{
+              fontFamily: 'Epilogue',
+              fontStyle: 'normal',
+              fontWeight: 700,
+              fontSize: '16px',
+              lineHeight: '22px',
+              color: '#F8F8F8',
+              position: 'absolute',
+              left: '90px',
+              top: '85px',
+              zIndex: 10,
+              width: '227px',
+              textAlign: 'center',
+            }}>Mint NFT and get money to your wallet during 1 hour</Box>
+            <Box component={"img"} src={MintTicketFront} className='mintTicketFront' sx={{
+              position: 'absolute',
+              left: '76px',
+              top: '115px',
+              transition: '.2s ease-in-out',
+              "&:hover": {
+                transform: 'scale(1.1)',
+              }
+            }}/>
             <Box component={"img"} src={MintTicketImg} className='mintTicket'/>
           </Box>
           <Snackbar

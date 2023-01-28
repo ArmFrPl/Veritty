@@ -9,6 +9,8 @@ import {Lottery} from "./Lottery";
 import {Results} from "./Results";
 import {Leaderboards} from "./Leaderboards";
 import {Dashboard} from "./Dashboard";
+import {ethers} from "ethers";
+import RaffleImpl from "../RaffleImpl.json";
 
 export const Layout = () => {
   const [menuOpen, setMenuOpen] = useState(false);

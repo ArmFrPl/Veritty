@@ -1,0 +1,1 @@
+export const ethAddress = '0x4E67c55302374c0f9bD2996e13B9b015a5402D62';

@@ -3,7 +3,7 @@ import axios from "axios";
 
 async function useGetDashboard(address) {
 
-  const res = await axios.get(`http://localhost:5001/users/${address}`);
+  const res = await axios.get(`https://veritty-backend.herokuapp.com/users/${address}`);
   return res.data;
 }
 

@@ -6,13 +6,14 @@ import {
 import '../../Styles/TicketsCount.css';
 import {ethers} from "ethers";
 import RaffleImpl from "../../RaffleImpl.json";
+import {ethAddress} from "../../constants";
 
 export const TicketsCount = () => {
   const [ticketCounts, setTicketCounts] = useState([]);
   let ticketCountsSum = 0;
   const provider = ethers.getDefaultProvider("https://eth-goerli.g.alchemy.com/v2/Fvr4iHEEClnFhZtgTB8ITVSen4GPwOls")
   const abi = RaffleImpl.abi;
-  const contract = new ethers.Contract('0x1608E80C75A2b4C34E6f3D62aaC127489535b04A', abi, provider);
+  const contract = new ethers.Contract(ethAddress, abi, provider);
 
   useEffect(() => {
     let counts = [];
@@ -124,7 +125,7 @@ export const TicketsCount = () => {
             color: '#F8F8F8',
             mr: '25px',
           }}>Sold Tickets</Box>
-          <LinearProgress className='progressBar mobileProgress' variant='determinate' value={Math.floor(countTickets()/108.88)} sx={{position: 'relative'}} />
+          <LinearProgress className='progressBar mobileProgress' variant='determinate' value={Math.floor(countTickets()/10888 * 100)} sx={{position: 'relative'}} />
           <Box sx={{
             position: 'absolute',
             color: 'inherit',
@@ -132,7 +133,7 @@ export const TicketsCount = () => {
             width: '151px',
             textAlign: 'center',
           }}>
-            {countTickets()}/10888
+            {10888 - countTickets()}/10888
           </Box>
         </Box>
       </Box>
@@ -200,7 +201,7 @@ export const TicketsCount = () => {
             color: '#F8F8F8',
             mr: '25px',
           }}>Sold Tickets</Box>
-          <LinearProgress className='progressBar' variant='determinate' value={Math.floor(countTickets()/108.88)} sx={{position: 'relative'}} />
+          <LinearProgress className='progressBar' variant='determinate' value={100 - Math.floor(((10888 - countTickets())/10888 ) * 100 )} sx={{position: 'relative'}} />
             <Box sx={{
               position: 'absolute',
               color: 'inherit',
@@ -208,7 +209,7 @@ export const TicketsCount = () => {
               width: '253px',
               textAlign: 'center',
             }}>
-              {countTickets()}/10888
+              {10888 - countTickets()}/10888
             </Box>
         </Box>
       </Box>
