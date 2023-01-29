@@ -105,7 +105,26 @@ export const Header = ({isLoggedIn, view, setView, menuOpen}) => {
               bottom: '30%',
               left: '21.5%',
             }}> MINT TICKET 0.059 ETH </Button>
-            <Box component={"img"} src={MintTicketImg}/>
+            <Box component='span' sx={{
+              fontFamily: 'Epilogue',
+              fontStyle: 'normal',
+              fontWeight: 700,
+              fontSize: '16px',
+              lineHeight: '22px',
+              color: '#F8F8F8',
+              position: 'absolute',
+              left: '90px',
+              top: '85px',
+              zIndex: 10,
+              width: '227px',
+              textAlign: 'center',
+            }}>Mint NFT and get money to your wallet during 1 hour</Box>
+            <Box component={"img"} src={MintTicketFront} className='mintTicketFront' sx={{
+              position: 'absolute',
+              left: '76px',
+              top: '115px',
+            }}/>
+            <Box component={"img"} src={MintTicketImg} className='mintTicket'/>
           </Box>
           <Snackbar
             className='popupMobile'

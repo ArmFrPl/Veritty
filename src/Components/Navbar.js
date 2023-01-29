@@ -33,8 +33,8 @@ export const Navbar = ({isLoggedIn, faqRef, mobileFaqRef, setMenuOpen, menuOpen,
   }
 
   return (
-    <div className='navbar'>
-      <AppBar position="static">
+    <Box className='navbar' sx={{height: '64px'}}>
+      <AppBar position="fixed">
         <Container maxWidth="xl" sx={{padding: 0}}>
           <Toolbar disableGutters sx={{alignItems: {xs: 'start', md: 'center'},}}>
             <Box sx={{flexGrow: 1, display: {xs: 'flex', md: 'none'},}}>
@@ -193,6 +193,6 @@ export const Navbar = ({isLoggedIn, faqRef, mobileFaqRef, setMenuOpen, menuOpen,
           </Toolbar>
         </Container>
       </AppBar>
-    </div>
+    </Box>
   );
 }
