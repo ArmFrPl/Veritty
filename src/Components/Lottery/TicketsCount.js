@@ -1,31 +1,12 @@
-import React, {useEffect, useState} from 'react';
+import React from 'react';
 import {
   Box, Divider,
   LinearProgress,
 } from "@mui/material";
 import '../../Styles/TicketsCount.css';
-import {ethers} from "ethers";
-import RaffleImpl from "../../RaffleImpl.json";
-import {ethAddress} from "../../constants";
 
-export const TicketsCount = () => {
-  const [ticketCounts, setTicketCounts] = useState([]);
+export const TicketsCount = ({ticketCounts}) => {
   let ticketCountsSum = 0;
-  const provider = ethers.getDefaultProvider("https://eth-goerli.g.alchemy.com/v2/Fvr4iHEEClnFhZtgTB8ITVSen4GPwOls")
-  const abi = RaffleImpl.abi;
-  const contract = new ethers.Contract(ethAddress, abi, provider);
-
-  useEffect(() => {
-    let counts = [];
-    async function fetchData() {
-      const res = await contract.getTicketsLeft();
-      res.map(ticket => {
-        counts.push(ticket.toString())
-        setTicketCounts(counts);
-      })
-    }
-    fetchData();
-  }, [])
 
   const countTickets = () => {
     ticketCountsSum = 0;

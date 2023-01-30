@@ -1,42 +1,51 @@
-import React from "react";
+import React, {useEffect} from "react";
 import '../Styles/Navbar.css';
 import {AppBar, Box, Button, Container, IconButton, Toolbar,} from "@mui/material";
 import MenuIcon from '@mui/icons-material/Menu';
 import Logo from '../Images/VERITTY.svg';
-import {Link} from "react-router-dom";
+import {Link, useLocation} from "react-router-dom";
 import {SocialLinks} from "./SocialLinks";
 import { ConnectButton } from '@rainbow-me/rainbowkit';
 
 export const Navbar = ({isLoggedIn, faqRef, mobileFaqRef, setMenuOpen, menuOpen, winnersRef, mobileWinnersRef, mobileTicketsRef, ticketsRef}) => {
 
-  const handleOpenNavMenu = () => setMenuOpen(!menuOpen);
+  const {pathname} = useLocation();
 
+  const handleOpenNavMenu = () => setMenuOpen(!menuOpen);
   const scrollToWinners = () => {
     winnersRef?.current?.scrollIntoView({behavior: "smooth", block: 'nearest', inline: 'start'})
   }
   const mobileScrollToWinners = () => {
     mobileWinnersRef?.current?.scrollIntoView({behavior: "smooth", block: 'nearest', inline: 'start'})
   }
+
   const scrollToTickets = () => {
     ticketsRef?.current?.scrollIntoView({behavior: "smooth", block: 'nearest', inline: 'start'})
   }
-
   const mobileScrollToTickets = () => {
     mobileTicketsRef?.current?.scrollIntoView({behavior: "smooth", block: 'nearest', inline: 'start'})
   }
+
   const scrollToFaq = () => {
     faqRef?.current?.scrollIntoView({behavior: "smooth", block: 'nearest', inline: 'start'})
   }
-
   const mobileScrollToFaq = () => {
     mobileFaqRef?.current?.scrollIntoView({behavior: "smooth", block: 'nearest', inline: 'start'})
   }
+
+  useEffect(() => {
+    if(pathname === '/dashboard'){
+      scrollToTickets();
+    }else if(pathname === '/leaderboard'){
+      scrollToWinners();
+    }
+  }, [pathname])
 
   return (
     <Box className='navbar' sx={{height: '64px'}}>
       <AppBar position="fixed">
         <Container maxWidth="xl" sx={{padding: 0}}>
-          <Toolbar disableGutters sx={{alignItems: {xs: 'start', md: 'center'},}}>
+          <Toolbar disableGutters sx={{alignItems: {xs: 'center', md: 'center'},}}>
             <Box sx={{flexGrow: 1, display: {xs: 'flex', md: 'none'},}}>
               <Box sx={{
                 width: '100%',
@@ -107,12 +116,13 @@ export const Navbar = ({isLoggedIn, faqRef, mobileFaqRef, setMenuOpen, menuOpen,
                     justifyContent: 'center',
                     mb: '42px',
                   }}>
+
                     <Link to='/leaderboard' style={{textDecoration: 'none'}}
                           className='mobMenuItem' onClick={() => {
                             mobileScrollToWinners();
                             handleOpenNavMenu();
                           }}>Winners</Link>
-                    <Link to='/dashboard' style={{textDecoration: 'none'}}
+                    <Link to='#dashboard' style={{textDecoration: 'none'}}
                           className='mobMenuItem' onClick={() => {
                             mobileScrollToTickets();
                             handleOpenNavMenu();
@@ -160,10 +170,10 @@ export const Navbar = ({isLoggedIn, faqRef, mobileFaqRef, setMenuOpen, menuOpen,
             }}>
               <Box component="img" sx={{height: 16, width: 113}} alt="Veritty Logo" src={Logo}/>
               <Box display='flex' alignItems='center' justifyContent='center' ml='19em'>
-                <Link to='/leaderboard' style={{marginRight: '40px', textDecoration: 'none'}}
-                      className='menuItem' onClick={() => {scrollToWinners()}}>WINNERS</Link>
-                <Link to='/dashboard' style={{marginRight: '40px', textDecoration: 'none'}}
-                      className='menuItem' onClick={() => {scrollToTickets()}}>TICKETS</Link>
+                <Link to='/leaderboard' replace style={{marginRight: '40px', textDecoration: 'none'}}
+                      className='menuItem'>WINNERS</Link>
+                <Link to='/dashboard' replace style={{marginRight: '40px', textDecoration: 'none'}}
+                      className='menuItem'>TICKETS</Link>
                 <Link to='#' style={{marginRight: '40px', textDecoration: 'none'}} className='menuItem'
                       onClick={scrollToFaq}>FAQ</Link>
                 <Link to='#' style={{marginRight: '40px', textDecoration: 'none'}} className='menuItem'>AUDIT</Link>

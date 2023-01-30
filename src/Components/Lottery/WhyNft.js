@@ -1,5 +1,5 @@
 import React from "react";
-import {Box} from "@mui/material";
+import {Box, Divider, Typography} from "@mui/material";
 import '../../Styles/WhyNft.css';
 
 export const WhyNft = () => {
@@ -49,8 +49,8 @@ export const WhyNft = () => {
           color: '#FCFCFC',
           mb: '35px',
         }}>Why NFT Lottery?</Box>
-        <Box className='whyHeader'>
-          <Box sx={{display: 'flex', justifyContent: 'space-around', width: '100%',}}>
+        <Box className='whyHeader' sx={{mb: '40px'}}>
+          <Box sx={{display: 'flex', justifyContent: 'space-around', width: '100%', mb: '20px'}}>
             <Box sx={{
               fontFamily: 'Epilogue',
               fontStyle: "normal",
@@ -58,8 +58,9 @@ export const WhyNft = () => {
               fontSize: "15.5px",
               lineHeight: '21px',
               color: '#FCFCFC',
-              mr: '20px',
-              mb: '20px'
+              width: '150px',
+              display: 'flex',
+              justifyContent: 'center',
             }}>Classic Lottery</Box>
             <Box sx={{
               fontFamily: 'Epilogue',
@@ -68,51 +69,42 @@ export const WhyNft = () => {
               fontSize: "15.5px",
               lineHeight: '21px',
               color: '#FCFCFC',
-              ml: '20px',
+              width: '150px',
+              display: 'flex',
+              justifyContent: 'center',
             }}>NFT Lottery</Box>
           </Box>
-          <div className='divider mobileDiv'></div>
-          <div className='divider mobileHor'></div>
 
-          {/*<table className='diffs' style={{marginTop: '29px', width: '100%'}}>*/}
-          {/*  <tbody>*/}
-          {/*  {*/}
-          {/*    diffs?.map((d, index) => (*/}
-          {/*      <tr key={index} style={{*/}
-          {/*        display: "flex",*/}
-          {/*        marginTop: '40px',*/}
-          {/*        // marginLeft: '3%',*/}
-          {/*        justifyContent: 'space-around',*/}
-          {/*        maxHeight: '110px'*/}
-          {/*      }}>*/}
-          {/*        <td className='diffsRow mobileRows'*/}
-          {/*            style={{textAlign: 'right', width: '40%', marginRight: '0%'}}>{d.classic}</td>*/}
-          {/*        <td className='diffsRow mobileRows' style={{textAlign: 'left', width: '40%', marginLeft: '0%'}}>{d.nft}</td>*/}
-          {/*      </tr>*/}
-          {/*    ))*/}
-          {/*  }*/}
-          {/*  </tbody>*/}
-          {/*</table>*/}
-          <Box sx={{
-            position: 'relative',
-            bottom: '150px',
-          }}>
-          {
-            diffs.map((d, index) => (
-              <Box key={index} sx={{
-                display: "flex",
-                marginTop: '50px',
-                justifyContent: 'space-around',
-                maxHeight: '110px'
-              }}>
-                <Box className='diffsRow mobileRows' sx={{textAlign: 'right', width: '35%', marginRight: '0%'}}>{d.classic}</Box>
-                <Box className='diffsRow mobileRows' sx={{textAlign: 'left', width: '35%', marginLeft: '0%'}}>{d.nft}</Box>
-              </Box>
-            ))
-          }
+          <Divider sx={{width: '90%', borderStyle: 'dashed', borderColor: '#FFD057',}}/>
+          <Divider orientation='vertical' sx={{
+            height: '780px',
+            borderStyle: 'dashed',
+            borderColor: '#FFD057',
+            position: 'absolute',
+            mb: '20px'
+          }}/>
+          <Box sx={{mb: '20px'}}>
+            {
+              diffs.map((d, index) => (
+                <Box key={index} sx={{
+                  display: "flex",
+                  marginTop: '30px',
+                  justifyContent: 'space-around',
+                  maxHeight: '110px'
+                }}>
+                  <Box className='diffsRow mobileRows'
+                       sx={{textAlign: 'right', width: '150px', marginRight: '20px'}}>{d.classic}</Box>
+                  <Box className='diffsRow mobileRows'
+                       sx={{textAlign: 'left', width: '150px', marginLeft: '20px'}}>{d.nft}</Box>
+                </Box>
+              ))
+            }
           </Box>
-          <div className='divider bottomDiv mobileDiv'></div>
-
+          <Divider sx={{
+            width: '50%',
+            borderStyle: 'dashed',
+            borderColor: '#FFD057',
+          }}/>
         </Box>
       </Box>
 
@@ -130,7 +122,7 @@ export const WhyNft = () => {
           mb: '35px',
         }}>Why NFT Lottery?</Box>
         <Box className='whyHeader'>
-          <Box sx={{display: 'flex'}}>
+          <Box sx={{display: 'flex', mb: '20px'}}>
             <Box sx={{
               fontFamily: 'Epilogue',
               fontStyle: "normal",
@@ -138,8 +130,9 @@ export const WhyNft = () => {
               fontSize: "24px",
               lineHeight: '33px',
               color: '#FCFCFC',
-              mr: '50px',
-              mb: '20px'
+              width: '300px',
+              display: 'flex',
+              justifyContent: 'center',
             }}>Classic Lottery</Box>
             <Box sx={{
               fontFamily: 'Epilogue',
@@ -148,32 +141,39 @@ export const WhyNft = () => {
               fontSize: "24px",
               lineHeight: '33px',
               color: '#FCFCFC',
-              ml: '50px',
+              width: '300px',
+              display: 'flex',
+              justifyContent: 'center',
             }}>NFT Lottery</Box>
           </Box>
-          <div className='divider'></div>
-          <div className='divider dividerHor'></div>
-
-          <table className='diffs' style={{marginTop: '29px', width: '100%'}}>
+          <Divider sx={{width: '900px', borderStyle: 'dashed', borderColor: '#FFD057',}}/>
+          <Divider orientation='vertical' sx={{
+            height: '800px',
+            borderStyle: 'dashed',
+            borderColor: '#FFD057',
+            position: 'absolute',
+            mb: '200px'
+          }}/>
+          <table className='diffs' style={{width: '100%', marginBottom: '40px'}}>
             <tbody>
             {
               diffs?.map((d, index) => (
                 <tr key={index} style={{
                   display: "flex",
                   marginTop: '40px',
-                  marginLeft: '3%',
                   justifyContent: 'center',
                   maxHeight: '110px'
                 }}>
                   <td className='diffsRow'
-                      style={{textAlign: 'right', width: '28%', marginRight: '3%'}}>{d.classic}</td>
-                  <td className='diffsRow' style={{textAlign: 'left', width: '28%', marginLeft: '3%'}}>{d.nft}</td>
+                      style={{textAlign: 'right', width: '500px', marginRight: '50px'}}>{d.classic}</td>
+                  <td className='diffsRow' style={{textAlign: 'left', width: '500px', marginLeft: '50px'}}>{d.nft}</td>
                 </tr>
               ))
             }
             </tbody>
           </table>
-          <div className='divider bottomDiv'></div>
+          {/*<div className='divider bottomDiv'></div>*/}
+          <Divider sx={{width: '500px', borderStyle: 'dashed', borderColor: '#FFD057', mb: '180px'}}/>
 
         </Box>
       </Box>

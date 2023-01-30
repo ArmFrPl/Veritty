@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import {Box, Button, Fade, Popover, Snackbar, Typography} from "@mui/material";
 import {useConnectModal} from "@rainbow-me/rainbowkit";
 import CloseIcon from "@mui/icons-material/Close";
@@ -7,6 +7,7 @@ import ToggleButtons from "./ToggleButtons";
 import {SocialLinks} from "./SocialLinks";
 import '../Styles/Header.css'
 import MintTicketImg from '../Images/Tickets/Ticket MINT.svg';
+import MobileMintTicketImg from '../Images/Tickets/Ticket MINT mobile.svg';
 import MintTicketFront from '../Images/mintTickertFront.svg';
 import GoToIcon from "../Images/goToIcon.svg";
 import {useSigner} from "wagmi";
@@ -14,12 +15,29 @@ import {ethers} from "ethers";
 import RaffleImpl from "../RaffleImpl.json";
 import {ethAddress} from "../constants";
 
-export const Header = ({isLoggedIn, view, setView, menuOpen}) => {
+export const Header = ({isLoggedIn, view, setView, menuOpen, ticketCounts}) => {
   const [isWinnerOpen, setWinnerOpen] = useState(false);
   const {openConnectModal} = useConnectModal();
   const signer = useSigner();
   const abi = RaffleImpl.abi;
   const contract = new ethers.Contract(ethAddress, abi, signer.data);
+
+  const getWinningTicketsCount = () => {
+    let winningTicketsCount = 0;
+    for (let i = 0; i < ticketCounts.length - 1; i++) {
+      winningTicketsCount += parseInt(ticketCounts[i]);
+    }
+    return (winningTicketsCount.toString().split(''));
+  }
+
+  const winningTickets = getWinningTicketsCount();
+  if(winningTickets.length === 2){
+    winningTickets.unshift('0')
+  }else if(winningTickets.length === 1){
+    winningTickets.unshift('0')
+    winningTickets.unshift('0')
+  }
+
   const handleOpenWinner = () => {
     setWinnerOpen(true)
   };
@@ -124,7 +142,43 @@ export const Header = ({isLoggedIn, view, setView, menuOpen}) => {
               left: '76px',
               top: '115px',
             }}/>
-            <Box component={"img"} src={MintTicketImg} className='mintTicket'/>
+            <Box sx={{
+              fontFamily: 'Epilogue',
+              fontStyle: 'normal',
+              fontWeight: 700,
+              fontSize: '20px',
+              lineHeight: '28px',
+              color: '#F8F8F8',
+              display: 'flex',
+              position: 'absolute',
+              top: '489px',
+              left: '96px',
+            }}>{winningTickets[0]}</Box>
+            <Box sx={{
+              fontFamily: 'Epilogue',
+              fontStyle: 'normal',
+              fontWeight: 700,
+              fontSize: '20px',
+              lineHeight: '28px',
+              color: '#F8F8F8',
+              display: 'flex',
+              position: 'absolute',
+              top: '489px',
+              left: '136px',
+            }}>{winningTickets[1]}</Box>
+            <Box sx={{
+              fontFamily: 'Epilogue',
+              fontStyle: 'normal',
+              fontWeight: 700,
+              fontSize: '20px',
+              lineHeight: '28px',
+              color: '#F8F8F8',
+              display: 'flex',
+              position: 'absolute',
+              top: '489px',
+              left: '176px',
+            }}>{winningTickets[2]}</Box>
+            <Box component={"img"} src={MobileMintTicketImg} className='mintTicket'/>
           </Box>
           <Snackbar
             className='popupMobile'
@@ -148,7 +202,8 @@ export const Header = ({isLoggedIn, view, setView, menuOpen}) => {
                 display: 'flex',
               }}>
                 <Box className="headerModalBody">
-                  <CheckCircleOutlineRoundedIcon sx={{color: '#00DF74', mr: '14px', pl: '10px', width: '22px', height: '22px'}}/>
+                  <CheckCircleOutlineRoundedIcon
+                    sx={{color: '#00DF74', mr: '14px', pl: '10px', width: '22px', height: '22px'}}/>
                   <Box>
                     <Typography sx={{
                       fontFamily: 'Epilogue',
@@ -322,6 +377,42 @@ export const Header = ({isLoggedIn, view, setView, menuOpen}) => {
                 transform: 'scale(1.1)',
               }
             }}/>
+            <Box sx={{
+              fontFamily: 'Epilogue',
+              fontStyle: 'normal',
+              fontWeight: 700,
+              fontSize: '20px',
+              lineHeight: '28px',
+              color: '#F8F8F8',
+              display: 'flex',
+              position: 'absolute',
+              top: '489px',
+              left: '96px',
+            }}>{winningTickets[0]}</Box>
+            <Box sx={{
+              fontFamily: 'Epilogue',
+              fontStyle: 'normal',
+              fontWeight: 700,
+              fontSize: '20px',
+              lineHeight: '28px',
+              color: '#F8F8F8',
+              display: 'flex',
+              position: 'absolute',
+              top: '489px',
+              left: '136px',
+            }}>{winningTickets[1]}</Box>
+            <Box sx={{
+              fontFamily: 'Epilogue',
+              fontStyle: 'normal',
+              fontWeight: 700,
+              fontSize: '20px',
+              lineHeight: '28px',
+              color: '#F8F8F8',
+              display: 'flex',
+              position: 'absolute',
+              top: '489px',
+              left: '176px',
+            }}>{winningTickets[2]}</Box>
             <Box component={"img"} src={MintTicketImg} className='mintTicket'/>
           </Box>
           <Snackbar
