@@ -49,7 +49,6 @@ export const Header = ({isLoggedIn, view, setView, menuOpen, ticketCounts}) => {
 
   const mintTicket = async () => {
     const entranceFee = await contract.entranceFee();
-    console.log(entranceFee)
     const txResponse = await contract.enterRaffle({value: entranceFee, gasLimit: 800000})
     await txResponse.wait()
   }

@@ -23,7 +23,7 @@ export default function ToggleButtons({isLoggedIn, view, setView}) {
           borderRadius: '13px',
           width: '80%',
           height: '42px',
-          boxShadow: '0px 0px 15px 0px #958c9f80',
+          boxShadow: '0px -6px 15px 0px #958c9f80',
           display: {xs: 'flex', md: 'none'},
           flexDirection: 'column',
         }}
@@ -133,7 +133,8 @@ export default function ToggleButtons({isLoggedIn, view, setView}) {
             borderRadius: '13px',
             width: '100%',
             height: '42px',
-            boxShadow: '0px 0px 15px 0px #958c9f80',
+            padding: '11px 11px 8px 11px',
+            boxShadow: '0px 6px 15px 0px #958c9f80',
           }}>
             <Link to='/dashboard' style={{
               width: 'inherit',
