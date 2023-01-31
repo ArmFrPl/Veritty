@@ -14,10 +14,12 @@ import {useSigner} from "wagmi";
 import {ethers} from "ethers";
 import RaffleImpl from "../RaffleImpl.json";
 import {ethAddress} from "../constants";
+import { useWeb3Modal } from "@web3modal/react";
 
 export const Header = ({isLoggedIn, view, setView, menuOpen, ticketCounts}) => {
   const [isWinnerOpen, setWinnerOpen] = useState(false);
-  const {openConnectModal} = useConnectModal();
+
+  const { isOpen, open, close } = useWeb3Modal();
   const signer = useSigner();
   const abi = RaffleImpl.abi;
   const contract = new ethers.Contract(ethAddress, abi, signer.data);
@@ -46,7 +48,8 @@ export const Header = ({isLoggedIn, view, setView, menuOpen, ticketCounts}) => {
   };
 
   const mintTicket = async () => {
-    const entranceFee = await contract.entranceFee()
+    const entranceFee = await contract.entranceFee();
+    console.log(entranceFee)
     const txResponse = await contract.enterRaffle({value: entranceFee, gasLimit: 800000})
     await txResponse.wait()
   }
@@ -101,7 +104,7 @@ export const Header = ({isLoggedIn, view, setView, menuOpen, ticketCounts}) => {
           <Box sx={{
             position: 'relative',
           }}>
-            <Button onClick={isLoggedIn ? mintTicket : openConnectModal} sx={{
+            <Button onClick={isLoggedIn ? mintTicket : open} sx={{
               flexDirection: 'row',
               justifyContent: 'center',
               alignItems: 'center',
@@ -331,7 +334,7 @@ export const Header = ({isLoggedIn, view, setView, menuOpen, ticketCounts}) => {
             position: 'relative',
             maxWidth: '234px',
           }}>
-            <Button onClick={isLoggedIn ? mintTicket : openConnectModal} className='mintButton' sx={{
+            <Button onClick={isLoggedIn ? mintTicket : open} className='mintButton' sx={{
               flexDirection: 'row',
               justifyContent: 'center',
               alignItems: 'center',

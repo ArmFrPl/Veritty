@@ -1,5 +1,5 @@
 import React, {useEffect, useRef, useState} from "react";
-import {Route, Routes, useLocation} from "react-router-dom";
+import {HashRouter, Route, Routes, useLocation} from "react-router-dom";
   import { useAccount } from "wagmi";
 import {Navbar} from "./Navbar";
 import {Header} from "./Header";

@@ -1,49 +1,45 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import { BrowserRouter } from "react-router-dom";
+import {BrowserRouter, HashRouter} from "react-router-dom";
 import './Styles/index.css';
 import App from './Components/App';
-import '@rainbow-me/rainbowkit/styles.css';
+
 import {
-  getDefaultWallets,
-  RainbowKitProvider,
-} from '@rainbow-me/rainbowkit';
-import { configureChains, createClient, WagmiConfig } from 'wagmi';
-import { goerli } from 'wagmi/chains';
-import { alchemyProvider } from 'wagmi/providers/alchemy';
-import { publicProvider } from 'wagmi/providers/public';
+  EthereumClient,
+  modalConnectors,
+  walletConnectProvider,
+} from "@web3modal/ethereum";
+import {Web3Modal} from "@web3modal/react";
+import {configureChains, createClient, WagmiConfig} from "wagmi";
+import {arbitrum, mainnet, polygon, goerli} from "wagmi/chains";
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
-
-const { chains, provider } = configureChains(
-  [goerli],
-  [
-    alchemyProvider({ apiKey: process.env.ALCHEMY_ID }),
-    publicProvider()
-  ]
-);
-
-
-
-const { connectors } = getDefaultWallets({
-  appName: 'My RainbowKit App',
-  chains
-});
-
+const chains = [goerli];
+const {provider} = configureChains(chains, [
+  walletConnectProvider({projectId: "5e724c76a001ab0a21c52684b804729d"}),
+]);
 const wagmiClient = createClient({
   autoConnect: true,
-  connectors,
-  provider
-})
+  connectors: modalConnectors({appName: "Veritty", chains}),
+  provider,
+});
+// Web3Modal Ethereum Client
+const ethereumClient = new EthereumClient(wagmiClient, chains);
 
 root.render(
-  <React.StrictMode>
-  <BrowserRouter>
-    <WagmiConfig client={wagmiClient}>
-      <RainbowKitProvider chains={chains}>
-        <App />
-      </RainbowKitProvider>
-    </WagmiConfig>
-  </BrowserRouter>
-  </React.StrictMode>
+  <>
+    <React.StrictMode>
+      <HashRouter>
+        <WagmiConfig client={wagmiClient}>
+          {/*<RainbowKitProvider chains={chains}>*/}
+          <App/>
+          {/*</RainbowKitProvider>*/}
+        </WagmiConfig>
+      </HashRouter>
+    </React.StrictMode>
+    <Web3Modal
+      projectId="5e724c76a001ab0a21c52684b804729d"
+      ethereumClient={ethereumClient}
+    />
+  </>
 );

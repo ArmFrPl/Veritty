@@ -1,15 +1,18 @@
 import React, {useEffect} from "react";
 import '../Styles/Navbar.css';
-import {AppBar, Box, Button, Container, IconButton, Toolbar,} from "@mui/material";
+import {AppBar, Box, Container, IconButton, Toolbar,} from "@mui/material";
 import MenuIcon from '@mui/icons-material/Menu';
 import Logo from '../Images/VERITTY.svg';
 import {Link, useLocation} from "react-router-dom";
 import {SocialLinks} from "./SocialLinks";
-import { ConnectButton } from '@rainbow-me/rainbowkit';
+import {Web3Button} from "@web3modal/react";
+import { useWeb3Modal } from "@web3modal/react";
 
 export const Navbar = ({isLoggedIn, faqRef, mobileFaqRef, setMenuOpen, menuOpen, winnersRef, mobileWinnersRef, mobileTicketsRef, ticketsRef}) => {
 
   const {pathname} = useLocation();
+
+  const { isOpen, open, close } = useWeb3Modal();
 
   const handleOpenNavMenu = () => setMenuOpen(!menuOpen);
   const scrollToWinners = () => {
@@ -65,23 +68,7 @@ export const Navbar = ({isLoggedIn, faqRef, mobileFaqRef, setMenuOpen, menuOpen,
                     display: 'flex',
                     alignItems: 'center',
                   }}>
-                    <Link to='#' style={{textDecoration: 'none', display: 'flex', justifyContent: 'center',}}>
-                      {/*<Button className='connectButton mobileMenu'><Box sx={{*/}
-                      {/*  fontFamily: 'Epilogue',*/}
-                      {/*  fontStyle: 'normal',*/}
-                      {/*  fontWeight: '700',*/}
-                      {/*  fontSize: '9.6px',*/}
-                      {/*  lineHeight: '17px',*/}
-                      {/*  background: 'linear-gradient(174.11deg, #CE9400 4.67%, #FFD057 75.94%)',*/}
-                      {/*  textFillColor: 'transparent',*/}
-                      {/*  backgroundClip: 'text',*/}
-                      {/*  flex: 'none',*/}
-                      {/*  order: 1,*/}
-                      {/*  flexGrow: 0,*/}
-                      {/*  textTransform: 'none',*/}
-                      {/*}}>{!isLoggedIn ? 'Connect Wallet' : '0x008475..55c55'}</Box></Button>*/}
-                      <ConnectButton />
-                    </Link>
+                    <Web3Button />
                     <IconButton
                       size="large"
                       aria-label="account of current user"
@@ -138,26 +125,10 @@ export const Navbar = ({isLoggedIn, faqRef, mobileFaqRef, setMenuOpen, menuOpen,
                         className='mobMenuItem'>Smart Contract</Link>
                   <Link to='#'
                         style={{textDecoration: 'none', display: 'flex', justifyContent: 'center', marginTop: '100px'}}>
-                    {/*<Button className='connectButton'><Box sx={{*/}
-                    {/*  fontFamily: 'Epilogue',*/}
-                    {/*  fontStyle: 'normal',*/}
-                    {/*  fontWeight: '700',*/}
-                    {/*  fontSize: '16px',*/}
-                    {/*  lineHeight: '28px',*/}
-                    {/*  background: 'linear-gradient(174.11deg, #CE9400 4.67%, #FFD057 75.94%)',*/}
-                    {/*  textFillColor: 'transparent',*/}
-                    {/*  backgroundClip: 'text',*/}
-                    {/*  flex: 'none',*/}
-                    {/*  order: 1,*/}
-                    {/*  flexGrow: 0,*/}
-                    {/*  textTransform: 'none',*/}
-                    {/*}}>{!isLoggedIn ? 'Connect Wallet' : '0x008475..55c55'}</Box></Button>*/}
-                    <ConnectButton />
-
+                    <Web3Button />
                   </Link>
                 </Box>
               </Box>
-
             </Box>
 
             {/*desktop*/}
@@ -172,8 +143,13 @@ export const Navbar = ({isLoggedIn, faqRef, mobileFaqRef, setMenuOpen, menuOpen,
               <Box display='flex' alignItems='center' justifyContent='center' ml='19em'>
                 <Link to='/leaderboard' replace style={{marginRight: '40px', textDecoration: 'none'}}
                       className='menuItem'>WINNERS</Link>
-                <Link to='/dashboard' replace style={{marginRight: '40px', textDecoration: 'none'}}
-                      className='menuItem'>TICKETS</Link>
+                {
+                  isLoggedIn ? <Link to='/dashboard' replace style={{marginRight: '40px', textDecoration: 'none'}}
+                                     className='menuItem'>TICKETS</Link> : <Link to='#' onClick={open} replace style={{marginRight: '40px', textDecoration: 'none'}}
+                                                                                 className='menuItem'>TICKETS</Link>
+                }
+                {/*<Link to='/dashboard' replace style={{marginRight: '40px', textDecoration: 'none'}}*/}
+                {/*      className='menuItem'>TICKETS</Link>*/}
                 <Link to='#' style={{marginRight: '40px', textDecoration: 'none'}} className='menuItem'
                       onClick={scrollToFaq}>FAQ</Link>
                 <Link to='#' style={{marginRight: '40px', textDecoration: 'none'}} className='menuItem'>AUDIT</Link>
@@ -181,22 +157,7 @@ export const Navbar = ({isLoggedIn, faqRef, mobileFaqRef, setMenuOpen, menuOpen,
               <Box sx={{display: 'flex', alignItems: 'center'}}>
                 <SocialLinks/>
                 <Link to='#' style={{textDecoration: 'none', marginLeft: '43px'}}>
-                  {/*<Button className='connectButton'><Box sx={{*/}
-                  {/*  fontFamily: 'Epilogue',*/}
-                  {/*  fontStyle: 'normal',*/}
-                  {/*  fontWeight: '700',*/}
-                  {/*  fontSize: '16px',*/}
-                  {/*  lineHeight: '28px',*/}
-                  {/*  background: 'linear-gradient(174.11deg, #CE9400 4.67%, #FFD057 75.94%)',*/}
-                  {/*  textFillColor: 'transparent',*/}
-                  {/*  backgroundClip: 'text',*/}
-                  {/*  flex: 'none',*/}
-                  {/*  order: 1,*/}
-                  {/*  flexGrow: 0,*/}
-                  {/*  textTransform: 'none',*/}
-                  {/*}}>{!isLoggedIn ? 'Connect Wallet' : '0x008475..55c55'}</Box></Button>*/}
-                  <ConnectButton />
-
+                  <Web3Button />
                 </Link>
               </Box>
             </Box>

@@ -8,20 +8,16 @@ export const Dashboard = ({ticketsRef, mobileTicketsRef}) => {
   const [userHistory, getUserHistory] = useState({});
 
   useGetDashboard('0xe80B0bC3c4fB1Df2Ec56cD67F5a6007097c73E04').then(res => getUserHistory(res));
-  const history = [
-    {
-      winning: '50 USTD',
-      date: '15/12/22 22:54'
-    },
-    {
-      winning: '20.000 USTD',
-      date: '18/12/22 13:40'
-    },
-    {
-      winning: '0 USTD',
-      date: '19/12/22 12:11'
-    },
-  ]
+
+  const convertToDate = (timestamp) => {
+    let date = new Date(timestamp);
+    date = date.getDate()+
+      "/"+(date.getMonth()+1)+
+      "/"+date.getFullYear()+
+      " "+date.getHours()+
+      ":"+date.getMinutes()
+    return date;
+  }
 
   return (
     <>
@@ -149,11 +145,11 @@ export const Dashboard = ({ticketsRef, mobileTicketsRef}) => {
                     <Box component={'td'} className='historyRows'
                          sx={{
                            textAlign: 'left',
-                           width: '70%',
+                           width: '80%',
                            marginLeft: '30px',
                            fontSize: {xs: '14px', md: '18px'},
-                           lineHeight: {xs: '28px', md: '35px'}
-                         }}>{h.timestamp}<Link href={h.link}><Icon sx={{
+                           lineHeight: {xs: '28px', md: '35px'},
+                         }}>{convertToDate(h.timestamp)}<Link href={h.link}><Icon sx={{
                       display: 'flex',
                       alignItems: 'center',
                       color: '#FFFFFF',
@@ -284,10 +280,10 @@ export const Dashboard = ({ticketsRef, mobileTicketsRef}) => {
                       <td className='historyRows'
                           style={{textAlign: 'left', width: '4%', marginRight: '15px'}}>{index + 1}</td>
                       <td className='historyRows bold'
-                          style={{textAlign: 'left', width: '50%',}}>{h.sum} USTD
+                          style={{textAlign: 'left', width: '54%',}}>{h.sum} USTD
                       </td>
                       <td className='historyRows'
-                          style={{textAlign: 'left', width: '65%', marginLeft: '30px'}}>{h.timestamp} <Link
+                          style={{textAlign: 'left', width: '85%', marginLeft: '30px'}}>{convertToDate(h.timestamp)} <Link
                         href={h.link}><Icon sx={{
                         display: 'flex',
                         alignItems: 'center',
