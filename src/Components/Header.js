@@ -121,7 +121,7 @@ export const Header = ({isLoggedIn, view, setView, menuOpen, ticketCounts}) => {
               flex: 'none',
               order: 1,
               flexGrow: 0,
-              zIndex: 999,
+              zIndex: 50,
               position: 'absolute',
               bottom: '30%',
               left: '21.5%',
