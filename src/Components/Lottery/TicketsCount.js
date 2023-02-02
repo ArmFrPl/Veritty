@@ -19,27 +19,35 @@ export const TicketsCount = ({ticketCounts}) => {
   const winnings = [
     {
       winning: '20.000 USTD',
+      count: 2,
     },
     {
       winning: '10.000 USTD',
+      count: 3,
     },
     {
       winning: '5.000 USTD',
+      count: 4,
     },
     {
       winning: '2.500 USTD',
+      count: 5,
     },
     {
       winning: '1.000 USTD',
+      count: 10,
     },
     {
       winning: '500 USTD',
+      count: 15,
     },
     {
       winning: '200 USTD',
+      count: 49,
     },
     {
       winning: '100 USTD',
+      count: 799
     }];
   return (
     <>
@@ -85,7 +93,9 @@ export const TicketsCount = ({ticketCounts}) => {
                 <tr key={index} style={{display: "flex", marginTop: '5px'}}>
                   <td className='mobileRow' style={{textAlign: 'right', width: '110px'}}>{w.winning}</td>
                   <td className='mobileRow' style={{textAlign: 'center', color: '#FFD057', width: '30px'}}>x</td>
-                  <td className='mobileRow' style={{textAlign: 'left', width: '45px'}}>{ticketCounts[index + 1]}</td>
+                  <td className='mobileRow' style={{textAlign: 'left', width: '45px'}}>{w.count}</td>
+                  <td className='mobileRow lastRow'
+                      style={{textAlign: 'left', width: '80px'}}>{`(left - ${ticketCounts[index] + 1})`}</td>
                 </tr>
               ))
             }
@@ -160,7 +170,9 @@ export const TicketsCount = ({ticketCounts}) => {
                 <tr key={index} style={{display: "flex", marginTop: '5px'}}>
                   <td className='row' style={{textAlign: 'right', width: '130px'}}>{w.winning}</td>
                   <td className='row' style={{textAlign: 'center', color: '#FFD057', width: '60px'}}>x</td>
-                  <td className='row' style={{textAlign: 'left', width: '45px'}}>{ticketCounts[index+1]}</td>
+                  <td className='row' style={{textAlign: 'left', width: '45px'}}>{w.count}</td>
+                  <td className='row lastRow'
+                      style={{textAlign: 'left', width: '110px'}}>{`(left - ${ticketCounts[index+1]})`}</td>
                 </tr>
               ))
             }
