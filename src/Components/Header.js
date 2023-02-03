@@ -19,16 +19,16 @@ import axios from "axios";
 
 export const Header = ({isLoggedIn, view, setView, menuOpen, ticketCounts}) => {
   const [isWinnerOpen, setWinnerOpen] = useState(false);
-  const [winner, getWinner] = useState({});
+  // const [winner, getWinner] = useState({});
 
   const {isOpen, open, close} = useWeb3Modal();
   const signer = useSigner();
-  const provider = useProvider();
+  // const provider = useProvider();
   const abi = RaffleImpl.abi;
   const contract = new ethers.Contract(ethAddress, abi, signer.data);
 
-  const coder = new ethers.utils.AbiCoder()
-  const labelhash = ethers.utils.keccak256(ethers.utils.toUtf8Bytes("WinnerChosen(address,uint256,uint256)"))
+  // const coder = new ethers.utils.AbiCoder()
+  // const labelhash = ethers.utils.keccak256(ethers.utils.toUtf8Bytes("WinnerChosen(address,uint256,uint256)"))
 
   const handleOpenWinner = () => {
     setWinnerOpen(true)
@@ -37,28 +37,28 @@ export const Header = ({isLoggedIn, view, setView, menuOpen, ticketCounts}) => {
     setWinnerOpen(false)
   };
 
-  useEffect(() => {
-    async function fetchWinner() {
-      let res;
-      (await provider).on("WinnerChosen", async (player, sum, tokenId) => {
-        const encodedTokenId = coder.encode(["uint256"], [tokenId])
-        res = await axios.get('https://api-goerli.etherscan.io/api', {
-          headers: {
-            'module': 'logs',
-            'action': 'getLogs',
-            'address': `${contract.address}`,
-            'apiKey': `UK6SR2UW8NSVZUEGP3AG9S2ADJHY1FADA1`,
-            'topic0': `${labelhash}`,
-            'topic3': `${encodedTokenId}`,
-          }
-        });
-      })
-      return res;
-    }
-    fetchWinner().then(r => getWinner(r));
-    // const txLink = "https://goerli.etherscan.io/tx/" + response.result.transactionHash
-    console.log(winner)
-  })
+  // useEffect(() => {
+  //   async function fetchWinner() {
+  //     let res;
+  //     (await provider).on("WinnerChosen", async (player, sum, tokenId) => {
+  //       const encodedTokenId = coder.encode(["uint256"], [tokenId])
+  //       res = await axios.get('https://api-goerli.etherscan.io/api', {
+  //         headers: {
+  //           'module': 'logs',
+  //           'action': 'getLogs',
+  //           'address': `${contract.address}`,
+  //           'apiKey': `UK6SR2UW8NSVZUEGP3AG9S2ADJHY1FADA1`,
+  //           'topic0': `${labelhash}`,
+  //           'topic3': `${encodedTokenId}`,
+  //         }
+  //       });
+  //     })
+  //     return res;
+  //   }
+  //   fetchWinner().then(r => getWinner(r));
+  //   // const txLink = "https://goerli.etherscan.io/tx/" + response.result.transactionHash
+  //   console.log(winner)
+  // })
 
   const getWinningTicketsCount = () => {
     let winningTicketsCount = 0;
