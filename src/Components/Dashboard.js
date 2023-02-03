@@ -204,6 +204,10 @@ export const Dashboard = ({ticketsRef, mobileTicketsRef, address}) => {
           color: 'white',
           padding: '35px 0 0 32px',
           boxSizing: 'border-box',
+          transitionDuration: '.3s',
+          '&:hover': {
+            boxShadow: '0px 0px 30px #fff8e6',
+          }
         }}>
           <Box sx={{
             fontFamily: 'Epilogue',
@@ -241,6 +245,10 @@ export const Dashboard = ({ticketsRef, mobileTicketsRef, address}) => {
           display: 'flex',
           flexDirection: 'column',
           alignItems: 'center',
+          transitionDuration: '.3s',
+          '&:hover': {
+            boxShadow: '0px 0px 30px #fff8e6',
+          }
         }}>
           <Box sx={{
             fontFamily: 'Epilogue',
@@ -267,7 +275,7 @@ export const Dashboard = ({ticketsRef, mobileTicketsRef, address}) => {
             alignItems: 'center',
           }}>
             <Box sx={{width: '100%', height: '100px', overflow: 'scroll', display: 'flex', justifyContent: 'center'}}>
-              <table className='history' style={{width: '70%'}}>
+              <table className='history' style={{width: '75%'}}>
                 <tbody>
                 {
                   userHistory.txns?.map((h, index) => (
@@ -280,10 +288,10 @@ export const Dashboard = ({ticketsRef, mobileTicketsRef, address}) => {
                       <td className='historyRows'
                           style={{textAlign: 'left', width: '4%', marginRight: '15px'}}>{index + 1}</td>
                       <td className='historyRows bold'
-                          style={{textAlign: 'left', width: '54%',}}>{h.sum} USTD
+                          style={{textAlign: 'center', width: '62%',}}>{h.sum} USTD
                       </td>
                       <td className='historyRows'
-                          style={{textAlign: 'left', width: '85%', marginLeft: '30px'}}>{convertToDate(h.timestamp)} <Link
+                          style={{textAlign: 'left', width: '95%', marginLeft: '30px'}}>{convertToDate(h.timestamp)} <Link
                         href={h.link}><Icon sx={{
                         display: 'flex',
                         alignItems: 'center',

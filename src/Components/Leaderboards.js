@@ -200,6 +200,10 @@ export const Leaderboards = (props) => {
           mt: '23px',
           background: 'rgba(255, 255, 255, 0.1)',
           color: 'white',
+          transitionDuration: '.5s',
+          '&:hover': {
+            boxShadow: '0px 0px 30px #fff8e6',
+          }
         }}>
           <table className='leaders' style={{width: '100%'}}>
             <tbody>

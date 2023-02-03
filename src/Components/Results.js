@@ -105,7 +105,7 @@ export const Results = () => {
       {/*  Desktop*/}
 
       <Box className='resultsCont' sx={{
-        display: {xs: 'none', md: 'flex'}
+        display: {xs: 'none', md: 'flex'},
       }}>
         <Box sx={{
           fontFamily: 'Epilogue',
@@ -140,7 +140,10 @@ export const Results = () => {
           flexDirection: 'column',
           justifyContent: 'center',
           alignItems: 'center',
-          transitionDuration: '.3s'
+          transitionDuration: '.3s',
+          '&:hover': {
+            boxShadow: '0px 0px 30px #fff8e6',
+          }
         }}>
           {
             Object.keys(results)?.map((result, index) => (

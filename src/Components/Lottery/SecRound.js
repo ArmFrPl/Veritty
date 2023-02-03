@@ -47,7 +47,7 @@ export const SecRound = () => {
         padding: '45px 0 0 0',
         display: {xs: 'flex', md: 'none'},
         flexDirection: 'column',
-        justifyContent: 'space-between'
+        justifyContent: 'space-between',
       }}>
         <Box sx={{
           display: 'flex',
@@ -147,7 +147,12 @@ export const SecRound = () => {
         padding: '45px 0 0 0',
         display: {xs: 'none', md: 'flex'},
         flexDirection: 'column',
-        justifyContent: 'space-between'
+        justifyContent: 'space-between',
+        borderRadius: '24px',
+        transitionDuration: '.5s',
+        '&:hover': {
+          boxShadow: '0px 0px 30px #fff8e6',
+        }
       }}>
         <Box sx={{
           display: 'flex',

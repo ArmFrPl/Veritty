@@ -19,6 +19,7 @@ import axios from "axios";
 
 export const Header = ({isLoggedIn, view, setView, menuOpen, ticketCounts}) => {
   const [isWinnerOpen, setWinnerOpen] = useState(false);
+  const [winningSum, setWinningSum] = useState(null);
   // const [winner, getWinner] = useState({});
 
   const {isOpen, open, close} = useWeb3Modal();
@@ -79,7 +80,9 @@ export const Header = ({isLoggedIn, view, setView, menuOpen, ticketCounts}) => {
   const mintTicket = async () => {
     const entranceFee = await contract.entranceFee();
     const txResponse = await contract.enterRaffle({value: entranceFee, gasLimit: 800000})
-    await txResponse.wait()
+    const txReceipt = await txResponse.wait(1)
+    const event = txReceipt?.events?.filter(event => event.event === 'WinnerChosen')
+    setWinningSum(event['0'].args['sum'].toNumber());
   }
 
   return (
@@ -361,7 +364,12 @@ export const Header = ({isLoggedIn, view, setView, menuOpen, ticketCounts}) => {
           </Box>
           <Box sx={{
             position: 'relative',
-            maxWidth: '234px',
+            boxShadow: '0px 5.07891px 63.4864px #5900EB',
+            borderRadius: '24px',
+            transitionDuration: '.5s',
+            '&:hover': {
+            boxShadow: '0px 5.07891px 130.4864px #5900EB',
+          }
           }}>
             <Button onClick={isLoggedIn ? mintTicket : open} className='mintButton' sx={{
               flexDirection: 'row',
@@ -382,9 +390,13 @@ export const Header = ({isLoggedIn, view, setView, menuOpen, ticketCounts}) => {
               order: 1,
               flexGrow: 0,
               position: 'absolute',
-              bottom: '30%',
-              left: '37%',
+              bottom: '110px',
+              left: '22px',
               zIndex: 10,
+              transition: '.2s ease-in-out',
+              "&:hover": {
+                transform: 'scale(1.1)',
+              }
             }}> MINT TICKET 0.059 ETH </Button>
             <Box component='span' sx={{
               fontFamily: 'Epilogue',
@@ -394,16 +406,16 @@ export const Header = ({isLoggedIn, view, setView, menuOpen, ticketCounts}) => {
               lineHeight: '22px',
               color: '#F8F8F8',
               position: 'absolute',
-              left: '90px',
-              top: '85px',
+              left: '25px',
+              top: '25px',
               zIndex: 10,
               width: '227px',
               textAlign: 'center',
             }}>Mint NFT and get money to your wallet during 1 hour</Box>
             <Box component={"img"} src={MintTicketFront} className='mintTicketFront' sx={{
               position: 'absolute',
-              left: '76px',
-              top: '115px',
+              left: '15px',
+              top: '45px',
               transition: '.2s ease-in-out',
               "&:hover": {
                 transform: 'scale(1.1)',
@@ -418,8 +430,8 @@ export const Header = ({isLoggedIn, view, setView, menuOpen, ticketCounts}) => {
               color: '#F8F8F8',
               display: 'flex',
               position: 'absolute',
-              top: '489px',
-              left: '96px',
+              top: '430px',
+              left: '32px',
             }}>{winningTickets[0]}</Box>
             <Box sx={{
               fontFamily: 'Epilogue',
@@ -430,8 +442,8 @@ export const Header = ({isLoggedIn, view, setView, menuOpen, ticketCounts}) => {
               color: '#F8F8F8',
               display: 'flex',
               position: 'absolute',
-              top: '489px',
-              left: '136px',
+              top: '430px',
+              left: '72px',
             }}>{winningTickets[1]}</Box>
             <Box sx={{
               fontFamily: 'Epilogue',
@@ -442,8 +454,8 @@ export const Header = ({isLoggedIn, view, setView, menuOpen, ticketCounts}) => {
               color: '#F8F8F8',
               display: 'flex',
               position: 'absolute',
-              top: '489px',
-              left: '176px',
+              top: '430px',
+              left: '113px',
             }}>{winningTickets[2]}</Box>
             <Box component={"img"} src={MintTicketImg} className='mintTicket'/>
           </Box>
