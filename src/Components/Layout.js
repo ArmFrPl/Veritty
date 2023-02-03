@@ -59,7 +59,7 @@ export const Layout = () => {
               <Route path="/lottery" element={<Lottery menuOpen={menuOpen} ticketCounts={ticketCounts}/>}/>
               <Route path="/results" element={<Results menuOpen={menuOpen}/>}/>
               <Route path="/leaderboard" element={<Leaderboards menuOpen={menuOpen} winnersRef={winnersRef} mobileWinnersRef={mobileWinnersRef}/>}/>
-              <Route path="/dashboard" element={<Dashboard menuOpen={menuOpen} ticketsRef={ticketsRef} mobileTicketsRef={mobileTicketsRef}/>}/>
+              <Route path="/dashboard" element={<Dashboard menuOpen={menuOpen} ticketsRef={ticketsRef} mobileTicketsRef={mobileTicketsRef} address={address}/>}/>
             </Routes>
           </div>
           <FAQ faqRef={faqRef} mobileFaqRef={mobileFaqRef}/>

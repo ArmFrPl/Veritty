@@ -4,10 +4,10 @@ import '../Styles/Dashboard.css';
 import GoToIcon from "../Images/goToIcon.svg";
 import useGetDashboard from "../Hooks/getUser";
 
-export const Dashboard = ({ticketsRef, mobileTicketsRef}) => {
+export const Dashboard = ({ticketsRef, mobileTicketsRef, address}) => {
   const [userHistory, getUserHistory] = useState({});
 
-  useGetDashboard('0xe80B0bC3c4fB1Df2Ec56cD67F5a6007097c73E04').then(res => getUserHistory(res));
+  useGetDashboard(address).then(res => getUserHistory(res));
 
   const convertToDate = (timestamp) => {
     let date = new Date(timestamp);
@@ -65,7 +65,7 @@ export const Dashboard = ({ticketsRef, mobileTicketsRef}) => {
             color: '#F8F8F8',
             textAlign: 'left',
           }}>Total tickets: <Box component='span'
-                                 sx={{color: '#FFAC33', fontSize: '14px', ml: '10px'}}>{userHistory.totalTickets}</Box>
+                                 sx={{color: '#FFAC33', fontSize: '14px', ml: '10px'}}>{userHistory.totalTickets || 0}</Box>
           </Box>
           <Box sx={{
             fontFamily: 'Epilogue',
@@ -80,7 +80,7 @@ export const Dashboard = ({ticketsRef, mobileTicketsRef}) => {
             color: '#FFAC33',
             fontSize: '14px',
             ml: '10px'
-          }}>{userHistory.totalSum} USDT</Box> </Box>
+          }}>{userHistory.totalSum || 0} USDT</Box> </Box>
         </Box>
         <Box sx={{
           width: '90%',
