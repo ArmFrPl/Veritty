@@ -4,8 +4,7 @@ import '../Styles/Dashboard.css';
 import GoToIcon from "../Images/goToIcon.svg";
 import useGetDashboard from "../Hooks/getUser";
 
-export const Dashboard = ({ticketsRef, mobileTicketsRef, address}) => {
-  const [userHistory, getUserHistory] = useState({});
+export const Dashboard = ({ticketsRef, mobileTicketsRef, address, getUserHistory, userHistory}) => {
 
   useGetDashboard(address).then(res => getUserHistory(res));
 
@@ -218,7 +217,7 @@ export const Dashboard = ({ticketsRef, mobileTicketsRef, address}) => {
             color: '#F8F8F8',
             textAlign: 'left',
           }}>Total tickets: <Box component='span'
-                                 sx={{color: '#FFAC33', fontSize: '18px', ml: '10px'}}>{userHistory.totalTickets}</Box>
+                                 sx={{color: '#FFAC33', fontSize: '18px', ml: '10px'}}>{userHistory.totalTickets || 0}</Box>
           </Box>
           <Box sx={{
             fontFamily: 'Epilogue',
@@ -233,7 +232,7 @@ export const Dashboard = ({ticketsRef, mobileTicketsRef, address}) => {
             color: '#FFAC33',
             fontSize: '18px',
             ml: '10px'
-          }}>{userHistory.totalSum} USTD</Box> </Box>
+          }}>{userHistory.totalSum || 0} USTD</Box> </Box>
         </Box>
         <Box sx={{
           width: '435px',

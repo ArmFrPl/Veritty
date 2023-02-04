@@ -15,6 +15,7 @@ import {ethAddress} from "../constants";
 
 export const Layout = () => {
   const [menuOpen, setMenuOpen] = useState(false);
+  const [userHistory, getUserHistory] = useState({});
   const [view, setView] = useState('lottery');
   const location = useLocation();
   const ticketsRef = useRef();
@@ -52,14 +53,14 @@ export const Layout = () => {
         <Navbar isLoggedIn={isConnected} faqRef={faqRef} mobileFaqRef={mobileFaqRef} menuOpen={menuOpen}
                 setMenuOpen={setMenuOpen} ticketsRef={ticketsRef} mobileTicketsRef={mobileTicketsRef} winnersRef={winnersRef} mobileWinnersRef={mobileWinnersRef} />
         <div className='cont' style={{overflow: menuOpen ? 'hidden' : 'auto'}}>
-          <Header isLoggedIn={isConnected} view={view} setView={setView} menuOpen={menuOpen} ticketCounts={ticketCounts}/>
+          <Header isLoggedIn={isConnected} view={view} setView={setView} menuOpen={menuOpen} ticketCounts={ticketCounts} userHistory={userHistory}/>
           <div className='page'>
             <Routes>
               <Route path="/" element={<Lottery menuOpen={menuOpen} ticketCounts={ticketCounts}/>}/>
               <Route path="/lottery" element={<Lottery menuOpen={menuOpen} ticketCounts={ticketCounts}/>}/>
               <Route path="/results" element={<Results menuOpen={menuOpen}/>}/>
               <Route path="/leaderboard" element={<Leaderboards menuOpen={menuOpen} winnersRef={winnersRef} mobileWinnersRef={mobileWinnersRef}/>}/>
-              <Route path="/dashboard" element={<Dashboard menuOpen={menuOpen} ticketsRef={ticketsRef} mobileTicketsRef={mobileTicketsRef} address={address}/>}/>
+              <Route path="/dashboard" element={<Dashboard menuOpen={menuOpen} ticketsRef={ticketsRef} mobileTicketsRef={mobileTicketsRef} address={address} userHistory={userHistory} getUserHistory={getUserHistory}/>}/>
             </Routes>
           </div>
           <FAQ faqRef={faqRef} mobileFaqRef={mobileFaqRef}/>

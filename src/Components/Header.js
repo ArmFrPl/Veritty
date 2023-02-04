@@ -1,35 +1,41 @@
 import React, {useEffect, useState} from 'react';
-import {Box, Button, Fade, Popover, Snackbar, Typography} from "@mui/material";
-import {useConnectModal} from "@rainbow-me/rainbowkit";
+import {Box, Button, Fade, Icon, Popover, Snackbar, Typography} from "@mui/material";
 import CloseIcon from "@mui/icons-material/Close";
 import CheckCircleOutlineRoundedIcon from '@mui/icons-material/CheckCircleOutlineRounded';
 import ToggleButtons from "./ToggleButtons";
 import {SocialLinks} from "./SocialLinks";
 import '../Styles/Header.css'
 import MintTicketImg from '../Images/Tickets/Ticket MINT.svg';
-import MobileMintTicketImg from '../Images/Tickets/Ticket MINT mobile.svg';
+import MintTicketWinner from '../Images/Tickets/Winner Ticket MINT.svg';
 import MintTicketFront from '../Images/mintTickertFront.svg';
+import MintTicketZero from '../Images/Tickets/0.svg';
+import MintTicketHundred from '../Images/Tickets/100.svg';
+import MintTicketTwoHundred from '../Images/Tickets/200.svg';
+import MintTicketFiveHundred from '../Images/Tickets/500.svg';
+import MintTicketThousand from '../Images/Tickets/1000.svg';
+import MintTicketTwoThousand from '../Images/Tickets/2500.svg';
+import MintTicketFiveThousand from '../Images/Tickets/5000.svg';
+import MintTicketTenThousand from '../Images/Tickets/10000.svg';
+import MintTicketTwentyThousand from '../Images/Tickets/20000.svg';
+import MintTicketFiftyThousand from '../Images/Tickets/50000.svg';
 import GoToIcon from "../Images/goToIcon.svg";
+import TryAgainImg from '../Images/Tickets/redo.svg'
 import {useProvider, useSigner} from "wagmi";
 import {ethers} from "ethers";
 import RaffleImpl from "../RaffleImpl.json";
 import {ethAddress} from "../constants";
 import {useWeb3Modal} from "@web3modal/react";
-import axios from "axios";
 
-export const Header = ({isLoggedIn, view, setView, menuOpen, ticketCounts}) => {
+export const Header = ({isLoggedIn, view, setView, menuOpen, ticketCounts, userHistory}) => {
   const [isWinnerOpen, setWinnerOpen] = useState(false);
   const [winningSum, setWinningSum] = useState(null);
-  // const [winner, getWinner] = useState({});
+  const [minted, setMinted] = useState(false);
+  const [loading, setLoading] = useState(false);
 
   const {isOpen, open, close} = useWeb3Modal();
   const signer = useSigner();
-  // const provider = useProvider();
   const abi = RaffleImpl.abi;
   const contract = new ethers.Contract(ethAddress, abi, signer.data);
-
-  // const coder = new ethers.utils.AbiCoder()
-  // const labelhash = ethers.utils.keccak256(ethers.utils.toUtf8Bytes("WinnerChosen(address,uint256,uint256)"))
 
   const handleOpenWinner = () => {
     setWinnerOpen(true)
@@ -38,28 +44,27 @@ export const Header = ({isLoggedIn, view, setView, menuOpen, ticketCounts}) => {
     setWinnerOpen(false)
   };
 
-  // useEffect(() => {
-  //   async function fetchWinner() {
-  //     let res;
-  //     (await provider).on("WinnerChosen", async (player, sum, tokenId) => {
-  //       const encodedTokenId = coder.encode(["uint256"], [tokenId])
-  //       res = await axios.get('https://api-goerli.etherscan.io/api', {
-  //         headers: {
-  //           'module': 'logs',
-  //           'action': 'getLogs',
-  //           'address': `${contract.address}`,
-  //           'apiKey': `UK6SR2UW8NSVZUEGP3AG9S2ADJHY1FADA1`,
-  //           'topic0': `${labelhash}`,
-  //           'topic3': `${encodedTokenId}`,
-  //         }
-  //       });
-  //     })
-  //     return res;
-  //   }
-  //   fetchWinner().then(r => getWinner(r));
-  //   // const txLink = "https://goerli.etherscan.io/tx/" + response.result.transactionHash
-  //   console.log(winner)
-  // })
+  useEffect(() => {
+    if(!isLoggedIn){
+      setMinted(false);
+    }
+  }, [minted])
+
+
+  const getTicketImage = () => {
+    switch (winningSum){
+      case 100: return MintTicketHundred;
+      case 200: return MintTicketTwoHundred;
+      case 500: return MintTicketFiveHundred;
+      case 1000: return MintTicketThousand;
+      case 2500: return MintTicketTwoThousand;
+      case 5000: return MintTicketFiveThousand;
+      case 10000: return MintTicketTenThousand;
+      case 20000: return MintTicketTwentyThousand;
+      case 50000: return MintTicketFiftyThousand;
+    }
+  }
+
 
   const getWinningTicketsCount = () => {
     let winningTicketsCount = 0;
@@ -78,11 +83,14 @@ export const Header = ({isLoggedIn, view, setView, menuOpen, ticketCounts}) => {
   }
 
   const mintTicket = async () => {
+    setLoading(true);
     const entranceFee = await contract.entranceFee();
     const txResponse = await contract.enterRaffle({value: entranceFee, gasLimit: 800000})
     const txReceipt = await txResponse.wait(1)
-    const event = txReceipt?.events?.filter(event => event.event === 'WinnerChosen')
+    const event = txReceipt?.events?.filter(event => event.event === 'WinnerChosen');
     setWinningSum(event['0'].args['sum'].toNumber());
+    setMinted(true);
+    setLoading(false);
   }
 
   return (
@@ -134,86 +142,241 @@ export const Header = ({isLoggedIn, view, setView, menuOpen, ticketCounts}) => {
           </Box>
           <Box sx={{
             position: 'relative',
+            boxShadow: '0px 0px 63.4864px #5900EB',
+            borderRadius: '24px',
+            mt: '37px',
+            mb: '81px',
           }}>
-            <Button onClick={isLoggedIn ? mintTicket : open} sx={{
-              flexDirection: 'row',
-              justifyContent: 'center',
-              alignItems: 'center',
-              gap: '8px',
-              background: 'linear-gradient(93.96deg, #FFAC33 4.32%, #FFE53B 44.39%, #FAA933 103.38%), linear-gradient(94.1deg, #FFE53B 17.43%, #FFE53B 56.82%, #FAA933 96.21%)',
-              borderRadius: '8px',
-              width: '234px',
-              height: '40px',
-              fontFamily: 'Epilogue',
-              fontStyle: 'normal',
-              fontWeight: 700,
-              fontSize: '16px',
-              lineHeight: '28px',
-              color: '#000000',
-              flex: 'none',
-              order: 1,
-              flexGrow: 0,
-              zIndex: 50,
-              position: 'absolute',
-              bottom: '30%',
-              left: '21.5%',
-            }}> MINT TICKET 0.059 ETH </Button>
-            <Box component='span' sx={{
-              fontFamily: 'Epilogue',
-              fontStyle: 'normal',
-              fontWeight: 700,
-              fontSize: '16px',
-              lineHeight: '22px',
-              color: '#F8F8F8',
-              position: 'absolute',
-              left: '90px',
-              top: '85px',
-              zIndex: 10,
-              width: '227px',
-              textAlign: 'center',
-            }}>Mint NFT and get money to your wallet during 1 hour</Box>
-            <Box component={"img"} src={MintTicketFront} className='mintTicketFront' sx={{
-              position: 'absolute',
-              left: '76px',
-              top: '115px',
-            }}/>
-            <Box sx={{
-              fontFamily: 'Epilogue',
-              fontStyle: 'normal',
-              fontWeight: 700,
-              fontSize: '20px',
-              lineHeight: '28px',
-              color: '#F8F8F8',
-              display: 'flex',
-              position: 'absolute',
-              top: '489px',
-              left: '96px',
-            }}>{winningTickets[0]}</Box>
-            <Box sx={{
-              fontFamily: 'Epilogue',
-              fontStyle: 'normal',
-              fontWeight: 700,
-              fontSize: '20px',
-              lineHeight: '28px',
-              color: '#F8F8F8',
-              display: 'flex',
-              position: 'absolute',
-              top: '489px',
-              left: '136px',
-            }}>{winningTickets[1]}</Box>
-            <Box sx={{
-              fontFamily: 'Epilogue',
-              fontStyle: 'normal',
-              fontWeight: 700,
-              fontSize: '20px',
-              lineHeight: '28px',
-              color: '#F8F8F8',
-              display: 'flex',
-              position: 'absolute',
-              top: '489px',
-              left: '176px',
-            }}>{winningTickets[2]}</Box>
-            <Box component={"img"} src={MobileMintTicketImg} className='mintTicket'/>
+            {
+              !minted &&
+              <>
+                <Button onClick={isLoggedIn ? mintTicket : open} sx={{
+                  flexDirection: 'row',
+                  justifyContent: 'center',
+                  alignItems: 'center',
+                  gap: '8px',
+                  background: 'linear-gradient(93.96deg, #FFAC33 4.32%, #FFE53B 44.39%, #FAA933 103.38%), linear-gradient(94.1deg, #FFE53B 17.43%, #FFE53B 56.82%, #FAA933 96.21%)',
+                  borderRadius: '8px',
+                  width: '234px',
+                  height: '40px',
+                  fontFamily: 'Epilogue',
+                  fontStyle: 'normal',
+                  fontWeight: 700,
+                  fontSize: '16px',
+                  lineHeight: '28px',
+                  color: '#000000',
+                  flex: 'none',
+                  order: 1,
+                  flexGrow: 0,
+                  zIndex: 50,
+                  position: 'absolute',
+                  bottom: '30%',
+                  left: '21.5%',
+                }}> MINT TICKET 0.059 ETH </Button>
+                <Box component='span' sx={{
+                  fontFamily: 'Epilogue',
+                  fontStyle: 'normal',
+                  fontWeight: 700,
+                  fontSize: '16px',
+                  lineHeight: '22px',
+                  color: '#F8F8F8',
+                  position: 'absolute',
+                  left: '90px',
+                  top: '85px',
+                  zIndex: 10,
+                  width: '227px',
+                  textAlign: 'center',
+                }}>Mint NFT and get money to your wallet during 1 hour</Box>
+                <Box component={"img"} src={MintTicketFront} className={'mintTicketFront' && loading ? 'animate' : null}
+                     sx={{
+                       position: 'absolute',
+                       left: '76px',
+                       top: '115px',
+                     }}/>
+                <Box sx={{
+                  fontFamily: 'Epilogue',
+                  fontStyle: 'normal',
+                  fontWeight: 700,
+                  fontSize: '20px',
+                  lineHeight: '28px',
+                  color: '#F8F8F8',
+                  display: 'flex',
+                  position: 'absolute',
+                  top: '489px',
+                  left: '96px',
+                }}>{winningTickets[0]}</Box>
+                <Box sx={{
+                  fontFamily: 'Epilogue',
+                  fontStyle: 'normal',
+                  fontWeight: 700,
+                  fontSize: '20px',
+                  lineHeight: '28px',
+                  color: '#F8F8F8',
+                  display: 'flex',
+                  position: 'absolute',
+                  top: '489px',
+                  left: '136px',
+                }}>{winningTickets[1]}</Box>
+                <Box sx={{
+                  fontFamily: 'Epilogue',
+                  fontStyle: 'normal',
+                  fontWeight: 700,
+                  fontSize: '20px',
+                  lineHeight: '28px',
+                  color: '#F8F8F8',
+                  display: 'flex',
+                  position: 'absolute',
+                  top: '489px',
+                  left: '176px',
+                }}>{winningTickets[2]}</Box>
+              </>
+            }
+            {
+              minted &&
+              <>
+                {winningSum === 0 ?
+                  <>
+                    <Box sx={{
+                      fontFamily: 'Epilogue',
+                      fontStyle: 'normal',
+                      fontWeight: 700,
+                      fontSize: '20px',
+                      lineHeight: '22px',
+                      color: '#FFD057',
+                      position: 'absolute',
+                      top: '22px',
+                      width: '100%',
+                      textAlign: 'center',
+                    }}>YOU WIN 0 USTD</Box>
+                    <Box sx={{
+                      fontFamily: 'Epilogue',
+                      fontStyle: 'normal',
+                      fontWeight: 700,
+                      fontSize: '16px',
+                      lineHeight: '22px',
+                      color: '#F8F8F8',
+                      position: 'absolute',
+                      top: '45px',
+                      width: '100%',
+                      textAlign: 'center',
+                      display: 'flex',
+                      justifyContent: 'center',
+                      zIndex: 10,
+                    }}><Box component='span' sx={{width: '211px', display: 'flex',}}>You have a chance to win on the 2nd Round! </Box></Box>
+                    <Box component={"img"} src={MintTicketZero} className={'mintTicketFront' && loading ? 'animate' : null} sx={{
+                      position: 'absolute',
+                      left: '15px',
+                      top: '35px',
+                      width: '254px',
+                      transition: '.2s ease-in-out',
+                      "&:hover": {
+                        transform: 'scale(1.1)',
+                      }
+                    }}/>
+                  </>
+                  : <>
+                    <Box sx={{
+                      fontFamily: 'Epilogue',
+                      fontStyle: 'normal',
+                      fontWeight: 700,
+                      fontSize: '20px',
+                      lineHeight: '22px',
+                      color: '#FFD057',
+                      position: 'absolute',
+                      top: '22px',
+                      width: '100%',
+                      textAlign: 'center',
+                    }}>YOU WIN!</Box>
+                    <Box sx={{
+                      fontFamily: 'Epilogue',
+                      fontStyle: 'normal',
+                      fontWeight: 700,
+                      fontSize: '32px',
+                      lineHeight: '36px',
+                      color: '#FFD057',
+                      position: 'absolute',
+                      top: '45px',
+                      width: '100%',
+                      textAlign: 'center',
+                      zIndex: 10,
+                    }}>{winningSum} <Box component='span' sx={{fontSize: '24px'}}>USTD</Box></Box>
+                    <Box component={"img"} src={getTicketImage()} className={'mintTicketFront' && loading ? 'animateWin' : null} sx={{
+                      position: 'absolute',
+                      left: '15px',
+                      top: '35px',
+                      width: '254px',
+                      transition: '.2s ease-in-out',
+                      "&:hover": {
+                        transform: 'scale(1.1)',
+                      }
+                    }}/>
+                  </>
+                }
+                <Button onClick={isLoggedIn ? mintTicket : open} className='mintButton' sx={{
+                  flexDirection: 'row',
+                  justifyContent: 'center',
+                  alignItems: 'center',
+                  gap: '8px',
+                  background: 'linear-gradient(93.96deg, #FFAC33 4.32%, #FFE53B 44.39%, #FAA933 103.38%), linear-gradient(94.1deg, #FFE53B 17.43%, #FFE53B 56.82%, #FAA933 96.21%)',
+                  borderRadius: '8px',
+                  width: '234px',
+                  height: '40px',
+                  fontFamily: 'Epilogue',
+                  fontStyle: 'normal',
+                  fontWeight: 700,
+                  fontSize: '16px',
+                  lineHeight: '28px',
+                  color: '#000000',
+                  flex: 'none',
+                  order: 1,
+                  flexGrow: 0,
+                  position: 'absolute',
+                  bottom: '150px',
+                  left: '22px',
+                  zIndex: 10,
+                  textTransform: 'none',
+                }}> <Icon><img src={TryAgainImg} alt='tryAgain'/></Icon> Try Again </Button>
+                <Button className='openSeaButton' sx={{
+                  flexDirection: 'row',
+                  justifyContent: 'center',
+                  alignItems: 'center',
+                  gap: '8px',
+                  background: 'transparent',
+                  borderRadius: '8px',
+                  width: '234px',
+                  height: '40px',
+                  fontFamily: 'Epilogue',
+                  fontStyle: 'normal',
+                  fontWeight: 700,
+                  fontSize: '16px',
+                  lineHeight: '28px',
+                  color: '#FCFCFC',
+                  flex: 'none',
+                  order: 1,
+                  flexGrow: 0,
+                  position: 'absolute',
+                  bottom: '105px',
+                  left: '22px',
+                  zIndex: 10,
+                  textTransform: 'none',
+                }}> Look on OpenSea </Button>
+
+                <Box component='span' sx={{
+                  fontFamily: 'Epilogue',
+                  fontStyle: 'normal',
+                  fontWeight: 700,
+                  fontSize: '16px',
+                  lineHeight: '73px',
+                  color: '#FFD057',
+                  position: 'absolute',
+                  top: '410px',
+                  left: '80px'
+                }}>
+                  Ticket #  {('00000' + userHistory.totalTickets).slice(-5)}
+                </Box>
+              </>
+            }
+            <Box component={"img"} src={!minted ? MintTicketImg : MintTicketWinner} className='mintTicket'/>
           </Box>
           <Snackbar
             className='popupMobile'
@@ -364,100 +527,260 @@ export const Header = ({isLoggedIn, view, setView, menuOpen, ticketCounts}) => {
           </Box>
           <Box sx={{
             position: 'relative',
-            boxShadow: '0px 5.07891px 63.4864px #5900EB',
+            boxShadow: '0px 0px 63.4864px #5900EB',
             borderRadius: '24px',
             transitionDuration: '.5s',
             '&:hover': {
-            boxShadow: '0px 5.07891px 130.4864px #5900EB',
-          }
+              boxShadow: '0px 0px 130.4864px #5900EB',
+            }
           }}>
-            <Button onClick={isLoggedIn ? mintTicket : open} className='mintButton' sx={{
-              flexDirection: 'row',
-              justifyContent: 'center',
-              alignItems: 'center',
-              gap: '8px',
-              background: 'linear-gradient(93.96deg, #FFAC33 4.32%, #FFE53B 44.39%, #FAA933 103.38%), linear-gradient(94.1deg, #FFE53B 17.43%, #FFE53B 56.82%, #FAA933 96.21%)',
-              borderRadius: '8px',
-              width: '234px',
-              height: '40px',
-              fontFamily: 'Epilogue',
-              fontStyle: 'normal',
-              fontWeight: 700,
-              fontSize: '16px',
-              lineHeight: '28px',
-              color: '#000000',
-              flex: 'none',
-              order: 1,
-              flexGrow: 0,
-              position: 'absolute',
-              bottom: '110px',
-              left: '22px',
-              zIndex: 10,
-              transition: '.2s ease-in-out',
-              "&:hover": {
-                transform: 'scale(1.1)',
-              }
-            }}> MINT TICKET 0.059 ETH </Button>
-            <Box component='span' sx={{
-              fontFamily: 'Epilogue',
-              fontStyle: 'normal',
-              fontWeight: 700,
-              fontSize: '16px',
-              lineHeight: '22px',
-              color: '#F8F8F8',
-              position: 'absolute',
-              left: '25px',
-              top: '25px',
-              zIndex: 10,
-              width: '227px',
-              textAlign: 'center',
-            }}>Mint NFT and get money to your wallet during 1 hour</Box>
-            <Box component={"img"} src={MintTicketFront} className='mintTicketFront' sx={{
-              position: 'absolute',
-              left: '15px',
-              top: '45px',
-              transition: '.2s ease-in-out',
-              "&:hover": {
-                transform: 'scale(1.1)',
-              }
-            }}/>
-            <Box sx={{
-              fontFamily: 'Epilogue',
-              fontStyle: 'normal',
-              fontWeight: 700,
-              fontSize: '20px',
-              lineHeight: '28px',
-              color: '#F8F8F8',
-              display: 'flex',
-              position: 'absolute',
-              top: '430px',
-              left: '32px',
-            }}>{winningTickets[0]}</Box>
-            <Box sx={{
-              fontFamily: 'Epilogue',
-              fontStyle: 'normal',
-              fontWeight: 700,
-              fontSize: '20px',
-              lineHeight: '28px',
-              color: '#F8F8F8',
-              display: 'flex',
-              position: 'absolute',
-              top: '430px',
-              left: '72px',
-            }}>{winningTickets[1]}</Box>
-            <Box sx={{
-              fontFamily: 'Epilogue',
-              fontStyle: 'normal',
-              fontWeight: 700,
-              fontSize: '20px',
-              lineHeight: '28px',
-              color: '#F8F8F8',
-              display: 'flex',
-              position: 'absolute',
-              top: '430px',
-              left: '113px',
-            }}>{winningTickets[2]}</Box>
-            <Box component={"img"} src={MintTicketImg} className='mintTicket'/>
+            {
+              !minted &&
+              <>
+                <Button onClick={isLoggedIn ? mintTicket : open} className='mintButton' sx={{
+                  flexDirection: 'row',
+                  justifyContent: 'center',
+                  alignItems: 'center',
+                  gap: '8px',
+                  background: 'linear-gradient(93.96deg, #FFAC33 4.32%, #FFE53B 44.39%, #FAA933 103.38%), linear-gradient(94.1deg, #FFE53B 17.43%, #FFE53B 56.82%, #FAA933 96.21%)',
+                  borderRadius: '8px',
+                  width: '234px',
+                  height: '40px',
+                  fontFamily: 'Epilogue',
+                  fontStyle: 'normal',
+                  fontWeight: 700,
+                  fontSize: '16px',
+                  lineHeight: '28px',
+                  color: '#000000',
+                  flex: 'none',
+                  order: 1,
+                  flexGrow: 0,
+                  position: 'absolute',
+                  bottom: '110px',
+                  left: '22px',
+                  zIndex: 10,
+                  transition: '.2s ease-in-out',
+                  "&:hover": {
+                    transform: 'scale(1.1)',
+                  }
+                }}> MINT TICKET 0.059 ETH </Button>
+
+                <Box component='span' sx={{
+                  fontFamily: 'Epilogue',
+                  fontStyle: 'normal',
+                  fontWeight: 700,
+                  fontSize: '16px',
+                  lineHeight: '22px',
+                  color: '#F8F8F8',
+                  position: 'absolute',
+                  left: '25px',
+                  top: '25px',
+                  zIndex: 10,
+                  width: '227px',
+                  textAlign: 'center',
+                }}>Mint NFT and get money to your wallet during 1 hour</Box>
+                <Box component={"img"} src={MintTicketFront} className={'mintTicketFront' && loading ? 'animate' : null} sx={{
+                  position: 'absolute',
+                  left: '15px',
+                  top: '45px',
+                  width: '254px',
+                  transition: '.2s ease-in-out',
+                  "&:hover": {
+                    transform: 'scale(1.1)',
+                  }
+                }}/>
+                <Box sx={{
+                  fontFamily: 'Epilogue',
+                  fontStyle: 'normal',
+                  fontWeight: 700,
+                  fontSize: '20px',
+                  lineHeight: '28px',
+                  color: '#F8F8F8',
+                  display: 'flex',
+                  position: 'absolute',
+                  top: '430px',
+                  left: '32px',
+                }}>{winningTickets[0]}</Box>
+                <Box sx={{
+                  fontFamily: 'Epilogue',
+                  fontStyle: 'normal',
+                  fontWeight: 700,
+                  fontSize: '20px',
+                  lineHeight: '28px',
+                  color: '#F8F8F8',
+                  display: 'flex',
+                  position: 'absolute',
+                  top: '430px',
+                  left: '72px',
+                }}>{winningTickets[1]}</Box>
+                <Box sx={{
+                  fontFamily: 'Epilogue',
+                  fontStyle: 'normal',
+                  fontWeight: 700,
+                  fontSize: '20px',
+                  lineHeight: '28px',
+                  color: '#F8F8F8',
+                  display: 'flex',
+                  position: 'absolute',
+                  top: '430px',
+                  left: '113px',
+                }}>{winningTickets[2]}</Box>
+              </>
+            }
+            {
+              minted &&
+              <>
+                {winningSum === 0 ?
+                  <>
+                    <Box sx={{
+                      fontFamily: 'Epilogue',
+                      fontStyle: 'normal',
+                      fontWeight: 700,
+                      fontSize: '20px',
+                      lineHeight: '22px',
+                      color: '#FFD057',
+                      position: 'absolute',
+                      top: '22px',
+                      width: '100%',
+                      textAlign: 'center',
+                    }}>YOU WIN 0 USTD</Box>
+                    <Box sx={{
+                      fontFamily: 'Epilogue',
+                      fontStyle: 'normal',
+                      fontWeight: 700,
+                      fontSize: '16px',
+                      lineHeight: '22px',
+                      color: '#F8F8F8',
+                      position: 'absolute',
+                      top: '45px',
+                      width: '100%',
+                      textAlign: 'center',
+                      display: 'flex',
+                      justifyContent: 'center',
+                      zIndex: 10,
+                    }}><Box component='span' sx={{width: '211px', display: 'flex',}}>You have a chance to win on the 2nd Round! </Box></Box>
+                    <Box component={"img"} src={MintTicketZero} className={'mintTicketFront' && loading ? 'animateWin' : null} sx={{
+                      position: 'absolute',
+                      left: '15px',
+                      top: '35px',
+                      width: '254px',
+                      transition: '.2s ease-in-out',
+                      "&:hover": {
+                        transform: 'scale(1.1)',
+                      }
+                    }}/>
+                  </>
+                  : <>
+                    <Box sx={{
+                    fontFamily: 'Epilogue',
+                    fontStyle: 'normal',
+                    fontWeight: 700,
+                    fontSize: '20px',
+                    lineHeight: '22px',
+                    color: '#FFD057',
+                    position: 'absolute',
+                    top: '22px',
+                    width: '100%',
+                    textAlign: 'center',
+                  }}>YOU WIN!</Box>
+                    <Box sx={{
+                      fontFamily: 'Epilogue',
+                      fontStyle: 'normal',
+                      fontWeight: 700,
+                      fontSize: '32px',
+                      lineHeight: '36px',
+                      color: '#FFD057',
+                      position: 'absolute',
+                      top: '45px',
+                      width: '100%',
+                      textAlign: 'center',
+                      zIndex: 10,
+                    }}>{winningSum} <Box component='span' sx={{fontSize: '24px'}}>USTD</Box></Box>
+                    <Box component={"img"} src={getTicketImage()} className={'mintTicketFront' && loading ? 'animateWin' : null} sx={{
+                      position: 'absolute',
+                      left: '15px',
+                      top: '35px',
+                      width: '254px',
+                      transition: '.2s ease-in-out',
+                      "&:hover": {
+                        transform: 'scale(1.1)',
+                      }
+                    }}/>
+                  </>
+                }
+                <Button onClick={isLoggedIn ? mintTicket : open} className='mintButton' sx={{
+                  flexDirection: 'row',
+                  justifyContent: 'center',
+                  alignItems: 'center',
+                  gap: '8px',
+                  background: 'linear-gradient(93.96deg, #FFAC33 4.32%, #FFE53B 44.39%, #FAA933 103.38%), linear-gradient(94.1deg, #FFE53B 17.43%, #FFE53B 56.82%, #FAA933 96.21%)',
+                  borderRadius: '8px',
+                  width: '234px',
+                  height: '40px',
+                  fontFamily: 'Epilogue',
+                  fontStyle: 'normal',
+                  fontWeight: 700,
+                  fontSize: '16px',
+                  lineHeight: '28px',
+                  color: '#000000',
+                  flex: 'none',
+                  order: 1,
+                  flexGrow: 0,
+                  position: 'absolute',
+                  bottom: '150px',
+                  left: '22px',
+                  zIndex: 10,
+                  textTransform: 'none',
+                  transition: '.2s ease-in-out',
+                  "&:hover": {
+                    transform: 'scale(1.1)',
+                  }
+                }}> <Icon><img src={TryAgainImg} alt='tryAgain'/></Icon> Try Again </Button>
+                <Button className='openSeaButton' sx={{
+                  flexDirection: 'row',
+                  justifyContent: 'center',
+                  alignItems: 'center',
+                  gap: '8px',
+                  background: 'transparent',
+                  borderRadius: '8px',
+                  width: '234px',
+                  height: '40px',
+                  fontFamily: 'Epilogue',
+                  fontStyle: 'normal',
+                  fontWeight: 700,
+                  fontSize: '16px',
+                  lineHeight: '28px',
+                  color: '#FCFCFC',
+                  flex: 'none',
+                  order: 1,
+                  flexGrow: 0,
+                  position: 'absolute',
+                  bottom: '105px',
+                  left: '22px',
+                  zIndex: 10,
+                  textTransform: 'none',
+                  transition: '.2s ease-in-out',
+                  "&:hover": {
+                    transform: 'scale(1.1)',
+                  }
+                }}> Look on OpenSea </Button>
+
+                <Box component='span' sx={{
+                  fontFamily: 'Epilogue',
+                  fontStyle: 'normal',
+                  fontWeight: 700,
+                  fontSize: '16px',
+                  lineHeight: '73px',
+                  color: '#FFD057',
+                  position: 'absolute',
+                  top: '410px',
+                  left: '80px'
+                }}>
+                  Ticket #  {('00000' + userHistory.totalTickets).slice(-5)}
+                </Box>
+              </>
+            }
+            <Box component={"img"} src={!minted ? MintTicketImg : MintTicketWinner} className='mintTicket'/>
           </Box>
           <Snackbar
             className='popup'
