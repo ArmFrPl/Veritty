@@ -84,7 +84,7 @@ export const TicketsCount = ({ticketCounts}) => {
             textAlign: 'center',
             color: '#FFD057',
             mt: '10px',
-          }}>50.000 USTD x{ticketCounts[0]}</Box>
+          }}>50.0000 USTD x{ticketCounts[0]}</Box>
 
           <table style={{marginTop: '29px'}}>
             <tbody>
@@ -95,7 +95,7 @@ export const TicketsCount = ({ticketCounts}) => {
                   <td className='mobileRow' style={{textAlign: 'center', color: '#FFD057', width: '30px'}}>x</td>
                   <td className='mobileRow' style={{textAlign: 'left', width: '45px'}}>{w.count}</td>
                   <td className='mobileRow lastRow'
-                      style={{textAlign: 'left', width: '80px'}}>{`(left - ${ticketCounts[index] + 1})`}</td>
+                      style={{textAlign: 'left', width: '80px'}}>{`(left - ${ticketCounts[index + 1]})`}</td>
                 </tr>
               ))
             }

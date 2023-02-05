@@ -1,26 +1,32 @@
-import React, {useState} from "react";
+import React, {useRef} from "react";
 import {Box, Icon, Link} from "@mui/material";
 import '../Styles/Dashboard.css';
 import GoToIcon from "../Images/goToIcon.svg";
-import useGetDashboard from "../Hooks/getUser";
+import GoDown from "../Images/goDown.svg";
 
-export const Dashboard = ({ticketsRef, mobileTicketsRef, address, getUserHistory, userHistory}) => {
-
-  useGetDashboard(address).then(res => getUserHistory(res));
+export const Dashboard = ({ticketsRef, mobileTicketsRef, userHistory}) => {
+  const dataRef = useRef(null);
+  const mobileDataRef = useRef(null);
 
   const convertToDate = (timestamp) => {
     let date = new Date(timestamp);
-    date = date.getDate()+
-      "/"+(date.getMonth()+1)+
-      "/"+date.getFullYear()+
-      " "+date.getHours()+
-      ":"+date.getMinutes()
+    date = date.getDate() +
+      "/" + (date.getMonth() + 1) +
+      "/" + date.getFullYear() +
+      " " + date.getHours() +
+      ":" + date.getMinutes()
     return date;
+  }
+
+  const scrollToBottom = () => {
+    dataRef.current?.scrollIntoView({behavior: "smooth", block: 'nearest', inline: 'start'})
+  }
+  const mobileScrollToBottom = () => {
+    mobileDataRef.current?.scrollIntoView({behavior: "smooth", block: 'nearest', inline: 'start'})
   }
 
   return (
     <>
-
       <Box className='dashboardCont' ref={mobileTicketsRef} sx={{
         display: {xs: 'flex', md: 'none'}
       }}>
@@ -64,7 +70,11 @@ export const Dashboard = ({ticketsRef, mobileTicketsRef, address, getUserHistory
             color: '#F8F8F8',
             textAlign: 'left',
           }}>Total tickets: <Box component='span'
-                                 sx={{color: '#FFAC33', fontSize: '14px', ml: '10px'}}>{userHistory.totalTickets || 0}</Box>
+                                 sx={{
+                                   color: '#FFAC33',
+                                   fontSize: '14px',
+                                   ml: '10px'
+                                 }}>{userHistory.totalTickets || 0}</Box>
           </Box>
           <Box sx={{
             fontFamily: 'Epilogue',
@@ -115,52 +125,67 @@ export const Dashboard = ({ticketsRef, mobileTicketsRef, address, getUserHistory
             display: 'flex',
             justifyContent: 'center',
             alignItems: 'center',
+            msOverflowStyle: 'none',
+            scrollbarWidth: 'none',
+            '&::-webkit-scrollbar': {
+              display: 'none',
+            }
           }}>
-            <table className='history' style={{width: '80%'}}>
-              <tbody>
-              {
-                userHistory.txns?.map((h, index) => (
-                  <tr style={{
-                    display: "flex",
-                    marginTop: '0px',
-                    alignItems: 'center',
-                    justifyContent: 'space-between',
-                  }}>
-                    <Box component='td' className='historyRows'
-                         sx={{
-                           textAlign: 'left',
-                           width: '4%',
-                           marginRight: '15px',
-                           fontSize: {xs: '14px', md: '18px'},
-                           lineHeight: {xs: '28px', md: '35px'}
-                         }}>{index + 1}</Box>
-                    <Box component='td' className='historyRows bold'
-                         sx={{
-                           textAlign: 'left',
-                           width: '59%',
-                           fontSize: {xs: '16px', md: '20px'},
-                           lineHeight: {xs: '22px', md: '28px'}
-                         }}>{h.sum} USTD</Box>
-                    <Box component={'td'} className='historyRows'
-                         sx={{
-                           textAlign: 'left',
-                           width: '80%',
-                           marginLeft: '30px',
-                           fontSize: {xs: '14px', md: '18px'},
-                           lineHeight: {xs: '28px', md: '35px'},
-                         }}>{convertToDate(h.timestamp)}<Link href={h.link}><Icon sx={{
-                      display: 'flex',
+            <Box sx={{width: '100%', height: '100px', overflow: 'scroll', display: 'flex', justifyContent: 'center'}}>
+              <table className='history' style={{width: '75%'}}>
+                <tbody>
+                {
+                  userHistory.txns?.map((h, index) => (
+                    <tr style={{
+                      display: "flex",
+                      marginTop: '0px',
                       alignItems: 'center',
-                      color: '#FFFFFF',
-                      ml: '10px',
-                      '&:hover': {filter: 'brightness(0) saturate(100%) invert(98%) sepia(64%) saturate(6121%) hue-rotate(314deg) brightness(103%) contrast(104%);'}
-                    }}><img alt='arrow'
-                            src={GoToIcon} height={10} width={10}/></Icon></Link></Box>
-                  </tr>
-                ))
-              }
-              </tbody>
-            </table>
+                      justifyContent: 'space-between',
+                    }}>
+                      <Box component='td' className='historyRows'
+                           sx={{
+                             textAlign: 'left',
+                             width: '4%',
+                             marginRight: '15px',
+                             fontSize: {xs: '14px', md: '18px'},
+                             lineHeight: {xs: '28px', md: '35px'}
+                           }}>{index + 1}</Box>
+                      <Box component='td' className='historyRows bold'
+                           sx={{
+                             textAlign: 'left',
+                             width: '59%',
+                             fontSize: {xs: '16px', md: '20px'},
+                             lineHeight: {xs: '22px', md: '28px'}
+                           }}>{h.sum} USTD</Box>
+                      <Box component={'td'} className='historyRows'
+                           sx={{
+                             textAlign: 'left',
+                             width: '80%',
+                             marginLeft: '30px',
+                             fontSize: {xs: '14px', md: '18px'},
+                             lineHeight: {xs: '28px', md: '35px'},
+                           }}>{convertToDate(h.timestamp)}<Link href={h.link}><Icon sx={{
+                        display: 'flex',
+                        alignItems: 'center',
+                        color: '#FFFFFF',
+                        ml: '10px',
+                        '&:hover': {filter: 'brightness(0) saturate(100%) invert(98%) sepia(64%) saturate(6121%) hue-rotate(314deg) brightness(103%) contrast(104%);'}
+                      }}><img alt='arrow'
+                              src={GoToIcon} height={10} width={10}/></Icon></Link></Box>
+                    </tr>
+                  ))
+                }
+                <div ref={mobileDataRef}/>
+                </tbody>
+              </table>
+              <Box sx={{
+                display: 'flex',
+                justifyContent: 'center',
+                cursor: 'pointer'
+              }}>
+                <Icon sx={{width: '30px', height: '30px'}} onClick={mobileScrollToBottom}><img alt='arrow' src={GoDown} height={30} width={30}/></Icon>
+              </Box>
+            </Box>
           </Box>
         </Box>
         <div className='blankSpace'></div>
@@ -217,7 +242,11 @@ export const Dashboard = ({ticketsRef, mobileTicketsRef, address, getUserHistory
             color: '#F8F8F8',
             textAlign: 'left',
           }}>Total tickets: <Box component='span'
-                                 sx={{color: '#FFAC33', fontSize: '18px', ml: '10px'}}>{userHistory.totalTickets || 0}</Box>
+                                 sx={{
+                                   color: '#FFAC33',
+                                   fontSize: '18px',
+                                   ml: '10px'
+                                 }}>{userHistory.totalTickets || 0}</Box>
           </Box>
           <Box sx={{
             fontFamily: 'Epilogue',
@@ -270,10 +299,21 @@ export const Dashboard = ({ticketsRef, mobileTicketsRef, address, getUserHistory
             width: '100%',
             height: '156px',
             display: 'flex',
+            flexDirection: 'column',
             justifyContent: 'center',
             alignItems: 'center',
           }}>
-            <Box sx={{width: '100%', height: '100px', overflow: 'scroll', display: 'flex', justifyContent: 'center'}}>
+            <Box sx={{
+              width: '100%',
+              height: '100px',
+              overflow: 'scroll',
+              display: 'flex',
+              justifyContent: 'center',
+              msOverflowStyle: 'none',
+              scrollbarWidth: 'none',
+              '&::-webkit-scrollbar': {
+                display: 'none',
+              }}}>
               <table className='history' style={{width: '75%'}}>
                 <tbody>
                 {
@@ -290,20 +330,30 @@ export const Dashboard = ({ticketsRef, mobileTicketsRef, address, getUserHistory
                           style={{textAlign: 'center', width: '62%',}}>{h.sum} USTD
                       </td>
                       <td className='historyRows'
-                          style={{textAlign: 'left', width: '95%', marginLeft: '30px'}}>{convertToDate(h.timestamp)} <Link
-                        href={h.link}><Icon sx={{
-                        display: 'flex',
-                        alignItems: 'center',
-                        color: '#FFFFFF',
-                        ml: '10px',
-                        '&:hover': {filter: 'brightness(0) saturate(100%) invert(98%) sepia(64%) saturate(6121%) hue-rotate(314deg) brightness(103%) contrast(104%);'}
-                      }}><img alt='arrow'
-                              src={GoToIcon} height={10} width={10}/></Icon></Link></td>
+                          style={{textAlign: 'left', width: '95%', marginLeft: '30px'}}>{convertToDate(h.timestamp)}
+                        <Link
+                          href={h.link}><Icon sx={{
+                          display: 'flex',
+                          alignItems: 'center',
+                          color: '#FFFFFF',
+                          ml: '10px',
+                          '&:hover': {filter: 'brightness(0) saturate(100%) invert(98%) sepia(64%) saturate(6121%) hue-rotate(314deg) brightness(103%) contrast(104%);'}
+                        }}><img alt='arrow'
+                                src={GoToIcon} height={10} width={10}/></Icon></Link></td>
                     </tr>
                   ))
                 }
+                <div ref={dataRef}/>
                 </tbody>
               </table>
+            </Box>
+            <Box sx={{
+              display: 'flex',
+              justifyContent: 'center',
+              cursor: 'pointer',
+              mt: '10px',
+            }}>
+              <Icon sx={{width: '30px', height: '30px'}} onClick={scrollToBottom}><img alt='arrow' src={GoDown} height={30} width={30}/></Icon>
             </Box>
           </Box>
         </Box>

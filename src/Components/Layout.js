@@ -1,6 +1,6 @@
 import React, {useEffect, useRef, useState} from "react";
 import {HashRouter, Route, Routes, useLocation} from "react-router-dom";
-  import { useAccount } from "wagmi";
+import {useAccount} from "wagmi";
 import {Navbar} from "./Navbar";
 import {Header} from "./Header";
 import {FAQ} from "./FAQ";
@@ -12,11 +12,16 @@ import {Dashboard} from "./Dashboard";
 import {ethers} from "ethers";
 import RaffleImpl from "../RaffleImpl.json";
 import {ethAddress} from "../constants";
+import axios from "axios";
 
 export const Layout = () => {
   const [menuOpen, setMenuOpen] = useState(false);
-  const [userHistory, getUserHistory] = useState({});
+  const [userHistory, getUserHistory] = useState([]);
+  const [leaderboard, getLeaderboard] = useState([]);
+  const [results, getResults] = useState({})
   const [view, setView] = useState('lottery');
+  const [winningSum, setWinningSum] = useState(null);
+  const [loading, setLoading] = useState(false);
   const location = useLocation();
   const ticketsRef = useRef();
   const winnersRef = useRef();
@@ -24,7 +29,7 @@ export const Layout = () => {
   const mobileTicketsRef = useRef();
   const mobileWinnersRef = useRef();
   const mobileFaqRef = useRef();
-  const { address, isConnected } = useAccount();
+  const {address, isConnected} = useAccount();
   const [ticketCounts, setTicketCounts] = useState([]);
   const provider = ethers.getDefaultProvider("https://eth-goerli.g.alchemy.com/v2/Fvr4iHEEClnFhZtgTB8ITVSen4GPwOls")
   const abi = RaffleImpl.abi;
@@ -32,6 +37,7 @@ export const Layout = () => {
 
   useEffect(() => {
     let counts = [];
+
     async function fetchData() {
       const res = await contract.getTicketsLeft();
       res.map(ticket => {
@@ -39,9 +45,34 @@ export const Layout = () => {
         setTicketCounts(counts);
       })
     }
-    fetchData();
-  }, [])
 
+    fetchData();
+  }, [loading])
+
+
+  useEffect(() => {
+    const fetchUser = async () => {
+      const response = await axios.get(`https://veritty-backend.herokuapp.com/users/${address}`);
+      getUserHistory(response.data);
+    }
+    fetchUser();
+  }, [loading])
+
+  useEffect(() => {
+    const fetchLeaders = async () => {
+      const response = await axios.get(`https://veritty-backend.herokuapp.com/leaderboard`);
+      getLeaderboard(response.data);
+    }
+    fetchLeaders();
+  }, [loading])
+
+  useEffect(() => {
+    const fetchResults = async () => {
+      const response = await axios.get(`https://veritty-backend.herokuapp.com/sums`);
+      getResults(response.data);
+    }
+    fetchResults();
+  }, [loading])
 
   useEffect(() => {
     setView(location.pathname.slice(1))
@@ -51,16 +82,23 @@ export const Layout = () => {
     <>
       <div className="App">
         <Navbar isLoggedIn={isConnected} faqRef={faqRef} mobileFaqRef={mobileFaqRef} menuOpen={menuOpen}
-                setMenuOpen={setMenuOpen} ticketsRef={ticketsRef} mobileTicketsRef={mobileTicketsRef} winnersRef={winnersRef} mobileWinnersRef={mobileWinnersRef} />
-        <div className='cont' style={{overflow: menuOpen ? 'hidden' : 'auto'}}>
-          <Header isLoggedIn={isConnected} view={view} setView={setView} menuOpen={menuOpen} ticketCounts={ticketCounts} userHistory={userHistory}/>
+                setMenuOpen={setMenuOpen} ticketsRef={ticketsRef} mobileTicketsRef={mobileTicketsRef}
+                winnersRef={winnersRef} mobileWinnersRef={mobileWinnersRef}/>
+        <div className='cont'>
+          <Header isLoggedIn={isConnected} view={view} setView={setView} menuOpen={menuOpen} ticketCounts={ticketCounts}
+                  userHistory={userHistory} setWinningSum={setWinningSum} winningSum={winningSum} loading={loading}
+                  setLoading={setLoading}/>
           <div className='page'>
             <Routes>
               <Route path="/" element={<Lottery menuOpen={menuOpen} ticketCounts={ticketCounts}/>}/>
               <Route path="/lottery" element={<Lottery menuOpen={menuOpen} ticketCounts={ticketCounts}/>}/>
-              <Route path="/results" element={<Results menuOpen={menuOpen}/>}/>
-              <Route path="/leaderboard" element={<Leaderboards menuOpen={menuOpen} winnersRef={winnersRef} mobileWinnersRef={mobileWinnersRef}/>}/>
-              <Route path="/dashboard" element={<Dashboard menuOpen={menuOpen} ticketsRef={ticketsRef} mobileTicketsRef={mobileTicketsRef} address={address} userHistory={userHistory} getUserHistory={getUserHistory}/>}/>
+              <Route path="/results" element={<Results menuOpen={menuOpen} results={results}/>}/>
+              <Route path="/leaderboard" element={<Leaderboards menuOpen={menuOpen} winnersRef={winnersRef}
+                                                                mobileWinnersRef={mobileWinnersRef} leaderboard={leaderboard}/>}/>
+              <Route path="/dashboard"
+                     element={<Dashboard menuOpen={menuOpen} ticketsRef={ticketsRef} mobileTicketsRef={mobileTicketsRef}
+                                         address={address} userHistory={userHistory} getUserHistory={getUserHistory}
+                                         winningSum={winningSum}/>}/>
             </Routes>
           </div>
           <FAQ faqRef={faqRef} mobileFaqRef={mobileFaqRef}/>

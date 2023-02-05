@@ -4,14 +4,11 @@ import '../Styles/Leaderboards.css';
 import GoDown from '../Images/goDown.svg';
 import {TableRow} from "./TableRow";
 import {TableRowWithAvatar} from "./TableRowWithAvatar";
-import useGetLeaders from "../Hooks/getLeaders";
 
-export const Leaderboards = (props) => {
+export const Leaderboards = ({winnersRef, mobileWinnersRef, leaderboard}) => {
   const [inputText, setInputText] = useState("");
-  const [leadersBoard, setLeadersBoard] = useState([]);
   const leadersRef = useRef(null);
   const mobileLeadersRef = useRef(null);
-  useGetLeaders().then(res => setLeadersBoard(res));
 
   let inputHandler = (e) => {
     let lowerCase = e.target.value.toLowerCase();
@@ -20,19 +17,18 @@ export const Leaderboards = (props) => {
 
   const scrollToBottom = () => {
     leadersRef.current?.scrollIntoView({behavior: "smooth", block: 'nearest', inline: 'start'})
-    console.log(leadersBoard)
   }
   const mobileScrollToBottom = () => {
     mobileLeadersRef.current?.scrollIntoView({behavior: "smooth", block: 'nearest', inline: 'start'})
   }
 
-  const filteredLeaders = leadersBoard.filter((el) => {
+  const filteredLeaders = leaderboard.filter((el) => {
     return inputText === '' ? el : el.id.toLowerCase().includes(inputText);
   })
 
   return (
     <>
-      <Box className='leadersCont' ref={props.mobileWinnersRef} sx={{
+      <Box className='leadersCont' ref={mobileWinnersRef} sx={{
         display: {xs: 'flex', md: 'none'}
       }}>
         <Box sx={{
@@ -106,7 +102,6 @@ export const Leaderboards = (props) => {
               margin: '19px 0 17px 0',
               boxSizing: 'border-box',
             }}>
-              {/*{console.log(leaders.length)}*/}
               {
                 filteredLeaders?.map((l, index) => {
                   if (index + 1 === 1) {
@@ -148,7 +143,7 @@ export const Leaderboards = (props) => {
       {/*Desktop*/}
 
 
-      <Box className='leadersCont' ref={props.winnersRef} sx={{
+      <Box className='leadersCont' ref={winnersRef} sx={{
         display: {xs: 'none', md: 'flex'}
       }}>
         <Box sx={{
@@ -218,13 +213,18 @@ export const Leaderboards = (props) => {
               <th className='leaderTitle' style={{textAlign: 'center', width: '40%'}}>User address</th>
               <th className='leaderTitle' style={{textAlign: 'right', width: '28%', marginRight: '28px'}}>Won USDT</th>
             </tr>
-            <div className='leaderTable' style={{
+            <Box className='leaderTable' sx={{
               height: '515px',
               overflow: 'scroll',
               width: '100%',
               padding: '0 28px 0 30px',
               margin: '19px 0 17px 0',
               boxSizing: 'border-box',
+              msOverflowStyle: 'none',
+              scrollbarWidth: 'none',
+              '&::-webkit-scrollbar': {
+                display: 'none',
+              }
             }}>
               {
                 filteredLeaders?.map((l, index) => {
@@ -248,7 +248,7 @@ export const Leaderboards = (props) => {
                 })
               }
               <div ref={leadersRef}/>
-            </div>
+            </Box>
             </tbody>
           </table>
           <Box sx={{

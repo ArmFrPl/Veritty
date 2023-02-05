@@ -3,14 +3,11 @@ import {Accordion, AccordionDetails, AccordionSummary, Box, Link, Typography} fr
 import '../Styles/Results.css';
 import ArrowDropDownIcon from "@mui/icons-material/ArrowDropDown";
 import GoToIcon from "../Images/goToIcon.svg";
-import useGetResults from "../Hooks/getResults";
 
-export const Results = () => {
+export const Results = ({results}) => {
 
-  const [results, getResults] = useState({})
   const [expanded, setExpanded] = useState(false);
 
-  useGetResults().then(res => getResults(res));
   const handleChange = (panel) => (event, isExpanded) => {
     setExpanded(isExpanded ? panel : false);
   };

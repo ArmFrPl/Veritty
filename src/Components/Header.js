@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react';
-import {Box, Button, Fade, Icon, Popover, Snackbar, Typography} from "@mui/material";
+import {Box, Button, Fade, Icon, Link, Popover, Snackbar, Typography} from "@mui/material";
 import CloseIcon from "@mui/icons-material/Close";
 import CheckCircleOutlineRoundedIcon from '@mui/icons-material/CheckCircleOutlineRounded';
 import ToggleButtons from "./ToggleButtons";
@@ -20,48 +20,89 @@ import MintTicketTwentyThousand from '../Images/Tickets/20000.svg';
 import MintTicketFiftyThousand from '../Images/Tickets/50000.svg';
 import GoToIcon from "../Images/goToIcon.svg";
 import TryAgainImg from '../Images/Tickets/redo.svg'
-import {useProvider, useSigner} from "wagmi";
+import {useSigner} from "wagmi";
 import {ethers} from "ethers";
 import RaffleImpl from "../RaffleImpl.json";
 import {ethAddress} from "../constants";
 import {useWeb3Modal} from "@web3modal/react";
+import axios from "axios";
 
-export const Header = ({isLoggedIn, view, setView, menuOpen, ticketCounts, userHistory}) => {
+export const Header = ({isLoggedIn, view, setView, menuOpen, ticketCounts, userHistory, winningSum, setWinningSum, loading, setLoading}) => {
   const [isWinnerOpen, setWinnerOpen] = useState(false);
-  const [winningSum, setWinningSum] = useState(null);
+  const [isMobileWinnerOpen, setMobileWinnerOpen] = useState(false);
+  const [winners, getWinners] = useState({});
   const [minted, setMinted] = useState(false);
-  const [loading, setLoading] = useState(false);
+  const [count, setCount] = useState(0);
 
   const {isOpen, open, close} = useWeb3Modal();
   const signer = useSigner();
   const abi = RaffleImpl.abi;
   const contract = new ethers.Contract(ethAddress, abi, signer.data);
 
-  const handleOpenWinner = () => {
-    setWinnerOpen(true)
-  };
+  useEffect(() => {
+    const fetchWinnings = async () => {
+      const response = await axios.get('https://veritty-backend.herokuapp.com/lastTxns');
+      getWinners(response.data);
+    }
+    fetchWinnings();
+  }, [])
+
+  useEffect(() => {
+    const intervalId = setInterval(() => {
+      if (count >= winners.length-1) {
+        setCount(0);
+
+      } else {
+        setCount(count + 1);
+      }
+      setWinnerOpen(true);
+
+    },   3 * 60 * 1000); // 3 minutes in milliseconds
+    return () => {
+      clearInterval(intervalId);
+    };
+  }, [count]);
+
+  const convertToTime = (timestamp) => {
+    let date = new Date(timestamp);
+    date =date.getHours()+
+      ":"+date.getMinutes()
+    return date;
+  }
+
   const handleCloseWinner = () => {
+    setWinnerOpen(false)
+  };
+  const handleCloseMobileWinner = () => {
     setWinnerOpen(false)
   };
 
   useEffect(() => {
-    if(!isLoggedIn){
+    if (!isLoggedIn) {
       setMinted(false);
     }
   }, [minted])
 
-
   const getTicketImage = () => {
-    switch (winningSum){
-      case 100: return MintTicketHundred;
-      case 200: return MintTicketTwoHundred;
-      case 500: return MintTicketFiveHundred;
-      case 1000: return MintTicketThousand;
-      case 2500: return MintTicketTwoThousand;
-      case 5000: return MintTicketFiveThousand;
-      case 10000: return MintTicketTenThousand;
-      case 20000: return MintTicketTwentyThousand;
-      case 50000: return MintTicketFiftyThousand;
+    switch (winningSum) {
+      case 100:
+        return MintTicketHundred;
+      case 200:
+        return MintTicketTwoHundred;
+      case 500:
+        return MintTicketFiveHundred;
+      case 1000:
+        return MintTicketThousand;
+      case 2500:
+        return MintTicketTwoThousand;
+      case 5000:
+        return MintTicketFiveThousand;
+      case 10000:
+        return MintTicketTenThousand;
+      case 20000:
+        return MintTicketTwentyThousand;
+      case 50000:
+        return MintTicketFiftyThousand;
     }
   }
 
@@ -170,8 +211,8 @@ export const Header = ({isLoggedIn, view, setView, menuOpen, ticketCounts, userH
                   flexGrow: 0,
                   zIndex: 50,
                   position: 'absolute',
-                  bottom: '30%',
-                  left: '21.5%',
+                  bottom: '110px',
+                  left: '22px',
                 }}> MINT TICKET 0.059 ETH </Button>
                 <Box component='span' sx={{
                   fontFamily: 'Epilogue',
@@ -181,8 +222,8 @@ export const Header = ({isLoggedIn, view, setView, menuOpen, ticketCounts, userH
                   lineHeight: '22px',
                   color: '#F8F8F8',
                   position: 'absolute',
-                  left: '90px',
-                  top: '85px',
+                  left: '25px',
+                  top: '25px',
                   zIndex: 10,
                   width: '227px',
                   textAlign: 'center',
@@ -190,8 +231,9 @@ export const Header = ({isLoggedIn, view, setView, menuOpen, ticketCounts, userH
                 <Box component={"img"} src={MintTicketFront} className={'mintTicketFront' && loading ? 'animate' : null}
                      sx={{
                        position: 'absolute',
-                       left: '76px',
-                       top: '115px',
+                       left: '15px',
+                       top: '45px',
+                       width: '254px'
                      }}/>
                 <Box sx={{
                   fontFamily: 'Epilogue',
@@ -202,8 +244,8 @@ export const Header = ({isLoggedIn, view, setView, menuOpen, ticketCounts, userH
                   color: '#F8F8F8',
                   display: 'flex',
                   position: 'absolute',
-                  top: '489px',
-                  left: '96px',
+                  top: '430px',
+                  left: '32px',
                 }}>{winningTickets[0]}</Box>
                 <Box sx={{
                   fontFamily: 'Epilogue',
@@ -214,8 +256,8 @@ export const Header = ({isLoggedIn, view, setView, menuOpen, ticketCounts, userH
                   color: '#F8F8F8',
                   display: 'flex',
                   position: 'absolute',
-                  top: '489px',
-                  left: '136px',
+                  top: '430px',
+                  left: '72px',
                 }}>{winningTickets[1]}</Box>
                 <Box sx={{
                   fontFamily: 'Epilogue',
@@ -226,8 +268,8 @@ export const Header = ({isLoggedIn, view, setView, menuOpen, ticketCounts, userH
                   color: '#F8F8F8',
                   display: 'flex',
                   position: 'absolute',
-                  top: '489px',
-                  left: '176px',
+                  top: '430px',
+                  left: '112px',
                 }}>{winningTickets[2]}</Box>
               </>
             }
@@ -262,8 +304,10 @@ export const Header = ({isLoggedIn, view, setView, menuOpen, ticketCounts, userH
                       display: 'flex',
                       justifyContent: 'center',
                       zIndex: 10,
-                    }}><Box component='span' sx={{width: '211px', display: 'flex',}}>You have a chance to win on the 2nd Round! </Box></Box>
-                    <Box component={"img"} src={MintTicketZero} className={'mintTicketFront' && loading ? 'animate' : null} sx={{
+                    }}><Box component='span' sx={{width: '211px', display: 'flex',}}>You have a chance to win on the 2nd
+                      Round! </Box></Box>
+                    <Box component={"img"} src={MintTicketZero}
+                         className={'mintTicketFront' && loading ? 'animate' : null} sx={{
                       position: 'absolute',
                       left: '15px',
                       top: '35px',
@@ -300,7 +344,8 @@ export const Header = ({isLoggedIn, view, setView, menuOpen, ticketCounts, userH
                       textAlign: 'center',
                       zIndex: 10,
                     }}>{winningSum} <Box component='span' sx={{fontSize: '24px'}}>USTD</Box></Box>
-                    <Box component={"img"} src={getTicketImage()} className={'mintTicketFront' && loading ? 'animateWin' : null} sx={{
+                    <Box component={"img"} src={getTicketImage()}
+                         className={'mintTicketFront' && loading ? 'animateWin' : null} sx={{
                       position: 'absolute',
                       left: '15px',
                       top: '35px',
@@ -372,7 +417,7 @@ export const Header = ({isLoggedIn, view, setView, menuOpen, ticketCounts, userH
                   top: '410px',
                   left: '80px'
                 }}>
-                  Ticket #  {('00000' + userHistory.totalTickets).slice(-5)}
+                  Ticket # {('00000' + userHistory.totalTickets).slice(-5)}
                 </Box>
               </>
             }
@@ -385,6 +430,7 @@ export const Header = ({isLoggedIn, view, setView, menuOpen, ticketCounts, userH
             autoHideDuration={150000}
             anchorOrigin={{vertical: 'bottom', horizontal: 'right'}}
             sx={{
+              display: {xs: 'flex', md: 'none'},
               width: '252px',
               '> .css-1eqdgzv-MuiPaper-root-MuiSnackbarContent-root': {
                 width: '252px'
@@ -422,9 +468,9 @@ export const Header = ({isLoggedIn, view, setView, menuOpen, ticketCounts, userH
                       lineHeight: '24px',
                       display: 'flex',
                       alignItems: 'center',
-                      color: '#F8F8F8',
-                    }}>0x038467..33</Typography>
-                    <Typography sx={{
+                      color: winners[count]?.sum < 500 ? '#F8F8F8' : '#00DF74',
+                    }}>{winners[count]?.userId.slice(0, 10) + "…"}</Typography>
+                    <Link href={winners[count]?.link} sx={{textDecoration: 'none', color: '#F8F8F8', opacity: '0.7',}}><Typography sx={{
                       "&:hover": {color: '#FFD057 !important'},
                       fontFamily: 'Epilogue',
                       fontStyle: 'normal',
@@ -434,10 +480,8 @@ export const Header = ({isLoggedIn, view, setView, menuOpen, ticketCounts, userH
                       display: 'flex',
                       alignItems: 'center',
                       letterSpacing: '0.01em',
-                      color: '#F8F8F8',
-                      opacity: '0.7',
                     }}>View on Etherscan <img src={GoToIcon} alt='arrow' height={8} width={8}
-                                              style={{marginLeft: '5px'}}/></Typography>
+                                              style={{marginLeft: '5px'}}/></Typography></Link>
                   </Box>
                   <Box sx={{
                     display: 'flex',
@@ -456,7 +500,7 @@ export const Header = ({isLoggedIn, view, setView, menuOpen, ticketCounts, userH
                       letterSpacing: '0.01em',
                       color: '#F8F8F8',
                       opacity: '0.7',
-                    }}>4 min ago</Box>
+                    }}>{convertToTime(winners[count]?.timestamp)}</Box>
                     <Box sx={{
                       fontFamily: 'Epilogue',
                       fontStyle: 'normal',
@@ -466,8 +510,8 @@ export const Header = ({isLoggedIn, view, setView, menuOpen, ticketCounts, userH
                       display: 'flex',
                       alignItems: 'center',
                       letterSpacing: '0.01em',
-                      color: '#F8F8F8',
-                    }}>50 USDT</Box>
+                      color: winners[count]?.sum < 500 ? '#F8F8F8' : '#00DF74',
+                    }}>{winners[count]?.sum} USDT</Box>
                   </Box>
                 </Box>
 
@@ -579,16 +623,17 @@ export const Header = ({isLoggedIn, view, setView, menuOpen, ticketCounts, userH
                   width: '227px',
                   textAlign: 'center',
                 }}>Mint NFT and get money to your wallet during 1 hour</Box>
-                <Box component={"img"} src={MintTicketFront} className={'mintTicketFront' && loading ? 'animate' : null} sx={{
-                  position: 'absolute',
-                  left: '15px',
-                  top: '45px',
-                  width: '254px',
-                  transition: '.2s ease-in-out',
-                  "&:hover": {
-                    transform: 'scale(1.1)',
-                  }
-                }}/>
+                <Box component={"img"} src={MintTicketFront} className={'mintTicketFront' && loading ? 'animate' : null}
+                     sx={{
+                       position: 'absolute',
+                       left: '15px',
+                       top: '45px',
+                       width: '254px',
+                       transition: '.2s ease-in-out',
+                       "&:hover": {
+                         transform: 'scale(1.1)',
+                       }
+                     }}/>
                 <Box sx={{
                   fontFamily: 'Epilogue',
                   fontStyle: 'normal',
@@ -658,8 +703,10 @@ export const Header = ({isLoggedIn, view, setView, menuOpen, ticketCounts, userH
                       display: 'flex',
                       justifyContent: 'center',
                       zIndex: 10,
-                    }}><Box component='span' sx={{width: '211px', display: 'flex',}}>You have a chance to win on the 2nd Round! </Box></Box>
-                    <Box component={"img"} src={MintTicketZero} className={'mintTicketFront' && loading ? 'animateWin' : null} sx={{
+                    }}><Box component='span' sx={{width: '211px', display: 'flex',}}>You have a chance to win on the 2nd
+                      Round! </Box></Box>
+                    <Box component={"img"} src={MintTicketZero}
+                         className={'mintTicketFront' && loading ? 'animateWin' : null} sx={{
                       position: 'absolute',
                       left: '15px',
                       top: '35px',
@@ -672,17 +719,17 @@ export const Header = ({isLoggedIn, view, setView, menuOpen, ticketCounts, userH
                   </>
                   : <>
                     <Box sx={{
-                    fontFamily: 'Epilogue',
-                    fontStyle: 'normal',
-                    fontWeight: 700,
-                    fontSize: '20px',
-                    lineHeight: '22px',
-                    color: '#FFD057',
-                    position: 'absolute',
-                    top: '22px',
-                    width: '100%',
-                    textAlign: 'center',
-                  }}>YOU WIN!</Box>
+                      fontFamily: 'Epilogue',
+                      fontStyle: 'normal',
+                      fontWeight: 700,
+                      fontSize: '20px',
+                      lineHeight: '22px',
+                      color: '#FFD057',
+                      position: 'absolute',
+                      top: '22px',
+                      width: '100%',
+                      textAlign: 'center',
+                    }}>YOU WIN!</Box>
                     <Box sx={{
                       fontFamily: 'Epilogue',
                       fontStyle: 'normal',
@@ -696,7 +743,8 @@ export const Header = ({isLoggedIn, view, setView, menuOpen, ticketCounts, userH
                       textAlign: 'center',
                       zIndex: 10,
                     }}>{winningSum} <Box component='span' sx={{fontSize: '24px'}}>USTD</Box></Box>
-                    <Box component={"img"} src={getTicketImage()} className={'mintTicketFront' && loading ? 'animateWin' : null} sx={{
+                    <Box component={"img"} src={getTicketImage()}
+                         className={'mintTicketFront' && loading ? 'animateWin' : null} sx={{
                       position: 'absolute',
                       left: '15px',
                       top: '35px',
@@ -776,109 +824,110 @@ export const Header = ({isLoggedIn, view, setView, menuOpen, ticketCounts, userH
                   top: '410px',
                   left: '80px'
                 }}>
-                  Ticket #  {('00000' + userHistory.totalTickets).slice(-5)}
+                  Ticket # {('00000' + userHistory.totalTickets).slice(-5)}
                 </Box>
               </>
             }
             <Box component={"img"} src={!minted ? MintTicketImg : MintTicketWinner} className='mintTicket'/>
           </Box>
-          <Snackbar
-            className='popup'
-            open={isWinnerOpen}
-            onClose={handleCloseWinner}
-            autoHideDuration={150000}
-            anchorOrigin={{vertical: 'bottom', horizontal: 'right'}}
-            sx={{
-              width: '343px',
-              '> .css-1eqdgzv-MuiPaper-root-MuiSnackbarContent-root': {
-                width: '343px'
-              }
-            }}
-            message={
-              <Box className='headerModalCont' sx={{
+          {
+            winners.length &&
+            <Snackbar
+              className='popup'
+              open={isWinnerOpen}
+              onClose={handleCloseWinner}
+              autoHideDuration={20 * 1000}
+              anchorOrigin={{vertical: 'bottom', horizontal: 'right'}}
+              sx={{
+                display: {xs: 'none', md: 'flex'},
                 width: '343px',
-                height: '88px',
-                background: '#101010',
-                border: '1px solid #00DF74',
-                borderRadius: '16px',
-                display: 'flex',
-              }}>
-                <Box className="headerModalBody">
-                  <CheckCircleOutlineRoundedIcon sx={{color: '#00DF74', mr: '15px', pl: '24px',}}/>
-                  <Box>
-                    <Typography sx={{
-                      fontFamily: 'Epilogue',
-                      fontStyle: 'normal',
-                      fontWeight: '700',
-                      fontSize: '14px',
-                      lineHeight: '18px',
-                      display: 'flex',
-                      alignItems: 'center',
-                      letterSpacing: '0.01em',
-                      color: '#F8F8F8',
-                    }}>WINNER</Typography>
-                    <Typography sx={{
-                      fontFamily: 'Epilogue',
-                      fontStyle: 'normal',
-                      fontWeight: '400',
-                      fontSize: '16px',
-                      lineHeight: '24px',
-                      display: 'flex',
-                      alignItems: 'center',
-                      color: '#F8F8F8',
-                    }}>0x038467..33</Typography>
-                    <Typography sx={{
-                      fontFamily: 'Epilogue',
-                      fontStyle: 'normal',
-                      fontWeight: '400',
-                      fontSize: '14px',
-                      lineHeight: '1',
-                      display: 'flex',
-                      alignItems: 'center',
-                      letterSpacing: '0.01em',
-                      color: '#F8F8F8',
-                      opacity: '0.7',
-                    }}>View on Etherscan <img src={GoToIcon} alt='arrow' height={8} width={8}
-                                              style={{marginLeft: '5px'}}/></Typography>
-                  </Box>
-                  <Box sx={{
-                    display: 'flex',
-                    flexDirection: 'column',
-                    alignItems: 'end',
-                    margin: '0 5px 20px 20px'
-                  }}>
+                '> .css-1eqdgzv-MuiPaper-root-MuiSnackbarContent-root': {
+                  width: '343px'
+                }
+              }}
+              message={
+                <Box className='headerModalCont' sx={{
+                  width: '343px',
+                  height: '88px',
+                  background: '#101010',
+                  border: '1px solid #00DF74',
+                  borderRadius: '16px',
+                  display: 'flex',
+                }}>
+                  <Box className="headerModalBody">
+                    <CheckCircleOutlineRoundedIcon sx={{color: '#00DF74', mr: '15px', pl: '24px',}}/>
+                    <Box>
+                      <Typography sx={{
+                        fontFamily: 'Epilogue',
+                        fontStyle: 'normal',
+                        fontWeight: '700',
+                        fontSize: '14px',
+                        lineHeight: '18px',
+                        display: 'flex',
+                        alignItems: 'center',
+                        letterSpacing: '0.01em',
+                        color: winners[count]?.sum < 500 ? '#F8F8F8' : '#00DF74',
+                      }}>WINNER</Typography>
+                      <Typography sx={{
+                        fontFamily: 'Epilogue',
+                        fontStyle: 'normal',
+                        fontWeight: '400',
+                        fontSize: '16px',
+                        lineHeight: '24px',
+                        display: 'flex',
+                        alignItems: 'center',
+                        color: '#F8F8F8',
+                      }}>{winners[count]?.userId.slice(0, 10) + "…"}</Typography>
+                      <Link href={winners[count]?.link} sx={{textDecoration: 'none', color: '#F8F8F8', opacity: '0.7',}}><Typography sx={{
+                        fontFamily: 'Epilogue',
+                        fontStyle: 'normal',
+                        fontWeight: '400',
+                        fontSize: '13px',
+                        lineHeight: '1',
+                        display: 'flex',
+                        alignItems: 'center',
+                        letterSpacing: '0.01em',
+                      }}>View on Etherscan <img src={GoToIcon} alt='arrow' height={8} width={8} style={{marginLeft: '5px'}}/></Typography></Link>
+                    </Box>
                     <Box sx={{
-                      fontFamily: 'Epilogue',
-                      fontStyle: 'normal',
-                      fontWeight: '400',
-                      fontSize: '14px',
                       display: 'flex',
-                      lineHeight: '22px',
-                      alignItems: 'center',
-                      letterSpacing: '0.01em',
-                      color: '#F8F8F8',
-                      opacity: '0.7',
-                    }}>4 min ago</Box>
-                    <Box sx={{
-                      fontFamily: 'Epilogue',
-                      fontStyle: 'normal',
-                      fontWeight: '700',
-                      fontSize: '20px',
-                      lineHeight: '1',
-                      display: 'flex',
-                      alignItems: 'center',
-                      letterSpacing: '0.01em',
-                      color: '#F8F8F8',
-                    }}>50 USDT</Box>
+                      flexDirection: 'column',
+                      alignItems: 'end',
+                      margin: '0 5px 20px 20px'
+                    }}>
+                      <Box sx={{
+                        fontFamily: 'Epilogue',
+                        fontStyle: 'normal',
+                        fontWeight: '400',
+                        fontSize: '14px',
+                        display: 'flex',
+                        lineHeight: '22px',
+                        alignItems: 'center',
+                        letterSpacing: '0.01em',
+                        color: '#F8F8F8',
+                        opacity: '0.7',
+                      }}>{convertToTime(winners[count]?.timestamp)}</Box>
+                      <Box sx={{
+                        fontFamily: 'Epilogue',
+                        fontStyle: 'normal',
+                        fontWeight: '700',
+                        fontSize: '20px',
+                        lineHeight: '1',
+                        display: 'flex',
+                        alignItems: 'center',
+                        letterSpacing: '0.01em',
+                        color: winners[count]?.sum < 500 ? '#F8F8F8' : '#00DF74',
+                      }}>{winners[count]?.sum} USDT</Box>
+                    </Box>
                   </Box>
-                </Box>
 
-                <Box className='headerModalHeader'>
-                  <CloseIcon onClick={handleCloseWinner} cursor='pointer'/>
+                  <Box className='headerModalHeader'>
+                    <CloseIcon onClick={handleCloseWinner} cursor='pointer'/>
+                  </Box>
                 </Box>
-              </Box>
-            }
-          />
+              }
+            />
+          }
         </Box>
         <ToggleButtons isLoggedIn={isLoggedIn} view={view} setView={setView}/>
       </Box>
