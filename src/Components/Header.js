@@ -66,6 +66,7 @@ export const Header = ({
     const isContrOpen = async () => {
       setContractOpen(await contract.isOpen());
     }
+    setTicketCount(countTickets());
     isContrOpen();
   })
 
@@ -74,7 +75,6 @@ export const Header = ({
       const response = await axios.get('https://veritty-backend.herokuapp.com/lastTxns');
       getWinners(response.data);
     }
-    setTicketCount(countTickets());
     fetchWinnings();
   }, [])
 
