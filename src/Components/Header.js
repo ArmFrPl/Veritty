@@ -29,7 +29,6 @@ import axios from "axios";
 
 export const Header = ({isLoggedIn, view, setView, menuOpen, ticketCounts, userHistory, winningSum, setWinningSum, loading, setLoading}) => {
   const [isWinnerOpen, setWinnerOpen] = useState(false);
-  const [isMobileWinnerOpen, setMobileWinnerOpen] = useState(false);
   const [winners, getWinners] = useState({});
   const [minted, setMinted] = useState(false);
   const [count, setCount] = useState(0);
@@ -38,6 +37,7 @@ export const Header = ({isLoggedIn, view, setView, menuOpen, ticketCounts, userH
   const signer = useSigner();
   const abi = RaffleImpl.abi;
   const contract = new ethers.Contract(ethAddress, abi, signer.data);
+  // const isContractOpen = contract.isOpen();
 
   useEffect(() => {
     const fetchWinnings = async () => {
@@ -421,7 +421,7 @@ export const Header = ({isLoggedIn, view, setView, menuOpen, ticketCounts, userH
                 </Box>
               </>
             }
-            <Box component={"img"} src={!minted ? MintTicketImg : MintTicketWinner} className='mintTicket'/>
+            <Box component={"img"} sx={{width: '278px'}} src={!minted ? MintTicketImg : MintTicketWinner} className='mintTicket'/>
           </Box>
           <Snackbar
             className='popupMobile'
@@ -828,7 +828,7 @@ export const Header = ({isLoggedIn, view, setView, menuOpen, ticketCounts, userH
                 </Box>
               </>
             }
-            <Box component={"img"} src={!minted ? MintTicketImg : MintTicketWinner} className='mintTicket'/>
+            <Box component={"img"} sx={{width: '278px'}} src={!minted ? MintTicketImg : MintTicketWinner} className='mintTicket'/>
           </Box>
           {
             winners.length &&
