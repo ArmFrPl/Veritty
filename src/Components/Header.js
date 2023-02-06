@@ -108,11 +108,11 @@ export const Header = ({
     setWinnerOpen(false)
   };
 
-  useEffect(() => {
-    if (!isLoggedIn) {
-      setMinted(false);
-    }
-  }, [minted])
+  // useEffect(() => {
+  //   if (!isLoggedIn) {
+  //     setMinted(false);
+  //   }
+  // }, [minted])
 
   const getTicketImage = () => {
     switch (winningSum) {
