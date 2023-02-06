@@ -7,17 +7,17 @@ import {SocialLinks} from "./SocialLinks";
 import '../Styles/Header.css'
 import MintTicketImg from '../Images/Tickets/Ticket MINT.svg';
 import MintTicketWinner from '../Images/Tickets/Winner Ticket MINT.svg';
-import MintTicketFront from '../Images/mintTickertFront.svg';
-import MintTicketZero from '../Images/Tickets/0.svg';
-import MintTicketHundred from '../Images/Tickets/100.svg';
-import MintTicketTwoHundred from '../Images/Tickets/200.svg';
-import MintTicketFiveHundred from '../Images/Tickets/500.svg';
-import MintTicketThousand from '../Images/Tickets/1000.svg';
-import MintTicketTwoThousand from '../Images/Tickets/2500.svg';
-import MintTicketFiveThousand from '../Images/Tickets/5000.svg';
-import MintTicketTenThousand from '../Images/Tickets/10000.svg';
-import MintTicketTwentyThousand from '../Images/Tickets/20000.svg';
-import MintTicketFiftyThousand from '../Images/Tickets/50000.svg';
+import MintTicketFront from '../Images/mintTickertFront.png';
+import MintTicketZero from '../Images/Tickets/0.png';
+import MintTicketHundred from '../Images/Tickets/100.png';
+import MintTicketTwoHundred from '../Images/Tickets/200.png';
+import MintTicketFiveHundred from '../Images/Tickets/500.png';
+import MintTicketThousand from '../Images/Tickets/1000.png';
+import MintTicketTwoThousand from '../Images/Tickets/2500.png';
+import MintTicketFiveThousand from '../Images/Tickets/5000.png';
+import MintTicketTenThousand from '../Images/Tickets/10000.png';
+import MintTicketTwentyThousand from '../Images/Tickets/20000.png';
+import MintTicketFiftyThousand from '../Images/Tickets/50000.png';
 import GoToIcon from "../Images/goToIcon.svg";
 import TryAgainImg from '../Images/Tickets/redo.svg'
 import {useSigner} from "wagmi";
@@ -32,6 +32,7 @@ export const Header = ({isLoggedIn, view, setView, menuOpen, ticketCounts, userH
   const [winners, getWinners] = useState({});
   const [minted, setMinted] = useState(false);
   const [count, setCount] = useState(0);
+  const [tokenId, setTokenId] = useState(0);
 
   const {isOpen, open, close} = useWeb3Modal();
   const signer = useSigner();
@@ -57,7 +58,7 @@ export const Header = ({isLoggedIn, view, setView, menuOpen, ticketCounts, userH
       }
       setWinnerOpen(true);
 
-    },   3 * 60 * 1000); // 3 minutes in milliseconds
+    },   10  * 1000); // 3 minutes in milliseconds
     return () => {
       clearInterval(intervalId);
     };
@@ -129,6 +130,8 @@ export const Header = ({isLoggedIn, view, setView, menuOpen, ticketCounts, userH
     const txResponse = await contract.enterRaffle({value: entranceFee, gasLimit: 800000})
     const txReceipt = await txResponse.wait(1)
     const event = txReceipt?.events?.filter(event => event.event === 'WinnerChosen');
+    setTokenId(event['0'].args['tokenId'].toNumber());
+    console.log(event)
     setWinningSum(event['0'].args['sum'].toNumber());
     setMinted(true);
     setLoading(false);
@@ -381,7 +384,7 @@ export const Header = ({isLoggedIn, view, setView, menuOpen, ticketCounts, userH
                   zIndex: 10,
                   textTransform: 'none',
                 }}> <Icon><img src={TryAgainImg} alt='tryAgain'/></Icon> Try Again </Button>
-                <Button className='openSeaButton' sx={{
+                <Link href={`https://testnets.opensea.io/assets/goerli/0x3cc6c2fb7b837eb2c100285a3aca108d245b178e/${tokenId}`}><Button className='openSeaButton' sx={{
                   flexDirection: 'row',
                   justifyContent: 'center',
                   alignItems: 'center',
@@ -404,7 +407,7 @@ export const Header = ({isLoggedIn, view, setView, menuOpen, ticketCounts, userH
                   left: '22px',
                   zIndex: 10,
                   textTransform: 'none',
-                }}> Look on OpenSea </Button>
+                }}> Look on OpenSea </Button></Link>
 
                 <Box component='span' sx={{
                   fontFamily: 'Epilogue',
@@ -487,7 +490,7 @@ export const Header = ({isLoggedIn, view, setView, menuOpen, ticketCounts, userH
                     display: 'flex',
                     flexDirection: 'column',
                     alignItems: 'end',
-                    margin: '0 5px 20px 20px'
+                    margin: '0 5px 20px 8px'
                   }}>
                     <Box sx={{
                       fontFamily: 'Epilogue',
@@ -784,7 +787,7 @@ export const Header = ({isLoggedIn, view, setView, menuOpen, ticketCounts, userH
                     transform: 'scale(1.1)',
                   }
                 }}> <Icon><img src={TryAgainImg} alt='tryAgain'/></Icon> Try Again </Button>
-                <Button className='openSeaButton' sx={{
+                <Link href={`https://testnets.opensea.io/assets/goerli/0x3cc6c2fb7b837eb2c100285a3aca108d245b178e/${tokenId}`}><Button className='openSeaButton' sx={{
                   flexDirection: 'row',
                   justifyContent: 'center',
                   alignItems: 'center',
@@ -811,7 +814,7 @@ export const Header = ({isLoggedIn, view, setView, menuOpen, ticketCounts, userH
                   "&:hover": {
                     transform: 'scale(1.1)',
                   }
-                }}> Look on OpenSea </Button>
+                }}> Look on OpenSea </Button></Link>
 
                 <Box component='span' sx={{
                   fontFamily: 'Epilogue',
@@ -836,13 +839,16 @@ export const Header = ({isLoggedIn, view, setView, menuOpen, ticketCounts, userH
               className='popup'
               open={isWinnerOpen}
               onClose={handleCloseWinner}
-              autoHideDuration={20 * 1000}
+              autoHideDuration={60 * 1000}
               anchorOrigin={{vertical: 'bottom', horizontal: 'right'}}
               sx={{
                 display: {xs: 'none', md: 'flex'},
                 width: '343px',
+                padding: 0,
                 '> .css-1eqdgzv-MuiPaper-root-MuiSnackbarContent-root': {
-                  width: '343px'
+                  width: '343px',
+                  borderRadius: '16px',
+                  padding: 0,
                 }
               }}
               message={
@@ -893,7 +899,7 @@ export const Header = ({isLoggedIn, view, setView, menuOpen, ticketCounts, userH
                       display: 'flex',
                       flexDirection: 'column',
                       alignItems: 'end',
-                      margin: '0 5px 20px 20px'
+                      margin: '0 5px 20px 8px'
                     }}>
                       <Box sx={{
                         fontFamily: 'Epilogue',
@@ -911,12 +917,12 @@ export const Header = ({isLoggedIn, view, setView, menuOpen, ticketCounts, userH
                         fontFamily: 'Epilogue',
                         fontStyle: 'normal',
                         fontWeight: '700',
-                        fontSize: '20px',
+                        fontSize: '19px',
                         lineHeight: '1',
                         display: 'flex',
                         alignItems: 'center',
                         letterSpacing: '0.01em',
-                        color: winners[count]?.sum < 500 ? '#F8F8F8' : '#00DF74',
+                        color: winners[count]?.sum < '500' ? '#F8F8F8' : '#00DF74',
                       }}>{winners[count]?.sum} USDT</Box>
                     </Box>
                   </Box>

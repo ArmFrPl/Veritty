@@ -1,6 +1,5 @@
 import React from 'react';
-import {Link} from "react-router-dom";
-import {Box} from "@mui/material";
+import {Box, Link} from "@mui/material";
 import TwitterLogo from "../Images/Twitter.svg";
 import DiscordLogo from "../Images/Discord.svg";
 import CooliconLogo from "../Images/coolicon.svg";
@@ -11,7 +10,7 @@ export const SocialLinks = () => {
     <Box sx={{display: 'flex', alignItems: 'center', justifyContent: 'center',}}>
       <Link style={{marginRight:'30px'}} to='#'><Box className='socialLink' component="img" alt="Twitter Logo" src={TwitterLogo} sx={{ "&:hover": {fill: '#FFD057'}}}/></Link>
       <Link style={{marginRight:'30px'}} to='#'><Box className='socialLink' component="img" alt="Discord Logo" src={DiscordLogo}/></Link>
-      <Link style={{marginRight: 0}} to='#'><Box className='socialLink' component="img" alt="Coolicon Logo" src={CooliconLogo}/></Link>
+      <Link style={{marginRight: 0}} href='https://testnets.opensea.io/collection/ticket-wpdx0q3dpa'><Box className='socialLink' component="img" alt="Coolicon Logo" src={CooliconLogo}/></Link>
     </Box>
   )
 }
