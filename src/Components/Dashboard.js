@@ -22,7 +22,7 @@ export const Dashboard = ({ticketsRef, mobileTicketsRef, userHistory}) => {
     dataRef.current?.scrollIntoView({behavior: "smooth", block: 'nearest', inline: 'start'})
   }
   const mobileScrollToBottom = () => {
-    mobileDataRef.current?.scrollIntoView({behavior: "smooth", block: 'nearest', inline: 'start'})
+    mobileDataRef.current?.scrollIntoView({block: 'nearest', inline: 'start'})
   }
 
   return (
