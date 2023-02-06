@@ -1,5 +1,5 @@
 import React, {useRef, useState} from "react";
-import {Box, Icon, InputBase} from "@mui/material";
+import {Box, Button, Icon, InputBase} from "@mui/material";
 import '../Styles/Leaderboards.css';
 import GoDown from '../Images/goDown.svg';
 import {TableRow} from "./TableRow";
@@ -132,7 +132,7 @@ export const Leaderboards = ({winnersRef, mobileWinnersRef, leaderboard}) => {
             justifyContent: 'center',
             cursor: 'pointer'
           }}>
-            <Icon sx={{width: '30px', height: '30px'}} onClick={mobileScrollToBottom}><img alt='arrow' src={GoDown} height={30} width={30}/></Icon>
+            <Button><Icon sx={{width: '30px', height: '30px'}} onClick={mobileScrollToBottom}><img alt='arrow' src={GoDown} height={30} width={30}/></Icon></Button>
           </Box>
         </Box>
 

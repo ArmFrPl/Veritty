@@ -1,5 +1,5 @@
 import React, {useRef} from "react";
-import {Box, Icon, Link} from "@mui/material";
+import {Box, Button, Icon, Link} from "@mui/material";
 import '../Styles/Dashboard.css';
 import GoToIcon from "../Images/goToIcon.svg";
 import GoDown from "../Images/goDown.svg";
@@ -185,14 +185,14 @@ export const Dashboard = ({ticketsRef, mobileTicketsRef, userHistory}) => {
                 </tbody>
               </table>
             </Box>
-            <Box sx={{
+            <Button sx={{
               display: 'flex',
               justifyContent: 'center',
               cursor: 'pointer',
               mt: '10px',
             }}>
               <Icon sx={{width: '30px', height: '30px'}} onClick={mobileScrollToBottom}><img alt='arrow' src={GoDown} height={30} width={30}/></Icon>
-            </Box>
+            </Button>
           </Box>
         </Box>
         <div className='blankSpace'></div>
