@@ -123,16 +123,22 @@ export const Dashboard = ({ticketsRef, mobileTicketsRef, userHistory}) => {
             width: '100%',
             height: '156px',
             display: 'flex',
+            flexDirection: 'column',
             justifyContent: 'center',
             alignItems: 'center',
-            msOverflowStyle: 'none',
-            scrollbarWidth: 'none',
-            '&::-webkit-scrollbar': {
-              display: 'none',
-            }
           }}>
-            <Box sx={{width: '100%', height: '100px', overflow: 'scroll', display: 'flex', justifyContent: 'center'}}>
-              <table className='history' style={{width: '75%'}}>
+            <Box sx={{
+              width: '100%',
+              height: '100px',
+              overflow: 'scroll',
+              display: 'flex',
+              justifyContent: 'center',
+              msOverflowStyle: 'none',
+              scrollbarWidth: 'none',
+              '&::-webkit-scrollbar': {
+                display: 'none',
+              }}}>
+              <table className='history' style={{width: '85%'}}>
                 <tbody>
                 {
                   userHistory.txns?.map((h, index) => (
@@ -153,7 +159,7 @@ export const Dashboard = ({ticketsRef, mobileTicketsRef, userHistory}) => {
                       <Box component='td' className='historyRows bold'
                            sx={{
                              textAlign: 'left',
-                             width: '59%',
+                             width: '60%',
                              fontSize: {xs: '16px', md: '20px'},
                              lineHeight: {xs: '22px', md: '28px'}
                            }}>{h.sum} USTD</Box>
@@ -178,13 +184,14 @@ export const Dashboard = ({ticketsRef, mobileTicketsRef, userHistory}) => {
                 <div ref={mobileDataRef}/>
                 </tbody>
               </table>
-              <Box sx={{
-                display: 'flex',
-                justifyContent: 'center',
-                cursor: 'pointer'
-              }}>
-                <Icon sx={{width: '30px', height: '30px'}} onClick={mobileScrollToBottom}><img alt='arrow' src={GoDown} height={30} width={30}/></Icon>
-              </Box>
+            </Box>
+            <Box sx={{
+              display: 'flex',
+              justifyContent: 'center',
+              cursor: 'pointer',
+              mt: '10px',
+            }}>
+              <Icon sx={{width: '30px', height: '30px'}} onClick={mobileScrollToBottom}><img alt='arrow' src={GoDown} height={30} width={30}/></Icon>
             </Box>
           </Box>
         </Box>
