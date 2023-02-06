@@ -844,11 +844,11 @@ export const Header = ({isLoggedIn, view, setView, menuOpen, ticketCounts, userH
               sx={{
                 display: {xs: 'none', md: 'flex'},
                 width: '343px',
-                padding: 0,
-                '> .css-1eqdgzv-MuiPaper-root-MuiSnackbarContent-root': {
+                padding: '0 !important',
+                '> .css-1gz1y6s': {
                   width: '343px',
                   borderRadius: '16px',
-                  padding: 0,
+                  padding: '0 !important',
                 }
               }}
               message={

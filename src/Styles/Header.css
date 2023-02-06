@@ -92,18 +92,35 @@
 /*.mintTicket { transition: all .2s ease-in-out; }*/
 /*.mintTicket:hover { transform: scale(1.1); }*/
 
-.popup > .css-1eqdgzv-MuiPaper-root-MuiSnackbarContent-root{
-  padding: 0;
-  border-radius: 16px;
-}
-.popup > .css-1eqdgzv-MuiPaper-root-MuiSnackbarContent-root > .css-1exqwzz-MuiSnackbarContent-message{
+.MuiSnackbarContent-message{
   padding: 0 !important;
 }
-.popupMobile > .css-1eqdgzv-MuiPaper-root-MuiSnackbarContent-root{
+.MuiSnackbarContent-root{
+  padding: 0 !important;
+  border-radius: 16px !important;
+}
+.MuiSnackbarContent-root > .MuiSnackbarContent-message{
+  padding: 0 !important;
+}
+.popupMobile > .MuiSnackbarContent-root{
+  padding: 0 !important;
+  border-radius: 16px;
+}
+.popupMobile > .MuiSnackbarContent-root > .MuiSnackbarContent-message{
+  padding: 0 !important;
+}
+.popup > .css-1gz1y6s{
   padding: 0;
   border-radius: 16px;
 }
-.popupMobile > .css-1eqdgzv-MuiPaper-root-MuiSnackbarContent-root > .css-1exqwzz-MuiSnackbarContent-message{
+.popup > .css-1gz1y6s > .css-1w0ym84{
+  padding: 0 !important;
+}
+.popupMobile > .css-1gz1y6s{
+  padding: 0;
+  border-radius: 16px;
+}
+.popupMobile > .css-1gz1y6s > .css-1w0ym84{
   padding: 0 !important;
 }
 
