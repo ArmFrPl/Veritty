@@ -1,13 +1,14 @@
 import React, {useEffect, useState} from 'react';
-import {Box, Button, Fade, Icon, Link, Popover, Snackbar, Typography} from "@mui/material";
+import {Box, Button, Icon, Link, Snackbar, Typography} from "@mui/material";
 import CloseIcon from "@mui/icons-material/Close";
 import CheckCircleOutlineRoundedIcon from '@mui/icons-material/CheckCircleOutlineRounded';
 import ToggleButtons from "./ToggleButtons";
 import {SocialLinks} from "./SocialLinks";
 import '../Styles/Header.css'
-import MintTicketImg from '../Images/Tickets/Ticket MINT.svg';
 import MintTicketWinner from '../Images/Tickets/Winner Ticket MINT.svg';
 import MintTicketFront from '../Images/mintTickertFront.png';
+import MintTicketUnborder from '../Images/Tickets/MintTicketUnborder.svg';
+import MintTicketBorder from '../Images/Tickets/mintTicketBorder.svg';
 import MintTicketZero from '../Images/Tickets/0.png';
 import MintTicketHundred from '../Images/Tickets/100.png';
 import MintTicketTwoHundred from '../Images/Tickets/200.png';
@@ -22,7 +23,7 @@ import SuspendedButton from '../Images/Tickets/suspended.svg';
 import SoldOutButton from '../Images/Tickets/soldOut.svg';
 import GoToIcon from "../Images/goToIcon.svg";
 import TryAgainImg from '../Images/Tickets/redo.svg'
-import {useProvider, useSigner} from "wagmi";
+import {useSigner} from "wagmi";
 import {ethers} from "ethers";
 import RaffleImpl from "../RaffleImpl.json";
 import {ethAddress} from "../constants";
@@ -221,6 +222,7 @@ export const Header = ({
                   position: 'absolute',
                   top: '-13px',
                   left: '80px',
+                  zIndex: 15,
                 }}/>
                 <Button disabled className='mintButton' sx={{
                   flexDirection: 'row',
@@ -264,6 +266,9 @@ export const Header = ({
                   width: '185px',
                   textAlign: 'center',
                 }}>Mint NFT and get money to your wallet during 1 hour</Box>
+                <Box component={'img'} src={MintTicketBorder} className={loading ? 'animateWinn' : null} sx={{
+                  position: 'absolute',
+                }}/>
                 <Box component={"img"} src={MintTicketZero} className={'mintTicketFront' && loading ? 'animate' : null}
                      sx={{
                        position: 'absolute',
@@ -296,8 +301,8 @@ export const Header = ({
                   color: '#F8F8F8',
                   display: 'flex',
                   position: 'absolute',
-                  top: '430px',
-                  left: '32px',
+                  top: '432px',
+                  left: '31px',
                 }}>{winningTickets[0]}</Box>
                 <Box sx={{
                   fontFamily: 'Epilogue',
@@ -308,7 +313,7 @@ export const Header = ({
                   color: '#F8F8F8',
                   display: 'flex',
                   position: 'absolute',
-                  top: '430px',
+                  top: '432px',
                   left: '72px',
                 }}>{winningTickets[1]}</Box>
                 <Box sx={{
@@ -320,8 +325,8 @@ export const Header = ({
                   color: '#F8F8F8',
                   display: 'flex',
                   position: 'absolute',
-                  top: '430px',
-                  left: '113px',
+                  top: '432px',
+                  left: '112px',
                 }}>{winningTickets[2]}</Box>
               </>
             }
@@ -422,7 +427,10 @@ export const Header = ({
                   width: '227px',
                   textAlign: 'center',
                 }}>Mint NFT and get money to your wallet during 1 hour</Box>
-                <Box component={"img"} src={MintTicketFront} className={'mintTicketFront' && loading ? 'animate' : null}
+                <Box component={'img'} src={MintTicketBorder} className={loading ? 'animateWinn' : null} sx={{
+                  position: 'absolute',
+                }}/>
+                <Box component={"img"} src={MintTicketFront} className={'mintTicketFront'}
                      sx={{
                        position: 'absolute',
                        left: '15px',
@@ -438,8 +446,8 @@ export const Header = ({
                   color: '#F8F8F8',
                   display: 'flex',
                   position: 'absolute',
-                  top: '430px',
-                  left: '32px',
+                  top: '432px',
+                  left: '31px',
                 }}>{winningTickets[0]}</Box>
                 <Box sx={{
                   fontFamily: 'Epilogue',
@@ -450,7 +458,7 @@ export const Header = ({
                   color: '#F8F8F8',
                   display: 'flex',
                   position: 'absolute',
-                  top: '430px',
+                  top: '432px',
                   left: '72px',
                 }}>{winningTickets[1]}</Box>
                 <Box sx={{
@@ -462,7 +470,7 @@ export const Header = ({
                   color: '#F8F8F8',
                   display: 'flex',
                   position: 'absolute',
-                  top: '430px',
+                  top: '432px',
                   left: '112px',
                 }}>{winningTickets[2]}</Box>
               </>
@@ -576,6 +584,7 @@ export const Header = ({
                   textTransform: 'none',
                 }}> <Icon><img src={TryAgainImg} alt='tryAgain'/></Icon> Try Again </Button>
                 <Link
+                  target="_blank"
                   href={`https://testnets.opensea.io/assets/goerli/0x3cc6c2fb7b837eb2c100285a3aca108d245b178e/${tokenId}`}><Button
                   className='openSeaButton' sx={{
                   flexDirection: 'row',
@@ -617,7 +626,7 @@ export const Header = ({
                 </Box>
               </>
             }
-            <Box component={"img"} sx={{width: '278px'}} src={ticketCount !== 0 ? !minted ? MintTicketImg : MintTicketWinner : MintTicketWinner}
+            <Box component={"img"} sx={{width: '278px', height: '485px'}} src={ticketCount !== 0 ? !minted ? MintTicketUnborder : MintTicketWinner : MintTicketWinner}
                  className='mintTicket'/>
           </Box>
           <Snackbar
@@ -783,6 +792,7 @@ export const Header = ({
                   position: 'absolute',
                   top: '-13px',
                   left: '80px',
+                  zIndex:15,
                 }}/>
                 <Button disabled className='mintButton' sx={{
                   flexDirection: 'row',
@@ -826,6 +836,9 @@ export const Header = ({
                   width: '185px',
                   textAlign: 'center',
                 }}>Mint NFT and get money to your wallet during 1 hour</Box>
+                <Box component={'img'} src={MintTicketBorder} className={loading ? 'animateWinn' : null} sx={{
+                  position: 'absolute',
+                }}/>
                 <Box component={"img"} src={MintTicketZero} className={'mintTicketFront' && loading ? 'animate' : null}
                      sx={{
                        position: 'absolute',
@@ -858,8 +871,8 @@ export const Header = ({
                   color: '#F8F8F8',
                   display: 'flex',
                   position: 'absolute',
-                  top: '430px',
-                  left: '32px',
+                  top: '432px',
+                  left: '31px',
                 }}>{winningTickets[0]}</Box>
                 <Box sx={{
                   fontFamily: 'Epilogue',
@@ -870,7 +883,7 @@ export const Header = ({
                   color: '#F8F8F8',
                   display: 'flex',
                   position: 'absolute',
-                  top: '430px',
+                  top: '432px',
                   left: '72px',
                 }}>{winningTickets[1]}</Box>
                 <Box sx={{
@@ -882,8 +895,8 @@ export const Header = ({
                   color: '#F8F8F8',
                   display: 'flex',
                   position: 'absolute',
-                  top: '430px',
-                  left: '113px',
+                  top: '432px',
+                  left: '112px',
                 }}>{winningTickets[2]}</Box>
               </>
             }
@@ -974,7 +987,9 @@ export const Header = ({
                     transform: 'scale(1.1)',
                   }
                 }}> MINT TICKET 0.059 ETH </Button>
-
+                <Box component={'img'} src={MintTicketBorder} className={loading ? 'animateWinn' : null} sx={{
+                  position: 'absolute',
+                }}/>
                 <Box component='span' sx={{
                   fontFamily: 'Epilogue',
                   fontStyle: 'normal',
@@ -989,7 +1004,7 @@ export const Header = ({
                   width: '227px',
                   textAlign: 'center',
                 }}>Mint NFT and get money to your wallet during 1 hour</Box>
-                <Box component={"img"} src={MintTicketFront} className={'mintTicketFront' && loading ? 'animate' : null}
+                <Box component={"img"} src={MintTicketFront} className={'mintTicketFront'}
                      sx={{
                        position: 'absolute',
                        left: '15px',
@@ -1009,8 +1024,8 @@ export const Header = ({
                   color: '#F8F8F8',
                   display: 'flex',
                   position: 'absolute',
-                  top: '430px',
-                  left: '32px',
+                  top: '432px',
+                  left: '31px',
                 }}>{winningTickets[0]}</Box>
                 <Box sx={{
                   fontFamily: 'Epilogue',
@@ -1021,7 +1036,7 @@ export const Header = ({
                   color: '#F8F8F8',
                   display: 'flex',
                   position: 'absolute',
-                  top: '430px',
+                  top: '432px',
                   left: '72px',
                 }}>{winningTickets[1]}</Box>
                 <Box sx={{
@@ -1033,8 +1048,8 @@ export const Header = ({
                   color: '#F8F8F8',
                   display: 'flex',
                   position: 'absolute',
-                  top: '430px',
-                  left: '113px',
+                  top: '432px',
+                  left: '112px',
                 }}>{winningTickets[2]}</Box>
               </>
             }
@@ -1151,6 +1166,7 @@ export const Header = ({
                   }
                 }}> <Icon><img src={TryAgainImg} alt='tryAgain'/></Icon> Try Again </Button>
                 <Link
+                  target="_blank"
                   href={`https://testnets.opensea.io/assets/goerli/0x3cc6c2fb7b837eb2c100285a3aca108d245b178e/${tokenId}`}><Button
                   className='openSeaButton' sx={{
                   flexDirection: 'row',
@@ -1196,7 +1212,7 @@ export const Header = ({
                 </Box>
               </>
             }
-            <Box component={"img"} sx={{width: '278px'}} src={ticketCount !== 0 ? !minted ? MintTicketImg : MintTicketWinner : MintTicketWinner}
+            <Box component={"img"} sx={{width: '278px', height: '485px'}} src={ticketCount !== 0 ? !minted ? MintTicketUnborder : MintTicketWinner : MintTicketWinner}
                  className='mintTicket'/>
           </Box>
           {

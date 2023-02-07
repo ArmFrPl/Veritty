@@ -84,7 +84,7 @@ export const TicketsCount = ({ticketCounts}) => {
             textAlign: 'center',
             color: '#FFD057',
             mt: '10px',
-          }}>50.0000 USTD x{ticketCounts[0]}</Box>
+          }}>50.0000 USTD x {' ' + ticketCounts[0]}</Box>
 
           <table style={{marginTop: '29px'}}>
             <tbody>
@@ -167,7 +167,7 @@ export const TicketsCount = ({ticketCounts}) => {
             textAlign: 'center',
             color: '#FFD057',
             mt: '10px',
-          }}>50.000 USTD x {ticketCounts[0]}</Box>
+          }}>50.000 USTD x {' ' + ticketCounts[0]}</Box>
           <table style={{marginTop: '29px'}}>
             <tbody>
             {
