@@ -47,7 +47,7 @@ export const Header = ({
   const [count, setCount] = useState(0);
   const [ticketCount, setTicketCount] = useState(0);
   const [tokenId, setTokenId] = useState(0);
-  const [isContractOpen, setContractOpen] = useState(false);
+  const [isContractOpen, setContractOpen] = useState(true);
 
   const {open, close} = useWeb3Modal();
   const signer = useSigner();
@@ -66,12 +66,8 @@ export const Header = ({
     const isContrOpen = async () => {
       setContractOpen(await contract.isOpen);
     }
-    console.log(isContractOpen)
     setTicketCount(countTickets());
     isContrOpen();
-    console.log(isContractOpen)
-    console.log(contract)
-
   })
 
   useEffect(() => {
