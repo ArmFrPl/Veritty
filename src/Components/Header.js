@@ -64,7 +64,7 @@ export const Header = ({
 
   useEffect(() => {
     const isContrOpen = async () => {
-      setContractOpen(await contract.isOpen);
+      setContractOpen(await contract.isOpen());
     }
     setTicketCount(countTickets() || 10888);
     isContrOpen();
