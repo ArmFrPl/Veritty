@@ -45,7 +45,7 @@ export const Header = ({
   const [winners, getWinners] = useState({});
   const [minted, setMinted] = useState(false);
   const [count, setCount] = useState(0);
-  const [ticketCount, setTicketCount] = useState(0);
+  const [ticketCount, setTicketCount] = useState(10888);
   const [tokenId, setTokenId] = useState(0);
   const [isContractOpen, setContractOpen] = useState(true);
 
@@ -66,7 +66,7 @@ export const Header = ({
     const isContrOpen = async () => {
       setContractOpen(await contract.isOpen);
     }
-    setTicketCount(countTickets());
+    setTicketCount(countTickets() || 10888);
     isContrOpen();
   })
 
@@ -107,12 +107,6 @@ export const Header = ({
   const handleCloseMobileWinner = () => {
     setWinnerOpen(false)
   };
-
-  // useEffect(() => {
-  //   if (!isLoggedIn) {
-  //     setMinted(false);
-  //   }
-  // }, [minted])
 
   const getTicketImage = () => {
     switch (winningSum) {
@@ -332,7 +326,7 @@ export const Header = ({
               </>
             }
             {
-              ticketCount===0 &&
+              ticketCount === 0 &&
               <>
                 <Box component='img' src={SoldOutButton} sx={{
                   position: 'absolute',
