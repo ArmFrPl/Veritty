@@ -9,7 +9,7 @@ export const Dashboard = ({ticketsRef, mobileTicketsRef, userHistory}) => {
   const mobileDataRef = useRef(null);
 
   const convertToDate = (timestamp) => {
-    let date = new Date(timestamp);
+    let date = new Date(timestamp * 1000);
     date = date.getDate() +
       "/" + (date.getMonth() + 1) +
       "/" + date.getFullYear() +

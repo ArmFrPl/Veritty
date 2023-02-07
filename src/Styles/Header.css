@@ -135,12 +135,9 @@
   }
   50% {
     transform: scale(1);
-    /*opacity: .5;*/
   }
   100% {
     transform: scale(1.1);
-    /*opacity: 0;*/
-    /*display: none;*/
   }
 }
 
@@ -155,11 +152,8 @@
   }
   50% {
     transform: rotate(180deg);
-    /*opacity: .5;*/
   }
   100% {
     transform: rotate(360deg);
-    /*opacity: 0;*/
-    /*display: none;*/
   }
 }
