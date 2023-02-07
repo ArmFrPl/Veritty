@@ -49,7 +49,7 @@ export const Header = ({
   const [tokenId, setTokenId] = useState(0);
   const [isContractOpen, setContractOpen] = useState(false);
 
-  const {isOpen, open, close} = useWeb3Modal();
+  const {open, close} = useWeb3Modal();
   const signer = useSigner();
   const abi = RaffleImpl.abi;
   const contract = new ethers.Contract(ethAddress, abi, signer.data);
@@ -64,10 +64,14 @@ export const Header = ({
 
   useEffect(() => {
     const isContrOpen = async () => {
-      setContractOpen(await contract.isOpen());
+      setContractOpen(await contract.isOpen);
     }
+    console.log(isContractOpen)
     setTicketCount(countTickets());
     isContrOpen();
+    console.log(isContractOpen)
+    console.log(contract)
+
   })
 
   useEffect(() => {
