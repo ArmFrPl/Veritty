@@ -22,7 +22,7 @@ import SuspendedButton from '../Images/Tickets/suspended.svg';
 import SoldOutButton from '../Images/Tickets/soldOut.svg';
 import GoToIcon from "../Images/goToIcon.svg";
 import TryAgainImg from '../Images/Tickets/redo.svg'
-import {useSigner} from "wagmi";
+import {useProvider, useSigner} from "wagmi";
 import {ethers} from "ethers";
 import RaffleImpl from "../RaffleImpl.json";
 import {ethAddress} from "../constants";
@@ -50,9 +50,9 @@ export const Header = ({
   const [isContractOpen, setContractOpen] = useState(true);
 
   const {open, close} = useWeb3Modal();
-  const signer = useSigner();
+  const provider = useProvider();
   const abi = RaffleImpl.abi;
-  const contract = new ethers.Contract(ethAddress, abi, signer);
+  const contract = new ethers.Contract(ethAddress, abi, provider);
 
   const countTickets = () => {
     let ticketCountsSum = 0;
