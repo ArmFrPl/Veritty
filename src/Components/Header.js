@@ -50,9 +50,9 @@ export const Header = ({
   const [isContractOpen, setContractOpen] = useState(true);
 
   const {open, close} = useWeb3Modal();
-  const provider = useProvider();
+  const signer = useSigner();
   const abi = RaffleImpl.abi;
-  const contract = new ethers.Contract(ethAddress, abi, provider);
+  const contract = new ethers.Contract(ethAddress, abi, signer.data);
 
   const countTickets = () => {
     let ticketCountsSum = 0;
