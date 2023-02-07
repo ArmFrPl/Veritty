@@ -52,7 +52,7 @@ export const Header = ({
   const {open, close} = useWeb3Modal();
   const signer = useSigner();
   const abi = RaffleImpl.abi;
-  const contract = new ethers.Contract(ethAddress, abi, signer.data);
+  const contract = new ethers.Contract(ethAddress, abi, signer);
 
   const countTickets = () => {
     let ticketCountsSum = 0;
