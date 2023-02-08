@@ -212,7 +212,7 @@
   bottom: -7px;
   left: -7px;
   z-index: 0;
-  background: linear-gradient(90deg, #FFD057 0%, #9F03FF 15.1%, #00DFBA 53.65%, #9F03FF 89.06%, #FFAC33 100%);
+  background: linear-gradient(90deg, rgba(255,172,51,1) 0%, rgba(159,3,255,1) 20%, rgba(0,223,186,1) 40%, rgba(0,223,186,1) 60%, rgba(159,3,255,1) 80%, rgba(255,172,51,1) 100%);
   background-size: 400%;
   border-radius: 24px;
   /*transition: .1s;*/
@@ -229,7 +229,7 @@
   bottom: -10px;
   left: -10px;
   z-index: 0;
-  background: linear-gradient(90deg, #FFD057 0%, #9F03FF 15.1%, #00DFBA 53.65%, #9F03FF 89.06%, #FFAC33 100%);
+  background: linear-gradient(90deg, rgba(255,172,51,1) 0%, rgba(159,3,255,1) 20%, rgba(0,223,186,1) 40%, rgba(0,223,186,1) 60%, rgba(159,3,255,1) 80%, rgba(255,172,51,1) 100%);
   background-size: 400%;
   border-radius: 24px;
   /*transition: .1s;*/
