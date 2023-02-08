@@ -177,7 +177,7 @@ export const TicketsCount = ({ticketCounts}) => {
                   <td className='row' style={{textAlign: 'center', color: '#FFD057', width: '60px'}}>x</td>
                   <td className='row' style={{textAlign: 'left', width: '45px'}}>{w.count}</td>
                   <td className='row lastRow'
-                      style={{textAlign: 'left', width: '110px'}}>{`(left - ${ticketCounts[index+1]})`}</td>
+                      style={{textAlign: 'left', width: '110px'}}>{`(${ticketCounts[index+1]} left)`}</td>
                 </tr>
               ))
             }

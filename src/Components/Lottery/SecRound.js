@@ -13,27 +13,27 @@ export const SecRound = () => {
 
   const prizes = [
     {
-      place: '1 место',
+      place: '1 place',
       prize: '10.000 USTD'
     },
     {
-      place: '2 место',
+      place: '2 place',
       prize: '5.000 USTD'
     },
     {
-      place: '3 место',
+      place: '3 place',
       prize: '2.000 USTD'
     },
     {
-      place: '4 место',
+      place: '4 place',
       prize: '1.000 USTD'
     },
     {
-      place: '5 место',
+      place: '5 place',
       prize: '500 USTD'
     },
     {
-      place: '6-20 место',
+      place: '6-20 place',
       prize: '300 USTD'
     }
   ]
@@ -80,7 +80,8 @@ export const SecRound = () => {
               prizes.map((p, index) => (
                 <tr key={index} style={{display: "flex", marginTop: '5px'}}>
                   <td className='mobileSecRoundRow' style={{textAlign: 'right', width: '95px'}}>{p.place}</td>
-                  <td className='mobileSecRoundRow' style={{textAlign: 'center', color: '#FFD057', width: '30px'}}>-</td>
+                  <td className='mobileSecRoundRow' style={{textAlign: 'center', color: '#FFD057', width: '30px'}}>-
+                  </td>
                   <td className='mobileSecRoundRow' style={{textAlign: 'left', width: '110px'}}>{p.prize}</td>
                 </tr>
               ))
@@ -98,7 +99,7 @@ export const SecRound = () => {
               color: '#F8F8F8',
               mt: '20px',
               mb: '15px',
-            }}>Смогу ли я продать свой билет в случае если я не выиграю ничего?</Box>
+            }}>Can I sell my ticket in case I don’t win anything?</Box>
             {
               accardionTitle?.map((name, index) => (
                 <Accordion key={index} expanded={expanded === `panel${index}`} onChange={handleChange(`panel${index}`)}
@@ -129,7 +130,7 @@ export const SecRound = () => {
                   </AccordionSummary>
                   <AccordionDetails>
                     <Typography sx={{color: 'white'}}>
-                      После окончания лотереи мы делаем второй розыгрыш 23.000 USDT для владельцев наибольшего количество проигришных билетов. {index}
+                      For the owners of the highest amount of losing tickets, we will hold a second drawing for 23, 000 USDT.
                     </Typography>
                   </AccordionDetails>
                 </Accordion>
@@ -201,7 +202,8 @@ export const SecRound = () => {
               color: '#F8F8F8',
               mt: '43px',
               mb: '33px',
-            }}>Смогу ли я продать свой билет в случае если я не выиграю ничего?</Box>
+            }}>Can I sell my ticket in case I don’t win anything?
+            </Box>
             {
               accardionTitle?.map((name, index) => (
                 <Accordion key={index} expanded={expanded === `panel${index}`} onChange={handleChange(`panel${index}`)}
@@ -231,8 +233,7 @@ export const SecRound = () => {
                   </AccordionSummary>
                   <AccordionDetails>
                     <Typography sx={{color: 'white'}}>
-                      После окончания лотереи мы делаем второй розыгрыш 23.000 USDT для владельцев наибольшего
-                      количество проигришных билетов. {index}
+                      For the owners of the highest amount of losing tickets, we will hold a second drawing for 23, 000 USDT.
                     </Typography>
                   </AccordionDetails>
                 </Accordion>

@@ -14,24 +14,24 @@ export const WhyNft = () => {
       nft: '910 winning spots. Watch all winnings on OpenSea in Real Time. '
     },
     {
-      classic: 'Подставные выигрыши - неизвестно кто выиграл и как.',
-      nft: 'Смарт контракт на EtherScanner. Мы используем классический смарт контракт минтинга. Все билеты раздаються в случайном порядке.'
+      classic: 'Fake winnings - there is no information as to who won and how',
+      nft: 'EtherScanner smart contract. We use the classic minting smart contract and distribute tickets randomly'
     },
     {
-      classic: 'Возможность махинаций. Классическая лотерея может довыпускать билеты во время розыгрыша.',
-      nft: 'Благодаря использованию блокчейн и четко заявленного количества участников и победителей возможность махинаций отсутсвует.'
+      classic: 'Possibility of machinations. Additional tickets may be issued during the Classic Lottery draw',
+      nft: 'Machinations are not possible due to the use of blockchain and the clear identification of participants and winners'
     },
     {
-      classic: 'Не понятно как забирать выигрыш',
-      nft: 'Деньги поступают на кошелек с которого была сминчесна выигрышная НФТ в течении одного часа.'
+      classic: 'The way to take the winnings is not clear',
+      nft: 'A winner’s wallet is credited with the money within one hour'
     },
     {
-      classic: 'Нет гарантии выплаты',
-      nft: 'У нас открытый Дискорд канал для всех участников. В случае первой не выплаты - мы потеряем репутацию моментально . Это и есть ваша гарантия'
+      classic: 'Payments are not guaranteed',
+      nft: 'We have an open Discord channel for all participants. If the first payment isn’t made, we will lose our reputation immediately. This gives you a guarantee'
     },
     {
-      classic: 'Отсутсиве кониденциальности',
-      nft: 'Полная конфиденциальность'
+      classic: 'No confidentiality',
+      nft: 'Full confidentiality'
     },
   ]
 
@@ -77,7 +77,7 @@ export const WhyNft = () => {
 
           <Divider sx={{width: '90%', borderStyle: 'dashed', borderColor: '#FFD057',}}/>
           <Divider orientation='vertical' sx={{
-            height: '780px',
+            height: '680px',
             borderStyle: 'dashed',
             borderColor: '#FFD057',
             position: 'absolute',
@@ -148,7 +148,7 @@ export const WhyNft = () => {
           </Box>
           <Divider sx={{width: '900px', borderStyle: 'dashed', borderColor: '#FFD057',}}/>
           <Divider orientation='vertical' sx={{
-            height: '800px',
+            height: '700px',
             borderStyle: 'dashed',
             borderColor: '#FFD057',
             position: 'absolute',
