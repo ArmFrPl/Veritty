@@ -81,15 +81,16 @@ export const Header = ({
 
   useEffect(() => {
     const intervalId = setInterval(() => {
-      if (count >= winners.length - 1) {
+      console.log(winners)
+      if (winners.length === 1 || count >= winners.length - 1) {
         setCount(0);
 
-      } else {
+      } else if (winners.length){
         setCount(count + 1);
       }
       setWinnerOpen(true);
 
-    }, 3 * 60 * 1000); // 3 minutes in milliseconds
+    },  3 * 60 * 1000); // 3 minutes in milliseconds
     return () => {
       clearInterval(intervalId);
     };
@@ -1267,7 +1268,7 @@ export const Header = ({
                         alignItems: 'center',
                         letterSpacing: '0.01em',
                         color: winners[count]?.sum < 500 ? '#F8F8F8' : '#00DF74',
-                      }}>WINNER</Typography>
+                      }}>WINNER {console.log(winners, count)}</Typography>
                       <Typography sx={{
                         fontFamily: 'Epilogue',
                         fontStyle: 'normal',
