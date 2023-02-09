@@ -68,7 +68,7 @@
 .mobile{
   width: 194px;
   height: 85px;
-  margin-right: 0px !important;
+  margin-right: 0 !important;
 }
 
 
@@ -170,12 +170,6 @@
 }
 
 
-/*@property --angle {*/
-/*  syntax: '<angle>';*/
-/*  initial-value: 0deg;*/
-/*  inherits: false;*/
-/*}*/
-
 @property --angle {
   syntax: '<angle>';
   initial-value: 0deg;
@@ -189,7 +183,7 @@
   box-sizing: border-box;
   background-size: 100%;
   z-index: 2;
-  /*background: linear-gradient(var(--angle), #FFD057 0%, #9F03FF 15.1%, #00DFBA 53.65%, #9F03FF 89.06%, #FFAC33 100%) 1;*/
+  background: linear-gradient(var(--angle), #FFD057 0%, #9F03FF 15.1%, #00DFBA 53.65%, #9F03FF 89.06%, #FFAC33 100%) 1;
   /*animation: 10s linear infinite animate;*/
   /*border: 1rem solid;*/
   /*border-image: linear-gradient(var(--angle), #12c2e9, #c471ed, #f64f59) 1;*/
@@ -209,7 +203,9 @@
 /*    background-position: 400%;*/
 /*  }*/
 /*}*/
-
+:root, :after, :before{
+  --angle: 0deg;
+}
 @keyframes animate {
   0% {
     --angle: 0deg;
@@ -218,7 +214,6 @@
     --angle: 360deg;
   }
 }
-
 .mintTicket:after {
   content: "";
   position: absolute;
@@ -233,7 +228,7 @@
   /*transition: .1s;*/
   filter: blur(0px);
   opacity: 1;
-  animation: 7s linear infinite animate;
+  animation: animate 7s linear infinite;
 }
 
 .mintTicket:before {
@@ -244,13 +239,13 @@
   bottom: -10px;
   left: -10px;
   z-index: 0;
-  background: linear-gradient(var(--angle), rgba(255,172,51,1) 0%, rgba(159,3,255,1) 20%, rgba(0,223,186,1) 50%, rgba(159,3,255,1) 80%, rgba(255,172,51,1) 100%);
+  background: linear-gradient(var(--angle), rgba(255,172,51,1) 0%, rgba(159,3,255,1) 25%, rgba(0,223,186,1) 50%, rgba(159,3,255,1) 75%, rgba(255,172,51,1) 100%);
   background-size: 100%;
   border-radius: 24px;
   /*transition: .1s;*/
   filter: blur(20px);
   opacity: 1;
-  animation: 7s linear infinite animate;
+  animation: animate 7s linear infinite;
 }
 
 /*@keyframes rotate {*/
