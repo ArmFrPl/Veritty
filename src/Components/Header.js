@@ -788,7 +788,6 @@ export const Header = ({
           <Box className='mintTicket'>
             <Box sx={{
               position: 'relative',
-              boxShadow: '0px 0px 63.4864px #5900EB',
               borderRadius: '24px',
               height: '485px',
               zIndex: 2,
