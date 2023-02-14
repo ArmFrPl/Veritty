@@ -159,7 +159,7 @@ export const SecRound = () => {
       {/*desktop*/}
       <Box className='ticketCountCont' sx={{
         width: '830px',
-        height: expanded ? '887px' : '780px',
+        height: expanded ? '957px' : '780px',
         background: 'linear-gradient(0deg, #111032 1.69%, rgba(9, 9, 18, 0) 102.54%)',
         padding: '45px 0 0 0',
         display: {xs: 'none', md: 'flex'},
