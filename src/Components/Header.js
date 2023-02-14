@@ -8,7 +8,6 @@ import "../Styles/Header.css";
 import MintTicketWinner from "../Images/Tickets/Winner Ticket MINT.svg";
 import MintTicketFront from "../Images/mintTickertFront.png";
 import MintTicketUnborder from "../Images/Tickets/MintTicketUnborder.svg";
-import MintTicketBorder from "../Images/Tickets/mintTicketBorder.svg";
 import MintTicketZero from "../Images/Tickets/0.png";
 import MintTicketHundred from "../Images/Tickets/100.png";
 import MintTicketTwoHundred from "../Images/Tickets/200.png";
@@ -50,7 +49,7 @@ export const Header = ({
   const [tokenId, setTokenId] = useState(0);
   const [isContractOpen, setContractOpen] = useState(true);
 
-  const { open, close } = useWeb3Modal();
+  const { open } = useWeb3Modal();
   const signer = useSigner();
   const abi = RaffleImpl.abi;
   const contract = new ethers.Contract(ethAddress, abi, signer.data);
@@ -103,9 +102,6 @@ export const Header = ({
   };
 
   const handleCloseWinner = () => {
-    setWinnerOpen(false);
-  };
-  const handleCloseMobileWinner = () => {
     setWinnerOpen(false);
   };
 
@@ -270,7 +266,7 @@ export const Header = ({
                       },
                     }}
                   >
-                    MINT TICKET 0.059 ETHs
+                    MINT TICKET 0.059 ETH
                   </Button>
 
                   <Box
@@ -446,7 +442,7 @@ export const Header = ({
                     position: 'absolute',
                     bottom: '110px',
                     left: '22px',
-                  }}> MINT TICKET 0.059 ETH </Button>
+                  }}> {loading ? <div class="lds-ring"><div></div><div></div><div></div><div></div></div> : 'MINT TICKET 0.059 ETH'} </Button>
                   <Box component='span' sx={{
                     fontFamily: 'Epilogue',
                     fontStyle: 'normal',
@@ -488,7 +484,7 @@ export const Header = ({
                       left: "22px",
                     }}
                   >
-                    MINT TICKET 0.059 ETH
+                    {loading ? <div class="lds-ring"><div></div><div></div><div></div><div></div></div> : 'MINT TICKET 0.059 ETH'}
                   </Button>
                   <Box
                     component="span"
@@ -696,13 +692,16 @@ export const Header = ({
                       textTransform: "none",
                     }}
                   >
-                    
-                    <Icon>
-                      <img src={TryAgainImg} alt="tryAgain" style={{
-                        filter: loading ? 'invert(97%) sepia(3%) saturate(1%) hue-rotate(321deg) brightness(115%) contrast(95%)' : null,
-                      }} />
-                    </Icon>
-                    Try Again
+                    {loading ? <div class="lds-ring"><div></div><div></div><div></div><div></div></div> :
+                      <>
+                        <Icon>
+                          <img src={TryAgainImg} alt="tryAgain" style={{
+                            filter: loading ? 'invert(97%) sepia(3%) saturate(1%) hue-rotate(321deg) brightness(115%) contrast(95%)' : null,
+                          }} />
+                        </Icon>
+                        Try Again
+                      </>
+                    }
                   </Button>
                   <Link
                     target="_blank"
@@ -1236,8 +1235,7 @@ export const Header = ({
                         },
                       }}
                     >
-                      
-                      MINT TICKET 0.059 ETH
+                      {loading ? <div class="lds-ring"><div></div><div></div><div></div><div></div></div> : 'MINT TICKET 0.059 ETH'}
                     </Button>
                     <Box
                       component="span"
@@ -1466,12 +1464,16 @@ export const Header = ({
                         },
                       }}
                     >
-                      <Icon>
-                        <img src={TryAgainImg} alt="tryAgain" style={{
-                          filter: loading ? 'invert(97%) sepia(3%) saturate(1%) hue-rotate(321deg) brightness(115%) contrast(95%)' : null,
-                        }} />
-                      </Icon>
-                      Try Again
+                      {loading ? <div class="lds-ring"><div></div><div></div><div></div><div></div></div> :
+                        <>
+                        <Icon>
+                          <img src={TryAgainImg} alt="tryAgain" style={{
+                            filter: loading ? 'invert(97%) sepia(3%) saturate(1%) hue-rotate(321deg) brightness(115%) contrast(95%)' : null,
+                          }} />
+                        </Icon>
+                        Try Again
+                        </>
+                      }
                     </Button>
                     <Link
                       target="_blank"
