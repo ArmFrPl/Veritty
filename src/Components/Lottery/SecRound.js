@@ -64,7 +64,7 @@ export const SecRound = () => {
     <>
       <Box className='ticketCountCont' sx={{
         width: '85%',
-        height: expanded ? '795px' : '600px',
+        height: expanded ? '845px' : '600px',
         background: 'linear-gradient(0deg, #111032 1.69%, rgba(9, 9, 18, 0) 102.54%)',
         padding: '45px 0 0 0',
         display: {xs: 'flex', md: 'none'},
@@ -165,14 +165,14 @@ export const SecRound = () => {
       {/*desktop*/}
       <Box className='ticketCountCont' sx={{
         width: '830px',
-        height: '837px',
+        height: expanded ? '887px' : '780px',
         background: 'linear-gradient(0deg, #111032 1.69%, rgba(9, 9, 18, 0) 102.54%)',
         padding: '45px 0 0 0',
         display: {xs: 'none', md: 'flex'},
         flexDirection: 'column',
         justifyContent: 'space-between',
         borderRadius: '24px',
-        transitionDuration: '.5s',
+        transitionDuration: '.1s',
         '&:hover': {
           boxShadow: '0px 0px 30px #fff8e6',
         }

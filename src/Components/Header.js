@@ -494,8 +494,8 @@ export const Header = ({
                       left: "22px",
                     }}
                   >
-                    {" "}
-                    MINT TICKET 0.059 ETH{" "}
+                    
+                    MINT TICKET 0.059 ETH
                   </Button>
                   <Box
                     component="span"
@@ -602,7 +602,7 @@ export const Header = ({
                           component="span"
                           sx={{ width: "211px", display: "flex" }}
                         >
-                          You have a chance to win on the 2nd Round!{" "}
+                          You have a chance to win on the 2nd Round!
                         </Box>
                       </Box>
                       <Box
@@ -656,7 +656,7 @@ export const Header = ({
                           zIndex: 10,
                         }}
                       >
-                        {winningSum}{" "}
+                        {winningSum}
                         <Box component="span" sx={{ fontSize: "24px" }}>
                           USTD
                         </Box>
@@ -709,11 +709,11 @@ export const Header = ({
                       textTransform: "none",
                     }}
                   >
-                    {" "}
+                    
                     <Icon>
                       <img src={TryAgainImg} alt="tryAgain" />
-                    </Icon>{" "}
-                    Try Again{" "}
+                    </Icon>
+                    Try Again
                   </Button>
                   <Link
                     target="_blank"
@@ -746,8 +746,8 @@ export const Header = ({
                         textTransform: "none",
                       }}
                     >
-                      {" "}
-                      Look on OpenSea{" "}
+                      
+                      Look on OpenSea
                     </Button>
                   </Link>
 
@@ -870,7 +870,7 @@ export const Header = ({
                           letterSpacing: "0.01em",
                         }}
                       >
-                        View on Etherscan{" "}
+                        View on Etherscan
                         <img
                           src={GoToIcon}
                           alt="arrow"
@@ -1036,8 +1036,8 @@ export const Header = ({
                         },
                       }}
                     >
-                      {" "}
-                      MINT TICKET 0.059 ETH{" "}
+                      
+                      MINT TICKET 0.059 ETH
                     </Button>
 
                     <Box
@@ -1256,8 +1256,8 @@ export const Header = ({
                         },
                       }}
                     >
-                      {" "}
-                      MINT TICKET 0.059 ETH{" "}
+                      
+                      MINT TICKET 0.059 ETH
                     </Button>
                     <Box
                       component="span"
@@ -1307,7 +1307,7 @@ export const Header = ({
                         left: "31px",
                       }}
                     >
-                      {winningTickets[0]}
+                      8
                     </Box>
                     <Box
                       sx={{
@@ -1323,7 +1323,7 @@ export const Header = ({
                         left: "72px",
                       }}
                     >
-                      {winningTickets[1]}
+                      8
                     </Box>
                     <Box
                       sx={{
@@ -1339,7 +1339,7 @@ export const Header = ({
                         left: "112px",
                       }}
                     >
-                      {winningTickets[2]}
+                      8
                     </Box>
                   </>
                 )}
@@ -1384,7 +1384,7 @@ export const Header = ({
                             component="span"
                             sx={{ width: "211px", display: "flex" }}
                           >
-                            You have a chance to win on the 2nd Round!{" "}
+                            You have a chance to win on the 2nd Round!
                           </Box>
                         </Box>
                         <Box
@@ -1438,7 +1438,7 @@ export const Header = ({
                             zIndex: 10,
                           }}
                         >
-                          {winningSum}{" "}
+                          {winningSum}
                           <Box component="span" sx={{ fontSize: "24px" }}>
                             USTD
                           </Box>
@@ -1495,11 +1495,10 @@ export const Header = ({
                         },
                       }}
                     >
-                      {" "}
                       <Icon>
                         <img src={TryAgainImg} alt="tryAgain" />
-                      </Icon>{" "}
-                      Try Again{" "}
+                      </Icon>
+                      Try Again
                     </Button>
                     <Link
                       target="_blank"
@@ -1536,8 +1535,8 @@ export const Header = ({
                           },
                         }}
                       >
-                        {" "}
-                        Look on OpenSea{" "}
+                        
+                        Look on OpenSea
                       </Button>
                     </Link>
 
@@ -1658,7 +1657,7 @@ export const Header = ({
                             letterSpacing: "0.01em",
                           }}
                         >
-                          View on Etherscan{" "}
+                          View on Etherscan
                           <img
                             src={GoToIcon}
                             alt="arrow"
