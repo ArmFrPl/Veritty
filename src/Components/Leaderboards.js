@@ -101,6 +101,11 @@ export const Leaderboards = ({winnersRef, mobileWinnersRef, leaderboard}) => {
               padding: '0 28px 0 15px',
               margin: '19px 0 17px 0',
               boxSizing: 'border-box',
+              msOverflowStyle: 'none',
+              scrollbarWidth: 'none',
+              '&::-webkit-scrollbar': {
+                display: 'none',
+              }
             }}>
               {
                 filteredLeaders?.map((l, index) => {

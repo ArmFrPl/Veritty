@@ -68,7 +68,12 @@ export const Results = ({results}) => {
             width: '100%',
             alignItems: 'center',
             overflow: 'scroll',
-            height: '80%'
+            height: '80%',
+            msOverflowStyle: 'none',
+            scrollbarWidth: 'none',
+            '&::-webkit-scrollbar': {
+              display: 'none',
+            }
           }}>
             {
               Object.keys(results)?.map((result, index) => (
@@ -185,7 +190,12 @@ export const Results = ({results}) => {
               flexDirection: 'column',
               alignItems: 'center',
               overflow: 'scroll',
-              height: '80%'
+              height: '80%',
+              msOverflowStyle: 'none',
+              scrollbarWidth: 'none',
+              '&::-webkit-scrollbar': {
+                display: 'none',
+              }
             }}>
               {
                 Object.keys(results)?.map((result, index) => (
