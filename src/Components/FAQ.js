@@ -19,11 +19,7 @@ export const FAQ = ({faqRef, mobileFaqRef}) => {
     },
     {
       name: 'How to connect Wallet',
-      value: `1. Connect Metamask (Ethereum Mainnet network)
-              2. Press MINT NFT to purchase
-              3. Press ""Confirm"" button
-              4. Follow transaction instructions on Metamask.
-              5. See the tickets you purchased in ’Dashboard’ section`
+      value: `1. Connect Metamask (Ethereum Mainnet network) \n2. Press MINT NFT to purchase \n3. Press ""Confirm"" button \n4. Follow transaction instructions on Metamask. \n5. See the tickets you purchased in ’Dashboard’ section`
     },
     {
       name: 'How to get my NFT',
@@ -86,7 +82,7 @@ export const FAQ = ({faqRef, mobileFaqRef}) => {
                 <Typography>{item.name}</Typography>
               </AccordionSummary>
               <AccordionDetails>
-                <Typography>
+                <Typography sx={{ whiteSpace: 'pre-wrap', textAlign: 'center'}}>
                   {item.value}
                 </Typography>
               </AccordionDetails>
@@ -152,7 +148,7 @@ export const FAQ = ({faqRef, mobileFaqRef}) => {
                 <Typography>{item.name}</Typography>
               </AccordionSummary>
               <AccordionDetails>
-                <Typography>
+                <Typography sx={{ whiteSpace: 'pre-wrap', textAlign: 'center'}}>
                   {item.value}
                 </Typography>
               </AccordionDetails>

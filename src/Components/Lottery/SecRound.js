@@ -12,7 +12,7 @@ export const SecRound = () => {
   const accardionTitle = [
     {
       name: 'Yes',
-      value: 'For the owners of the highest amount of tickets (no matter winning or losing), we will hold a second raffle for 23, 000 USDT.',
+      value: 'For the owners of the highest amount of tickets (no matter winning or losing), we will hold a second raffle for 23.000 USDT.',
     },
     {
       name: 'How it works?',
@@ -23,7 +23,7 @@ export const SecRound = () => {
       value: 'The raffle date will be announced on our social media. At the moment of it, the smart contract will check all lottery participants\' addresses and determine the 20 of them that own the most tickets.',
     }, {
       name: 'To buy or sell non-winning tickets?',
-      value: 'If you want to participate in the second raffle- you can buy Veritty tickets from other participants on OpenSea on the secondary market. If you do not choose to , you can sell your tickets by listing them for sale on the OpenSea at the exact same price you are willing to sell them for.',
+      value: 'If you want to participate in the second raffle - you can buy Veritty tickets from other participants on OpenSea on the secondary market. \nIf you do not choose to, you can sell your tickets by listing them for sale on the OpenSea at the exact same price you are willing to sell them for.',
     }
   ];
 
@@ -58,7 +58,7 @@ export const SecRound = () => {
     <>
       <Box className='ticketCountCont' sx={{
         width: '85%',
-        height: expanded ? '845px' : '600px',
+        height: expanded ? '865px' : '600px',
         background: 'linear-gradient(0deg, #111032 1.69%, rgba(9, 9, 18, 0) 102.54%)',
         padding: '45px 0 0 0',
         display: {xs: 'flex', md: 'none'},
@@ -145,7 +145,7 @@ export const SecRound = () => {
                     }}>{item.name}</Typography>
                   </AccordionSummary>
                   <AccordionDetails>
-                    <Typography sx={{color: 'white'}}>
+                    <Typography sx={{color: 'white', whiteSpace: 'pre-wrap', textAlign: 'center'}}>
                       {item.value}
                     </Typography>
                   </AccordionDetails>
@@ -249,7 +249,6 @@ export const SecRound = () => {
                   </AccordionSummary>
                   <AccordionDetails>
                     <Typography sx={{color: 'white', whiteSpace: 'pre-wrap', textAlign: 'center'}}>
-                      {/*{item.value.replace(/\n/g, '<br>')}*/}
                       {item.value}
                     </Typography>
                   </AccordionDetails>

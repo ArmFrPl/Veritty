@@ -13,7 +13,7 @@ export const Navbar = ({isLoggedIn, faqRef, mobileFaqRef, setMenuOpen, menuOpen,
 
   const {pathname} = useLocation();
 
-  const { isOpen, open, close } = useWeb3Modal();
+  const {open} = useWeb3Modal();
 
   const handleOpenNavMenu = () => setMenuOpen(!menuOpen);
   const scrollToWinners = () => {
@@ -122,11 +122,11 @@ export const Navbar = ({isLoggedIn, faqRef, mobileFaqRef, setMenuOpen, menuOpen,
                           }}>FAQ</Link>
                   </Box>
                   <SocialLinks menuOpen={menuOpen}/>
-                  <Muilink target='_blank' href='https://goerli.etherscan.io/address/0x0CE0E5676b7c6c26F6A9923cC2C054eB3FDBEcc2' style={{textDecoration: 'none', justifyContent: 'center', mt: '30px'}}
+                  <Muilink target='_blank' href='https://goerli.etherscan.io/address/0x0CE0E5676b7c6c26F6A9923cC2C054eB3FDBEcc2' sx={{textDecoration: 'none', justifyContent: 'center', mt: '30px !important', color: 'white'}}
                         className='mobMenuItem'>Smart Contract</Muilink>
                   <Link to='#'
                         style={{textDecoration: 'none', display: 'flex', justifyContent: 'center', marginTop: '100px'}}>
-                    <Web3Button />
+                    {!isLoggedIn && <Web3Button />}
                   </Link>
                 </Box>
               </Box>
