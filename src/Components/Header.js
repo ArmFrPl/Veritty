@@ -698,7 +698,9 @@ export const Header = ({
                   >
                     
                     <Icon>
-                      <img src={TryAgainImg} alt="tryAgain" />
+                      <img src={TryAgainImg} alt="tryAgain" style={{
+                        filter: loading ? 'invert(97%) sepia(3%) saturate(1%) hue-rotate(321deg) brightness(115%) contrast(95%)' : null,
+                      }} />
                     </Icon>
                     Try Again
                   </Button>
@@ -1465,7 +1467,9 @@ export const Header = ({
                       }}
                     >
                       <Icon>
-                        <img src={TryAgainImg} alt="tryAgain"  />
+                        <img src={TryAgainImg} alt="tryAgain" style={{
+                          filter: loading ? 'invert(97%) sepia(3%) saturate(1%) hue-rotate(321deg) brightness(115%) contrast(95%)' : null,
+                        }} />
                       </Icon>
                       Try Again
                     </Button>
@@ -1590,7 +1594,7 @@ export const Header = ({
                             winners[count]?.sum < 500 ? "#F8F8F8" : "#00DF74",
                         }}
                       >
-                        WINNER {console.log(winners, count)}
+                        WINNER
                       </Typography>
                       <Typography
                         sx={{
