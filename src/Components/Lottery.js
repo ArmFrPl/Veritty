@@ -8,9 +8,7 @@ import {Box} from "@mui/material";
 export const Lottery = ({menuOpen, ticketCounts}) => {
 
   return(
-    <Box className='lotteryCont' sx={{
-      // display: {xs: 'none', md: 'flex'}
-    }}>
+    <Box className='lotteryCont' sx={{}}>
       <TicketsCount menuOpen={menuOpen} ticketCounts={ticketCounts} />
       <div className='blankSpace'></div>
       <SecRound menuOpen={menuOpen} />

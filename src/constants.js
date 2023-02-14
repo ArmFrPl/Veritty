@@ -1,2 +1,2 @@
-export const ethAddress = '0x0CE0E5676b7c6c26F6A9923cC2C054eB3FDBEcc2';
+export const ethAddress = '0x2d6Cc2Dc0658Af22C06c1E69998250615956C086';
 // export const ethAddress = '0x038DC4c4C98CadC3973bE8F696eF602111B9D246';

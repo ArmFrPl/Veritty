@@ -735,7 +735,7 @@ export const Header = ({
                       }}
                     >
                       
-                      Look on OpenSea
+                      View on OpenSea
                     </Button>
                   </Link>
 
@@ -1477,7 +1477,7 @@ export const Header = ({
                     </Button>
                     <Link
                       target="_blank"
-                      href={`https://testnets.opensea.io/assets/goerli/0x3cc6c2fb7b837eb2c100285a3aca108d245b178e/${tokenId}`}
+                      href={`https://testnets.opensea.io/assets/goerli/0x8A85f0b84a765D2e2f536c3e9E74D8A1044c8dFf/${tokenId}`}
                     >
                       <Button
                         className="openSeaButton"
@@ -1511,7 +1511,7 @@ export const Header = ({
                         }}
                       >
                         
-                        Look on OpenSea
+                        View on OpenSea
                       </Button>
                     </Link>
 

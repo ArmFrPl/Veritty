@@ -1,5 +1,5 @@
 import React from "react";
-import {Accordion, AccordionDetails, AccordionSummary, Box, Typography} from "@mui/material";
+import {Accordion, AccordionDetails, AccordionSummary, Box, Typography, Link} from "@mui/material";
 import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
 import '../Styles/FAQ.css';
 
@@ -64,7 +64,7 @@ export const FAQ = ({faqRef, mobileFaqRef}) => {
           textDecorationThickness: '1px',
           cursor: 'pointer',
           textUnderlinePosition: 'under',
-        }}>Contact Support</Box></Box>
+        }}><Link sx={{color: '#F8F8F8'}} target='_blank' href='mailto:info@veritty.io'>Contact Support</Link></Box></Box>
         {
           names?.map((item, index) => (
             <Accordion key={index} sx={{
@@ -131,7 +131,7 @@ export const FAQ = ({faqRef, mobileFaqRef}) => {
           textDecorationThickness: '1px',
           cursor: 'pointer',
           textUnderlinePosition: 'under',
-        }}>Contact Support</Box></Box>
+        }}><Link sx={{color: '#F8F8F8'}} target='_blank' href='mailto:info@veritty.io'>Contact Support</Link></Box></Box>
         {
           names?.map((item, index) => (
             <Accordion key={index} sx={{

@@ -16,13 +16,7 @@ export const SecRound = () => {
     },
     {
       name: 'How it works?',
-      value: `The first 20 participants with the \n highest amount of tickets will receive such payments: 
-      \n1st place - 10,000 USDT
-      \n2nd place - 5000 USDT 
-      \n3rd place - 2000 USDT 
-      \n4th place - 1000 USDT 
-      \n5th place - 500 USDT 
-      \n6 - 20 places - 300 USDT`,
+      value: "The first 20 participants with the highest amount of tickets will receive such payments: \n1st place - 10.000 USDT \n2nd place - 5.000 USDT  \n3rd place - 2.000 USDT  \n4th place - 1.000 USDT \n5th place - 500 USDT \n6 - 20 places - 300 USDT",
     },
     {
       name: 'How to Participate?',
@@ -254,7 +248,8 @@ export const SecRound = () => {
                     }}>{item.name}</Typography>
                   </AccordionSummary>
                   <AccordionDetails>
-                    <Typography sx={{color: 'white'}}>
+                    <Typography sx={{color: 'white', whiteSpace: 'pre-wrap', textAlign: 'center'}}>
+                      {/*{item.value.replace(/\n/g, '<br>')}*/}
                       {item.value}
                     </Typography>
                   </AccordionDetails>
