@@ -193,12 +193,12 @@ export const Header = ({
             }}>NFT LOTTERY</Box>
             <Box className='prizeFund mobile'>
               <Box sx={{
+                background: 'linear-gradient(180deg, #FF9700 0%, #FFD057 66.15%), #FFD057',
                 fontFamily: 'Epilogue',
                 fontStyle: "normal",
                 fontWeight: 700,
                 fontSize: "16.5px",
                 lineHeight: '31px',
-                background: 'linear-gradient(180deg, #FF9700 0%, #FFD057 66.15%), #FFD057',
                 backgroundClip: 'text',
                 textFillColor: 'transparent',
               }}>Prize fund</Box>
@@ -293,16 +293,13 @@ export const Header = ({
                     Mint NFT and get money to your wallet during 1 hour
                   </Box>
                   <Box component={"img"} src={MintTicketZero}
-                       className={'mintTicketFront' && loading ? 'animate' : null}
+                       className={'mintTicketFront'}
                        sx={{
                          position: 'absolute',
                          left: '15px',
                          top: '45px',
                          width: '254px',
                          transition: '.2s ease-in-out',
-                         "&:hover": {
-                           transform: 'scale(1.1)',
-                         }
                        }}/>
                   <Box sx={{
                     fontFamily: 'Epilogue',
@@ -387,16 +384,13 @@ export const Header = ({
                   <Box
                     component={"img"}
                     src={MintTicketZero}
-                    className={"mintTicketFront" && loading ? "animate" : null}
+                    className={"mintTicketFront"}
                     sx={{
                       position: "absolute",
                       left: "15px",
                       top: "55px",
                       width: "254px",
                       transition: ".2s ease-in-out",
-                      "&:hover": {
-                        transform: "scale(1.1)",
-                      },
                     }}
                   />
                   <Box
@@ -430,12 +424,12 @@ export const Header = ({
               )}
               {!minted && isContractOpen && ticketCount !== 0 && (
                 <>
-                  <Button disabled={!!loading} onClick={isLoggedIn ? mintTicket : open} sx={{
+                  <Button disabled={loading} onClick={isLoggedIn ? mintTicket : open} sx={{
                     flexDirection: 'row',
                     justifyContent: 'center',
                     alignItems: 'center',
                     gap: '8px',
-                    background: 'linear-gradient(93.96deg, #FFAC33 4.32%, #FFE53B 44.39%, #FAA933 103.38%), linear-gradient(94.1deg, #FFE53B 17.43%, #FFE53B 56.82%, #FAA933 96.21%)',
+                    background: loading ? '#372D42' : 'linear-gradient(93.96deg, #FFAC33 4.32%, #FFE53B 44.39%, #FAA933 103.38%), linear-gradient(94.1deg, #FFE53B 17.43%, #FFE53B 56.82%, #FAA933 96.21%)',
                     borderRadius: '8px',
                     width: '234px',
                     height: '40px',
@@ -444,7 +438,7 @@ export const Header = ({
                     fontWeight: 700,
                     fontSize: '16px',
                     lineHeight: '28px',
-                    color: '#000000',
+                    color: loading ? '#F8F8F8 !important' : '#000000',
                     flex: 'none',
                     order: 1,
                     flexGrow: 0,
@@ -468,14 +462,14 @@ export const Header = ({
                     textAlign: 'center',
                   }}>Mint NFT and get money to your wallet during 1 hour</Box>
                   <Button
+                    disabled={!!loading}
                     onClick={isLoggedIn ? mintTicket : open}
                     sx={{
                       flexDirection: "row",
                       justifyContent: "center",
                       alignItems: "center",
                       gap: "8px",
-                      background:
-                        "linear-gradient(93.96deg, #FFAC33 4.32%, #FFE53B 44.39%, #FAA933 103.38%), linear-gradient(94.1deg, #FFE53B 17.43%, #FFE53B 56.82%, #FAA933 96.21%)",
+                      background: loading ? '#372D42 !important' : 'linear-gradient(93.96deg, #FFAC33 4.32%, #FFE53B 44.39%, #FAA933 103.38%), linear-gradient(94.1deg, #FFE53B 17.43%, #FFE53B 56.82%, #FAA933 96.21%)',
                       borderRadius: "8px",
                       width: "234px",
                       height: "40px",
@@ -484,7 +478,7 @@ export const Header = ({
                       fontWeight: 700,
                       fontSize: "16px",
                       lineHeight: "28px",
-                      color: "#000000",
+                      color: loading ? '#F8F8F8 !important' : '#000000',
                       flex: "none",
                       order: 1,
                       flexGrow: 0,
@@ -494,7 +488,6 @@ export const Header = ({
                       left: "22px",
                     }}
                   >
-                    
                     MINT TICKET 0.059 ETH
                   </Button>
                   <Box
@@ -609,7 +602,7 @@ export const Header = ({
                         component={"img"}
                         src={MintTicketZero}
                         className={
-                          "mintTicketFront" && loading ? "animate" : null
+                          "mintTicketFront"
                         }
                         sx={{
                           position: "absolute",
@@ -617,9 +610,6 @@ export const Header = ({
                           top: "35px",
                           width: "254px",
                           transition: ".2s ease-in-out",
-                          "&:hover": {
-                            transform: "scale(1.1)",
-                          },
                         }}
                       />
                     </>
@@ -665,7 +655,7 @@ export const Header = ({
                         component={"img"}
                         src={getTicketImage()}
                         className={
-                          "mintTicketFront" && loading ? "animateWin" : null
+                          "mintTicketFront"
                         }
                         sx={{
                           position: "absolute",
@@ -673,14 +663,12 @@ export const Header = ({
                           top: "35px",
                           width: "254px",
                           transition: ".2s ease-in-out",
-                          "&:hover": {
-                            transform: "scale(1.1)",
-                          },
                         }}
                       />
                     </>
                   )}
                   <Button
+                    disabled={!!loading}
                     onClick={isLoggedIn ? mintTicket : open}
                     className="mintButton"
                     sx={{
@@ -688,8 +676,7 @@ export const Header = ({
                       justifyContent: "center",
                       alignItems: "center",
                       gap: "8px",
-                      background:
-                        "linear-gradient(93.96deg, #FFAC33 4.32%, #FFE53B 44.39%, #FAA933 103.38%), linear-gradient(94.1deg, #FFE53B 17.43%, #FFE53B 56.82%, #FAA933 96.21%)",
+                      background: loading ? '#372D42 !important' : 'linear-gradient(93.96deg, #FFAC33 4.32%, #FFE53B 44.39%, #FAA933 103.38%), linear-gradient(94.1deg, #FFE53B 17.43%, #FFE53B 56.82%, #FAA933 96.21%)',
                       borderRadius: "8px",
                       width: "234px",
                       height: "40px",
@@ -698,7 +685,7 @@ export const Header = ({
                       fontWeight: 700,
                       fontSize: "16px",
                       lineHeight: "28px",
-                      color: "#000000",
+                      color: loading ? '#F8F8F8 !important' : '#000000',
                       flex: "none",
                       order: 1,
                       flexGrow: 0,
@@ -964,12 +951,12 @@ export const Header = ({
             }}>NFT LOTTERY</Box>
             <Box className='prizeFund'>
               <Box sx={{
+                background: 'linear-gradient(180deg, #FF9700 0%, #FFD057 66.15%), #FFD057',
                 fontFamily: 'Epilogue',
                 fontStyle: "normal",
                 fontWeight: 700,
                 fontSize: "27.8px",
                 lineHeight: '52px',
-                background: 'linear-gradient(180deg, #FF9700 0%, #FFD057 66.15%), #FFD057',
                 backgroundClip: 'text',
                 textFillColor: 'transparent',
               }}>Prize fund</Box>
@@ -1059,9 +1046,6 @@ export const Header = ({
                     >
                       Mint NFT and get money to your wallet during 1 hour
                     </Box>
-                    {/*<Box component={'img'} src={MintTicketBorder} className={loading ? 'animateWinn' : null} sx={{*/}
-                    {/*  position: 'absolute',*/}
-                    {/*}}/>*/}
                     <Box
                       component={"img"}
                       src={MintTicketZero}
@@ -1074,9 +1058,6 @@ export const Header = ({
                         top: "45px",
                         width: "254px",
                         transition: ".2s ease-in-out",
-                        "&:hover": {
-                          transform: "scale(1.1)",
-                        },
                       }}
                     />
                     <Box
@@ -1180,7 +1161,7 @@ export const Header = ({
                       component={"img"}
                       src={MintTicketZero}
                       className={
-                        "mintTicketFront" && loading ? "animate" : null
+                        "mintTicketFront"
                       }
                       sx={{
                         position: "absolute",
@@ -1188,9 +1169,6 @@ export const Header = ({
                         top: "55px",
                         width: "254px",
                         transition: ".2s ease-in-out",
-                        "&:hover": {
-                          transform: "scale(1.1)",
-                        },
                       }}
                     />
                     <Box
@@ -1225,6 +1203,7 @@ export const Header = ({
                 {!minted && isContractOpen && ticketCount !== 0 && (
                   <>
                     <Button
+                      disabled={!!loading}
                       onClick={isLoggedIn ? mintTicket : open}
                       className="mintButton"
                       sx={{
@@ -1232,8 +1211,7 @@ export const Header = ({
                         justifyContent: "center",
                         alignItems: "center",
                         gap: "8px",
-                        background:
-                          "linear-gradient(93.96deg, #FFAC33 4.32%, #FFE53B 44.39%, #FAA933 103.38%), linear-gradient(94.1deg, #FFE53B 17.43%, #FFE53B 56.82%, #FAA933 96.21%)",
+                        background: loading ? '#372D42 !important' : 'linear-gradient(93.96deg, #FFAC33 4.32%, #FFE53B 44.39%, #FAA933 103.38%), linear-gradient(94.1deg, #FFE53B 17.43%, #FFE53B 56.82%, #FAA933 96.21%)',
                         borderRadius: "8px",
                         width: "234px",
                         height: "40px",
@@ -1242,7 +1220,7 @@ export const Header = ({
                         fontWeight: 700,
                         fontSize: "16px",
                         lineHeight: "28px",
-                        color: "#000000",
+                        color: loading ? '#F8F8F8 !important' : '#000000',
                         flex: "none",
                         order: 1,
                         flexGrow: 0,
@@ -1288,9 +1266,6 @@ export const Header = ({
                         top: "45px",
                         width: "254px",
                         transition: ".2s ease-in-out",
-                        "&:hover": {
-                          transform: "scale(1.1)",
-                        },
                       }}
                     />
                     <Box
@@ -1391,7 +1366,7 @@ export const Header = ({
                           component={"img"}
                           src={MintTicketZero}
                           className={
-                            "mintTicketFront" && loading ? "animateWin" : null
+                            "mintTicketFront"
                           }
                           sx={{
                             position: "absolute",
@@ -1399,9 +1374,6 @@ export const Header = ({
                             top: "35px",
                             width: "254px",
                             transition: ".2s ease-in-out",
-                            "&:hover": {
-                              transform: "scale(1.1)",
-                            },
                           }}
                         />
                       </>
@@ -1447,7 +1419,7 @@ export const Header = ({
                           component={"img"}
                           src={getTicketImage()}
                           className={
-                            "mintTicketFront" && loading ? "animateWin" : null
+                            "mintTicketFront"
                           }
                           sx={{
                             position: "absolute",
@@ -1455,14 +1427,12 @@ export const Header = ({
                             top: "35px",
                             width: "254px",
                             transition: ".2s ease-in-out",
-                            "&:hover": {
-                              transform: "scale(1.1)",
-                            },
                           }}
                         />
                       </>
                     )}
                     <Button
+                      disabled={!!loading}
                       onClick={isLoggedIn ? mintTicket : open}
                       className="mintButton"
                       sx={{
@@ -1470,8 +1440,7 @@ export const Header = ({
                         justifyContent: "center",
                         alignItems: "center",
                         gap: "8px",
-                        background:
-                          "linear-gradient(93.96deg, #FFAC33 4.32%, #FFE53B 44.39%, #FAA933 103.38%), linear-gradient(94.1deg, #FFE53B 17.43%, #FFE53B 56.82%, #FAA933 96.21%)",
+                        background: loading ? '#372D42 !important' : 'linear-gradient(93.96deg, #FFAC33 4.32%, #FFE53B 44.39%, #FAA933 103.38%), linear-gradient(94.1deg, #FFE53B 17.43%, #FFE53B 56.82%, #FAA933 96.21%)',
                         borderRadius: "8px",
                         width: "234px",
                         height: "40px",
@@ -1480,7 +1449,7 @@ export const Header = ({
                         fontWeight: 700,
                         fontSize: "16px",
                         lineHeight: "28px",
-                        color: "#000000",
+                        color: loading ? '#F8F8F8 !important' : '#000000',
                         flex: "none",
                         order: 1,
                         flexGrow: 0,
@@ -1496,7 +1465,7 @@ export const Header = ({
                       }}
                     >
                       <Icon>
-                        <img src={TryAgainImg} alt="tryAgain" />
+                        <img src={TryAgainImg} alt="tryAgain"  />
                       </Icon>
                       Try Again
                     </Button>
