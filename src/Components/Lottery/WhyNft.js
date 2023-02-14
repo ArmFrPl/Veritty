@@ -11,11 +11,11 @@ export const WhyNft = () => {
     },
     {
       classic: 'Unknown amount of winning tickets',
-      nft: '910 winning spots. Watch all winnings on OpenSea in Real Time. '
+      nft: '888 winning spots. Watch all winnings on OpenSea in Real Time. '
     },
     {
       classic: 'Fake winnings - there is no information as to who won and how',
-      nft: 'EtherScanner smart contract. We use the classic minting smart contract and distribute tickets randomly'
+      nft: 'Etherscan smart contract. We use the classic minting smart contract and distribute tickets randomly'
     },
     {
       classic: 'Possibility of machinations. Additional tickets may be issued during the Classic Lottery draw',

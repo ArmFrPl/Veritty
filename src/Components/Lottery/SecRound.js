@@ -9,7 +9,29 @@ export const SecRound = () => {
   const handleChange = (panel) => (event, isExpanded) => {
     setExpanded(isExpanded ? panel : false);
   };
-  const accardionTitle = ['Yes', 'How it works?', 'How to Participate?', 'To buy or sell non-winning tickets?'];
+  const accardionTitle = [
+    {
+      name: 'Yes',
+      value: 'For the owners of the highest amount of tickets (no matter winning or losing), we will hold a second raffle for 23, 000 USDT.',
+    },
+    {
+      name: 'How it works?',
+      value: `The first 20 participants with the \n highest amount of tickets will receive such payments: 
+      \n1st place - 10,000 USDT
+      \n2nd place - 5000 USDT 
+      \n3rd place - 2000 USDT 
+      \n4th place - 1000 USDT 
+      \n5th place - 500 USDT 
+      \n6 - 20 places - 300 USDT`,
+    },
+    {
+      name: 'How to Participate?',
+      value: 'The raffle date will be announced on our social media. At the moment of it, the smart contract will check all lottery participants\' addresses and determine the 20 of them that own the most tickets.',
+    }, {
+      name: 'To buy or sell non-winning tickets?',
+      value: 'If you want to participate in the second raffle- you can buy Veritty tickets from other participants on OpenSea on the secondary market. If you do not choose to , you can sell your tickets by listing them for sale on the OpenSea at the exact same price you are willing to sell them for.',
+    }
+  ];
 
   const prizes = [
     {
@@ -101,7 +123,7 @@ export const SecRound = () => {
               mb: '15px',
             }}>Can I sell my ticket in case I don’t win anything?</Box>
             {
-              accardionTitle?.map((name, index) => (
+              accardionTitle?.map((item, index) => (
                 <Accordion key={index} expanded={expanded === `panel${index}`} onChange={handleChange(`panel${index}`)}
                            sx={{
                              width: '88%',
@@ -126,11 +148,11 @@ export const SecRound = () => {
                       fontWeight: 700,
                       fontSize: "10px",
                       lineHeight: '18px',
-                    }}>{name}</Typography>
+                    }}>{item.name}</Typography>
                   </AccordionSummary>
                   <AccordionDetails>
                     <Typography sx={{color: 'white'}}>
-                      For the owners of the highest amount of losing tickets, we will hold a second drawing for 23, 000 USDT.
+                      {item.value}
                     </Typography>
                   </AccordionDetails>
                 </Accordion>
@@ -205,7 +227,7 @@ export const SecRound = () => {
             }}>Can I sell my ticket in case I don’t win anything?
             </Box>
             {
-              accardionTitle?.map((name, index) => (
+              accardionTitle?.map((item, index) => (
                 <Accordion key={index} expanded={expanded === `panel${index}`} onChange={handleChange(`panel${index}`)}
                            sx={{
                              width: '700px',
@@ -229,11 +251,11 @@ export const SecRound = () => {
                       fontWeight: 700,
                       fontSize: "20px",
                       lineHeight: '22px',
-                    }}>{name}</Typography>
+                    }}>{item.name}</Typography>
                   </AccordionSummary>
                   <AccordionDetails>
                     <Typography sx={{color: 'white'}}>
-                      For the owners of the highest amount of losing tickets, we will hold a second drawing for 23, 000 USDT.
+                      {item.value}
                     </Typography>
                   </AccordionDetails>
                 </Accordion>

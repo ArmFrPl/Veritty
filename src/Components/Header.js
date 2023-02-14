@@ -85,12 +85,12 @@ export const Header = ({
       if (winners.length === 1 || count >= winners.length - 1) {
         setCount(0);
 
-      } else if (winners.length){
+      } else if (winners.length) {
         setCount(count + 1);
       }
       setWinnerOpen(true);
 
-    },  3 * 60 * 1000); // 3 minutes in milliseconds
+    }, 3 * 60 * 1000); // 3 minutes in milliseconds
     return () => {
       clearInterval(intervalId);
     };
@@ -206,14 +206,14 @@ export const Header = ({
                 fontSize: "22px",
                 lineHeight: '31px',
                 color: '#FFD057',
-              }}>247.500 USTD</Box>
+              }}>282.700 USTD</Box>
             </Box>
           </Box>
           <Box className='mintTicket' sx={{
             mt: '37px',
             mb: '81px',
           }}>
-            <Box sx={{
+            <Box className='innerWrapper' sx={{
               position: 'relative',
               borderRadius: '24px',
               height: '485px',
@@ -308,7 +308,7 @@ export const Header = ({
                     position: 'absolute',
                     top: '432px',
                     left: '31px',
-                  }}>{winningTickets[0]}</Box>
+                  }}>8</Box>
                   <Box sx={{
                     fontFamily: 'Epilogue',
                     fontStyle: 'normal',
@@ -320,7 +320,7 @@ export const Header = ({
                     position: 'absolute',
                     top: '432px',
                     left: '72px',
-                  }}>{winningTickets[1]}</Box>
+                  }}>8</Box>
                   <Box sx={{
                     fontFamily: 'Epilogue',
                     fontStyle: 'normal',
@@ -332,7 +332,7 @@ export const Header = ({
                     position: 'absolute',
                     top: '432px',
                     left: '112px',
-                  }}>{winningTickets[2]}</Box>
+                  }}>8</Box>
                 </>
               }
               {
@@ -396,7 +396,7 @@ export const Header = ({
               {
                 !minted && isContractOpen && ticketCount !== 0 &&
                 <>
-                  <Button onClick={isLoggedIn ? mintTicket : open} sx={{
+                  <Button disabled={!!loading} onClick={isLoggedIn ? mintTicket : open} sx={{
                     flexDirection: 'row',
                     justifyContent: 'center',
                     alignItems: 'center',
@@ -454,7 +454,7 @@ export const Header = ({
                     position: 'absolute',
                     top: '432px',
                     left: '31px',
-                  }}>{winningTickets[0]}</Box>
+                  }}>8</Box>
                   <Box sx={{
                     fontFamily: 'Epilogue',
                     fontStyle: 'normal',
@@ -466,7 +466,7 @@ export const Header = ({
                     position: 'absolute',
                     top: '432px',
                     left: '72px',
-                  }}>{winningTickets[1]}</Box>
+                  }}>8</Box>
                   <Box sx={{
                     fontFamily: 'Epilogue',
                     fontStyle: 'normal',
@@ -478,7 +478,7 @@ export const Header = ({
                     position: 'absolute',
                     top: '432px',
                     left: '112px',
-                  }}>{winningTickets[2]}</Box>
+                  }}>8</Box>
                 </>
               }
               {
@@ -782,554 +782,547 @@ export const Header = ({
                 fontSize: "37.1px",
                 lineHeight: '52px',
                 color: '#FFD057',
-              }}>247.500 USTD</Box>
+              }}>282.700 USTD</Box>
             </Box>
           </Box>
-          <Box className='mintTicket'>
-            <Box sx={{
-              position: 'relative',
-              borderRadius: '24px',
-              height: '485px',
-              zIndex: 2,
-            }}>
-              {
-                !isContractOpen &&
-                <>
-                  <Box component='img' src={SuspendedButton} sx={{
-                    position: 'absolute',
-                    top: '-13px',
-                    left: '80px',
-                    zIndex: 15,
-                  }}/>
-                  <Button disabled className='mintButton' sx={{
-                    flexDirection: 'row',
-                    justifyContent: 'center',
-                    alignItems: 'center',
-                    gap: '8px',
-                    background: '#372D47',
-                    borderRadius: '8px',
-                    width: '234px',
-                    height: '40px',
-                    fontFamily: 'Epilogue',
-                    fontStyle: 'normal',
-                    fontWeight: 700,
-                    fontSize: '16px',
-                    lineHeight: '28px',
-                    color: '#FCFCFC !important',
-                    flex: 'none',
-                    order: 1,
-                    flexGrow: 0,
-                    position: 'absolute',
-                    bottom: '130px',
-                    left: '22px',
-                    zIndex: 10,
-                    transition: '.2s ease-in-out',
-                    "&:hover": {
-                      transform: 'scale(1.1)',
-                    }
-                  }}> MINT TICKET 0.059 ETH </Button>
+          <Box className='cardWrapper'>
+            <Box className='mintTicket'>
+              <Box className='innerWrapper' sx={{
+                position: 'relative',
+                borderRadius: '24px',
+                height: '485px',
+                zIndex: 2,
+              }}>
+                {
+                  !isContractOpen &&
+                  <>
+                    <Box component='img' src={SuspendedButton} sx={{
+                      position: 'absolute',
+                      top: '-13px',
+                      left: '80px',
+                      zIndex: 15,
+                    }}/>
+                    <Button disabled className='mintButton' sx={{
+                      flexDirection: 'row',
+                      justifyContent: 'center',
+                      alignItems: 'center',
+                      gap: '8px',
+                      background: '#372D47',
+                      borderRadius: '8px',
+                      width: '234px',
+                      height: '40px',
+                      fontFamily: 'Epilogue',
+                      fontStyle: 'normal',
+                      fontWeight: 700,
+                      fontSize: '16px',
+                      lineHeight: '28px',
+                      color: '#FCFCFC !important',
+                      flex: 'none',
+                      order: 1,
+                      flexGrow: 0,
+                      position: 'absolute',
+                      bottom: '130px',
+                      left: '22px',
+                      zIndex: 10,
+                      transition: '.2s ease-in-out',
+                    }}> MINT TICKET 0.059 ETH </Button>
 
-                  <Box component='span' sx={{
-                    fontFamily: 'Epilogue',
-                    fontStyle: 'normal',
-                    fontWeight: 700,
-                    fontSize: '16px',
-                    lineHeight: '22px',
-                    color: '#F8F8F8',
-                    position: 'absolute',
-                    left: '47px',
-                    top: '25px',
-                    zIndex: 10,
-                    width: '185px',
-                    textAlign: 'center',
-                  }}>Mint NFT and get money to your wallet during 1 hour</Box>
-                  {/*<Box component={'img'} src={MintTicketBorder} className={loading ? 'animateWinn' : null} sx={{*/}
-                  {/*  position: 'absolute',*/}
-                  {/*}}/>*/}
-                  <Box component={"img"} src={MintTicketZero}
-                       className={'mintTicketFront' && loading ? 'animate' : null}
-                       sx={{
-                         position: 'absolute',
-                         left: '15px',
-                         top: '45px',
-                         width: '254px',
-                         transition: '.2s ease-in-out',
-                         "&:hover": {
-                           transform: 'scale(1.1)',
-                         }
-                       }}/>
-                  <Box sx={{
-                    fontFamily: 'Epilogue',
-                    fontStyle: 'normal',
-                    fontWeight: 500,
-                    fontSize: '9px',
-                    lineHeight: '12px',
-                    color: '#5104CD',
-                    width: '214px',
-                    position: 'absolute',
-                    bottom: '100px',
-                    left: '25px',
-                  }}>* By clicking the Button you agree with out terms and conditions</Box>
-                  <Box sx={{
-                    fontFamily: 'Epilogue',
-                    fontStyle: 'normal',
-                    fontWeight: 700,
-                    fontSize: '20px',
-                    lineHeight: '28px',
-                    color: '#F8F8F8',
-                    display: 'flex',
-                    position: 'absolute',
-                    top: '432px',
-                    left: '31px',
-                  }}>{winningTickets[0]}</Box>
-                  <Box sx={{
-                    fontFamily: 'Epilogue',
-                    fontStyle: 'normal',
-                    fontWeight: 700,
-                    fontSize: '20px',
-                    lineHeight: '28px',
-                    color: '#F8F8F8',
-                    display: 'flex',
-                    position: 'absolute',
-                    top: '432px',
-                    left: '72px',
-                  }}>{winningTickets[1]}</Box>
-                  <Box sx={{
-                    fontFamily: 'Epilogue',
-                    fontStyle: 'normal',
-                    fontWeight: 700,
-                    fontSize: '20px',
-                    lineHeight: '28px',
-                    color: '#F8F8F8',
-                    display: 'flex',
-                    position: 'absolute',
-                    top: '432px',
-                    left: '112px',
-                  }}>{winningTickets[2]}</Box>
-                </>
-              }
-              {
-                ticketCount === 0 &&
-                <>
-                  <Box component='img' src={SoldOutButton} sx={{
-                    position: 'absolute',
-                    top: '-13px',
-                    left: '90px',
-                  }}/>
-                  <Box component='span' sx={{
-                    fontFamily: 'Epilogue',
-                    fontStyle: 'normal',
-                    fontWeight: 700,
-                    fontSize: '16px',
-                    lineHeight: '22px',
-                    color: '#F8F8F8',
-                    position: 'absolute',
-                    left: '47px',
-                    top: '25px',
-                    zIndex: 10,
-                    width: '185px',
-                    textAlign: 'center',
-                  }}>Mint NFT and get money to your wallet during 1 hour</Box>
-                  <Box component={"img"} src={MintTicketZero}
-                       className={'mintTicketFront' && loading ? 'animate' : null}
-                       sx={{
-                         position: 'absolute',
-                         left: '15px',
-                         top: '55px',
-                         width: '254px',
-                         transition: '.2s ease-in-out',
-                         "&:hover": {
-                           transform: 'scale(1.1)',
-                         }
-                       }}/>
-                  <Box sx={{
-                    position: 'absolute',
-                    bottom: '110px',
-                    width: '100%'
-                  }}>
-                    <SocialLinks/>
-                  </Box>
-                  <Box component='span' sx={{
-                    fontFamily: 'Epilogue',
-                    fontStyle: 'normal',
-                    fontWeight: 700,
-                    fontSize: '16px',
-                    lineHeight: '22px',
-                    color: '#FFD057',
-                    width: '185px',
-                    textAlign: 'center',
-                    position: 'absolute',
-                    bottom: '20px',
-                    left: '50px'
-                  }}>
-                    Don’t miss our next NFT Lottery
-                  </Box>
-                </>
-              }
-              {
-                !minted && isContractOpen && ticketCount !== 0 &&
-                <>
-                  <Button onClick={isLoggedIn ? mintTicket : open} className='mintButton' sx={{
-                    flexDirection: 'row',
-                    justifyContent: 'center',
-                    alignItems: 'center',
-                    gap: '8px',
-                    background: 'linear-gradient(93.96deg, #FFAC33 4.32%, #FFE53B 44.39%, #FAA933 103.38%), linear-gradient(94.1deg, #FFE53B 17.43%, #FFE53B 56.82%, #FAA933 96.21%)',
-                    borderRadius: '8px',
-                    width: '234px',
-                    height: '40px',
-                    fontFamily: 'Epilogue',
-                    fontStyle: 'normal',
-                    fontWeight: 700,
-                    fontSize: '16px',
-                    lineHeight: '28px',
-                    color: '#000000',
-                    flex: 'none',
-                    order: 1,
-                    flexGrow: 0,
-                    position: 'absolute',
-                    bottom: '110px',
-                    left: '22px',
-                    zIndex: 10,
-                    transition: '.2s ease-in-out',
-                    "&:hover": {
-                      transform: 'scale(1.1)',
-                    }
-                  }}> MINT TICKET 0.059 ETH </Button>
-                  {/*<Box component={'img'} src={MintTicketBorder} className={loading ? 'animateWinn' : null} sx={{*/}
-                  {/*  position: 'absolute',*/}
-                  {/*}}/>*/}
-                  <Box component='span' sx={{
-                    fontFamily: 'Epilogue',
-                    fontStyle: 'normal',
-                    fontWeight: 700,
-                    fontSize: '16px',
-                    lineHeight: '22px',
-                    color: '#F8F8F8',
-                    position: 'absolute',
-                    left: '25px',
-                    top: '25px',
-                    zIndex: 10,
-                    width: '227px',
-                    textAlign: 'center',
-                  }}>Mint NFT and get money to your wallet during 1 hour</Box>
-                  <Box component={"img"} src={MintTicketFront} className={'mintTicketFront'}
-                       sx={{
-                         position: 'absolute',
-                         left: '15px',
-                         top: '45px',
-                         width: '254px',
-                         transition: '.2s ease-in-out',
-                         "&:hover": {
-                           transform: 'scale(1.1)',
-                         }
-                       }}/>
-                  <Box sx={{
-                    fontFamily: 'Epilogue',
-                    fontStyle: 'normal',
-                    fontWeight: 700,
-                    fontSize: '20px',
-                    lineHeight: '28px',
-                    color: '#F8F8F8',
-                    display: 'flex',
-                    position: 'absolute',
-                    top: '432px',
-                    left: '31px',
-                  }}>{winningTickets[0]}</Box>
-                  <Box sx={{
-                    fontFamily: 'Epilogue',
-                    fontStyle: 'normal',
-                    fontWeight: 700,
-                    fontSize: '20px',
-                    lineHeight: '28px',
-                    color: '#F8F8F8',
-                    display: 'flex',
-                    position: 'absolute',
-                    top: '432px',
-                    left: '72px',
-                  }}>{winningTickets[1]}</Box>
-                  <Box sx={{
-                    fontFamily: 'Epilogue',
-                    fontStyle: 'normal',
-                    fontWeight: 700,
-                    fontSize: '20px',
-                    lineHeight: '28px',
-                    color: '#F8F8F8',
-                    display: 'flex',
-                    position: 'absolute',
-                    top: '432px',
-                    left: '112px',
-                  }}>{winningTickets[2]}</Box>
-                </>
-              }
-              {
-                minted && isContractOpen && ticketCount !== 0 &&
-                <>
-                  {winningSum === 0 ?
-                    <>
-                      <Box sx={{
-                        fontFamily: 'Epilogue',
-                        fontStyle: 'normal',
-                        fontWeight: 700,
-                        fontSize: '20px',
-                        lineHeight: '22px',
-                        color: '#FFD057',
-                        position: 'absolute',
-                        top: '22px',
-                        width: '100%',
-                        textAlign: 'center',
-                      }}>YOU WIN 0 USTD</Box>
-                      <Box sx={{
-                        fontFamily: 'Epilogue',
-                        fontStyle: 'normal',
-                        fontWeight: 700,
-                        fontSize: '16px',
-                        lineHeight: '22px',
-                        color: '#F8F8F8',
-                        position: 'absolute',
-                        top: '45px',
-                        width: '100%',
-                        textAlign: 'center',
-                        display: 'flex',
-                        justifyContent: 'center',
-                        zIndex: 10,
-                      }}><Box component='span' sx={{width: '211px', display: 'flex',}}>You have a chance to win on the
-                        2nd
-                        Round! </Box></Box>
-                      <Box component={"img"} src={MintTicketZero}
-                           className={'mintTicketFront' && loading ? 'animateWin' : null} sx={{
-                        position: 'absolute',
-                        left: '15px',
-                        top: '35px',
-                        width: '254px',
-                        transition: '.2s ease-in-out',
-                        "&:hover": {
-                          transform: 'scale(1.1)',
-                        }
-                      }}/>
-                    </>
-                    : <>
-                      <Box sx={{
-                        fontFamily: 'Epilogue',
-                        fontStyle: 'normal',
-                        fontWeight: 700,
-                        fontSize: '20px',
-                        lineHeight: '22px',
-                        color: '#FFD057',
-                        position: 'absolute',
-                        top: '22px',
-                        width: '100%',
-                        textAlign: 'center',
-                      }}>YOU WIN!</Box>
-                      <Box sx={{
-                        fontFamily: 'Epilogue',
-                        fontStyle: 'normal',
-                        fontWeight: 700,
-                        fontSize: '32px',
-                        lineHeight: '36px',
-                        color: '#FFD057',
-                        position: 'absolute',
-                        top: '45px',
-                        width: '100%',
-                        textAlign: 'center',
-                        zIndex: 10,
-                      }}>{winningSum} <Box component='span' sx={{fontSize: '24px'}}>USTD</Box></Box>
-                      <Box component={"img"} src={getTicketImage()}
-                           className={'mintTicketFront' && loading ? 'animateWin' : null} sx={{
-                        position: 'absolute',
-                        left: '15px',
-                        top: '35px',
-                        width: '254px',
-                        transition: '.2s ease-in-out',
-                        "&:hover": {
-                          transform: 'scale(1.1)',
-                        }
-                      }}/>
-                    </>
-                  }
-                  <Button onClick={isLoggedIn ? mintTicket : open} className='mintButton' sx={{
-                    flexDirection: 'row',
-                    justifyContent: 'center',
-                    alignItems: 'center',
-                    gap: '8px',
-                    background: 'linear-gradient(93.96deg, #FFAC33 4.32%, #FFE53B 44.39%, #FAA933 103.38%), linear-gradient(94.1deg, #FFE53B 17.43%, #FFE53B 56.82%, #FAA933 96.21%)',
-                    borderRadius: '8px',
-                    width: '234px',
-                    height: '40px',
-                    fontFamily: 'Epilogue',
-                    fontStyle: 'normal',
-                    fontWeight: 700,
-                    fontSize: '16px',
-                    lineHeight: '28px',
-                    color: '#000000',
-                    flex: 'none',
-                    order: 1,
-                    flexGrow: 0,
-                    position: 'absolute',
-                    bottom: '150px',
-                    left: '22px',
-                    zIndex: 10,
-                    textTransform: 'none',
-                    transition: '.2s ease-in-out',
-                    "&:hover": {
-                      transform: 'scale(1.1)',
-                    }
-                  }}> <Icon><img src={TryAgainImg} alt='tryAgain'/></Icon> Try Again </Button>
-                  <Link
-                    target="_blank"
-                    href={`https://testnets.opensea.io/assets/goerli/0x3cc6c2fb7b837eb2c100285a3aca108d245b178e/${tokenId}`}><Button
-                    className='openSeaButton' sx={{
-                    flexDirection: 'row',
-                    justifyContent: 'center',
-                    alignItems: 'center',
-                    gap: '8px',
-                    background: 'transparent',
-                    borderRadius: '8px',
-                    width: '234px',
-                    height: '40px',
-                    fontFamily: 'Epilogue',
-                    fontStyle: 'normal',
-                    fontWeight: 700,
-                    fontSize: '16px',
-                    lineHeight: '28px',
-                    color: '#FCFCFC',
-                    flex: 'none',
-                    order: 1,
-                    flexGrow: 0,
-                    position: 'absolute',
-                    bottom: '105px',
-                    left: '22px',
-                    zIndex: 10,
-                    textTransform: 'none',
-                    transition: '.2s ease-in-out',
-                    "&:hover": {
-                      transform: 'scale(1.1)',
-                    }
-                  }}> Look on OpenSea </Button></Link>
-
-                  <Box component='span' sx={{
-                    fontFamily: 'Epilogue',
-                    fontStyle: 'normal',
-                    fontWeight: 700,
-                    fontSize: '16px',
-                    lineHeight: '73px',
-                    color: '#FFD057',
-                    position: 'absolute',
-                    top: '410px',
-                    left: '80px'
-                  }}>
-                    Ticket # {('00000' + userHistory.totalTickets).slice(-5)}
-                  </Box>
-                </>
-              }
-              <Box component={"img"} sx={{width: '278px', height: '485px'}}
-                   src={ticketCount !== 0 ? !minted ? MintTicketUnborder : MintTicketWinner : MintTicketWinner}
-                   className='mintTicketImage'/>
-            </Box>
-          </Box>
-          {
-            winners.length &&
-            <Snackbar
-              className='popup'
-              open={isWinnerOpen}
-              onClose={handleCloseWinner}
-              autoHideDuration={30 * 1000}
-              anchorOrigin={{vertical: 'bottom', horizontal: 'right'}}
-              sx={{
-                display: {xs: 'none', md: 'flex'},
-                width: '343px',
-                padding: '0 !important',
-                '> .css-1gz1y6s': {
-                  width: '343px',
-                  borderRadius: '16px',
-                  padding: '0 !important',
-                }
-              }}
-              message={
-                <Box className='headerModalCont' sx={{
-                  width: '343px',
-                  height: '88px',
-                  background: '#101010',
-                  border: '1px solid #00DF74',
-                  borderRadius: '16px',
-                  display: 'flex',
-                }}>
-                  <Box className="headerModalBody">
-                    <CheckCircleOutlineRoundedIcon sx={{color: '#00DF74', mr: '15px', pl: '24px',}}/>
-                    <Box>
-                      <Typography sx={{
-                        fontFamily: 'Epilogue',
-                        fontStyle: 'normal',
-                        fontWeight: '700',
-                        fontSize: '14px',
-                        lineHeight: '18px',
-                        display: 'flex',
-                        alignItems: 'center',
-                        letterSpacing: '0.01em',
-                        color: winners[count]?.sum < 500 ? '#F8F8F8' : '#00DF74',
-                      }}>WINNER {console.log(winners, count)}</Typography>
-                      <Typography sx={{
-                        fontFamily: 'Epilogue',
-                        fontStyle: 'normal',
-                        fontWeight: '400',
-                        fontSize: '16px',
-                        lineHeight: '24px',
-                        display: 'flex',
-                        alignItems: 'center',
-                        color: '#F8F8F8',
-                      }}>{winners[count]?.userId.slice(0, 10) + "…"}</Typography>
-                      <Link href={winners[count]?.link}
-                            sx={{textDecoration: 'none', color: '#F8F8F8', opacity: '0.7',}}><Typography sx={{
-                        fontFamily: 'Epilogue',
-                        fontStyle: 'normal',
-                        fontWeight: '400',
-                        fontSize: '13px',
-                        lineHeight: '1',
-                        display: 'flex',
-                        alignItems: 'center',
-                        letterSpacing: '0.01em',
-                      }}>View on Etherscan <img src={GoToIcon} alt='arrow' height={8} width={8}
-                                                style={{marginLeft: '5px'}}/></Typography></Link>
-                    </Box>
+                    <Box component='span' sx={{
+                      fontFamily: 'Epilogue',
+                      fontStyle: 'normal',
+                      fontWeight: 700,
+                      fontSize: '16px',
+                      lineHeight: '22px',
+                      color: '#F8F8F8',
+                      position: 'absolute',
+                      left: '47px',
+                      top: '25px',
+                      zIndex: 10,
+                      width: '185px',
+                      textAlign: 'center',
+                    }}>Mint NFT and get money to your wallet during 1 hour</Box>
+                    <Box component={"img"} src={MintTicketZero}
+                         className={'mintTicketFront' && loading ? 'animate' : null}
+                         sx={{
+                           position: 'absolute',
+                           left: '15px',
+                           top: '45px',
+                           width: '254px',
+                           transition: '.2s ease-in-out',
+                           "&:hover": {
+                             transform: 'scale(1.1)',
+                           }
+                         }}/>
                     <Box sx={{
+                      fontFamily: 'Epilogue',
+                      fontStyle: 'normal',
+                      fontWeight: 500,
+                      fontSize: '9px',
+                      lineHeight: '12px',
+                      color: '#5104CD',
+                      width: '214px',
+                      position: 'absolute',
+                      bottom: '100px',
+                      left: '25px',
+                    }}>* By clicking the Button you agree with out terms and conditions</Box>
+                    <Box sx={{
+                      fontFamily: 'Epilogue',
+                      fontStyle: 'normal',
+                      fontWeight: 700,
+                      fontSize: '20px',
+                      lineHeight: '28px',
+                      color: '#F8F8F8',
                       display: 'flex',
-                      flexDirection: 'column',
-                      alignItems: 'end',
-                      margin: '0 5px 20px 8px'
+                      position: 'absolute',
+                      top: '434px',
+                      left: '34px',
+                    }}>8</Box>
+                    <Box sx={{
+                      fontFamily: 'Epilogue',
+                      fontStyle: 'normal',
+                      fontWeight: 700,
+                      fontSize: '20px',
+                      lineHeight: '28px',
+                      color: '#F8F8F8',
+                      display: 'flex',
+                      position: 'absolute',
+                      top: '434px',
+                      left: '74px',
+                    }}>8</Box>
+                    <Box sx={{
+                      fontFamily: 'Epilogue',
+                      fontStyle: 'normal',
+                      fontWeight: 700,
+                      fontSize: '20px',
+                      lineHeight: '28px',
+                      color: '#F8F8F8',
+                      display: 'flex',
+                      position: 'absolute',
+                      top: '434px',
+                      left: '114px',
+                    }}>8</Box>
+                  </>
+                }
+                {
+                  ticketCount === 0 &&
+                  <>
+                    <Box component='img' src={SoldOutButton} sx={{
+                      position: 'absolute',
+                      top: '-13px',
+                      left: '90px',
+                    }}/>
+                    <Box component='span' sx={{
+                      fontFamily: 'Epilogue',
+                      fontStyle: 'normal',
+                      fontWeight: 700,
+                      fontSize: '16px',
+                      lineHeight: '22px',
+                      color: '#F8F8F8',
+                      position: 'absolute',
+                      left: '47px',
+                      top: '25px',
+                      zIndex: 10,
+                      width: '185px',
+                      textAlign: 'center',
+                    }}>Mint NFT and get money to your wallet during 1 hour</Box>
+                    <Box component={"img"} src={MintTicketZero}
+                         className={'mintTicketFront' && loading ? 'animate' : null}
+                         sx={{
+                           position: 'absolute',
+                           left: '15px',
+                           top: '55px',
+                           width: '254px',
+                           transition: '.2s ease-in-out',
+                           "&:hover": {
+                             transform: 'scale(1.1)',
+                           }
+                         }}/>
+                    <Box sx={{
+                      position: 'absolute',
+                      bottom: '110px',
+                      width: '100%'
                     }}>
+                      <SocialLinks/>
+                    </Box>
+                    <Box component='span' sx={{
+                      fontFamily: 'Epilogue',
+                      fontStyle: 'normal',
+                      fontWeight: 700,
+                      fontSize: '16px',
+                      lineHeight: '22px',
+                      color: '#FFD057',
+                      width: '185px',
+                      textAlign: 'center',
+                      position: 'absolute',
+                      bottom: '20px',
+                      left: '50px'
+                    }}>
+                      Don’t miss our next NFT Lottery
+                    </Box>
+                  </>
+                }
+                {
+                  !minted && isContractOpen && ticketCount !== 0 &&
+                  <>
+                    <Button disabled={!!loading} onClick={isLoggedIn ? mintTicket : open} className='mintButton' sx={{
+                      flexDirection: 'row',
+                      justifyContent: 'center',
+                      alignItems: 'center',
+                      gap: '8px',
+                      background: loading ? '#372D42' : 'linear-gradient(93.96deg, #FFAC33 4.32%, #FFE53B 44.39%, #FAA933 103.38%), linear-gradient(94.1deg, #FFE53B 17.43%, #FFE53B 56.82%, #FAA933 96.21%)',
+                      borderRadius: '8px',
+                      width: '234px',
+                      height: '40px',
+                      fontFamily: 'Epilogue',
+                      fontStyle: 'normal',
+                      fontWeight: 700,
+                      fontSize: '16px',
+                      lineHeight: '28px',
+                      color: loading ? '#F8F8F8 !important' : '#000000',
+                      flex: 'none',
+                      order: 1,
+                      flexGrow: 0,
+                      position: 'absolute',
+                      bottom: '110px',
+                      left: '22px',
+                      zIndex: 10,
+                      transition: '.2s ease-in-out',
+                      "&:hover": {
+                        transform: 'scale(1.1)',
+                      }
+                    }}> MINT TICKET 0.059 ETH </Button>
+                    <Box component='span' sx={{
+                      fontFamily: 'Epilogue',
+                      fontStyle: 'normal',
+                      fontWeight: 700,
+                      fontSize: '16px',
+                      lineHeight: '22px',
+                      color: '#F8F8F8',
+                      position: 'absolute',
+                      left: '25px',
+                      top: '25px',
+                      zIndex: 10,
+                      width: '227px',
+                      textAlign: 'center',
+                    }}>Mint NFT and get money to your wallet during 1 hour</Box>
+                    <Box component={"img"} src={MintTicketFront} className={'mintTicketFront'}
+                         sx={{
+                           position: 'absolute',
+                           left: '15px',
+                           top: '45px',
+                           width: '254px',
+                           transition: '.2s ease-in-out',
+                           "&:hover": {
+                             transform: 'scale(1.1)',
+                           }
+                         }}/>
+                    <Box sx={{
+                      fontFamily: 'Epilogue',
+                      fontStyle: 'normal',
+                      fontWeight: 700,
+                      fontSize: '20px',
+                      lineHeight: '28px',
+                      color: '#F8F8F8',
+                      display: 'flex',
+                      position: 'absolute',
+                      top: '434px',
+                      left: '34px',
+                    }}>8</Box>
+                    <Box sx={{
+                      fontFamily: 'Epilogue',
+                      fontStyle: 'normal',
+                      fontWeight: 700,
+                      fontSize: '20px',
+                      lineHeight: '28px',
+                      color: '#F8F8F8',
+                      display: 'flex',
+                      position: 'absolute',
+                      top: '434px',
+                      left: '74px',
+                    }}>8</Box>
+                    <Box sx={{
+                      fontFamily: 'Epilogue',
+                      fontStyle: 'normal',
+                      fontWeight: 700,
+                      fontSize: '20px',
+                      lineHeight: '28px',
+                      color: '#F8F8F8',
+                      display: 'flex',
+                      position: 'absolute',
+                      top: '434px',
+                      left: '114px',
+                    }}>8</Box>
+                  </>
+                }
+                {
+                  minted && isContractOpen && ticketCount !== 0 &&
+                  <>
+                    {winningSum === 0 ?
+                      <>
+                        <Box sx={{
+                          fontFamily: 'Epilogue',
+                          fontStyle: 'normal',
+                          fontWeight: 700,
+                          fontSize: '20px',
+                          lineHeight: '22px',
+                          color: '#FFD057',
+                          position: 'absolute',
+                          top: '22px',
+                          width: '100%',
+                          textAlign: 'center',
+                        }}>YOU WIN 0 USTD</Box>
+                        <Box sx={{
+                          fontFamily: 'Epilogue',
+                          fontStyle: 'normal',
+                          fontWeight: 700,
+                          fontSize: '16px',
+                          lineHeight: '22px',
+                          color: '#F8F8F8',
+                          position: 'absolute',
+                          top: '45px',
+                          width: '100%',
+                          textAlign: 'center',
+                          display: 'flex',
+                          justifyContent: 'center',
+                          zIndex: 10,
+                        }}><Box component='span' sx={{width: '211px', display: 'flex',}}>You have a chance to win on the
+                          2nd
+                          Round! </Box></Box>
+                        <Box component={"img"} src={MintTicketZero}
+                             className={'mintTicketFront' && loading ? 'animateWin' : null} sx={{
+                          position: 'absolute',
+                          left: '15px',
+                          top: '35px',
+                          width: '254px',
+                          transition: '.2s ease-in-out',
+                          "&:hover": {
+                            transform: 'scale(1.1)',
+                          }
+                        }}/>
+                      </>
+                      : <>
+                        <Box sx={{
+                          fontFamily: 'Epilogue',
+                          fontStyle: 'normal',
+                          fontWeight: 700,
+                          fontSize: '20px',
+                          lineHeight: '22px',
+                          color: '#FFD057',
+                          position: 'absolute',
+                          top: '22px',
+                          width: '100%',
+                          textAlign: 'center',
+                        }}>YOU WIN!</Box>
+                        <Box sx={{
+                          fontFamily: 'Epilogue',
+                          fontStyle: 'normal',
+                          fontWeight: 700,
+                          fontSize: '32px',
+                          lineHeight: '36px',
+                          color: '#FFD057',
+                          position: 'absolute',
+                          top: '45px',
+                          width: '100%',
+                          textAlign: 'center',
+                          zIndex: 10,
+                        }}>{winningSum} <Box component='span' sx={{fontSize: '24px'}}>USTD</Box></Box>
+                        <Box component={"img"} src={getTicketImage()}
+                             className={'mintTicketFront' && loading ? 'animateWin' : null} sx={{
+                          position: 'absolute',
+                          left: '15px',
+                          top: '35px',
+                          width: '254px',
+                          transition: '.2s ease-in-out',
+                          "&:hover": {
+                            transform: 'scale(1.1)',
+                          }
+                        }}/>
+                      </>
+                    }
+                    <Button onClick={isLoggedIn ? mintTicket : open} className='mintButton' sx={{
+                      flexDirection: 'row',
+                      justifyContent: 'center',
+                      alignItems: 'center',
+                      gap: '8px',
+                      background: 'linear-gradient(93.96deg, #FFAC33 4.32%, #FFE53B 44.39%, #FAA933 103.38%), linear-gradient(94.1deg, #FFE53B 17.43%, #FFE53B 56.82%, #FAA933 96.21%)',
+                      borderRadius: '8px',
+                      width: '234px',
+                      height: '40px',
+                      fontFamily: 'Epilogue',
+                      fontStyle: 'normal',
+                      fontWeight: 700,
+                      fontSize: '16px',
+                      lineHeight: '28px',
+                      color: '#000000',
+                      flex: 'none',
+                      order: 1,
+                      flexGrow: 0,
+                      position: 'absolute',
+                      bottom: '150px',
+                      left: '22px',
+                      zIndex: 10,
+                      textTransform: 'none',
+                      transition: '.2s ease-in-out',
+                      "&:hover": {
+                        transform: 'scale(1.1)',
+                      }
+                    }}> <Icon><img src={TryAgainImg} alt='tryAgain'/></Icon> Try Again </Button>
+                    <Link
+                      target="_blank"
+                      href={`https://testnets.opensea.io/assets/goerli/0x3cc6c2fb7b837eb2c100285a3aca108d245b178e/${tokenId}`}><Button
+                      className='openSeaButton' sx={{
+                      flexDirection: 'row',
+                      justifyContent: 'center',
+                      alignItems: 'center',
+                      gap: '8px',
+                      background: 'transparent',
+                      borderRadius: '8px',
+                      width: '234px',
+                      height: '40px',
+                      fontFamily: 'Epilogue',
+                      fontStyle: 'normal',
+                      fontWeight: 700,
+                      fontSize: '16px',
+                      lineHeight: '28px',
+                      color: '#FCFCFC',
+                      flex: 'none',
+                      order: 1,
+                      flexGrow: 0,
+                      position: 'absolute',
+                      bottom: '105px',
+                      left: '22px',
+                      zIndex: 10,
+                      textTransform: 'none',
+                      transition: '.2s ease-in-out',
+                      "&:hover": {
+                        transform: 'scale(1.1)',
+                      }
+                    }}> Look on OpenSea </Button></Link>
+
+                    <Box component='span' sx={{
+                      fontFamily: 'Epilogue',
+                      fontStyle: 'normal',
+                      fontWeight: 700,
+                      fontSize: '16px',
+                      lineHeight: '73px',
+                      color: '#FFD057',
+                      position: 'absolute',
+                      top: '410px',
+                      left: '80px'
+                    }}>
+                      Ticket # {('00000' + userHistory.totalTickets).slice(-5)}
+                    </Box>
+                  </>
+                }
+                <Box component={"img"} sx={{width: '278px', height: '485px'}}
+                     src={ticketCount !== 0 ? !minted ? MintTicketUnborder : MintTicketWinner : MintTicketWinner}
+                     className='mintTicketImage'/>
+              </Box>
+            </Box>
+            {
+              winners.length &&
+              <Snackbar
+                className='popup'
+                open={isWinnerOpen}
+                onClose={handleCloseWinner}
+                autoHideDuration={30 * 1000}
+                anchorOrigin={{vertical: 'bottom', horizontal: 'right'}}
+                sx={{
+                  display: {xs: 'none', md: 'flex'},
+                  width: '343px',
+                  padding: '0 !important',
+                  '> .css-1gz1y6s': {
+                    width: '343px',
+                    borderRadius: '16px',
+                    padding: '0 !important',
+                  }
+                }}
+                message={
+                  <Box className='headerModalCont' sx={{
+                    width: '343px',
+                    height: '88px',
+                    background: '#101010',
+                    border: '1px solid #00DF74',
+                    borderRadius: '16px',
+                    display: 'flex',
+                  }}>
+                    <Box className="headerModalBody">
+                      <CheckCircleOutlineRoundedIcon sx={{color: '#00DF74', mr: '15px', pl: '24px',}}/>
+                      <Box>
+                        <Typography sx={{
+                          fontFamily: 'Epilogue',
+                          fontStyle: 'normal',
+                          fontWeight: '700',
+                          fontSize: '14px',
+                          lineHeight: '18px',
+                          display: 'flex',
+                          alignItems: 'center',
+                          letterSpacing: '0.01em',
+                          color: winners[count]?.sum < 500 ? '#F8F8F8' : '#00DF74',
+                        }}>WINNER</Typography>
+                        <Typography sx={{
+                          fontFamily: 'Epilogue',
+                          fontStyle: 'normal',
+                          fontWeight: '400',
+                          fontSize: '16px',
+                          lineHeight: '24px',
+                          display: 'flex',
+                          alignItems: 'center',
+                          color: '#F8F8F8',
+                        }}>{winners[count]?.userId.slice(0, 10) + "…"}</Typography>
+                        <Link href={winners[count]?.link}
+                              sx={{textDecoration: 'none', color: '#F8F8F8', opacity: '0.7',}}><Typography sx={{
+                          fontFamily: 'Epilogue',
+                          fontStyle: 'normal',
+                          fontWeight: '400',
+                          fontSize: '13px',
+                          lineHeight: '1',
+                          display: 'flex',
+                          alignItems: 'center',
+                          letterSpacing: '0.01em',
+                        }}>View on Etherscan <img src={GoToIcon} alt='arrow' height={8} width={8}
+                                                  style={{marginLeft: '5px'}}/></Typography></Link>
+                      </Box>
                       <Box sx={{
-                        fontFamily: 'Epilogue',
-                        fontStyle: 'normal',
-                        fontWeight: '400',
-                        fontSize: '14px',
                         display: 'flex',
-                        lineHeight: '22px',
-                        alignItems: 'center',
-                        letterSpacing: '0.01em',
-                        color: '#F8F8F8',
-                        opacity: '0.7',
-                      }}>{convertToTime(winners[count]?.timestamp)}</Box>
-                      <Box sx={{
-                        fontFamily: 'Epilogue',
-                        fontStyle: 'normal',
-                        fontWeight: '700',
-                        fontSize: '19px',
-                        lineHeight: '1',
-                        display: 'flex',
-                        alignItems: 'center',
-                        letterSpacing: '0.01em',
-                        color: winners[count]?.sum < '500' ? '#F8F8F8' : '#00DF74',
-                      }}>{winners[count]?.sum} USDT</Box>
+                        flexDirection: 'column',
+                        alignItems: 'end',
+                        margin: '0 5px 20px 8px'
+                      }}>
+                        <Box sx={{
+                          fontFamily: 'Epilogue',
+                          fontStyle: 'normal',
+                          fontWeight: '400',
+                          fontSize: '14px',
+                          display: 'flex',
+                          lineHeight: '22px',
+                          alignItems: 'center',
+                          letterSpacing: '0.01em',
+                          color: '#F8F8F8',
+                          opacity: '0.7',
+                        }}>{convertToTime(winners[count]?.timestamp)}</Box>
+                        <Box sx={{
+                          fontFamily: 'Epilogue',
+                          fontStyle: 'normal',
+                          fontWeight: '700',
+                          fontSize: '19px',
+                          lineHeight: '1',
+                          display: 'flex',
+                          alignItems: 'center',
+                          letterSpacing: '0.01em',
+                          color: winners[count]?.sum < '500' ? '#F8F8F8' : '#00DF74',
+                        }}>{winners[count]?.sum} USDT</Box>
+                      </Box>
+                    </Box>
+
+                    <Box className='headerModalHeader'>
+                      <CloseIcon onClick={handleCloseWinner} cursor='pointer'/>
                     </Box>
                   </Box>
-
-                  <Box className='headerModalHeader'>
-                    <CloseIcon onClick={handleCloseWinner} cursor='pointer'/>
-                  </Box>
-                </Box>
-              }
-            />
-          }
+                }
+              />
+            }
+          </Box>
         </Box>
         <ToggleButtons isLoggedIn={isLoggedIn} view={view} setView={setView}/>
       </Box>

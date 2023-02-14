@@ -1,6 +1,7 @@
 import React, {useEffect} from "react";
 import '../Styles/Navbar.css';
-import {AppBar, Box, Container, IconButton, Toolbar,} from "@mui/material";
+import {AppBar, Box, Container, IconButton, Toolbar} from "@mui/material";
+import {Link as Muilink} from '@mui/material';
 import MenuIcon from '@mui/icons-material/Menu';
 import Logo from '../Images/VERITTY.svg';
 import {Link, useLocation} from "react-router-dom";
@@ -121,8 +122,8 @@ export const Navbar = ({isLoggedIn, faqRef, mobileFaqRef, setMenuOpen, menuOpen,
                           }}>FAQ</Link>
                   </Box>
                   <SocialLinks menuOpen={menuOpen}/>
-                  <Link to='#' style={{textDecoration: 'none', justifyContent: 'center', mt: '30px'}}
-                        className='mobMenuItem'>Smart Contract</Link>
+                  <Muilink target='_blank' href='https://goerli.etherscan.io/address/0x0CE0E5676b7c6c26F6A9923cC2C054eB3FDBEcc2' style={{textDecoration: 'none', justifyContent: 'center', mt: '30px'}}
+                        className='mobMenuItem'>Smart Contract</Muilink>
                   <Link to='#'
                         style={{textDecoration: 'none', display: 'flex', justifyContent: 'center', marginTop: '100px'}}>
                     <Web3Button />
@@ -152,7 +153,7 @@ export const Navbar = ({isLoggedIn, faqRef, mobileFaqRef, setMenuOpen, menuOpen,
                 {/*      className='menuItem'>TICKETS</Link>*/}
                 <Link to='#' style={{marginRight: '40px', textDecoration: 'none'}} className='menuItem'
                       onClick={scrollToFaq}>FAQ</Link>
-                <Link to='#' style={{marginRight: '40px', textDecoration: 'none'}} className='menuItem'>AUDIT</Link>
+                <Muilink target='_blank' href='https://goerli.etherscan.io/address/0x0CE0E5676b7c6c26F6A9923cC2C054eB3FDBEcc2' style={{marginRight: '40px', textDecoration: 'none'}} className='menuItem'>AUDIT</Muilink>
               </Box>
               <Box sx={{display: 'flex', alignItems: 'center'}}>
                 <SocialLinks/>

@@ -31,9 +31,7 @@ root.render(
     <React.StrictMode>
       <HashRouter>
         <WagmiConfig client={wagmiClient}>
-          {/*<RainbowKitProvider chains={chains}>*/}
           <App/>
-          {/*</RainbowKitProvider>*/}
         </WagmiConfig>
       </HashRouter>
     </React.StrictMode>

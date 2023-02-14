@@ -56,7 +56,7 @@ export const Layout = () => {
       getUserHistory(response.data);
     }
     fetchUser();
-  }, [loading])
+  })
 
   useEffect(() => {
     const fetchLeaders = async () => {

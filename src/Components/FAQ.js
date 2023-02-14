@@ -4,7 +4,32 @@ import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
 import '../Styles/FAQ.css';
 
 export const FAQ = ({faqRef, mobileFaqRef}) => {
-  const names = ['General', 'How does it Work', 'How to start', 'How to connect Wallet', 'How to get my NFT'];
+  const names = [
+    {
+      name: 'General',
+      value: 'Veritty is the world\'s first transparent and honest NFT Lottery. Veritty smart contact is based on Ethereum blockchain which gives anyone a chance to win 50000 USDT and join some of the most exclusive NFT-gated communities on Web-3.',
+    },
+    {
+      name: 'How does it Work',
+      value: 'As soon as you connect your wallet and purchase a ticket, the smart contract will generate 10,888 tickets randomly, 888 of which will be winning the prize. Upon payment, the winning ticket appears immediately on the website on the dashboard, in your wallet, and on OpenSea. We\'ve made sure that the mechanism for determining the winning ticket is as transparent as possible, and you can easily check that in an open for public smart contract.,'
+    },
+    {
+      name: 'How to start',
+      value: 'Connect your wallet and click \'Mint ticket\' for a quick start.',
+    },
+    {
+      name: 'How to connect Wallet',
+      value: `1. Connect Metamask (Ethereum Mainnet network)
+              2. Press MINT NFT to purchase
+              3. Press ""Confirm"" button
+              4. Follow transaction instructions on Metamask.
+              5. See the tickets you purchased in ’Dashboard’ section`
+    },
+    {
+      name: 'How to get my NFT',
+      value: 'You can view all the tickets that you have purchased for live and ended raffles by going to the History section on the Dashboard. Click on the tx hash of tickets to see a complete transaction on the blockchain on EtherScan',
+    }
+  ];
   return (
     <>
       <Box ref={mobileFaqRef} sx={{
@@ -41,7 +66,7 @@ export const FAQ = ({faqRef, mobileFaqRef}) => {
           textUnderlinePosition: 'under',
         }}>Contact Support</Box></Box>
         {
-          names?.map((name, index) => (
+          names?.map((item, index) => (
             <Accordion key={index} sx={{
               mb: '21px',
               width: '80%',
@@ -58,12 +83,11 @@ export const FAQ = ({faqRef, mobileFaqRef}) => {
                 aria-controls={`panel${index}a-content`}
                 id={`panel${index}a-header`}
               >
-                <Typography>{name}</Typography>
+                <Typography>{item.name}</Typography>
               </AccordionSummary>
               <AccordionDetails>
                 <Typography>
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse
-                  malesuada lacus ex, sit amet blandit leo lobortis eget. {index}
+                  {item.value}
                 </Typography>
               </AccordionDetails>
             </Accordion>
@@ -109,7 +133,7 @@ export const FAQ = ({faqRef, mobileFaqRef}) => {
           textUnderlinePosition: 'under',
         }}>Contact Support</Box></Box>
         {
-          names?.map((name, index) => (
+          names?.map((item, index) => (
             <Accordion key={index} sx={{
               mb: '21px',
               width: '819px',
@@ -125,12 +149,11 @@ export const FAQ = ({faqRef, mobileFaqRef}) => {
                 aria-controls={`panel${index}a-content`}
                 id={`panel${index}a-header`}
               >
-                <Typography>{name}</Typography>
+                <Typography>{item.name}</Typography>
               </AccordionSummary>
               <AccordionDetails>
                 <Typography>
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse
-                  malesuada lacus ex, sit amet blandit leo lobortis eget. {index}
+                  {item.value}
                 </Typography>
               </AccordionDetails>
             </Accordion>

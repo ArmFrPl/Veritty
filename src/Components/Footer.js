@@ -1,6 +1,6 @@
 import React, {useState} from "react";
 import Logo from "../Images/VERITTY.svg";
-import {Box, Button, Fade, Modal} from "@mui/material";
+import {Box, Button, Fade, Link, Modal} from "@mui/material";
 import {SocialLinks} from "./SocialLinks";
 import CloseIcon from '@mui/icons-material/Close';
 import '../Styles/Footer.css';
@@ -712,7 +712,9 @@ export const Footer = () => {
                 </Box>
               </Fade>
             </Modal>
-            <Button style={{color: 'white', textDecoration: 'none'}} className='footerItem'>SmartContract</Button>
+            <Link sx={{
+              textDecoration: 'none',
+            }} target='_blank' href='https://goerli.etherscan.io/address/0x0CE0E5676b7c6c26F6A9923cC2C054eB3FDBEcc2'><Button style={{color: 'white', textDecoration: 'none'}} className='footerItem'>SmartContract</Button></Link>
           </Box>
         </Box>
         <Box className='copyright' sx={{borderTop: '1px solid #DCDCDC'}}>
