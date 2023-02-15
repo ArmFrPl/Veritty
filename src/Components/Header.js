@@ -823,7 +823,7 @@ export const Header = ({
                   </Button>
                   <Link
                     target="_blank"
-                    href={`https://testnets.opensea.io/assets/goerli/0x3cc6c2fb7b837eb2c100285a3aca108d245b178e/${tokenId}`}
+                    href={`https://testnets.opensea.io/assets/goerli/0x3cd41aFb1Ea5add96F5f00bD753C18B3acb62BBa/${tokenId}`}
                   >
                     <Button
                       className="openSeaButton"
