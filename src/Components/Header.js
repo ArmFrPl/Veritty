@@ -420,7 +420,7 @@ export const Header = ({
               )}
               {!minted && isContractOpen && ticketCount !== 0 && (
                 <>
-                  <Button disabled={loading} onClick={isLoggedIn ? mintTicket : open} sx={{
+                  <Button disabled={!!loading} onClick={isLoggedIn ? mintTicket : open} sx={{
                     flexDirection: 'row',
                     justifyContent: 'center',
                     alignItems: 'center',
