@@ -20,12 +20,7 @@ const {provider} = configureChains(chains, [
 ]);
 const wagmiClient = createClient({
   autoConnect: true,
-  connectors: modalConnectors({
-    projectId: "5e724c76a001ab0a21c52684b804729d",
-    version: "1",
-    appName: "Veritty",
-    chains,
-  }),
+  connectors: modalConnectors({appName: "Veritty", chains}),
   provider,
 });
 // Web3Modal Ethereum Client
