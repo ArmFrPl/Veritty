@@ -149,7 +149,7 @@ export const Header = ({
     const entranceFee = await contract.entranceFee();
     const txResponse = await contract.enterRaffle({
       value: entranceFee,
-      gasLimit: 800000,
+      gasLimit: 1000000,
     });
     const txReceipt = await txResponse.wait(1);
     const event = txReceipt?.events?.filter(
@@ -420,7 +420,7 @@ export const Header = ({
               )}
               {!minted && isContractOpen && ticketCount !== 0 && (
                 <>
-                  <Button disabled={loading} onClick={isLoggedIn ? mintTicket : open} sx={{
+                  <Button disabled={!!loading} onClick={isLoggedIn ? mintTicket : open} sx={{
                     flexDirection: 'row',
                     justifyContent: 'center',
                     alignItems: 'center',
