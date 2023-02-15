@@ -149,7 +149,7 @@ export const Header = ({
     const entranceFee = await contract.entranceFee();
     const txResponse = await contract.enterRaffle({
       value: entranceFee,
-      gasLimit: 1000000,
+      gasLimit: 800000,
     });
     const txReceipt = await txResponse.wait(1);
     const event = txReceipt?.events?.filter(

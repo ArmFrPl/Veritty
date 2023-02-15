@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import {BrowserRouter, HashRouter} from "react-router-dom";
+import {HashRouter} from "react-router-dom";
 import './Styles/index.css';
 import App from './Components/App';
 
@@ -11,16 +11,21 @@ import {
 } from "@web3modal/ethereum";
 import {Web3Modal} from "@web3modal/react";
 import {configureChains, createClient, WagmiConfig} from "wagmi";
-import {arbitrum, mainnet, polygon, goerli} from "wagmi/chains";
+import {goerli} from "wagmi/chains";
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 const chains = [goerli];
-const {provider} = configureChains(chains, [
-  walletConnectProvider({projectId: "5e724c76a001ab0a21c52684b804729d"}),
+const { provider } = configureChains(chains, [
+  walletConnectProvider({ projectId: "5e724c76a001ab0a21c52684b804729d" }),
 ]);
 const wagmiClient = createClient({
   autoConnect: true,
-  connectors: modalConnectors({appName: "Veritty", chains}),
+  connectors: modalConnectors({
+    projectId: "5e724c76a001ab0a21c52684b804729d",
+    version: "1",
+    appName: "Veritty",
+    chains,
+  }),
   provider,
 });
 // Web3Modal Ethereum Client
