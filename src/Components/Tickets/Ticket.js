@@ -2,17 +2,16 @@ import React from "react";
 import { Box, Button, Icon, Link } from "@mui/material";
 import SoldOutButton from "../../Images/Tickets/soldOut.svg";
 import { SocialLinks } from "../SocialLinks";
-import MintTicketWinner from "../../Images/Tickets/Winner Ticket MINT.svg";
+import MintTicketWinner from "../../Images/Tickets/Winner Ticket MINT.png";
 import MintTicketFront from "../../Images/mintTickertFront.png";
-import MintTicketUnborder from "../../Images/Tickets/MintTicketUnborder.svg";
+import MintTicketUnborder from "../../Images/Tickets/MintTicketUnborder.png";
 import MintTicketZero from "../../Images/Tickets/0.png";
 import TryAgainImg from "../../Images/Tickets/redo.svg";
+
 import SuspendedButton from "../../Images/Tickets/suspended.svg";
 
 export const Ticket = ({
   loading,
-  isFirst,
-  block,
   isContractOpen,
   minted,
   isLoggedIn,
@@ -521,7 +520,7 @@ export const Ticket = ({
               }}
             >
               {loading ? (
-                <div class="lds-ring">
+                <div className="lds-ring">
                   <div></div>
                   <div></div>
                   <div></div>
@@ -603,7 +602,7 @@ export const Ticket = ({
         )}
         <Box
           component={"img"}
-          sx={{ width: "278px", height: "485px" }}
+          sx={{ width: "278px !important", height: "485px !important" }}
           src={
             ticketCount !== 0
               ? !minted

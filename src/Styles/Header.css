@@ -297,6 +297,16 @@
   }
 }
 
+@keyframes Loader {
+  from {
+    transform: rotateZ(0);
+  }
+
+  to {
+    transform: rotateZ(-360deg);
+  }
+}
+
 .mintTicket:before {
   content: "";
   position: absolute;
@@ -326,6 +336,50 @@
   background: conic-gradient(#fd004c, #fff020, #3edf4b, #3363ff, #fd004c);
   animation: Spin 2s linear infinite;
   filter: blur(100px) !important;
+}
+
+.LoaderCircle {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.LoaderCircle div {
+  position: relative;
+  width: 200px;
+  height: 200px;
+  border-radius: 100%;
+  background-color: #794DFF;
+  background: conic-gradient(#794DFF, transparent);
+  z-index: 2;
+  animation: Loader 1s linear infinite;
+}
+
+.LoaderCircle div::before,
+.LoaderCircle div::after {
+  content: "";
+  position: absolute;
+  z-index: 3;
+}
+
+.LoaderCircle div::after {
+  top: 0;
+  left: 45%;
+  width: 20px;
+  height: 20px;
+  background: #794DFF;
+  border-radius: 100%;
+}
+
+.LoaderCircle div::before {
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 160px;
+  height: 160px;
+  border-radius: 100%;
+  background: #000000;
 }
 
 .react-card-flipper {
