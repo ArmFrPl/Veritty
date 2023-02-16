@@ -85,7 +85,7 @@ export const Header = ({
         setCount(count + 1);
       }
       setWinnerOpen(true);
-    }, 10 * 1000); // 3 minutes in milliseconds
+    }, 3 * 60 * 1000); // 3 minutes in milliseconds
     return () => {
       clearInterval(intervalId);
     };
