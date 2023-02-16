@@ -149,8 +149,6 @@ export const Navbar = ({isLoggedIn, faqRef, mobileFaqRef, setMenuOpen, menuOpen,
                                      className='menuItem'>TICKETS</Link> : <Link to='#' onClick={open} replace style={{marginRight: '40px', textDecoration: 'none'}}
                                                                                  className='menuItem'>TICKETS</Link>
                 }
-                {/*<Link to='/dashboard' replace style={{marginRight: '40px', textDecoration: 'none'}}*/}
-                {/*      className='menuItem'>TICKETS</Link>*/}
                 <Link to='#' style={{marginRight: '40px', textDecoration: 'none'}} className='menuItem'
                       onClick={scrollToFaq}>FAQ</Link>
                 <Muilink target='_blank' href='https://goerli.etherscan.io/address/0x0CE0E5676b7c6c26F6A9923cC2C054eB3FDBEcc2' style={{marginRight: '40px', textDecoration: 'none'}} className='menuItem'>AUDIT</Muilink>

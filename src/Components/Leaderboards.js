@@ -103,7 +103,7 @@ export const Leaderboards = ({winnersRef, mobileWinnersRef, leaderboard}) => {
               boxSizing: 'border-box',
               msOverflowStyle: 'none',
               scrollbarWidth: 'none',
-              '&::-webkit-scrollbar': {
+              '&::WebkitScrollbar': {
                 display: 'none',
               }
             }}>
@@ -227,7 +227,7 @@ export const Leaderboards = ({winnersRef, mobileWinnersRef, leaderboard}) => {
               boxSizing: 'border-box',
               msOverflowStyle: 'none',
               scrollbarWidth: 'none',
-              '&::-webkit-scrollbar': {
+              '&::WebkitScrollbar': {
                 display: 'none',
               }
             }}>

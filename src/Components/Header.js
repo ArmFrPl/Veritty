@@ -85,16 +85,17 @@ export const Header = ({
         setCount(count + 1);
       }
       setWinnerOpen(true);
-    }, 3 * 60 * 1000); // 3 minutes in milliseconds
+    }, 10 * 1000); // 3 minutes in milliseconds
     return () => {
       clearInterval(intervalId);
     };
   }, [count]);
 
   const convertToTime = (timestamp) => {
-    let date = new Date(timestamp * 10000);
-    date = date.getHours() + ":" + date.getMinutes();
-    return date;
+    return new Date(timestamp).toLocaleString('local', {
+      hour: '2-digit',
+      minute: '2-digit',
+    });
   };
 
   const handleCloseWinner = () => {
@@ -141,20 +142,24 @@ export const Header = ({
   }
 
   const mintTicket = async () => {
-    setLoading(true);
-    const entranceFee = await contract.entranceFee();
-    const txResponse = await contract.enterRaffle({
-      value: entranceFee,
-      gasLimit: 800000,
-    });
-    const txReceipt = await txResponse.wait(1);
-    const event = txReceipt?.events?.filter(
-      (event) => event.event === "WinnerChosen"
-    );
-    setTokenId(event["0"].args["tokenId"].toNumber());
-    setWinningSum(event["0"].args["sum"].toNumber());
-    setMinted(true);
-    setLoading(false);
+    try {
+      setLoading(true);
+      const entranceFee = await contract.entranceFee();
+      const txResponse = await contract.enterRaffle({
+        value: entranceFee,
+        gasLimit: 800000,
+      });
+      const txReceipt = await txResponse.wait(1);
+      const event = txReceipt?.events?.filter(
+        (event) => event.event === "WinnerChosen"
+      );
+      setTokenId(event["0"].args["tokenId"].toNumber());
+      setWinningSum(event["0"].args["sum"].toNumber());
+      setMinted(true);
+      setLoading(false);
+    }catch{
+      setLoading(false);
+    }
   };
 
   return (
@@ -321,6 +326,7 @@ export const Header = ({
                       {winners[count]?.userId.slice(0, 10) + "…"}
                     </Typography>
                     <Link
+                      target='_blank'
                       href={winners[count]?.link}
                       sx={{
                         textDecoration: "none",
@@ -572,6 +578,7 @@ export const Header = ({
                         {winners[count]?.userId.slice(0, 10) + "…"}
                       </Typography>
                       <Link
+                        target='_blank'
                         href={winners[count]?.link}
                         sx={{
                           textDecoration: "none",

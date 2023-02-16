@@ -11,7 +11,7 @@ export const FAQ = ({faqRef, mobileFaqRef}) => {
     },
     {
       name: 'How does it Work',
-      value: 'As soon as you connect your wallet and purchase a ticket, the smart contract will generate 10,888 tickets randomly, 888 of which will be winning the prize. Upon payment, the winning ticket appears immediately on the website on the dashboard, in your wallet, and on OpenSea. We\'ve made sure that the mechanism for determining the winning ticket is as transparent as possible, and you can easily check that in an open for public smart contract.,'
+      value: 'As soon as you connect your wallet and purchase a ticket, the smart contract will generate 10,888 tickets randomly, 888 of which will be winning the prize. Upon payment, the winning ticket appears immediately on the website on the dashboard, in your wallet, and on OpenSea. We\'ve made sure that the mechanism for determining the winning ticket is as transparent as possible, and you can easily check that in an open for public smart contract.'
     },
     {
       name: 'How to start',

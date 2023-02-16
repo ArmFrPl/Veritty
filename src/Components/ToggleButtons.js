@@ -3,7 +3,6 @@ import ToggleButton from '@mui/material/ToggleButton';
 import ToggleButtonGroup from '@mui/material/ToggleButtonGroup';
 import '../Styles/ToggleButtons.css';
 import {Link} from "react-router-dom";
-import {Box, Button} from "@mui/material";
 
 export default function ToggleButtons({isLoggedIn, view, setView}) {
 
@@ -147,9 +146,7 @@ export default function ToggleButtons({isLoggedIn, view, setView}) {
       </ToggleButtonGroup>
 
 
-      {/*Desktop*/
-      }
-
+      {/*Desktop*/}
 
       <ToggleButtonGroup
         sx={{
@@ -178,7 +175,10 @@ export default function ToggleButtons({isLoggedIn, view, setView}) {
           borderRight: '2px solid #958C9F',
           borderBottomLeftRadius: '13px',
           borderTopLeftRadius: '13px',
-          padding: '0 26px'
+          padding: '0 26px',
+          '&:hover': {
+            color: '#ffd057 !important;'
+          }
         }}>
           <Link to='/lottery' style={{
             width: '142px',
@@ -195,7 +195,10 @@ export default function ToggleButtons({isLoggedIn, view, setView}) {
           fontSize: "20px",
           lineHeight: '33px',
           borderRight: '2px solid #958C9F',
-          padding: '0 31px'
+          padding: '0 31px',
+          '&:hover': {
+            color: '#ffd057 !important;'
+          }
         }}>
           <Link to='/results' style={{
             width: '151px',
@@ -214,7 +217,10 @@ export default function ToggleButtons({isLoggedIn, view, setView}) {
           borderRight: isLoggedIn ? '2px solid #958C9F' : null,
           borderBottomRightRadius: isLoggedIn ? null : '13px',
           borderTopRightRadius: isLoggedIn ? null : '13px',
-          padding: '0 18px'
+          padding: '0 18px',
+          '&:hover': {
+            color: '#ffd057 !important;'
+          }
         }}>
           <Link to='/leaderboard' style={{
             width: '183px',
@@ -234,6 +240,9 @@ export default function ToggleButtons({isLoggedIn, view, setView}) {
             lineHeight: '33px',
             borderBottomRightRadius: '13px',
             borderTopRightRadius: '13px',
+            '&:hover': {
+              color: '#ffd057 !important;'
+            }
           }}>
             <Link to='/dashboard' style={{
               width: '148px',

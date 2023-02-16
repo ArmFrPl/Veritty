@@ -5,7 +5,9 @@ import GoToIcon from "../Images/goToIcon.svg";
 import GoDown from "../Images/goDown.svg";
 
 export const Dashboard = ({ticketsRef, mobileTicketsRef, userHistory}) => {
+  const topDataRef = useRef(null);
   const dataRef = useRef(null);
+  const mobileTopDataRef = useRef(null);
   const mobileDataRef = useRef(null);
 
   const convertToDate = (timestamp) => {
@@ -18,6 +20,12 @@ export const Dashboard = ({ticketsRef, mobileTicketsRef, userHistory}) => {
     return date;
   }
 
+  const scrollToTop = () => {
+    topDataRef.current?.scrollIntoView({behavior: "smooth", block: 'nearest', inline: 'start'})
+  }
+  const mobileScrollToTop = () => {
+    mobileTopDataRef.current?.scrollIntoView({block: 'nearest', inline: 'start'})
+  }
   const scrollToBottom = () => {
     dataRef.current?.scrollIntoView({behavior: "smooth", block: 'nearest', inline: 'start'})
   }
@@ -93,7 +101,7 @@ export const Dashboard = ({ticketsRef, mobileTicketsRef, userHistory}) => {
         </Box>
         <Box sx={{
           width: '90%',
-          height: '214px',
+          height: '234px',
           borderRadius: '10px',
           mt: '23px',
           background: 'rgba(255, 255, 255, 0.1)',
@@ -121,12 +129,21 @@ export const Dashboard = ({ticketsRef, mobileTicketsRef, userHistory}) => {
           </Box>
           <Box sx={{
             width: '100%',
-            height: '156px',
+            height: '176px',
             display: 'flex',
             flexDirection: 'column',
             justifyContent: 'center',
             alignItems: 'center',
           }}>
+            <Box sx={{
+              display: 'flex',
+              justifyContent: 'center',
+              cursor: 'pointer',
+              mt: '10px',
+              mb: '10px'
+            }}>
+              <Icon sx={{width: '30px', height: '30px', transform: 'rotate(180deg)'}} onClick={mobileScrollToTop}><img alt='arrow' src={GoDown} height={30} width={30}/></Icon>
+            </Box>
             <Box sx={{
               width: '100%',
               height: '100px',
@@ -138,6 +155,7 @@ export const Dashboard = ({ticketsRef, mobileTicketsRef, userHistory}) => {
               '&::-webkit-scrollbar': {
                 display: 'none',
               }}}>
+              <div ref={mobileTopDataRef}/>
               <table className='history' style={{width: '85%'}}>
                 <tbody>
                 {
@@ -170,7 +188,8 @@ export const Dashboard = ({ticketsRef, mobileTicketsRef, userHistory}) => {
                              marginLeft: '30px',
                              fontSize: {xs: '14px', md: '18px'},
                              lineHeight: {xs: '28px', md: '35px'},
-                           }}>{convertToDate(h.timestamp)}<Link href={h.link}><Icon sx={{
+                           }}>{convertToDate(h.timestamp)}
+                        <Link target='_blank' href={h.link}><Icon sx={{
                         display: 'flex',
                         alignItems: 'center',
                         color: '#FFFFFF',
@@ -190,6 +209,7 @@ export const Dashboard = ({ticketsRef, mobileTicketsRef, userHistory}) => {
               justifyContent: 'center',
               cursor: 'pointer',
               mt: '10px',
+              mb: '10px'
             }}>
               <Icon sx={{width: '30px', height: '30px'}} onClick={mobileScrollToBottom}><img alt='arrow' src={GoDown} height={30} width={30}/></Icon>
             </Button>
@@ -272,7 +292,7 @@ export const Dashboard = ({ticketsRef, mobileTicketsRef, userHistory}) => {
         </Box>
         <Box sx={{
           width: '435px',
-          height: '214px',
+          height: '234px',
           borderRadius: '10px',
           mt: '23px',
           background: 'rgba(255, 255, 255, 0.1)',
@@ -304,12 +324,21 @@ export const Dashboard = ({ticketsRef, mobileTicketsRef, userHistory}) => {
           </Box>
           <Box sx={{
             width: '100%',
-            height: '156px',
+            height: '176px',
             display: 'flex',
             flexDirection: 'column',
             justifyContent: 'center',
             alignItems: 'center',
           }}>
+            <Box sx={{
+              display: 'flex',
+              justifyContent: 'center',
+              cursor: 'pointer',
+              mt: '10px',
+              mb: '10px'
+            }}>
+              <Icon sx={{width: '30px', height: '30px', transform: 'rotate(180deg)'}} onClick={scrollToTop}><img alt='arrow' src={GoDown} height={30} width={30}/></Icon>
+            </Box>
             <Box sx={{
               width: '100%',
               height: '100px',
@@ -321,6 +350,7 @@ export const Dashboard = ({ticketsRef, mobileTicketsRef, userHistory}) => {
               '&::-webkit-scrollbar': {
                 display: 'none',
               }}}>
+              <div ref={topDataRef}/>
               <table className='history' style={{width: '75%'}}>
                 <tbody>
                 {
@@ -339,6 +369,7 @@ export const Dashboard = ({ticketsRef, mobileTicketsRef, userHistory}) => {
                       <td className='historyRows'
                           style={{textAlign: 'left', width: '95%', marginLeft: '30px'}}>{convertToDate(h.timestamp)}
                         <Link
+                          target='_blank'
                           href={h.link}><Icon sx={{
                           display: 'flex',
                           alignItems: 'center',
@@ -359,6 +390,7 @@ export const Dashboard = ({ticketsRef, mobileTicketsRef, userHistory}) => {
               justifyContent: 'center',
               cursor: 'pointer',
               mt: '10px',
+              mb: '10px'
             }}>
               <Icon sx={{width: '30px', height: '30px'}} onClick={scrollToBottom}><img alt='arrow' src={GoDown} height={30} width={30}/></Icon>
             </Box>

@@ -1,5 +1,5 @@
 import React, {useEffect, useRef, useState} from "react";
-import {HashRouter, Route, Routes, useLocation} from "react-router-dom";
+import {Route, Routes, useLocation, useNavigate} from "react-router-dom";
 import {useAccount} from "wagmi";
 import {Navbar} from "./Navbar";
 import {Header} from "./Header";
@@ -34,6 +34,7 @@ export const Layout = () => {
   const provider = ethers.getDefaultProvider("https://eth-goerli.g.alchemy.com/v2/Fvr4iHEEClnFhZtgTB8ITVSen4GPwOls")
   const abi = RaffleImpl.abi;
   const contract = new ethers.Contract(ethAddress, abi, provider);
+  const navigate = useNavigate();
 
   useEffect(() => {
     let counts = [];
@@ -51,12 +52,17 @@ export const Layout = () => {
 
 
   useEffect(() => {
+    if(address){
     const fetchUser = async () => {
       const response = await axios.get(`https://veritty-backend.herokuapp.com/users/${address}`);
       getUserHistory(response.data);
     }
     fetchUser();
-  })
+    }else{
+      getUserHistory([]);
+      navigate("/lottery");
+    }
+  }, [address])
 
   useEffect(() => {
     const fetchLeaders = async () => {

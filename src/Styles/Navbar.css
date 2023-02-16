@@ -17,7 +17,7 @@
   color: #FFFFFF !important;
 }
 .menuItem:hover{
-  color: #FFD057;
+  color: #FFD057 !important;
 }
 .mobMenuItem{
   font-family: Epilogue;

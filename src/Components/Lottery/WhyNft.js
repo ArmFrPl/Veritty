@@ -1,5 +1,5 @@
 import React from "react";
-import {Box, Divider, Typography} from "@mui/material";
+import {Box, Divider} from "@mui/material";
 import '../../Styles/WhyNft.css';
 
 export const WhyNft = () => {
@@ -7,7 +7,7 @@ export const WhyNft = () => {
   const diffs = [
     {
       classic: 'Unknown amount of tickets',
-      nft: 'In total 10.000 tickets in NFT '
+      nft: 'In total 10.888 tickets in NFT '
     },
     {
       classic: 'Unknown amount of winning tickets',
