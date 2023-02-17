@@ -27,8 +27,9 @@ export const TicketMobile = ({
     const walletConnected = localStorage.getItem("wagmi.connected");
     const walletType = JSON.parse(localStorage.getItem("walletconnect"));
     const safari = navigator.userAgent.includes("Safari");
+    console.log(walletConnected, walletType, safari);
     if (walletConnected && walletType && safari) {
-      redirect("https://metamask.app.link/dapp/veritty.onrender.com");
+      redirect("dapp://veritty.onrender.com");
     }
   }
 
