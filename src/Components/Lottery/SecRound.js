@@ -40,27 +40,27 @@ export const SecRound = () => {
 
   const prizes = [
     {
-      place: "1 place",
+      place: "1st place",
       prize: "10.000 USTD",
     },
     {
-      place: "2 place",
+      place: "2nd place",
       prize: "5.000 USTD",
     },
     {
-      place: "3 place",
+      place: "3rd place",
       prize: "2.000 USTD",
     },
     {
-      place: "4 place",
+      place: "4th place",
       prize: "1.000 USTD",
     },
     {
-      place: "5 place",
+      place: "5th place",
       prize: "500 USTD",
     },
     {
-      place: "6-20 place",
+      place: "6-20th place",
       prize: "300 USTD",
     },
   ];
@@ -122,7 +122,7 @@ export const SecRound = () => {
                 <tr key={index} style={{ display: "flex", marginTop: "5px" }}>
                   <td
                     className="mobileSecRoundRow"
-                    style={{ textAlign: "right", width: "95px" }}
+                    style={{ textAlign: "right", width: "105px" }}
                   >
                     {p.place}
                   </td>
@@ -276,7 +276,7 @@ export const SecRound = () => {
                 <tr key={index} style={{ display: "flex", marginTop: "5px" }}>
                   <td
                     className="secRoundRow"
-                    style={{ textAlign: "right", width: "120px" }}
+                    style={{ textAlign: "right", width: "130px" }}
                   >
                     {p.place}
                   </td>
