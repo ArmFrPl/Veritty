@@ -28,8 +28,11 @@ export const TicketMobile = ({
     const walletType = JSON.parse(localStorage.getItem("walletconnect"));
     const safari = navigator.userAgent.includes("Safari");
     console.log(walletConnected, walletType, safari);
-    if (walletConnected && walletType && safari) {
+    console.log(navigator.userAgent);
+    if (walletConnected && walletType.peerMeta.name === "MetaMask" && safari) {
       redirect("dapp://veritty.onrender.com");
+    } else {
+      isLoggedIn ? mintTicket() : open();
     }
   }
 
@@ -321,14 +324,7 @@ export const TicketMobile = ({
             </Box>
             <Button
               disabled={!!loading}
-              onClick={
-                isLoggedIn
-                  ? () => {
-                      checkWallet();
-                      mintTicket();
-                    }
-                  : open
-              }
+              onClick={checkWallet}
               sx={{
                 flexDirection: "row",
                 justifyContent: "center",
