@@ -16,7 +16,7 @@ import MintTicketTwentyThousand from "../Images/Tickets/20000.png";
 import MintTicketFiftyThousand from "../Images/Tickets/50000.png";
 import GoToIcon from "../Images/goToIcon.svg";
 import { useSigner } from "wagmi";
-import { ethers } from "ethers";
+import { ethers, Wallet } from "ethers";
 import RaffleImpl from "../RaffleImpl.json";
 import { ethAddress } from "../constants";
 import { useWeb3Modal } from "@web3modal/react";
@@ -92,9 +92,9 @@ export const Header = ({
   }, [count]);
 
   const convertToTime = (timestamp) => {
-    return new Date(timestamp).toLocaleString('local', {
-      hour: '2-digit',
-      minute: '2-digit',
+    return new Date(timestamp).toLocaleString("local", {
+      hour: "2-digit",
+      minute: "2-digit",
     });
   };
 
@@ -144,6 +144,7 @@ export const Header = ({
   const mintTicket = async () => {
     try {
       setLoading(true);
+
       const entranceFee = await contract.entranceFee();
       const txResponse = await contract.enterRaffle({
         value: entranceFee,
@@ -157,7 +158,7 @@ export const Header = ({
       setWinningSum(event["0"].args["sum"].toNumber());
       setMinted(true);
       setLoading(false);
-    }catch{
+    } catch {
       setLoading(false);
     }
   };
@@ -326,7 +327,7 @@ export const Header = ({
                       {winners[count]?.userId.slice(0, 10) + "…"}
                     </Typography>
                     <Link
-                      target='_blank'
+                      target="_blank"
                       href={winners[count]?.link}
                       sx={{
                         textDecoration: "none",
@@ -578,7 +579,7 @@ export const Header = ({
                         {winners[count]?.userId.slice(0, 10) + "…"}
                       </Typography>
                       <Link
-                        target='_blank'
+                        target="_blank"
                         href={winners[count]?.link}
                         sx={{
                           textDecoration: "none",

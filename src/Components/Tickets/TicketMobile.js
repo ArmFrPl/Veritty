@@ -8,6 +8,7 @@ import MintTicketUnborder from "../../Images/Tickets/MintTicketUnborder.png";
 import MintTicketZero from "../../Images/Tickets/0.png";
 import TryAgainImg from "../../Images/Tickets/redo.svg";
 import SuspendedButton from "../../Images/Tickets/suspended.svg";
+import { redirect } from "react-router-dom";
 
 export const TicketMobile = ({
   loading,
@@ -22,6 +23,15 @@ export const TicketMobile = ({
   tokenId,
   mintTicket,
 }) => {
+  function checkWallet() {
+    const walletConnected = localStorage.getItem("wagmi.connected");
+    const walletType = JSON.parse(localStorage.getItem("walletconnect"));
+    const safari = navigator.userAgent.includes("Safari");
+    if (walletConnected && walletType && safari) {
+      redirect("https://metamask.app.link/dapp/veritty.onrender.com");
+    }
+  }
+
   return (
     <Box className="mintTicket">
       <Box
@@ -310,7 +320,14 @@ export const TicketMobile = ({
             </Box>
             <Button
               disabled={!!loading}
-              onClick={isLoggedIn ? mintTicket : open}
+              onClick={
+                isLoggedIn
+                  ? () => {
+                      checkWallet();
+                      mintTicket();
+                    }
+                  : open
+              }
               sx={{
                 flexDirection: "row",
                 justifyContent: "center",
