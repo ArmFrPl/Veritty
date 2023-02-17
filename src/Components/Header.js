@@ -19,7 +19,7 @@ import { useSigner } from "wagmi";
 import { ethers } from "ethers";
 import RaffleImpl from "../RaffleImpl.json";
 import { ethAddress } from "../constants";
-import { useWeb3Modal } from "@web3modal/react";
+import { useConnectModal } from "@rainbow-me/rainbowkit";
 import axios from "axios";
 import ReactCardFlip from "react-card-flip";
 import { Ticket } from "./Tickets/Ticket";
@@ -46,7 +46,7 @@ export const Header = ({
   const [tokenId, setTokenId] = useState(0);
   const [isContractOpen, setContractOpen] = useState(true);
 
-  const { open } = useWeb3Modal();
+  const { openConnectModal } = useConnectModal();
   const signer = useSigner();
   const abi = RaffleImpl.abi;
   const contract = new ethers.Contract(ethAddress, abi, signer.data);
@@ -92,9 +92,9 @@ export const Header = ({
   }, [count]);
 
   const convertToTime = (timestamp) => {
-    return new Date(timestamp).toLocaleString('local', {
-      hour: '2-digit',
-      minute: '2-digit',
+    return new Date(timestamp).toLocaleString("local", {
+      hour: "2-digit",
+      minute: "2-digit",
     });
   };
 
@@ -157,7 +157,8 @@ export const Header = ({
       setWinningSum(event["0"].args["sum"].toNumber());
       setMinted(true);
       setLoading(false);
-    }catch{
+    } catch (err) {
+      console.log("ERROR", err);
       setLoading(false);
     }
   };
@@ -250,7 +251,7 @@ export const Header = ({
                 ticketCount={ticketCount}
                 winningSum={winningSum}
                 getTicketImage={getTicketImage}
-                open={open}
+                open={openConnectModal}
                 userHistory={userHistory}
                 tokenId={tokenId}
                 mintTicket={mintTicket}
@@ -326,7 +327,7 @@ export const Header = ({
                       {winners[count]?.userId.slice(0, 10) + "…"}
                     </Typography>
                     <Link
-                      target='_blank'
+                      target="_blank"
                       href={winners[count]?.link}
                       sx={{
                         textDecoration: "none",
@@ -504,7 +505,7 @@ export const Header = ({
                 ticketCount={ticketCount}
                 winningSum={winningSum}
                 getTicketImage={getTicketImage}
-                open={open}
+                open={openConnectModal}
                 userHistory={userHistory}
                 tokenId={tokenId}
                 mintTicket={mintTicket}
@@ -578,7 +579,7 @@ export const Header = ({
                         {winners[count]?.userId.slice(0, 10) + "…"}
                       </Typography>
                       <Link
-                        target='_blank'
+                        target="_blank"
                         href={winners[count]?.link}
                         sx={{
                           textDecoration: "none",

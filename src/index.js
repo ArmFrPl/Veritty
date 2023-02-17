@@ -1,43 +1,82 @@
-import React from 'react';
-import ReactDOM from 'react-dom/client';
-import {BrowserRouter, HashRouter} from "react-router-dom";
-import './Styles/index.css';
-import App from './Components/App';
-
+import React from "react";
+import ReactDOM from "react-dom/client";
+import { HashRouter } from "react-router-dom";
+import "./Styles/index.css";
+import "@rainbow-me/rainbowkit/styles.css";
+import App from "./Components/App";
 import {
-  EthereumClient,
-  modalConnectors,
-  walletConnectProvider,
-} from "@web3modal/ethereum";
-import {Web3Modal} from "@web3modal/react";
-import {configureChains, createClient, WagmiConfig} from "wagmi";
-import {arbitrum, mainnet, polygon, goerli} from "wagmi/chains";
+  RainbowKitProvider,
+  darkTheme,
+  connectorsForWallets,
+} from "@rainbow-me/rainbowkit";
+import { configureChains, createClient, WagmiConfig } from "wagmi";
+import { goerli } from "wagmi/chains";
+import { publicProvider } from "wagmi/providers/public";
+import {
+  argentWallet,
+  coinbaseWallet,
+  imTokenWallet,
+  injectedWallet,
+  ledgerWallet,
+  metaMaskWallet,
+  omniWallet,
+  rainbowWallet,
+  trustWallet,
+  walletConnectWallet,
+} from "@rainbow-me/rainbowkit/wallets";
 
-const root = ReactDOM.createRoot(document.getElementById('root'));
-const chains = [goerli];
-const {provider} = configureChains(chains, [
-  walletConnectProvider({projectId: "5e724c76a001ab0a21c52684b804729d"}),
+const root = ReactDOM.createRoot(document.getElementById("root"));
+
+const { chains, provider } = configureChains(
+  [goerli],
+  [publicProvider({ apiKey: "5e724c76a001ab0a21c52684b804729d" })]
+);
+const connectors = connectorsForWallets([
+  {
+    groupName: "Recommended",
+    wallets: [
+      rainbowWallet({ chains }),
+      coinbaseWallet({ chains, appName: "Veritty" }),
+      metaMaskWallet({ chains }),
+      walletConnectWallet({ chains }),
+    ],
+  },
+  {
+    groupName: "Others",
+    wallets: [
+      trustWallet({ chains }),
+      argentWallet({ chains }),
+      imTokenWallet({ chains }),
+      injectedWallet({ chains }),
+      omniWallet({ chains }),
+      ledgerWallet({ chains }),
+    ],
+  },
 ]);
+
 const wagmiClient = createClient({
   autoConnect: true,
-  connectors: modalConnectors({appName: "Veritty", chains}),
+  connectors: connectors,
   provider,
 });
-// Web3Modal Ethereum Client
-const ethereumClient = new EthereumClient(wagmiClient, chains);
 
 root.render(
   <>
-    <React.StrictMode>
-      <HashRouter>
-        <WagmiConfig client={wagmiClient}>
-          <App/>
-        </WagmiConfig>
-      </HashRouter>
-    </React.StrictMode>
-    <Web3Modal
-      projectId="5e724c76a001ab0a21c52684b804729d"
-      ethereumClient={ethereumClient}
-    />
+    <HashRouter>
+      <WagmiConfig client={wagmiClient}>
+        <RainbowKitProvider
+          theme={darkTheme({
+            accentColor: "#7b3fe4",
+            accentColorForeground: "white",
+            borderRadius: "small",
+            fontStack: "system",
+            overlayBlur: "small",
+          })}
+          chains={chains}
+        >
+          <App />
+        </RainbowKitProvider>
+      </WagmiConfig>
+    </HashRouter>
   </>
 );
