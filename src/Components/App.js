@@ -1,9 +1,8 @@
 import React from "react";
-import '../Styles/App.css';
-import {Layout} from "./Layout";
+import "../Styles/App.css";
+import { Layout } from "./Layout";
 
 function App() {
-
   return (
     <div className="App">
       <Layout />
