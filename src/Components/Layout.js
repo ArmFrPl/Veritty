@@ -22,6 +22,8 @@ export const Layout = () => {
   const [view, setView] = useState('lottery');
   const [winningSum, setWinningSum] = useState(null);
   const [loading, setLoading] = useState(false);
+  const [ticketCounts, setTicketCounts] = useState([]);
+  const [userTicketCount, setUserTicketCount] = useState('00000');
   const location = useLocation();
   const ticketsRef = useRef();
   const winnersRef = useRef();
@@ -30,7 +32,6 @@ export const Layout = () => {
   const mobileWinnersRef = useRef();
   const mobileFaqRef = useRef();
   const {address, isConnected} = useAccount();
-  const [ticketCounts, setTicketCounts] = useState([]);
   const provider = ethers.getDefaultProvider("https://eth-goerli.g.alchemy.com/v2/Fvr4iHEEClnFhZtgTB8ITVSen4GPwOls")
   const abi = RaffleImpl.abi;
   const contract = new ethers.Contract(ethAddress, abi, provider);
@@ -56,13 +57,14 @@ export const Layout = () => {
     const fetchUser = async () => {
       const response = await axios.get(`https://veritty-backend.herokuapp.com/users/${address}`);
       getUserHistory(response.data);
+      setUserTicketCount(response.data.totalTickets)
     }
     fetchUser();
     }else{
       getUserHistory([]);
       navigate("/lottery");
     }
-  }, [address])
+  }, [address, loading])
 
   useEffect(() => {
     const fetchLeaders = async () => {
@@ -92,7 +94,7 @@ export const Layout = () => {
                 winnersRef={winnersRef} mobileWinnersRef={mobileWinnersRef}/>
         <div className='cont'>
           <Header isLoggedIn={isConnected} view={view} setView={setView} menuOpen={menuOpen} ticketCounts={ticketCounts}
-                  userHistory={userHistory} setWinningSum={setWinningSum} winningSum={winningSum} loading={loading}
+                  userHistory={userHistory} userTicketCount={userTicketCount} setWinningSum={setWinningSum} winningSum={winningSum} loading={loading}
                   setLoading={setLoading}/>
           <div className='page'>
             <Routes>
@@ -103,7 +105,7 @@ export const Layout = () => {
                                                                 mobileWinnersRef={mobileWinnersRef} leaderboard={leaderboard}/>}/>
               <Route path="/dashboard"
                      element={<Dashboard menuOpen={menuOpen} ticketsRef={ticketsRef} mobileTicketsRef={mobileTicketsRef}
-                                         address={address} userHistory={userHistory} getUserHistory={getUserHistory}
+                                         address={address} userHistory={userHistory} userTicketCount={userTicketCount} getUserHistory={getUserHistory}
                                          winningSum={winningSum}/>}/>
             </Routes>
           </div>

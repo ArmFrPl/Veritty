@@ -20,6 +20,7 @@ export const TicketMobile = ({
   getTicketImage,
   open,
   userHistory,
+  userTicketCount,
   tokenId,
   mintTicket,
 }) => {
@@ -655,7 +656,7 @@ export const TicketMobile = ({
                 left: "80px",
               }}
             >
-              Ticket # {("00000" + userHistory.totalTickets).slice(-5)}
+              Ticket # {("00000" + userTicketCount).slice(-5) || '00000'}
             </Box>
           </>
         )}

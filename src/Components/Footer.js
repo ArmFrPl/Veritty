@@ -45,6 +45,11 @@ export const Footer = () => {
                   display: 'flex',
                   justifyContent: 'center',
                   alignItems: 'center',
+                  msOverflowStyle: 'none',
+                  scrollbarWidth: 'none',
+                  '&::-webkit-scrollbar': {
+                    display: 'none',
+                  }
                 }}
               >
                 <Fade in={openPrivacy}>
@@ -55,6 +60,11 @@ export const Footer = () => {
                     border: '1.20991px solid #5900EB',
                     borderRadius: '29.0379px',
                     padding: '25px 0 61px 45px',
+                    msOverflowStyle: 'none',
+                    scrollbarWidth: 'none',
+                    '&::-webkit-scrollbar': {
+                      display: 'none',
+                    }
                   }}>
                     <Box className='footerModalHeader'>
                       Privacy Policy
@@ -208,6 +218,11 @@ export const Footer = () => {
                   display: 'flex',
                   justifyContent: 'center',
                   alignItems: 'center',
+                  msOverflowStyle: 'none',
+                  scrollbarWidth: 'none',
+                  '&::-webkit-scrollbar': {
+                    display: 'none',
+                  }
                 }}
               >
                 <Fade in={openTerms}>
@@ -218,6 +233,11 @@ export const Footer = () => {
                     border: '1.20991px solid #5900EB',
                     borderRadius: '29.0379px',
                     padding: '25px 0 61px 45px',
+                    msOverflowStyle: 'none',
+                    scrollbarWidth: 'none',
+                    '&::-webkit-scrollbar': {
+                      display: 'none',
+                    }
                   }}>
                     <Box className='footerModalHeader'>
                       Terms of Use
@@ -398,6 +418,11 @@ export const Footer = () => {
                 display: 'flex',
                 justifyContent: 'center',
                 alignItems: 'center',
+                msOverflowStyle: 'none',
+                scrollbarWidth: 'none',
+                '&::-webkit-scrollbar': {
+                  display: 'none',
+                }
               }}
             >
               <Fade in={openPrivacy}>
@@ -408,6 +433,11 @@ export const Footer = () => {
                   border: '1.20991px solid #5900EB',
                   borderRadius: '29.0379px',
                   padding: '25px 0 61px 45px',
+                  msOverflowStyle: 'none',
+                  scrollbarWidth: 'none',
+                  '&::-webkit-scrollbar': {
+                    display: 'none',
+                  }
                 }}>
                   <Box className='footerModalHeader'>
                     Privacy Policy
@@ -561,6 +591,11 @@ export const Footer = () => {
                 display: 'flex',
                 justifyContent: 'center',
                 alignItems: 'center',
+                msOverflowStyle: 'none',
+                scrollbarWidth: 'none',
+                '&::-webkit-scrollbar': {
+                  display: 'none',
+                }
               }}
             >
               <Fade in={openTerms}>
@@ -571,6 +606,11 @@ export const Footer = () => {
                   border: '1.20991px solid #5900EB',
                   borderRadius: '29.0379px',
                   padding: '25px 0 61px 45px',
+                  msOverflowStyle: 'none',
+                  scrollbarWidth: 'none',
+                  '&::-webkit-scrollbar': {
+                    display: 'none',
+                  }
                 }}>
                   <Box className='footerModalHeader'>
                     Terms of Use

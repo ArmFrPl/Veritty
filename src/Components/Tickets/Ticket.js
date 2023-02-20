@@ -20,6 +20,7 @@ export const Ticket = ({
   getTicketImage,
   open,
   userHistory,
+  userTicketCount,
   tokenId,
   mintTicket,
 }) => {
@@ -596,7 +597,7 @@ export const Ticket = ({
                 left: "80px",
               }}
             >
-              Ticket # {("00000" + userHistory.totalTickets).slice(-5)}
+              Ticket # {("00000" + userTicketCount).slice(-5) || '00000'}
             </Box>
           </>
         )}
