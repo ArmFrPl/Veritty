@@ -23,7 +23,7 @@ export const Layout = () => {
   const [winningSum, setWinningSum] = useState(null);
   const [loading, setLoading] = useState(false);
   const [ticketCounts, setTicketCounts] = useState([]);
-  const [userTicketCount, setUserTicketCount] = useState('00000');
+  const [userTicketCount, setUserTicketCount] = useState("00000");
   const location = useLocation();
   const ticketsRef = useRef();
   const winnersRef = useRef();
@@ -32,7 +32,6 @@ export const Layout = () => {
   const mobileWinnersRef = useRef();
   const mobileFaqRef = useRef();
   const { address, isConnected } = useAccount();
-  const [ticketCounts, setTicketCounts] = useState([]);
   const provider = ethers.getDefaultProvider(
     "https://eth-goerli.g.alchemy.com/v2/Fvr4iHEEClnFhZtgTB8ITVSen4GPwOls"
   );
