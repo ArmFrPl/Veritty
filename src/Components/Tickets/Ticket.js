@@ -581,23 +581,25 @@ export const Ticket = ({
                 View on OpenSea
               </Button>
             </Link>
-
-            <Box
-              component="span"
-              sx={{
-                fontFamily: "Epilogue",
-                fontStyle: "normal",
-                fontWeight: 700,
-                fontSize: "16px",
-                lineHeight: "73px",
-                color: "#FFD057",
-                position: "absolute",
-                top: "410px",
-                left: "80px",
-              }}
-            >
-              Ticket # {("00000" + userHistory.totalTickets).slice(-5)}
-            </Box>
+            {userHistory.totalTickets &&
+              userHistory.totalTickets !== "undefined" && (
+                <Box
+                  component="span"
+                  sx={{
+                    fontFamily: "Epilogue",
+                    fontStyle: "normal",
+                    fontWeight: 700,
+                    fontSize: "16px",
+                    lineHeight: "73px",
+                    color: "#FFD057",
+                    position: "absolute",
+                    top: "410px",
+                    left: "80px",
+                  }}
+                >
+                  Ticket # {("00000" + userHistory.totalTickets).slice(-5)}
+                </Box>
+              )}
           </>
         )}
         <Box
