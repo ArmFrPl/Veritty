@@ -159,8 +159,10 @@ export const Header = ({
       setTokenId(event["0"].args["tokenId"].toNumber());
       setWinningSum(event["0"].args["sum"].toNumber());
       setMinted(true);
-      updUserHistory();
       setLoading(false);
+      setTimeout(() => {
+        updUserHistory();
+      }, 0);
     } catch {
       setLoading(false);
     }
