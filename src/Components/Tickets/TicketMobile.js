@@ -8,7 +8,6 @@ import MintTicketUnborder from "../../Images/Tickets/MintTicketUnborder.png";
 import MintTicketZero from "../../Images/Tickets/0.png";
 import TryAgainImg from "../../Images/Tickets/redo.svg";
 import SuspendedButton from "../../Images/Tickets/suspended.svg";
-import { redirect } from "react-router-dom";
 
 export const TicketMobile = ({
   loading,
@@ -24,19 +23,6 @@ export const TicketMobile = ({
   tokenId,
   mintTicket,
 }) => {
-  function checkWallet() {
-    const walletConnected = localStorage.getItem("wagmi.connected");
-    const walletType = JSON.parse(localStorage.getItem("walletconnect"));
-    const safari = navigator.userAgent.includes("Safari");
-    console.log(walletConnected, walletType, safari);
-    console.log(navigator.userAgent);
-    if (walletConnected && walletType.peerMeta.name === "MetaMask" && safari) {
-      redirect("dapp://veritty.onrender.com");
-    } else {
-      isLoggedIn ? mintTicket() : open();
-    }
-  }
-
   return (
     <Box className="mintTicket">
       <Box
@@ -325,7 +311,7 @@ export const TicketMobile = ({
             </Box>
             <Button
               disabled={!!loading}
-              onClick={checkWallet}
+              onClick={isLoggedIn ? mintTicket : open}
               sx={{
                 flexDirection: "row",
                 justifyContent: "center",
@@ -641,23 +627,25 @@ export const TicketMobile = ({
                 View on OpenSea
               </Button>
             </Link>
-
-            <Box
-              component="span"
-              sx={{
-                fontFamily: "Epilogue",
-                fontStyle: "normal",
-                fontWeight: 700,
-                fontSize: "16px",
-                lineHeight: "73px",
-                color: "#FFD057",
-                position: "absolute",
-                top: "410px",
-                left: "80px",
-              }}
-            >
-              Ticket # {("00000" + userTicketCount).slice(-5) || '00000'}
-            </Box>
+            {userHistory.totalTickets &&
+              userHistory.totalTickets !== "undefined" && (
+                <Box
+                  component="span"
+                  sx={{
+                    fontFamily: "Epilogue",
+                    fontStyle: "normal",
+                    fontWeight: 700,
+                    fontSize: "16px",
+                    lineHeight: "73px",
+                    color: "#FFD057",
+                    position: "absolute",
+                    top: "410px",
+                    left: "80px",
+                  }}
+                >
+                  Ticket # {("00000" + userHistory.totalTickets).slice(-5)}
+                </Box>
+              )}
           </>
         )}
         <Box

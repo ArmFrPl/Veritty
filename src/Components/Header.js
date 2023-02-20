@@ -16,7 +16,7 @@ import MintTicketTwentyThousand from "../Images/Tickets/20000.png";
 import MintTicketFiftyThousand from "../Images/Tickets/50000.png";
 import GoToIcon from "../Images/goToIcon.svg";
 import { useSigner } from "wagmi";
-import { ethers, Wallet } from "ethers";
+import { ethers } from "ethers";
 import RaffleImpl from "../RaffleImpl.json";
 import { ethAddress } from "../constants";
 import { useWeb3Modal } from "@web3modal/react";
@@ -38,6 +38,7 @@ export const Header = ({
   setWinningSum,
   loading,
   setLoading,
+  updUserHistory,
 }) => {
   const [isWinnerOpen, setWinnerOpen] = useState(false);
   const [winners, getWinners] = useState({});
@@ -158,6 +159,7 @@ export const Header = ({
       setTokenId(event["0"].args["tokenId"].toNumber());
       setWinningSum(event["0"].args["sum"].toNumber());
       setMinted(true);
+      updUserHistory();
       setLoading(false);
     } catch {
       setLoading(false);
