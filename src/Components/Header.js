@@ -33,6 +33,7 @@ export const Header = ({
   menuOpen,
   ticketCounts,
   userHistory,
+  userTicketCount,
   winningSum,
   setWinningSum,
   loading,
@@ -255,6 +256,7 @@ export const Header = ({
                 getTicketImage={getTicketImage}
                 open={open}
                 userHistory={userHistory}
+                userTicketCount={userTicketCount}
                 tokenId={tokenId}
                 mintTicket={mintTicket}
                 style={{ " transform-style": "preserve-3d !important" }}
@@ -509,6 +511,7 @@ export const Header = ({
                 getTicketImage={getTicketImage}
                 open={open}
                 userHistory={userHistory}
+                userTicketCount={userTicketCount}
                 tokenId={tokenId}
                 mintTicket={mintTicket}
                 style={{ " transform-style": "preserve-3d !important" }}

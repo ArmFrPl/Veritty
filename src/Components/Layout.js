@@ -22,6 +22,8 @@ export const Layout = () => {
   const [view, setView] = useState("lottery");
   const [winningSum, setWinningSum] = useState(null);
   const [loading, setLoading] = useState(false);
+  const [ticketCounts, setTicketCounts] = useState([]);
+  const [userTicketCount, setUserTicketCount] = useState('00000');
   const location = useLocation();
   const ticketsRef = useRef();
   const winnersRef = useRef();

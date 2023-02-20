@@ -7,14 +7,23 @@ import {TableRowWithAvatar} from "./TableRowWithAvatar";
 
 export const Leaderboards = ({winnersRef, mobileWinnersRef, leaderboard}) => {
   const [inputText, setInputText] = useState("");
+  const topLeadersRef = useRef(null);
+  const mobileTopLeadersRef = useRef(null);
   const leadersRef = useRef(null);
   const mobileLeadersRef = useRef(null);
+
 
   let inputHandler = (e) => {
     let lowerCase = e.target.value.toLowerCase();
     setInputText(lowerCase);
   }
 
+  const scrollToTop = () => {
+    topLeadersRef.current?.scrollIntoView({behavior: "smooth", block: 'nearest', inline: 'start'})
+  }
+  const mobileScrollToTop = () => {
+    mobileTopLeadersRef.current?.scrollIntoView({behavior: "smooth", block: 'nearest', inline: 'start'})
+  }
   const scrollToBottom = () => {
     leadersRef.current?.scrollIntoView({behavior: "smooth", block: 'nearest', inline: 'start'})
   }
@@ -75,7 +84,7 @@ export const Leaderboards = ({winnersRef, mobileWinnersRef, leaderboard}) => {
         }}/>
         <Box sx={{
           width: '90%',
-          height: '665px',
+          height: '695px',
           borderRadius: '10px',
           mt: '23px',
           background: 'rgba(255, 255, 255, 0.1)',
@@ -94,6 +103,15 @@ export const Leaderboards = ({winnersRef, mobileWinnersRef, leaderboard}) => {
               <th className='leaderTitle' style={{textAlign: 'center', width: '40%'}}>User address</th>
               <th className='leaderTitle' style={{textAlign: 'right', width: '28%', marginRight: '28px'}}>Won USDT</th>
             </tr>
+            <Box sx={{
+              display: 'flex',
+              justifyContent: 'center',
+              cursor: 'pointer',
+              mt: '10px',
+              mb: '10px'
+            }}>
+              <Icon sx={{width: '30px', height: '30px', transform: 'rotate(180deg)'}} onClick={mobileScrollToTop}><img alt='arrow' src={GoDown} height={30} width={30}/></Icon>
+            </Box>
             <div className='leaderTable' style={{
               height: '515px',
               overflow: 'scroll',
@@ -103,10 +121,11 @@ export const Leaderboards = ({winnersRef, mobileWinnersRef, leaderboard}) => {
               boxSizing: 'border-box',
               msOverflowStyle: 'none',
               scrollbarWidth: 'none',
-              '&::WebkitScrollbar': {
+              '&::-webkit-scrollbar': {
                 display: 'none',
               }
             }}>
+            <div ref={mobileTopLeadersRef} />
               {
                 filteredLeaders?.map((l, index) => {
                   if (index + 1 === 1) {
@@ -195,7 +214,7 @@ export const Leaderboards = ({winnersRef, mobileWinnersRef, leaderboard}) => {
         }}/>
         <Box sx={{
           width: '435px',
-          height: '665px',
+          height: '695px',
           borderRadius: '10px',
           mt: '23px',
           background: 'rgba(255, 255, 255, 0.1)',
@@ -218,6 +237,15 @@ export const Leaderboards = ({winnersRef, mobileWinnersRef, leaderboard}) => {
               <th className='leaderTitle' style={{textAlign: 'center', width: '40%'}}>User address</th>
               <th className='leaderTitle' style={{textAlign: 'right', width: '28%', marginRight: '28px'}}>Won USDT</th>
             </tr>
+            <Box sx={{
+              display: 'flex',
+              justifyContent: 'center',
+              cursor: 'pointer',
+              mt: '10px',
+              mb: '10px'
+            }}>
+              <Icon sx={{width: '30px', height: '30px', transform: 'rotate(180deg)'}} onClick={scrollToTop}><img alt='arrow' src={GoDown} height={30} width={30}/></Icon>
+            </Box>
             <Box className='leaderTable' sx={{
               height: '515px',
               overflow: 'scroll',
@@ -227,10 +255,11 @@ export const Leaderboards = ({winnersRef, mobileWinnersRef, leaderboard}) => {
               boxSizing: 'border-box',
               msOverflowStyle: 'none',
               scrollbarWidth: 'none',
-              '&::WebkitScrollbar': {
+              '&::-webkit-scrollbar': {
                 display: 'none',
               }
             }}>
+              <div ref={topLeadersRef}/>
               {
                 filteredLeaders?.map((l, index) => {
                   if (index + 1 === 1) {

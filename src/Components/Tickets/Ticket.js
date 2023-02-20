@@ -20,6 +20,7 @@ export const Ticket = ({
   getTicketImage,
   open,
   userHistory,
+  userTicketCount,
   tokenId,
   mintTicket,
 }) => {

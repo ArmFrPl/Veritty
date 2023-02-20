@@ -19,6 +19,7 @@ export const TicketMobile = ({
   getTicketImage,
   open,
   userHistory,
+  userTicketCount,
   tokenId,
   mintTicket,
 }) => {

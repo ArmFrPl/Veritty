@@ -8,6 +8,8 @@ import GoDown from "../Images/goDown.svg";
 export const Results = ({results}) => {
 
   const [expanded, setExpanded] = useState(false);
+  const topResultsRef = useRef(null);
+  const mobileTopResultsRef = useRef(null);
   const resultsRef = useRef(null);
   const mobileResultsRef = useRef(null);
 
@@ -15,6 +17,12 @@ export const Results = ({results}) => {
     setExpanded(isExpanded ? panel : false);
   };
 
+  const scrollToTop = () => {
+    topResultsRef.current?.scrollIntoView({behavior: "smooth", block: 'nearest', inline: 'start'})
+  }
+  const mobileScrollToTop = () => {
+    mobileTopResultsRef.current?.scrollIntoView({behavior: "smooth", block: 'nearest', inline: 'start'})
+  }
   const scrollToBottom = () => {
     resultsRef.current?.scrollIntoView({behavior: "smooth", block: 'nearest', inline: 'start'})
   }
@@ -65,6 +73,15 @@ export const Results = ({results}) => {
           <Box sx={{
             display: 'flex',
             justifyContent: 'center',
+            cursor: 'pointer',
+            mt: '10px',
+            mb: '10px'
+          }}>
+            <Icon sx={{width: '30px', height: '30px', transform: 'rotate(180deg)'}} onClick={mobileScrollToTop}><img alt='arrow' src={GoDown} height={30} width={30}/></Icon>
+          </Box>
+          <Box sx={{
+            display: 'flex',
+            justifyContent: 'center',
             width: '100%',
             alignItems: 'center',
             overflow: 'scroll',
@@ -75,6 +92,7 @@ export const Results = ({results}) => {
               display: 'none',
             }
           }}>
+            <div ref={mobileTopResultsRef}/>
             {
               Object.keys(results)?.map((result, index) => (
                 <Accordion key={index} expanded={expanded === `panel${index}`} onChange={handleChange(`panel${index}`)}
@@ -132,7 +150,8 @@ export const Results = ({results}) => {
             display: 'flex',
             justifyContent: 'center',
             cursor: 'pointer',
-            mt: '30%'
+            mt: '20px',
+            mb: '20px'
           }} onClick={mobileScrollToBottom}>
             <Icon sx={{width: '30px', height: '30px'}}><img alt='arrow' src={GoDown} height={30} width={30}/></Icon>
           </Box>
@@ -186,6 +205,16 @@ export const Results = ({results}) => {
           }}>
             <Box sx={{
               display: 'flex',
+              justifyContent: 'center',
+              cursor: 'pointer',
+              mt: '10px',
+              mb: '10px'
+            }}>
+              <Icon sx={{width: '30px', height: '30px', transform: 'rotate(180deg)'}} onClick={scrollToTop}><img alt='arrow' src={GoDown} height={30} width={30}/></Icon>
+            </Box>
+
+            <Box sx={{
+              display: 'flex',
               width: '100%',
               flexDirection: 'column',
               alignItems: 'center',
@@ -197,6 +226,7 @@ export const Results = ({results}) => {
                 display: 'none',
               }
             }}>
+              <div ref={topResultsRef}/>
               {
                 Object.keys(results)?.map((result, index) => (
                   <Accordion key={index} expanded={expanded === `panel${index}`}
@@ -255,7 +285,8 @@ export const Results = ({results}) => {
             <Box sx={{
               display: 'flex',
               justifyContent: 'center',
-              mt: '30px',
+              mt: '20px',
+              mb: '20px',
               cursor: 'pointer'
             }} onClick={scrollToBottom}>
               <Icon sx={{width: '30px', height: '30px'}}><img alt='arrow' src={GoDown} height={30} width={30}/></Icon>
