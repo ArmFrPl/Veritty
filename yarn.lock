@@ -3677,14 +3677,6 @@
   dependencies:
     "@walletconnect/window-getters" "^1.0.0"
 
-"@web3modal/core@2.1.0":
-  "integrity" "sha512-MaKWlWleEtqSwcGEGFqP2FM4oewGcVmSZ+nQ/yUGlKN1HUWIlubcL7MgjShxGEqYHDLzbSRImu5y662s5fH2Mg=="
-  "resolved" "https://registry.npmjs.org/@web3modal/core/-/core-2.1.0.tgz"
-  "version" "2.1.0"
-  dependencies:
-    "buffer" "6.0.3"
-    "valtio" "1.9.0"
-
 "@web3modal/core@2.1.1":
   "integrity" "sha512-GAZAvfkPHoX2/fghQmf+y36uDspk9wBJxG7qLPUNTHzvIfRoNHWbTt3iEvRdPmUZwbTGDn1jvz9z0uU67gvZdw=="
   "resolved" "https://registry.npmjs.org/@web3modal/core/-/core-2.1.1.tgz"
@@ -3693,18 +3685,18 @@
     "buffer" "6.0.3"
     "valtio" "1.9.0"
 
-"@web3modal/ethereum@2.1.0":
-  "integrity" "sha512-el9VNn2rl2Aw0nVxoLB2PLSDG7fCLcTSv+OPiEny0M9jNzzZq5kainPcgEG8l/n1yIeRmoE4uERK8W0H5hdlWQ=="
-  "resolved" "https://registry.npmjs.org/@web3modal/ethereum/-/ethereum-2.1.0.tgz"
-  "version" "2.1.0"
+"@web3modal/ethereum@2.1.1":
+  "integrity" "sha512-F5kqPtqOgYt+1S7lZd8nfD59x1+YUkqvhbJrnSMg1uxDPSBtOGnSX33XVTQ7m3Z2/3yeoFkeLipx4i4WVLdAFA=="
+  "resolved" "https://registry.npmjs.org/@web3modal/ethereum/-/ethereum-2.1.1.tgz"
+  "version" "2.1.1"
 
-"@web3modal/react@2.1.0":
-  "integrity" "sha512-lX0WHHEzf4FcwA8yC1I7ThNARKrBxdJglafRP7K+uijp3UhJyrmqICm5Wkc3lfL8KvFhIT+nKJcK/NwqEqx+UQ=="
-  "resolved" "https://registry.npmjs.org/@web3modal/react/-/react-2.1.0.tgz"
-  "version" "2.1.0"
+"@web3modal/react@2.1.1":
+  "integrity" "sha512-lij4OxfL8jCmgjQIrqXzNwGXEfXHr6ext/2+MwA12+2TO4SOOtbvkBmmvicHmV7EEo43fCAqyrk6vDhsXZ00Ag=="
+  "resolved" "https://registry.npmjs.org/@web3modal/react/-/react-2.1.1.tgz"
+  "version" "2.1.1"
   dependencies:
-    "@web3modal/core" "2.1.0"
-    "@web3modal/ui" "2.1.0"
+    "@web3modal/core" "2.1.1"
+    "@web3modal/ui" "2.1.1"
 
 "@web3modal/standalone@^2.1.1":
   "integrity" "sha512-K06VkZqltLIBKpnLeM2oszRDSdLnwXJWCcItWEOkH4LDFQIiq8lSeLhcamuadRxRKF4ZyTSLHHJ5MFcMfZEHQQ=="
@@ -3713,16 +3705,6 @@
   dependencies:
     "@web3modal/core" "2.1.1"
     "@web3modal/ui" "2.1.1"
-
-"@web3modal/ui@2.1.0":
-  "integrity" "sha512-wu1AP8PryPcgMHoLaflm0vxWr9NGkP+/y843wDDhwln0cGJ0YQToo28TgGJ6zLx2KDHYrGpSsDig3J/WB4D/6w=="
-  "resolved" "https://registry.npmjs.org/@web3modal/ui/-/ui-2.1.0.tgz"
-  "version" "2.1.0"
-  dependencies:
-    "@web3modal/core" "2.1.0"
-    "lit" "2.6.1"
-    "motion" "10.15.5"
-    "qrcode" "1.5.1"
 
 "@web3modal/ui@2.1.1":
   "integrity" "sha512-0jRDxgPc/peaE5KgqnzzriXhdVu5xNyCMP5Enqdpd77VkknJIs7h16MYKidxgFexieyHpCOssWySsryWcP2sXA=="
