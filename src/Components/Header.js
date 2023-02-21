@@ -91,7 +91,7 @@ export const Header = ({
     return () => {
       clearInterval(intervalId);
     };
-  }, [count]);
+  }, [count, winners.length]);
 
   const convertToTime = (timestamp) => {
     return new Date(timestamp).toLocaleString("local", {
@@ -160,11 +160,10 @@ export const Header = ({
       setWinningSum(event["0"].args["sum"].toNumber());
       setMinted(true);
       setLoading(false);
-      setTimeout(() => {
-        updUserHistory();
-      }, 0);
     } catch {
       setLoading(false);
+    } finally {
+      updUserHistory();
     }
   };
 

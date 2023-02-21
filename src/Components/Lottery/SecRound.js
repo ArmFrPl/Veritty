@@ -19,7 +19,7 @@ export const SecRound = () => {
     {
       name: "Yes",
       value:
-        "For the owners of the highest amount of tickets (no matter winning or losing), we will hold a second raffle for 23.000 USDT.",
+        "For the owners of the highest amount of tickets (no matter winning or losing), we will hold a second raffle for 13.000 USDT.",
     },
     {
       name: "How it works?",
@@ -100,7 +100,7 @@ export const SecRound = () => {
               textFillColor: "transparent",
             }}
           >
-            23.000 USTD
+            13.000 USTD
           </Box>
           <Box
             sx={{
@@ -254,7 +254,7 @@ export const SecRound = () => {
               textFillColor: "transparent",
             }}
           >
-            23.000 USTD
+            13.000 USTD
           </Box>
           <Box
             sx={{
