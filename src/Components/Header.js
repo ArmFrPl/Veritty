@@ -146,7 +146,6 @@ export const Header = ({
   const mintTicket = async () => {
     try {
       setLoading(true);
-
       const entranceFee = await contract.entranceFee();
       const txResponse = await contract.enterRaffle({
         value: entranceFee,
