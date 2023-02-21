@@ -45,6 +45,7 @@ export const Layout = () => {
         `https://veritty-backend.herokuapp.com/users/${address}`
       );
       getUserHistory(response.data);
+      setUserTicketCount(response.data.totalTickets);
     };
     fetchUser();
   }
@@ -163,6 +164,7 @@ export const Layout = () => {
                     address={address}
                     userHistory={userHistory}
                     getUserHistory={getUserHistory}
+                    userTicketCount={userTicketCount}
                     winningSum={winningSum}
                   />
                 }
