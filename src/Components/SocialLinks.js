@@ -2,6 +2,8 @@ import React from "react";
 import { Box, Link } from "@mui/material";
 import TwitterLogo from "../Images/Twitter.svg";
 import DiscordLogo from "../Images/Discord.svg";
+import MediumLogo from "../Images/Medium.svg";
+import TelegramLogo from "../Images/Telegram.svg";
 import CooliconLogo from "../Images/coolicon.svg";
 import "../Styles/SocialLinks.css";
 
@@ -36,7 +38,7 @@ export const SocialLinks = () => {
         />
       </Link>
       <Link
-        style={{ marginRight: 0 }}
+        style={{ marginRight: "30px" }}
         target="_blank"
         href="https://testnets.opensea.io/collection/ticket-wpdx0q3dpa"
       >
@@ -45,6 +47,32 @@ export const SocialLinks = () => {
           component="img"
           alt="Coolicon Logo"
           src={CooliconLogo}
+        />
+      </Link>
+      <Link
+        style={{ marginRight: "30px" }}
+        target="_blank"
+        href="https://medium.com/@veritty.io"
+      >
+        <Box
+          className="socialLink"
+          component="img"
+          alt="Medium Logo"
+          src={MediumLogo}
+          style={{ height: "21px", width: "21px" }}
+        />
+      </Link>
+      <Link
+        style={{ marginRight: 0 }}
+        target="_blank"
+        href="https://t.me/+BB_N5RaB5N9hMDJi"
+      >
+        <Box
+          className="socialLink"
+          component="img"
+          alt="Medium Logo"
+          src={TelegramLogo}
+          style={{ height: "21px", width: "21px" }}
         />
       </Link>
     </Box>
