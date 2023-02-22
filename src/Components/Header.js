@@ -259,154 +259,156 @@ export const Header = ({
               <Loader desktop={false} />
             </ReactCardFlip>
           </Box>
-          <Snackbar
-            className="popupMobile"
-            open={isWinnerOpen}
-            onClose={handleCloseWinner}
-            autoHideDuration={30 * 1000}
-            anchorOrigin={{ vertical: "bottom", horizontal: "right" }}
-            sx={{
-              display: { xs: "flex", md: "none" },
-              width: "252px",
-              "> .css-1eqdgzv-MuiPaper-root-MuiSnackbarContent-root": {
+          {winners.length && (
+            <Snackbar
+              className="popupMobile"
+              open={isWinnerOpen}
+              onClose={handleCloseWinner}
+              autoHideDuration={30 * 1000}
+              anchorOrigin={{ vertical: "bottom", horizontal: "right" }}
+              sx={{
+                display: { xs: "flex", md: "none" },
                 width: "252px",
-              },
-            }}
-            message={
-              <Box
-                className="headerModalCont"
-                sx={{
+                "> .css-1eqdgzv-MuiPaper-root-MuiSnackbarContent-root": {
                   width: "252px",
-                  height: "65px",
-                  background: "#101010",
-                  border: "1px solid #00DF74",
-                  borderRadius: "16px",
-                  display: "flex",
-                }}
-              >
-                <Box className="headerModalBody">
-                  <CheckCircleOutlineRoundedIcon
-                    sx={{
-                      color: "#00DF74",
-                      mr: "14px",
-                      pl: "10px",
-                      width: "22px",
-                      height: "22px",
-                    }}
-                  />
-                  <Box>
-                    <Typography
+                },
+              }}
+              message={
+                <Box
+                  className="headerModalCont"
+                  sx={{
+                    width: "252px",
+                    height: "65px",
+                    background: "#101010",
+                    border: "1px solid #00DF74",
+                    borderRadius: "16px",
+                    display: "flex",
+                  }}
+                >
+                  <Box className="headerModalBody">
+                    <CheckCircleOutlineRoundedIcon
                       sx={{
-                        fontFamily: "Epilogue",
-                        fontStyle: "normal",
-                        fontWeight: "700",
-                        fontSize: "10px",
-                        lineHeight: "14px",
-                        display: "flex",
-                        alignItems: "center",
-                        letterSpacing: "0.01em",
-                        color: "#F8F8F8",
+                        color: "#00DF74",
+                        mr: "14px",
+                        pl: "10px",
+                        width: "22px",
+                        height: "22px",
                       }}
-                    >
-                      WINNER
-                    </Typography>
-                    <Typography
-                      sx={{
-                        fontFamily: "Epilogue",
-                        fontStyle: "normal",
-                        fontWeight: "400",
-                        fontSize: "12px",
-                        lineHeight: "24px",
-                        display: "flex",
-                        alignItems: "center",
-                        color:
-                          winners[count]?.sum < 500 ? "#F8F8F8" : "#00DF74",
-                      }}
-                    >
-                      {winners[count]?.userId.slice(0, 10) + "…"}
-                    </Typography>
-                    <Link
-                      target="_blank"
-                      href={winners[count]?.link}
-                      sx={{
-                        textDecoration: "none",
-                        color: "#F8F8F8",
-                        opacity: "0.7",
-                      }}
-                    >
+                    />
+                    <Box>
                       <Typography
                         sx={{
-                          "&:hover": { color: "#FFD057 !important" },
+                          fontFamily: "Epilogue",
+                          fontStyle: "normal",
+                          fontWeight: "700",
+                          fontSize: "10px",
+                          lineHeight: "14px",
+                          display: "flex",
+                          alignItems: "center",
+                          letterSpacing: "0.01em",
+                          color: "#F8F8F8",
+                        }}
+                      >
+                        WINNER
+                      </Typography>
+                      <Typography
+                        sx={{
                           fontFamily: "Epilogue",
                           fontStyle: "normal",
                           fontWeight: "400",
-                          fontSize: "8px",
+                          fontSize: "12px",
+                          lineHeight: "24px",
+                          display: "flex",
+                          alignItems: "center",
+                          color:
+                            winners[count]?.sum < 500 ? "#F8F8F8" : "#00DF74",
+                        }}
+                      >
+                        {winners[count]?.userId.slice(0, 10) + "…"}
+                      </Typography>
+                      <Link
+                        target="_blank"
+                        href={winners[count]?.link}
+                        sx={{
+                          textDecoration: "none",
+                          color: "#F8F8F8",
+                          opacity: "0.7",
+                        }}
+                      >
+                        <Typography
+                          sx={{
+                            "&:hover": { color: "#FFD057 !important" },
+                            fontFamily: "Epilogue",
+                            fontStyle: "normal",
+                            fontWeight: "400",
+                            fontSize: "8px",
+                            lineHeight: "1",
+                            display: "flex",
+                            alignItems: "center",
+                            letterSpacing: "0.01em",
+                          }}
+                        >
+                          View on Etherscan
+                          <img
+                            src={GoToIcon}
+                            alt="arrow"
+                            height={8}
+                            width={8}
+                            style={{ marginLeft: "5px" }}
+                          />
+                        </Typography>
+                      </Link>
+                    </Box>
+                    <Box
+                      sx={{
+                        display: "flex",
+                        flexDirection: "column",
+                        alignItems: "end",
+                        margin: "0 5px 20px 8px",
+                      }}
+                    >
+                      <Box
+                        sx={{
+                          fontFamily: "Epilogue",
+                          fontStyle: "normal",
+                          fontWeight: "400",
+                          fontSize: "10px",
+                          display: "flex",
+                          lineHeight: "22px",
+                          alignItems: "center",
+                          letterSpacing: "0.01em",
+                          color: "#F8F8F8",
+                          opacity: "0.7",
+                        }}
+                      >
+                        {convertToTime(winners[count]?.timestamp)}
+                      </Box>
+                      <Box
+                        sx={{
+                          fontFamily: "Epilogue",
+                          fontStyle: "normal",
+                          fontWeight: "700",
+                          fontSize: "15px",
                           lineHeight: "1",
                           display: "flex",
                           alignItems: "center",
                           letterSpacing: "0.01em",
+                          color:
+                            winners[count]?.sum < 500 ? "#F8F8F8" : "#00DF74",
                         }}
                       >
-                        View on Etherscan
-                        <img
-                          src={GoToIcon}
-                          alt="arrow"
-                          height={8}
-                          width={8}
-                          style={{ marginLeft: "5px" }}
-                        />
-                      </Typography>
-                    </Link>
-                  </Box>
-                  <Box
-                    sx={{
-                      display: "flex",
-                      flexDirection: "column",
-                      alignItems: "end",
-                      margin: "0 5px 20px 8px",
-                    }}
-                  >
-                    <Box
-                      sx={{
-                        fontFamily: "Epilogue",
-                        fontStyle: "normal",
-                        fontWeight: "400",
-                        fontSize: "10px",
-                        display: "flex",
-                        lineHeight: "22px",
-                        alignItems: "center",
-                        letterSpacing: "0.01em",
-                        color: "#F8F8F8",
-                        opacity: "0.7",
-                      }}
-                    >
-                      {convertToTime(winners[count]?.timestamp)}
-                    </Box>
-                    <Box
-                      sx={{
-                        fontFamily: "Epilogue",
-                        fontStyle: "normal",
-                        fontWeight: "700",
-                        fontSize: "15px",
-                        lineHeight: "1",
-                        display: "flex",
-                        alignItems: "center",
-                        letterSpacing: "0.01em",
-                        color:
-                          winners[count]?.sum < 500 ? "#F8F8F8" : "#00DF74",
-                      }}
-                    >
-                      {winners[count]?.sum} USDT
+                        {winners[count]?.sum} USDT
+                      </Box>
                     </Box>
                   </Box>
-                </Box>
 
-                <Box className="headerModalHeader">
-                  <CloseIcon onClick={handleCloseWinner} cursor="pointer" />
+                  <Box className="headerModalHeader">
+                    <CloseIcon onClick={handleCloseWinner} cursor="pointer" />
+                  </Box>
                 </Box>
-              </Box>
-            }
-          />
+              }
+            />
+          )}
         </Box>
         <ToggleButtons
           isLoggedIn={isLoggedIn}
