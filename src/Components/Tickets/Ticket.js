@@ -549,7 +549,7 @@ export const Ticket = ({
             </Button>
             <Link
               target="_blank"
-              href={`https://testnets.opensea.io/assets/goerli/0x8A85f0b84a765D2e2f536c3e9E74D8A1044c8dFf/${tokenId}`}
+              href={`https://testnets.opensea.io/assets/goerli/0xe3D90F6BA715fC80a2885B5ec0f353296E0DD442/${tokenId}`}
             >
               <Button
                 className="openSeaButton"

@@ -961,7 +961,7 @@ export const Footer = () => {
                 textDecoration: "none",
               }}
               target="_blank"
-              href="https://goerli.etherscan.io/address/0x0CE0E5676b7c6c26F6A9923cC2C054eB3FDBEcc2"
+              href="https://goerli.etherscan.io/address/0xacE966991566C6b7380E429b2389dc33BB6eB220"
             >
               <Button
                 style={{ color: "white", textDecoration: "none" }}
