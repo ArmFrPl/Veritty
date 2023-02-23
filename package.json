@@ -7,29 +7,40 @@
     "@emotion/styled": "^11.10.5",
     "@mui/icons-material": "^5.11.0",
     "@mui/material": "^5.11.4",
-    "@rainbow-me/rainbowkit": "^0.8.1",
+    "@rainbow-me/rainbowkit": "^0.11.0",
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",
-    "@web3modal/ethereum": "2.1.1",
-    "@web3modal/react": "2.1.1",
     "axios": "^1.2.4",
     "ethers": "^5",
     "lodash": "^4.17.21",
     "react": "^18.2.0",
+    "react-app-rewired": "^2.2.1",
     "react-card-flip": "^1.2.0",
     "react-dom": "^18.2.0",
     "react-router-dom": "^6.6.2",
     "react-scripts": "5.0.1",
-    "wagmi": "^0.11.5",
+    "wagmi": "^0.11.6",
     "web-vitals": "^2.1.4"
   },
-  "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject"
+  "devDependencies": { 
+    "assert": "^2.0.0", 
+    "buffer": "^6.0.3", 
+    "crypto-browserify": "^3.12.0", 
+    "https-browserify": "^1.0.0", 
+    "os-browserify": "^0.3.0", 
+    "process": "^0.11.10", 
+    "react-app-rewired": "^2.2.1", 
+    "stream-browserify": "^3.0.0", 
+    "stream-http": "^3.2.0", 
+    "url": "^0.11.0" 
   },
+  "scripts": { 
+  "start": "HTTPS=false react-app-rewired start", 
+  "build": "GENERATE_SOURCEMAP=false react-app-rewired build", 
+  "test": "react-app-rewired test", 
+  "eject": "react-scripts eject" 
+},
   "eslintConfig": {
     "extends": [
       "react-app",

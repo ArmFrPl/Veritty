@@ -6,8 +6,8 @@ import MenuIcon from "@mui/icons-material/Menu";
 import Logo from "../Images/VERITTY.svg";
 import { Link, useLocation } from "react-router-dom";
 import { SocialLinks } from "./SocialLinks";
-import { Web3Button } from "@web3modal/react";
-import { useWeb3Modal } from "@web3modal/react";
+import { ConnectButton } from "@rainbow-me/rainbowkit";
+import { useConnectModal } from "@rainbow-me/rainbowkit";
 
 export const Navbar = ({
   isLoggedIn,
@@ -22,7 +22,7 @@ export const Navbar = ({
 }) => {
   const { pathname } = useLocation();
 
-  const { open } = useWeb3Modal();
+  const { openConnectModal } = useConnectModal();
 
   const handleOpenNavMenu = () => setMenuOpen(!menuOpen);
   const scrollToWinners = () => {
@@ -116,7 +116,7 @@ export const Navbar = ({
                       alignItems: "center",
                     }}
                   >
-                    <Web3Button />
+                    <ConnectButton />
                     <IconButton
                       size="large"
                       aria-label="account of current user"
@@ -214,7 +214,7 @@ export const Navbar = ({
                       marginTop: "100px",
                     }}
                   >
-                    {!isLoggedIn && <Web3Button />}
+                    {!isLoggedIn && <ConnectButton />}
                   </Link>
                 </Box>
               </Box>
@@ -262,7 +262,7 @@ export const Navbar = ({
                 ) : (
                   <Link
                     to="#"
-                    onClick={open}
+                    onClick={openConnectModal}
                     replace
                     style={{ marginRight: "40px", textDecoration: "none" }}
                     className="menuItem"
@@ -293,7 +293,7 @@ export const Navbar = ({
                   to="#"
                   style={{ textDecoration: "none", marginLeft: "43px" }}
                 >
-                  <Web3Button />
+                  <ConnectButton />
                 </Link>
               </Box>
             </Box>
