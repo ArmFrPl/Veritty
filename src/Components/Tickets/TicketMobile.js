@@ -563,7 +563,7 @@ export const TicketMobile = ({
                 order: 1,
                 flexGrow: 0,
                 position: "absolute",
-                bottom: "150px",
+                bottom: winningSum === 0 ? "150px" : "160px",
                 left: "22px",
                 zIndex: 10,
                 textTransform: "none",
@@ -618,7 +618,7 @@ export const TicketMobile = ({
                   order: 1,
                   flexGrow: 0,
                   position: "absolute",
-                  bottom: "105px",
+                  bottom: winningSum === 0 ? "105px" : "115px",
                   left: "22px",
                   zIndex: 10,
                   textTransform: "none",
@@ -627,6 +627,28 @@ export const TicketMobile = ({
                 View on OpenSea
               </Button>
             </Link>
+            {winningSum !== 0 && (
+              <Box
+                component="span"
+                sx={{
+                  fontFamily: "Epilogue",
+                  fontStyle: "normal",
+                  fontWeight: 700,
+                  fontSize: "9px",
+                  lineHeight: "11.5px",
+                  color: "#5104CD",
+                  position: "absolute",
+                  bottom: "85px",
+                  left: "30px",
+                  zIndex: 10,
+                  width: "214px",
+                  textAlign: "left",
+                }}
+              >
+                * Your winning amount will be transferred to your wallet within
+                one hour.
+              </Box>
+            )}
             {userHistory.totalTickets &&
               userHistory.totalTickets !== "undefined" && (
                 <Box
