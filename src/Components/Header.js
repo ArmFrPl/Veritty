@@ -144,21 +144,25 @@ export const Header = ({
   }
 
   const mintTicket = async () => {
-    setLoading(true);
-    const entranceFee = await contract.entranceFee();
-    const txResponse = await contract.enterRaffle({
-      value: entranceFee,
-      gasLimit: 800000,
-    });
-    const txReceipt = await txResponse.wait(1);
-    const event = txReceipt?.events?.filter(
-      (event) => event.event === "WinnerChosen"
-    );
-    setTokenId(event["0"].args["tokenId"].toNumber());
-    setWinningSum(event["0"].args["sum"].toNumber());
-    setMinted(true);
-    setLoading(false);
-    updUserHistory();
+    try {
+      setLoading(true);
+      const entranceFee = await contract.entranceFee();
+      const txResponse = await contract.enterRaffle({
+        value: entranceFee,
+        gasLimit: 800000,
+      });
+      const txReceipt = await txResponse.wait(1);
+      const event = txReceipt?.events?.filter(
+        (event) => event.event === "WinnerChosen"
+      );
+      setTokenId(event["0"].args["tokenId"].toNumber());
+      setWinningSum(event["0"].args["sum"].toNumber());
+      setMinted(true);
+      setLoading(false);
+      updUserHistory();
+    } catch {
+      setLoading(false);
+    }
   };
 
   return (
