@@ -19,7 +19,7 @@ import { useSigner } from "wagmi";
 import { ethers } from "ethers";
 import RaffleImpl from "../RaffleImpl.json";
 import { ethAddress } from "../constants";
-import { useWeb3Modal } from "@web3modal/react";
+import { useConnectModal } from "@rainbow-me/rainbowkit";
 import axios from "axios";
 import ReactCardFlip from "react-card-flip";
 import { Ticket } from "./Tickets/Ticket";
@@ -48,7 +48,7 @@ export const Header = ({
   const [tokenId, setTokenId] = useState(0);
   const [isContractOpen, setContractOpen] = useState(true);
 
-  const { open } = useWeb3Modal();
+  const { openConnectModal } = useConnectModal();
   const signer = useSigner();
   const abi = RaffleImpl.abi;
   const contract = new ethers.Contract(ethAddress, abi, signer.data);
@@ -249,7 +249,7 @@ export const Header = ({
                 ticketCount={ticketCount}
                 winningSum={winningSum}
                 getTicketImage={getTicketImage}
-                open={open}
+                open={openConnectModal}
                 userHistory={userHistory}
                 userTicketCount={userTicketCount}
                 tokenId={tokenId}
@@ -506,7 +506,7 @@ export const Header = ({
                 ticketCount={ticketCount}
                 winningSum={winningSum}
                 getTicketImage={getTicketImage}
-                open={open}
+                open={openConnectModal}
                 userHistory={userHistory}
                 userTicketCount={userTicketCount}
                 tokenId={tokenId}
