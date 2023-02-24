@@ -144,21 +144,21 @@ export const Header = ({
   }
 
   const mintTicket = async () => {
-      setLoading(true);
-      const entranceFee = await contract.entranceFee();
-      const txResponse = await contract.enterRaffle({
-        value: entranceFee,
-        gasLimit: 800000,
-      });
-      const txReceipt = await txResponse.wait(1);
-      const event = txReceipt?.events?.filter(
-        (event) => event.event === "WinnerChosen"
-      );
-      setTokenId(event["0"].args["tokenId"].toNumber());
-      setWinningSum(event["0"].args["sum"].toNumber());
-      setMinted(true);
-      setLoading(false);
-      updUserHistory();
+    setLoading(true);
+    const entranceFee = await contract.entranceFee();
+    const txResponse = await contract.enterRaffle({
+      value: entranceFee,
+      gasLimit: 800000,
+    });
+    const txReceipt = await txResponse.wait(1);
+    const event = txReceipt?.events?.filter(
+      (event) => event.event === "WinnerChosen"
+    );
+    setTokenId(event["0"].args["tokenId"].toNumber());
+    setWinningSum(event["0"].args["sum"].toNumber());
+    setMinted(true);
+    setLoading(false);
+    updUserHistory();
   };
 
   return (
@@ -259,7 +259,7 @@ export const Header = ({
               <Loader desktop={false} />
             </ReactCardFlip>
           </Box>
-          {winners.length && (
+          {!!winners.length && (
             <Snackbar
               className="popupMobile"
               open={isWinnerOpen}
@@ -516,7 +516,7 @@ export const Header = ({
               <Loader desktop={true} />
             </ReactCardFlip>
           </Box>
-          {winners.length && (
+          {!!winners.length && (
             <Snackbar
               className="popup"
               open={isWinnerOpen}

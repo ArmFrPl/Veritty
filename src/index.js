@@ -26,6 +26,7 @@ import {
 import { configureChains, createClient, WagmiConfig } from "wagmi";
 import { arbitrum, mainnet, polygon, goerli } from "wagmi/chains";
 import { publicProvider } from "wagmi/providers/public";
+export { alchemyProvider } from "wagmi/providers/alchemy";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 
