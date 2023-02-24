@@ -7,7 +7,6 @@ import App from "./Components/App";
 import "@rainbow-me/rainbowkit/styles.css";
 import {
   argentWallet,
-  braveWallet,
   coinbaseWallet,
   imTokenWallet,
   injectedWallet,
