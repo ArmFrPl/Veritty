@@ -12,7 +12,6 @@ export const Leaderboards = ({ winnersRef, mobileWinnersRef, leaderboard }) => {
   const leadersRef = useRef(null);
   const mobileLeadersRef = useRef(null);
 
-  console.log(leaderboard);
   let inputHandler = (e) => {
     let lowerCase = e.target.value.toLowerCase();
     setInputText(lowerCase);

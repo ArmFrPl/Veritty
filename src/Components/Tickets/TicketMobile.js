@@ -595,7 +595,7 @@ export const TicketMobile = ({
             </Button>
             <Link
               target="_blank"
-              href={`https://testnets.opensea.io/assets/goerli/0xe3D90F6BA715fC80a2885B5ec0f353296E0DD442/${tokenId}`}
+              href={`https://testnets.opensea.io/assets/goerli/0x5eDBF305F74235Ccc508Abe1a15043404e292fA2/${tokenId}`}
             >
               <Button
                 className="openSeaButton"

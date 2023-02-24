@@ -146,10 +146,14 @@ export const Header = ({
   const mintTicket = async () => {
     setLoading(true);
     const entranceFee = await contract.entranceFee();
-    const txResponse = await contract.enterRaffle({
-      value: entranceFee,
-      gasLimit: 800000,
-    });
+    const txResponse = await contract
+      .enterRaffle({
+        value: entranceFee,
+        gasLimit: 800000,
+      })
+      .catch(() => {
+        setLoading(false);
+      });
     const txReceipt = await txResponse.wait(1);
     const event = txReceipt?.events?.filter(
       (event) => event.event === "WinnerChosen"
