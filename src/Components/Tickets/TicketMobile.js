@@ -520,7 +520,10 @@ export const TicketMobile = ({
                   }}
                 >
                   {winningSum}
-                  <Box component="span" sx={{ fontSize: "24px" }}>
+                  <Box
+                    component="span"
+                    sx={{ fontSize: "24px", marginLeft: "10px" }}
+                  >
                     USTD
                   </Box>
                 </Box>
