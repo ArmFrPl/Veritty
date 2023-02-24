@@ -259,7 +259,7 @@ export const Header = ({
               <Loader desktop={false} />
             </ReactCardFlip>
           </Box>
-          {winners.length && (
+          {!!winners.length && (
             <Snackbar
               className="popupMobile"
               open={isWinnerOpen}
@@ -516,7 +516,7 @@ export const Header = ({
               <Loader desktop={true} />
             </ReactCardFlip>
           </Box>
-          {winners.length && (
+          {!!winners.length && (
             <Snackbar
               className="popup"
               open={isWinnerOpen}
