@@ -27,7 +27,7 @@ export const Dashboard = ({
       " " +
       date.getHours() +
       ":" +
-      date.getMinutes();
+      (date.getMinutes() >= 10 ? date.getMinutes() : `0${date.getMinutes()}`);
     return date;
   };
 
