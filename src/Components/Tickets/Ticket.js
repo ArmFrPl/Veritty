@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Box, Button, Icon, Link } from "@mui/material";
 import SoldOutButton from "../../Images/Tickets/soldOut.svg";
 import { SocialLinks } from "../SocialLinks";
@@ -7,8 +7,10 @@ import MintTicketFront from "../../Images/mintTickertFront.png";
 import MintTicketUnborder from "../../Images/Tickets/MintTicketUnborder.png";
 import MintTicketZero from "../../Images/Tickets/0.png";
 import TryAgainImg from "../../Images/Tickets/redo.svg";
-
 import SuspendedButton from "../../Images/Tickets/suspended.svg";
+import { ethers } from "ethers";
+import { ethAddress } from "../../constants";
+import RaffleImpl from "../../RaffleImpl.json";
 
 export const Ticket = ({
   loading,
@@ -24,6 +26,22 @@ export const Ticket = ({
   tokenId,
   mintTicket,
 }) => {
+  const [price, setPrice] = useState(0);
+  const abi = RaffleImpl.abi;
+  const provider = ethers.getDefaultProvider(
+    "https://eth-goerli.g.alchemy.com/v2/Fvr4iHEEClnFhZtgTB8ITVSen4GPwOls"
+  );
+  const contract = new ethers.Contract(ethAddress, abi, provider);
+
+  const getPrice = async () => {
+    const result = await contract.entranceFee();
+    setPrice(ethers.utils.formatEther(result, 18));
+  };
+
+  useEffect(() => {
+    getPrice();
+  }, []);
+
   return (
     <Box className="mintTicket">
       <Box
@@ -77,7 +95,16 @@ export const Ticket = ({
                 },
               }}
             >
-              MINT TICKET 0.059 ETH
+              {price ? (
+                `MINT TICKET ${price} ETH`
+              ) : (
+                <div className="lds-ring">
+                  <div></div>
+                  <div></div>
+                  <div></div>
+                  <div></div>
+                </div>
+              )}
             </Button>
 
             <Box
@@ -291,8 +318,15 @@ export const Ticket = ({
                   <div></div>
                   <div></div>
                 </div>
+              ) : price ? (
+                `MINT TICKET ${price} ETH`
               ) : (
-                "MINT TICKET 0.059 ETH"
+                <div className="lds-ring">
+                  <div></div>
+                  <div></div>
+                  <div></div>
+                  <div></div>
+                </div>
               )}
             </Button>
             <Box
@@ -549,7 +583,7 @@ export const Ticket = ({
             </Button>
             <Link
               target="_blank"
-              href={`https://testnets.opensea.io/assets/goerli/0x5eDBF305F74235Ccc508Abe1a15043404e292fA2/${tokenId}`}
+              href={`https://testnets.opensea.io/assets/goerli/0xB75e1274d9F05d2f5cCCE10F7CCe829dd7494E27/${tokenId}`}
             >
               <Button
                 className="openSeaButton"
