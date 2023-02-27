@@ -41,19 +41,19 @@ export const SecRound = () => {
   const prizes = [
     {
       place: "1st place",
-      prize: "10.000 USTD",
+      prize: "10,000 USTD",
     },
     {
       place: "2nd place",
-      prize: "5.000 USTD",
+      prize: "5,000 USTD",
     },
     {
       place: "3rd place",
-      prize: "2.000 USTD",
+      prize: "2,000 USTD",
     },
     {
       place: "4th place",
-      prize: "1.000 USTD",
+      prize: "1,000 USTD",
     },
     {
       place: "5th place",
@@ -100,7 +100,7 @@ export const SecRound = () => {
               textFillColor: "transparent",
             }}
           >
-            23.000 USTD
+            23,000 USTD
           </Box>
           <Box
             sx={{
@@ -254,7 +254,7 @@ export const SecRound = () => {
               textFillColor: "transparent",
             }}
           >
-            23.000 USTD
+            23,000 USTD
           </Box>
           <Box
             sx={{

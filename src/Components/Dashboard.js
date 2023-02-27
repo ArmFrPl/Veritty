@@ -192,7 +192,7 @@ export const Dashboard = ({
           <Box
             sx={{
               width: "100%",
-              height: "176px",
+              height: "230px",
               display: "flex",
               flexDirection: "column",
               justifyContent: "center",
@@ -284,7 +284,7 @@ export const Dashboard = ({
                         {convertToDate(h.timestamp)}
                         <Link
                           target="_blank"
-                          href={`https://testnets.opensea.io/assets/goerli/0x5eDBF305F74235Ccc508Abe1a15043404e292fA2/${h.tokenId}`}
+                          href={`https://testnets.opensea.io/assets/goerli/0xB75e1274d9F05d2f5cCCE10F7CCe829dd7494E27/${h.tokenId}`}
                         >
                           <Icon
                             sx={{
@@ -556,7 +556,7 @@ export const Dashboard = ({
                         {convertToDate(h.timestamp)}
                         <Link
                           target="_blank"
-                          href={`https://testnets.opensea.io/assets/goerli/0x5eDBF305F74235Ccc508Abe1a15043404e292fA2/${h.tokenId}`}
+                          href={`https://testnets.opensea.io/assets/goerli/0xB75e1274d9F05d2f5cCCE10F7CCe829dd7494E27/${h.tokenId}`}
                         >
                           <Icon
                             sx={{
