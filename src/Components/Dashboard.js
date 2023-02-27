@@ -160,7 +160,7 @@ export const Dashboard = ({
         <Box
           sx={{
             width: "90%",
-            height: "234px",
+            height: "300px",
             borderRadius: "10px",
             mt: "23px",
             background: "rgba(255, 255, 255, 0.1)",
@@ -192,7 +192,7 @@ export const Dashboard = ({
           <Box
             sx={{
               width: "100%",
-              height: "230px",
+              height: "250px",
               display: "flex",
               flexDirection: "column",
               justifyContent: "center",
