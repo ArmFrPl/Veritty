@@ -22,7 +22,7 @@
   mask-composite: exclude;
 }
 
-.winningList{
+.winningList {
   font-family: Epilogue !important;
   font-weight: 700 !important;
   font-style: normal;
@@ -35,7 +35,7 @@
   margin-right: 37px;
 }
 
-.row{
+.row {
   font-family: Epilogue !important;
   font-weight: 700 !important;
   font-style: normal;
@@ -43,12 +43,14 @@
   line-height: 28px !important;
   color: #F8F8F8;
 }
-.mobileRow{
+
+.mobileRow {
   color: #F8F8F8;
   font-size: 16.2px !important;
   line-height: 22px !important;
 }
-.lastRow{
+
+.lastRow {
   font-weight: 400 !important;
 }
 
@@ -59,32 +61,37 @@
   border-radius: 8px;
   color: #FFFFFF;
 }
+
 .mobileProgress {
   width: 151px;
   height: 20px !important;
 }
-.MuiLinearProgress-bar{
-  background: linear-gradient(180deg, #D29230 0%, #81642C 56.25%, #DEA40E 100%), linear-gradient(159.44deg, #FFAC33 13.64%, #FFD057 63.64%);;
+
+.MuiLinearProgress-bar {
+  background: linear-gradient(180deg, #D29230 0%, #81642C 56.25%, #DEA40E 100%), linear-gradient(159.44deg, #FFAC33 13.64%, #FFD057 63.64%);
+  ;
 }
-.mobileProgress:before{
+
+.mobileProgress:before {
   font-size: 12px !important;
   line-height: 18px !important;
-  width:70%;
-  align-items:center;
-  justify-content:center;
+  width: 70%;
+  align-items: center;
+  justify-content: center;
 }
-.progressBar::before{
-  position:absolute;
-  height:25px;
-  background:transparent;
+
+.progressBar::before {
+  position: absolute;
+  height: 25px;
+  background: transparent;
   /*content:'2 750 / 10 000';*/
-  top:0;
-  left:0;
-  width:70%;
-  display:flex;
-  align-items:center;
-  justify-content:flex-end;
-  padding-right:10px;
+  top: 0;
+  left: 0;
+  width: 70%;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  padding-right: 10px;
   z-index: 999;
   font-family: 'Epilogue';
   font-style: normal;
@@ -95,13 +102,19 @@
   text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 }
 
-.progressBarCont{
+.progressBarCont {
   width: 100%;
-  height: 114px;
+  height: 150px;
   display: flex;
   justify-content: center;
   align-items: center;
   background: url("data:image/svg+xml,%3csvg width='100%25' height='100%25' xmlns='http://www.w3.org/2000/svg'%3e%3crect width='100%25' height='100%25' fill='none' stroke='%23FFD057FF' stroke-width='4' stroke-dasharray='5%2c 11' stroke-dashoffset='15' stroke-linecap='square'/%3e%3c/svg%3e") no-repeat top;
   background-size: 94% .5%;
   color: #FFFFFF;
+}
+
+@media screen and (max-width: 768px) {
+  .progressBarCont {
+    height: 114px;
+  }
 }

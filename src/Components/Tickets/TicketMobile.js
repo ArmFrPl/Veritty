@@ -156,51 +156,152 @@ export const TicketMobile = ({
             </Box>
             <Box
               sx={{
-                fontFamily: "Epilogue",
-                fontStyle: "normal",
-                fontWeight: 700,
-                fontSize: "20px",
-                lineHeight: "28px",
-                color: "#F8F8F8",
                 display: "flex",
                 position: "absolute",
                 top: "432px",
                 left: "31px",
+                flexDirection: "row",
+                gap: "5px",
               }}
             >
-              8
+              <Box
+                sx={{
+                  fontFamily: "Epilogue",
+                  fontStyle: "normal",
+                  fontWeight: 700,
+                  fontSize: "20px",
+                  color: "#F8F8F8",
+                  display: "flex",
+                  padding: "1px",
+                  borderRadius: "25%",
+                  background:
+                    "linear-gradient(45deg, #FFD057 0%, #9F03FF 15.1%, #00DFBA 53.65%, #9F03FF 89.06%, #FFAC33 100%)",
+                }}
+              >
+                <Box
+                  sx={{
+                    fontFamily: "Epilogue",
+                    fontStyle: "normal",
+                    fontWeight: 700,
+                    fontSize: "20px",
+                    color: "#F8F8F8",
+                    display: "flex",
+                    padding: "5px 10px",
+                    borderRadius: "25%",
+                    background: "black",
+                  }}
+                >
+                  2
+                </Box>
+              </Box>
+              <Box
+                sx={{
+                  fontFamily: "Epilogue",
+                  fontStyle: "normal",
+                  fontWeight: 700,
+                  fontSize: "20px",
+                  color: "#F8F8F8",
+                  display: "flex",
+                  padding: "1px",
+                  borderRadius: "25%",
+                  background:
+                    "linear-gradient(45deg, #FFD057 0%, #9F03FF 15.1%, #00DFBA 53.65%, #9F03FF 89.06%, #FFAC33 100%)",
+                }}
+              >
+                <Box
+                  sx={{
+                    fontFamily: "Epilogue",
+                    fontStyle: "normal",
+                    fontWeight: 700,
+                    fontSize: "20px",
+                    color: "#F8F8F8",
+                    display: "flex",
+                    padding: "5px 10px",
+                    borderRadius: "25%",
+                    background: "black",
+                  }}
+                >
+                  0
+                </Box>
+              </Box>
+              <Box
+                sx={{
+                  fontFamily: "Epilogue",
+                  fontStyle: "normal",
+                  fontWeight: 700,
+                  fontSize: "20px",
+                  color: "#F8F8F8",
+                  display: "flex",
+                  padding: "1px",
+                  borderRadius: "25%",
+                  background:
+                    "linear-gradient(45deg, #FFD057 0%, #9F03FF 15.1%, #00DFBA 53.65%, #9F03FF 89.06%, #FFAC33 100%)",
+                }}
+              >
+                <Box
+                  sx={{
+                    fontFamily: "Epilogue",
+                    fontStyle: "normal",
+                    fontWeight: 700,
+                    fontSize: "20px",
+                    color: "#F8F8F8",
+                    display: "flex",
+                    padding: "5px 10px",
+                    borderRadius: "25%",
+                    background: "black",
+                  }}
+                >
+                  0
+                </Box>
+              </Box>
+              <Box
+                sx={{
+                  fontFamily: "Epilogue",
+                  fontStyle: "normal",
+                  fontWeight: 700,
+                  fontSize: "20px",
+                  color: "#F8F8F8",
+                  display: "flex",
+                  padding: "1px",
+                  borderRadius: "25%",
+                  background:
+                    "linear-gradient(45deg, #FFD057 0%, #9F03FF 15.1%, #00DFBA 53.65%, #9F03FF 89.06%, #FFAC33 100%)",
+                }}
+              >
+                <Box
+                  sx={{
+                    fontFamily: "Epilogue",
+                    fontStyle: "normal",
+                    fontWeight: 700,
+                    fontSize: "20px",
+                    color: "#F8F8F8",
+                    display: "flex",
+                    padding: "5px 10px",
+                    borderRadius: "25%",
+                    background: "black",
+                  }}
+                >
+                  0
+                </Box>
+              </Box>
             </Box>
             <Box
               sx={{
                 fontFamily: "Epilogue",
                 fontStyle: "normal",
                 fontWeight: 700,
-                fontSize: "20px",
-                lineHeight: "28px",
+                fontSize: "16px",
+                lineHeight: "18px",
                 color: "#F8F8F8",
                 display: "flex",
                 position: "absolute",
                 top: "432px",
-                left: "72px",
+                left: "192px",
+                textAlign: "center",
               }}
             >
-              8
-            </Box>
-            <Box
-              sx={{
-                fontFamily: "Epilogue",
-                fontStyle: "normal",
-                fontWeight: 700,
-                fontSize: "20px",
-                lineHeight: "28px",
-                color: "#F8F8F8",
-                display: "flex",
-                position: "absolute",
-                top: "432px",
-                left: "112px",
-              }}
-            >
-              8
+              Winning <br />
+              NFTs
             </Box>
           </>
         )}
@@ -423,51 +524,152 @@ export const TicketMobile = ({
             />
             <Box
               sx={{
-                fontFamily: "Epilogue",
-                fontStyle: "normal",
-                fontWeight: 700,
-                fontSize: "20px",
-                lineHeight: "28px",
-                color: "#F8F8F8",
                 display: "flex",
                 position: "absolute",
                 top: "432px",
                 left: "31px",
+                flexDirection: "row",
+                gap: "5px",
               }}
             >
-              8
+              <Box
+                sx={{
+                  fontFamily: "Epilogue",
+                  fontStyle: "normal",
+                  fontWeight: 700,
+                  fontSize: "20px",
+                  color: "#F8F8F8",
+                  display: "flex",
+                  padding: "1px",
+                  borderRadius: "25%",
+                  background:
+                    "linear-gradient(45deg, #FFD057 0%, #9F03FF 15.1%, #00DFBA 53.65%, #9F03FF 89.06%, #FFAC33 100%)",
+                }}
+              >
+                <Box
+                  sx={{
+                    fontFamily: "Epilogue",
+                    fontStyle: "normal",
+                    fontWeight: 700,
+                    fontSize: "20px",
+                    color: "#F8F8F8",
+                    display: "flex",
+                    padding: "5px 10px",
+                    borderRadius: "25%",
+                    background: "black",
+                  }}
+                >
+                  2
+                </Box>
+              </Box>
+              <Box
+                sx={{
+                  fontFamily: "Epilogue",
+                  fontStyle: "normal",
+                  fontWeight: 700,
+                  fontSize: "20px",
+                  color: "#F8F8F8",
+                  display: "flex",
+                  padding: "1px",
+                  borderRadius: "25%",
+                  background:
+                    "linear-gradient(45deg, #FFD057 0%, #9F03FF 15.1%, #00DFBA 53.65%, #9F03FF 89.06%, #FFAC33 100%)",
+                }}
+              >
+                <Box
+                  sx={{
+                    fontFamily: "Epilogue",
+                    fontStyle: "normal",
+                    fontWeight: 700,
+                    fontSize: "20px",
+                    color: "#F8F8F8",
+                    display: "flex",
+                    padding: "5px 10px",
+                    borderRadius: "25%",
+                    background: "black",
+                  }}
+                >
+                  0
+                </Box>
+              </Box>
+              <Box
+                sx={{
+                  fontFamily: "Epilogue",
+                  fontStyle: "normal",
+                  fontWeight: 700,
+                  fontSize: "20px",
+                  color: "#F8F8F8",
+                  display: "flex",
+                  padding: "1px",
+                  borderRadius: "25%",
+                  background:
+                    "linear-gradient(45deg, #FFD057 0%, #9F03FF 15.1%, #00DFBA 53.65%, #9F03FF 89.06%, #FFAC33 100%)",
+                }}
+              >
+                <Box
+                  sx={{
+                    fontFamily: "Epilogue",
+                    fontStyle: "normal",
+                    fontWeight: 700,
+                    fontSize: "20px",
+                    color: "#F8F8F8",
+                    display: "flex",
+                    padding: "5px 10px",
+                    borderRadius: "25%",
+                    background: "black",
+                  }}
+                >
+                  0
+                </Box>
+              </Box>
+              <Box
+                sx={{
+                  fontFamily: "Epilogue",
+                  fontStyle: "normal",
+                  fontWeight: 700,
+                  fontSize: "20px",
+                  color: "#F8F8F8",
+                  display: "flex",
+                  padding: "1px",
+                  borderRadius: "25%",
+                  background:
+                    "linear-gradient(45deg, #FFD057 0%, #9F03FF 15.1%, #00DFBA 53.65%, #9F03FF 89.06%, #FFAC33 100%)",
+                }}
+              >
+                <Box
+                  sx={{
+                    fontFamily: "Epilogue",
+                    fontStyle: "normal",
+                    fontWeight: 700,
+                    fontSize: "20px",
+                    color: "#F8F8F8",
+                    display: "flex",
+                    padding: "5px 10px",
+                    borderRadius: "25%",
+                    background: "black",
+                  }}
+                >
+                  0
+                </Box>
+              </Box>
             </Box>
             <Box
               sx={{
                 fontFamily: "Epilogue",
                 fontStyle: "normal",
                 fontWeight: 700,
-                fontSize: "20px",
-                lineHeight: "28px",
+                fontSize: "16px",
+                lineHeight: "18px",
                 color: "#F8F8F8",
                 display: "flex",
                 position: "absolute",
                 top: "432px",
-                left: "72px",
+                left: "192px",
+                textAlign: "center",
               }}
             >
-              8
-            </Box>
-            <Box
-              sx={{
-                fontFamily: "Epilogue",
-                fontStyle: "normal",
-                fontWeight: 700,
-                fontSize: "20px",
-                lineHeight: "28px",
-                color: "#F8F8F8",
-                display: "flex",
-                position: "absolute",
-                top: "432px",
-                left: "112px",
-              }}
-            >
-              8
+              Winning <br />
+              NFTs
             </Box>
           </>
         )}
