@@ -220,7 +220,6 @@ export const TicketsCount = ({ ticketCounts }) => {
                 "linear-gradient(180deg, #FF9700 0%, #FFD057 66.15%), #FFD057",
               backgroundClip: "text",
               textFillColor: "transparent",
-              // mt: '37px'
             }}
           >
             JACKPOT

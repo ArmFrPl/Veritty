@@ -485,12 +485,20 @@ export const Footer = () => {
                   </Box>
                 </Fade>
               </Modal>
-              <Button
-                sx={{ color: "white", textDecoration: "none" }}
-                className="mobileFooterItem"
+              <Link
+                sx={{
+                  textDecoration: "none",
+                }}
+                target="_blank"
+                href="https://goerli.etherscan.io/address/0x7fb14DAA37ABe5A1Fe0808764D4CBe4fBb332294"
               >
-                SmartContract
-              </Button>
+                <Button
+                  style={{ color: "white", textDecoration: "none" }}
+                  className="footerItem"
+                >
+                  SmartContract
+                </Button>
+              </Link>
             </Box>
           </Box>
         </Box>
