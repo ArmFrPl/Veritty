@@ -280,7 +280,7 @@ export const Navbar = ({
                 </Link>
                 <Muilink
                   target="_blank"
-                  href="https://goerli.etherscan.io/address/0x0CE0E5676b7c6c26F6A9923cC2C054eB3FDBEcc2"
+                  href="https://goerli.etherscan.io/address/0x7fb14DAA37ABe5A1Fe0808764D4CBe4fBb332294"
                   style={{ marginRight: "40px", textDecoration: "none" }}
                   className="menuItem"
                 >
