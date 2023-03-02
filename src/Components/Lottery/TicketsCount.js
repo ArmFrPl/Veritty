@@ -101,44 +101,50 @@ export const TicketsCount = ({ ticketCounts }) => {
               mt: "10px",
             }}
           >
-            50,0000 USTD x 1
+            30,000 USTD x {ticketCounts[0]}
           </Box>
 
           <table style={{ marginTop: "29px" }}>
             <tbody>
-              {winnings.map((w, index) => (
-                <tr key={index} style={{ display: "flex", marginTop: "5px" }}>
-                  <td
-                    className="mobileRow"
-                    style={{ textAlign: "right", width: "110px" }}
-                  >
-                    {w.winning}
-                  </td>
-                  <td
-                    className="mobileRow"
-                    style={{
-                      textAlign: "center",
-                      color: "#FFD057",
-                      width: "30px",
-                    }}
-                  >
-                    x
-                  </td>
-                  <td
-                    className="mobileRow"
-                    style={{ textAlign: "left", width: "45px" }}
-                  >
-                    {w.count}
-                  </td>
-                  <td
-                    className="mobileRow lastRow"
-                    style={{
-                      textAlign: "left",
-                      marginLeft: "5px",
-                    }}
-                  >{`(left - ${ticketCounts[index]})`}</td>
-                </tr>
-              ))}
+              {winnings.map(
+                (w, index) =>
+                  index !== 0 && (
+                    <tr
+                      key={index}
+                      style={{ display: "flex", marginTop: "5px" }}
+                    >
+                      <td
+                        className="mobileRow"
+                        style={{ textAlign: "right", width: "110px" }}
+                      >
+                        {w.winning}
+                      </td>
+                      <td
+                        className="mobileRow"
+                        style={{
+                          textAlign: "center",
+                          color: "#FFD057",
+                          width: "30px",
+                        }}
+                      >
+                        x
+                      </td>
+                      <td
+                        className="mobileRow"
+                        style={{ textAlign: "left", width: "45px" }}
+                      >
+                        {w.count}
+                      </td>
+                      <td
+                        className="mobileRow lastRow"
+                        style={{
+                          textAlign: "left",
+                          marginLeft: "5px",
+                        }}
+                      >{`(left - ${ticketCounts[index]})`}</td>
+                    </tr>
+                  )
+              )}
             </tbody>
           </table>
         </Box>
@@ -230,44 +236,50 @@ export const TicketsCount = ({ ticketCounts }) => {
               mt: "10px",
             }}
           >
-            50,000 USTD x 1
+            30,000 USTD x {ticketCounts[0]}
           </Box>
           <table style={{ marginTop: "29px" }}>
             <tbody>
-              {winnings.map((w, index) => (
-                <tr key={index} style={{ display: "flex", marginTop: "5px" }}>
-                  <td
-                    className="row"
-                    style={{ textAlign: "right", width: "130px" }}
-                  >
-                    {w.winning}
-                  </td>
-                  <td
-                    className="row"
-                    style={{
-                      textAlign: "center",
-                      color: "#FFD057",
-                      width: "60px",
-                    }}
-                  >
-                    x
-                  </td>
-                  <td
-                    className="row"
-                    style={{ textAlign: "left", width: "45px" }}
-                  >
-                    {w.count}
-                  </td>
-                  <td
-                    className="row lastRow"
-                    style={{
-                      textAlign: "left",
-                      width: "110px",
-                      marginLeft: "5px",
-                    }}
-                  >{`(${ticketCounts[index]} left)`}</td>
-                </tr>
-              ))}
+              {winnings.map(
+                (w, index) =>
+                  index !== 0 && (
+                    <tr
+                      key={index}
+                      style={{ display: "flex", marginTop: "5px" }}
+                    >
+                      <td
+                        className="row"
+                        style={{ textAlign: "right", width: "130px" }}
+                      >
+                        {w.winning}
+                      </td>
+                      <td
+                        className="row"
+                        style={{
+                          textAlign: "center",
+                          color: "#FFD057",
+                          width: "60px",
+                        }}
+                      >
+                        x
+                      </td>
+                      <td
+                        className="row"
+                        style={{ textAlign: "left", width: "45px" }}
+                      >
+                        {w.count}
+                      </td>
+                      <td
+                        className="row lastRow"
+                        style={{
+                          textAlign: "left",
+                          width: "110px",
+                          marginLeft: "5px",
+                        }}
+                      >{`(${ticketCounts[index]} left)`}</td>
+                    </tr>
+                  )
+              )}
             </tbody>
           </table>
         </Box>
