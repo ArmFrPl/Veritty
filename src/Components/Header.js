@@ -485,7 +485,7 @@ export const Header = ({
                   color: "#FFD057",
                 }}
               >
-                282,700 USTD
+                333,000 USTD
               </Box>
             </Box>
           </Box>
