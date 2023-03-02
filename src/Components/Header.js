@@ -108,21 +108,21 @@ export const Header = ({
     switch (winningSum) {
       case 100:
         return MintTicketHundred;
-      case 200:
+      case 150:
         return MintTicketTwoHundred;
-      case 500:
+      case 300:
         return MintTicketFiveHundred;
-      case 1000:
+      case 700:
         return MintTicketThousand;
-      case 2500:
+      case 1500:
         return MintTicketTwoThousand;
-      case 5000:
+      case 3500:
         return MintTicketFiveThousand;
-      case 10000:
+      case 7000:
         return MintTicketTenThousand;
-      case 20000:
+      case 15000:
         return MintTicketTwentyThousand;
-      case 50000:
+      case 30000:
         return MintTicketFiftyThousand;
     }
   };
@@ -231,7 +231,7 @@ export const Header = ({
                   color: "#FFD057",
                 }}
               >
-                282.700 USTD
+                282,700 USTD
               </Box>
             </Box>
             <ReactCardFlip
@@ -485,7 +485,7 @@ export const Header = ({
                   color: "#FFD057",
                 }}
               >
-                282.700 USTD
+                282,700 USTD
               </Box>
             </Box>
           </Box>
