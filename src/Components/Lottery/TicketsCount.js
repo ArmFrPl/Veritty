@@ -10,45 +10,44 @@ export const TicketsCount = ({ ticketCounts }) => {
     ticketCounts?.forEach((ticket) => {
       ticketCountsSum += parseInt(ticket);
     });
-    console.log(ticketCountsSum);
     return ticketCountsSum - 190;
   };
 
   const winnings = [
     {
-      winning: "30,000 USTD",
+      winning: "30,000 USDT",
       count: 1,
     },
     {
-      winning: "15,000 USTD",
+      winning: "15,000 USDT",
       count: 2,
     },
     {
-      winning: "7,000 USTD",
+      winning: "7,000 USDT",
       count: 3,
     },
     {
-      winning: "3,500 USTD",
+      winning: "3,500 USDT",
       count: 4,
     },
     {
-      winning: "1,500 USTD",
+      winning: "1,500 USDT",
       count: 5,
     },
     {
-      winning: "700 USTD",
+      winning: "700 USDT",
       count: 10,
     },
     {
-      winning: "300 USTD",
+      winning: "300 USDT",
       count: 15,
     },
     {
-      winning: "150 USTD",
+      winning: "150 USDT",
       count: 40,
     },
     {
-      winning: "100 USTD",
+      winning: "100 USDT",
       count: 1900,
     },
   ];
@@ -101,7 +100,7 @@ export const TicketsCount = ({ ticketCounts }) => {
               mt: "10px",
             }}
           >
-            30,000 USTD x {ticketCounts[0]}
+            30,000 USDT x {ticketCounts[0]}
           </Box>
 
           <table style={{ marginTop: "29px" }}>
@@ -235,7 +234,7 @@ export const TicketsCount = ({ ticketCounts }) => {
               mt: "10px",
             }}
           >
-            30,000 USTD x {ticketCounts[0]}
+            30,000 USDT x {ticketCounts[0]}
           </Box>
           <table style={{ marginTop: "29px" }}>
             <tbody>

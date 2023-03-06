@@ -630,7 +630,7 @@ export const Ticket = ({
                     textAlign: "center",
                   }}
                 >
-                  YOU WIN 0 USTD
+                  YOU WIN 0 USDT
                 </Box>
                 <Box
                   sx={{
@@ -707,7 +707,7 @@ export const Ticket = ({
                     component="span"
                     sx={{ fontSize: "24px", marginLeft: "10px" }}
                   >
-                    USTD
+                    USDT
                   </Box>
                 </Box>
                 <Box

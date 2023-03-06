@@ -4,6 +4,7 @@ import "../Styles/Dashboard.css";
 import GoToIcon from "../Images/goToIcon.svg";
 import GoDown from "../Images/goDown.svg";
 import OpenSeaIcon from "../Images/coolicon.svg";
+import ArrowIcon from "../Images/arrowIcon.svg";
 
 export const Dashboard = ({
   ticketsRef,
@@ -160,7 +161,7 @@ export const Dashboard = ({
         <Box
           sx={{
             width: "90%",
-            height: "300px",
+            height: "546px",
             borderRadius: "10px",
             mt: "23px",
             background: "rgba(255, 255, 255, 0.1)",
@@ -192,7 +193,7 @@ export const Dashboard = ({
           <Box
             sx={{
               width: "100%",
-              height: "250px",
+              height: "100%",
               display: "flex",
               flexDirection: "column",
               justifyContent: "center",
@@ -222,7 +223,7 @@ export const Dashboard = ({
             <Box
               sx={{
                 width: "100%",
-                height: "100px",
+                height: "75%",
                 overflow: "scroll",
                 display: "flex",
                 justifyContent: "center",
@@ -268,7 +269,7 @@ export const Dashboard = ({
                           lineHeight: { xs: "22px", md: "28px" },
                         }}
                       >
-                        {h.sum} USTD
+                        {h.sum} USDT
                       </Box>
                       <Box
                         component={"td"}
@@ -282,6 +283,27 @@ export const Dashboard = ({
                         }}
                       >
                         {convertToDate(h.timestamp)}
+                        <Link target="_blank" href={h.link}>
+                          <Icon
+                            sx={{
+                              display: "flex",
+                              alignItems: "center",
+                              color: "#FFFFFF",
+                              ml: "10px",
+                              "&:hover": {
+                                filter:
+                                  "brightness(0) saturate(100%) invert(98%) sepia(64%) saturate(6121%) hue-rotate(314deg) brightness(103%) contrast(104%);",
+                              },
+                            }}
+                          >
+                            <img
+                              alt="Link"
+                              src={ArrowIcon}
+                              height={20}
+                              width={20}
+                            />
+                          </Icon>
+                        </Link>
                         <Link
                           target="_blank"
                           href={`https://testnets.opensea.io/assets/goerli/0xB75e1274d9F05d2f5cCCE10F7CCe829dd7494E27/${h.tokenId}`}
@@ -433,14 +455,14 @@ export const Dashboard = ({
                 ml: "10px",
               }}
             >
-              {userHistory.totalSum || 0} USTD
+              {userHistory.totalSum || 0} USDT
             </Box>{" "}
           </Box>
         </Box>
         <Box
           sx={{
             width: "435px",
-            height: "234px",
+            height: "546px",
             borderRadius: "10px",
             mt: "23px",
             background: "rgba(255, 255, 255, 0.1)",
@@ -476,7 +498,7 @@ export const Dashboard = ({
           <Box
             sx={{
               width: "100%",
-              height: "176px",
+              height: "100%",
               display: "flex",
               flexDirection: "column",
               justifyContent: "center",
@@ -506,7 +528,7 @@ export const Dashboard = ({
             <Box
               sx={{
                 width: "100%",
-                height: "100px",
+                height: "70%",
                 overflow: "scroll",
                 display: "flex",
                 justifyContent: "center",
@@ -543,7 +565,7 @@ export const Dashboard = ({
                         className="historyRows bold"
                         style={{ textAlign: "center", width: "62%" }}
                       >
-                        {h.sum} USTD
+                        {h.sum} USDT
                       </td>
                       <td
                         className="historyRows"
@@ -554,6 +576,27 @@ export const Dashboard = ({
                         }}
                       >
                         {convertToDate(h.timestamp)}
+                        <Link target="_blank" href={h.link}>
+                          <Icon
+                            sx={{
+                              display: "flex",
+                              alignItems: "center",
+                              color: "#FFFFFF",
+                              ml: "10px",
+                              "&:hover": {
+                                filter:
+                                  "brightness(0) saturate(100%) invert(98%) sepia(64%) saturate(6121%) hue-rotate(314deg) brightness(103%) contrast(104%);",
+                              },
+                            }}
+                          >
+                            <img
+                              alt="Link"
+                              src={ArrowIcon}
+                              height={20}
+                              width={20}
+                            />
+                          </Icon>
+                        </Link>
                         <Link
                           target="_blank"
                           href={`https://testnets.opensea.io/assets/goerli/0xB75e1274d9F05d2f5cCCE10F7CCe829dd7494E27/${h.tokenId}`}
