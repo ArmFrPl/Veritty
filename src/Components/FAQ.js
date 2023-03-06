@@ -15,12 +15,12 @@ export const FAQ = ({ faqRef, mobileFaqRef }) => {
     {
       name: "General",
       value:
-        "Veritty is the world's first transparent and honest NFT Lottery. Veritty smart contact is based on Ethereum blockchain which gives anyone a chance to win 50000 USDT and join some of the most exclusive NFT-gated communities on Web-3.",
+        "Veritty is the world's first transparent and honest NFT Lottery. Veritty smart contact is based on Ethereum blockchain which gives anyone a chance to win 30000 USDT and join some of the most exclusive NFT-gated communities on Web-3.",
     },
     {
       name: "How does it Work",
       value:
-        "As soon as you connect your wallet and purchase a ticket, the smart contract will generate 10,888 tickets randomly, 888 of which will be winning the prize. Upon payment, the winning ticket appears immediately on the website on the dashboard, in your wallet, and on OpenSea. We've made sure that the mechanism for determining the winning ticket is as transparent as possible, and you can easily check that in an open for public smart contract.",
+        "As soon as you connect your wallet and purchase a ticket, the smart contract will generate 12,000 tickets randomly, 888 of which will be winning the prize. Upon payment, the winning ticket appears immediately on the website on the dashboard, in your wallet, and on OpenSea. We've made sure that the mechanism for determining the winning ticket is as transparent as possible, and you can easily check that in an open for public smart contract.",
     },
     {
       name: "How to start",

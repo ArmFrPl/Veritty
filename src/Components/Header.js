@@ -231,7 +231,7 @@ export const Header = ({
                   color: "#FFD057",
                 }}
               >
-                333,000 USTD
+                333,000 USDT
               </Box>
             </Box>
             <ReactCardFlip
@@ -485,7 +485,7 @@ export const Header = ({
                   color: "#FFD057",
                 }}
               >
-                333,000 USTD
+                333,000 USDT
               </Box>
             </Box>
           </Box>

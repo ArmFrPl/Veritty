@@ -10,6 +10,7 @@ import TryAgainImg from "../../Images/Tickets/redo.svg";
 import SuspendedButton from "../../Images/Tickets/suspended.svg";
 import { ethers } from "ethers";
 import { ethAddress } from "../../constants";
+import { redirect } from "../Navbar";
 import RaffleImpl from "../../RaffleImpl.json";
 
 export const TicketMobile = ({
@@ -380,7 +381,14 @@ export const TicketMobile = ({
           <>
             <Button
               disabled={loading}
-              onClick={isLoggedIn ? mintTicket : open}
+              onClick={
+                isLoggedIn
+                  ? mintTicket
+                  : () => {
+                      redirect();
+                      open();
+                    }
+              }
               sx={{
                 flexDirection: "row",
                 justifyContent: "center",
@@ -447,7 +455,14 @@ export const TicketMobile = ({
             </Box>
             <Button
               disabled={!!loading}
-              onClick={isLoggedIn ? mintTicket : open}
+              onClick={
+                isLoggedIn
+                  ? mintTicket
+                  : () => {
+                      redirect();
+                      open();
+                    }
+              }
               sx={{
                 flexDirection: "row",
                 justifyContent: "center",
@@ -787,7 +802,14 @@ export const TicketMobile = ({
             )}
             <Button
               disabled={!!loading}
-              onClick={isLoggedIn ? mintTicket : open}
+              onClick={
+                isLoggedIn
+                  ? mintTicket
+                  : () => {
+                      redirect();
+                      open();
+                    }
+              }
               className="mintButton"
               sx={{
                 flexDirection: "row",

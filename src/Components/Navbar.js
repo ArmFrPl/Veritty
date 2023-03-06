@@ -9,6 +9,22 @@ import { SocialLinks } from "./SocialLinks";
 import { ConnectButton } from "@rainbow-me/rainbowkit";
 import { useConnectModal } from "@rainbow-me/rainbowkit";
 
+export function redirect() {
+  const { ethereum } = window;
+  if (ethereum == undefined) {
+    window.location.href = "dapp://veritty.onrender.com";
+  }
+}
+
+// export function metaMaskEvent() {
+//   setTimeout(() => {
+//     const metaMaskButton = document.querySelector(
+//       '[data-testid="rk-wallet-option-metaMask"]'
+//     );
+//     metaMaskButton.addEventListener("click", redirect);
+//   }, 20);
+// }
+
 export const Navbar = ({
   isLoggedIn,
   faqRef,
@@ -69,6 +85,17 @@ export const Navbar = ({
       inline: "start",
     });
   };
+
+  useEffect(() => {
+    const windowInnerWidth = window.innerWidth;
+    if (windowInnerWidth <= 768) {
+      let link = document.querySelectorAll("button");
+      link = Array.from(link).filter((e) =>
+        /Connect Wallet/i.test(e.textContent)
+      );
+      link[0].addEventListener("click", redirect);
+    }
+  }, []);
 
   useEffect(() => {
     if (pathname === "/dashboard") {
