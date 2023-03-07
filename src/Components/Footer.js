@@ -82,7 +82,7 @@ export const Footer = () => {
                     <Box className="footerModalHeader">
                       Privacy Policy
                       <CloseIcon
-                        onClick={handleClosePrivacy}
+                        onClick={() => handleClosePrivacy}
                         cursor="pointer"
                       />
                     </Box>
