@@ -10,12 +10,17 @@ import { Results } from "./Results";
 import { Leaderboards } from "./Leaderboards";
 import { Dashboard } from "./Dashboard";
 import { ethers } from "ethers";
+import CookieConsent from "react-cookie-consent";
 import RaffleImpl from "../RaffleImpl.json";
 import { ethAddress } from "../constants";
+import { CookiePolicyModal } from "./CookiePolicyModal";
 import axios from "axios";
 
 export const Layout = () => {
   const [menuOpen, setMenuOpen] = useState(false);
+  const [openCookiePrivacy, setOpenCookiePrivacy] = useState(false);
+  const handleOpenCookiePrivacy = () => setOpenCookiePrivacy(true);
+  const handleCloseCookiePrivacy = () => setOpenCookiePrivacy(false);
   const [userHistory, getUserHistory] = useState([]);
   const [leaderboard, getLeaderboard] = useState([]);
   const [results, getResults] = useState({});
@@ -100,6 +105,46 @@ export const Layout = () => {
   return (
     <>
       <div className="App">
+        <CookieConsent
+          buttonText="Got it"
+          enableDeclineButton="true"
+          declineButtonText="Deny cookies"
+          declineButtonStyle={{
+            background: "inherit",
+            fontSize: "17px",
+            fontWeight: "800",
+            color: "rgb(110,122,140)",
+          }}
+          style={{
+            display: "flex",
+            flexDirection: "row",
+            justifyContent: "space-between",
+            alignItems: "center",
+            color: "rgb(110,122,140)",
+            textAlign: "center",
+          }}
+          buttonStyle={{
+            background: "rgb(56, 152, 255)",
+            color: "#ffffff",
+            fontSize: "17px",
+            fontWeight: "800",
+            borderRadius: "15px",
+            padding: "10px 25px",
+          }}
+        >
+          Our website uses cookies to make your browsing experience better. By
+          using our website you agree to our use of cookies.{" "}
+          <span
+            style={{ color: "rgb(48,77,129)", cursor: "pointer" }}
+            onClick={() => handleOpenCookiePrivacy()}
+          >
+            Learn more.
+          </span>
+          <CookiePolicyModal
+            openPrivacy={openCookiePrivacy}
+            handleClosePrivacy={handleCloseCookiePrivacy}
+          />
+        </CookieConsent>
         <Navbar
           isLoggedIn={isConnected}
           faqRef={faqRef}
