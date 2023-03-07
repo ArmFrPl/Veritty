@@ -10,7 +10,7 @@ import TryAgainImg from "../../Images/Tickets/redo.svg";
 import SuspendedButton from "../../Images/Tickets/suspended.svg";
 import { ethers } from "ethers";
 import { ethAddress } from "../../constants";
-import { redirect } from "../Navbar";
+import { metaMaskEvent } from "../Navbar";
 import RaffleImpl from "../../RaffleImpl.json";
 
 export const TicketMobile = ({
@@ -385,8 +385,8 @@ export const TicketMobile = ({
                 isLoggedIn
                   ? mintTicket
                   : () => {
-                      redirect();
                       open();
+                      metaMaskEvent();
                     }
               }
               sx={{
@@ -459,8 +459,8 @@ export const TicketMobile = ({
                 isLoggedIn
                   ? mintTicket
                   : () => {
-                      redirect();
                       open();
+                      metaMaskEvent();
                     }
               }
               sx={{
@@ -806,8 +806,8 @@ export const TicketMobile = ({
                 isLoggedIn
                   ? mintTicket
                   : () => {
-                      redirect();
                       open();
+                      metaMaskEvent();
                     }
               }
               className="mintButton"

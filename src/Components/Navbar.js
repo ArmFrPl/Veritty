@@ -9,21 +9,22 @@ import { SocialLinks } from "./SocialLinks";
 import { ConnectButton } from "@rainbow-me/rainbowkit";
 import { useConnectModal } from "@rainbow-me/rainbowkit";
 
-export function redirect() {
+export function redirect(event) {
+  event.stopPropagation();
   const { ethereum } = window;
   if (ethereum == undefined) {
     window.location.href = "dapp://veritty.onrender.com";
   }
 }
 
-// export function metaMaskEvent() {
-//   setTimeout(() => {
-//     const metaMaskButton = document.querySelector(
-//       '[data-testid="rk-wallet-option-metaMask"]'
-//     );
-//     metaMaskButton.addEventListener("click", redirect);
-//   }, 20);
-// }
+export function metaMaskEvent() {
+  setTimeout(() => {
+    const metaMaskButton = document.querySelector(
+      '[data-testid="rk-wallet-option-metaMask"]'
+    ).parentNode.parentNode;
+    metaMaskButton.addEventListener("click", redirect, { capture: true });
+  }, 2);
+}
 
 export const Navbar = ({
   isLoggedIn,
@@ -93,7 +94,7 @@ export const Navbar = ({
       link = Array.from(link).filter((e) =>
         /Connect Wallet/i.test(e.textContent)
       );
-      link[0].addEventListener("click", redirect);
+      link[0].addEventListener("click", metaMaskEvent);
     }
   }, []);
 
