@@ -10,9 +10,9 @@ import { ConnectButton } from "@rainbow-me/rainbowkit";
 import { useConnectModal } from "@rainbow-me/rainbowkit";
 
 export function redirect(event) {
-  event.stopPropagation();
   const { ethereum } = window;
   if (ethereum == undefined) {
+    event.stopPropagation();
     window.location.href = "dapp://veritty.onrender.com";
   }
 }
