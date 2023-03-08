@@ -51,7 +51,11 @@ export const Header = ({
   const { openConnectModal } = useConnectModal();
   const signer = useSigner();
   const abi = RaffleImpl.abi;
+  const provider = ethers.getDefaultProvider(
+    "https://eth-goerli.g.alchemy.com/v2/Fvr4iHEEClnFhZtgTB8ITVSen4GPwOls"
+  );
   const contract = new ethers.Contract(ethAddress, abi, signer.data);
+  const contractReedOnly = new ethers.Contract(ethAddress, abi, provider);
 
   const countTickets = () => {
     let ticketCountsSum = 0;
@@ -258,6 +262,7 @@ export const Header = ({
                 userTicketCount={userTicketCount}
                 tokenId={tokenId}
                 mintTicket={mintTicket}
+                contract={contractReedOnly}
                 style={{ " transform-style": "preserve-3d !important" }}
               />
               <Loader desktop={false} />
@@ -515,6 +520,7 @@ export const Header = ({
                 userTicketCount={userTicketCount}
                 tokenId={tokenId}
                 mintTicket={mintTicket}
+                contract={contractReedOnly}
                 style={{ " transform-style": "preserve-3d !important" }}
               />
               <Loader desktop={true} />
