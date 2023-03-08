@@ -109,6 +109,7 @@ export const Layout = () => {
           buttonText="Got it"
           enableDeclineButton="true"
           declineButtonText="Deny cookies"
+          buttonWrapperClasses="cookie-button-wrapper"
           declineButtonStyle={{
             background: "inherit",
             fontSize: "17px",
@@ -121,6 +122,7 @@ export const Layout = () => {
             justifyContent: "space-between",
             alignItems: "center",
             color: "rgb(110,122,140)",
+            background: "rgb(50, 18, 110)",
             textAlign: "center",
           }}
           buttonStyle={{

@@ -25,13 +25,9 @@ export const Ticket = ({
   userTicketCount,
   tokenId,
   mintTicket,
+  contract,
 }) => {
   const [price, setPrice] = useState(0);
-  const abi = RaffleImpl.abi;
-  const provider = ethers.getDefaultProvider(
-    "https://eth-goerli.g.alchemy.com/v2/Fvr4iHEEClnFhZtgTB8ITVSen4GPwOls"
-  );
-  const contract = new ethers.Contract(ethAddress, abi, provider);
 
   const getPrice = async () => {
     const result = await contract.entranceFee();
