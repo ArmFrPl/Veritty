@@ -44,7 +44,7 @@ export const Header = ({
   const [winners, getWinners] = useState({});
   const [minted, setMinted] = useState(false);
   const [count, setCount] = useState(0);
-  const [ticketCount, setTicketCount] = useState(10888);
+  const [ticketCount, setTicketCount] = useState(12000);
   const [tokenId, setTokenId] = useState(0);
   const [isContractOpen, setContractOpen] = useState(true);
 
