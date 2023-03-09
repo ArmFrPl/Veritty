@@ -10,7 +10,7 @@ export const WhyNft = () => {
     },
     {
       classic: "Unknown amount of winning tickets",
-      nft: "888 winning spots. Watch all winnings on OpenSea in Real Time. ",
+      nft: "2000 winning spots. Watch all winnings on OpenSea in Real Time. ",
     },
     {
       classic: "Fake winnings - there is no information as to who won and how",
