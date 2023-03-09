@@ -9,9 +9,9 @@ import MintTicketZero from "../../Images/Tickets/0.png";
 import TryAgainImg from "../../Images/Tickets/redo.svg";
 import SuspendedButton from "../../Images/Tickets/suspended.svg";
 import { ethers } from "ethers";
-import { ethAddress } from "../../constants";
 import { metaMaskEvent } from "../Navbar";
-import RaffleImpl from "../../RaffleImpl.json";
+import TwoSvg from "../../Images/card_2_number.svg";
+import ZeroSvg from "../../Images/card_0_number.svg";
 
 export const TicketMobile = ({
   loading,
@@ -160,126 +160,10 @@ export const TicketMobile = ({
                 gap: "5px",
               }}
             >
-              <Box
-                sx={{
-                  fontFamily: "Epilogue",
-                  fontStyle: "normal",
-                  fontWeight: 700,
-                  fontSize: "20px",
-                  color: "#F8F8F8",
-                  display: "flex",
-                  padding: "1px",
-                  borderRadius: "25%",
-                  background:
-                    "linear-gradient(45deg, #FFD057 0%, #9F03FF 15.1%, #00DFBA 53.65%, #9F03FF 89.06%, #FFAC33 100%)",
-                }}
-              >
-                <Box
-                  sx={{
-                    fontFamily: "Epilogue",
-                    fontStyle: "normal",
-                    fontWeight: 700,
-                    fontSize: "20px",
-                    color: "#F8F8F8",
-                    display: "flex",
-                    padding: "5px 10px",
-                    borderRadius: "25%",
-                    background: "black",
-                  }}
-                >
-                  2
-                </Box>
-              </Box>
-              <Box
-                sx={{
-                  fontFamily: "Epilogue",
-                  fontStyle: "normal",
-                  fontWeight: 700,
-                  fontSize: "20px",
-                  color: "#F8F8F8",
-                  display: "flex",
-                  padding: "1px",
-                  borderRadius: "25%",
-                  background:
-                    "linear-gradient(45deg, #FFD057 0%, #9F03FF 15.1%, #00DFBA 53.65%, #9F03FF 89.06%, #FFAC33 100%)",
-                }}
-              >
-                <Box
-                  sx={{
-                    fontFamily: "Epilogue",
-                    fontStyle: "normal",
-                    fontWeight: 700,
-                    fontSize: "20px",
-                    color: "#F8F8F8",
-                    display: "flex",
-                    padding: "5px 10px",
-                    borderRadius: "25%",
-                    background: "black",
-                  }}
-                >
-                  0
-                </Box>
-              </Box>
-              <Box
-                sx={{
-                  fontFamily: "Epilogue",
-                  fontStyle: "normal",
-                  fontWeight: 700,
-                  fontSize: "20px",
-                  color: "#F8F8F8",
-                  display: "flex",
-                  padding: "1px",
-                  borderRadius: "25%",
-                  background:
-                    "linear-gradient(45deg, #FFD057 0%, #9F03FF 15.1%, #00DFBA 53.65%, #9F03FF 89.06%, #FFAC33 100%)",
-                }}
-              >
-                <Box
-                  sx={{
-                    fontFamily: "Epilogue",
-                    fontStyle: "normal",
-                    fontWeight: 700,
-                    fontSize: "20px",
-                    color: "#F8F8F8",
-                    display: "flex",
-                    padding: "5px 10px",
-                    borderRadius: "25%",
-                    background: "black",
-                  }}
-                >
-                  0
-                </Box>
-              </Box>
-              <Box
-                sx={{
-                  fontFamily: "Epilogue",
-                  fontStyle: "normal",
-                  fontWeight: 700,
-                  fontSize: "20px",
-                  color: "#F8F8F8",
-                  display: "flex",
-                  padding: "1px",
-                  borderRadius: "25%",
-                  background:
-                    "linear-gradient(45deg, #FFD057 0%, #9F03FF 15.1%, #00DFBA 53.65%, #9F03FF 89.06%, #FFAC33 100%)",
-                }}
-              >
-                <Box
-                  sx={{
-                    fontFamily: "Epilogue",
-                    fontStyle: "normal",
-                    fontWeight: 700,
-                    fontSize: "20px",
-                    color: "#F8F8F8",
-                    display: "flex",
-                    padding: "5px 10px",
-                    borderRadius: "25%",
-                    background: "black",
-                  }}
-                >
-                  0
-                </Box>
-              </Box>
+              <img src={TwoSvg} alt="2" />
+              <img src={ZeroSvg} alt="0" />
+              <img src={ZeroSvg} alt="0" />
+              <img src={ZeroSvg} alt="0" />
             </Box>
             <Box
               sx={{
@@ -542,126 +426,10 @@ export const TicketMobile = ({
                 gap: "5px",
               }}
             >
-              <Box
-                sx={{
-                  fontFamily: "Epilogue",
-                  fontStyle: "normal",
-                  fontWeight: 700,
-                  fontSize: "20px",
-                  color: "#F8F8F8",
-                  display: "flex",
-                  padding: "1px",
-                  borderRadius: "25%",
-                  background:
-                    "linear-gradient(45deg, #FFD057 0%, #9F03FF 15.1%, #00DFBA 53.65%, #9F03FF 89.06%, #FFAC33 100%)",
-                }}
-              >
-                <Box
-                  sx={{
-                    fontFamily: "Epilogue",
-                    fontStyle: "normal",
-                    fontWeight: 700,
-                    fontSize: "20px",
-                    color: "#F8F8F8",
-                    display: "flex",
-                    padding: "5px 10px",
-                    borderRadius: "25%",
-                    background: "black",
-                  }}
-                >
-                  2
-                </Box>
-              </Box>
-              <Box
-                sx={{
-                  fontFamily: "Epilogue",
-                  fontStyle: "normal",
-                  fontWeight: 700,
-                  fontSize: "20px",
-                  color: "#F8F8F8",
-                  display: "flex",
-                  padding: "1px",
-                  borderRadius: "25%",
-                  background:
-                    "linear-gradient(45deg, #FFD057 0%, #9F03FF 15.1%, #00DFBA 53.65%, #9F03FF 89.06%, #FFAC33 100%)",
-                }}
-              >
-                <Box
-                  sx={{
-                    fontFamily: "Epilogue",
-                    fontStyle: "normal",
-                    fontWeight: 700,
-                    fontSize: "20px",
-                    color: "#F8F8F8",
-                    display: "flex",
-                    padding: "5px 10px",
-                    borderRadius: "25%",
-                    background: "black",
-                  }}
-                >
-                  0
-                </Box>
-              </Box>
-              <Box
-                sx={{
-                  fontFamily: "Epilogue",
-                  fontStyle: "normal",
-                  fontWeight: 700,
-                  fontSize: "20px",
-                  color: "#F8F8F8",
-                  display: "flex",
-                  padding: "1px",
-                  borderRadius: "25%",
-                  background:
-                    "linear-gradient(45deg, #FFD057 0%, #9F03FF 15.1%, #00DFBA 53.65%, #9F03FF 89.06%, #FFAC33 100%)",
-                }}
-              >
-                <Box
-                  sx={{
-                    fontFamily: "Epilogue",
-                    fontStyle: "normal",
-                    fontWeight: 700,
-                    fontSize: "20px",
-                    color: "#F8F8F8",
-                    display: "flex",
-                    padding: "5px 10px",
-                    borderRadius: "25%",
-                    background: "black",
-                  }}
-                >
-                  0
-                </Box>
-              </Box>
-              <Box
-                sx={{
-                  fontFamily: "Epilogue",
-                  fontStyle: "normal",
-                  fontWeight: 700,
-                  fontSize: "20px",
-                  color: "#F8F8F8",
-                  display: "flex",
-                  padding: "1px",
-                  borderRadius: "25%",
-                  background:
-                    "linear-gradient(45deg, #FFD057 0%, #9F03FF 15.1%, #00DFBA 53.65%, #9F03FF 89.06%, #FFAC33 100%)",
-                }}
-              >
-                <Box
-                  sx={{
-                    fontFamily: "Epilogue",
-                    fontStyle: "normal",
-                    fontWeight: 700,
-                    fontSize: "20px",
-                    color: "#F8F8F8",
-                    display: "flex",
-                    padding: "5px 10px",
-                    borderRadius: "25%",
-                    background: "black",
-                  }}
-                >
-                  0
-                </Box>
-              </Box>
+              <img src={TwoSvg} alt="2" />
+              <img src={ZeroSvg} alt="0" />
+              <img src={ZeroSvg} alt="0" />
+              <img src={ZeroSvg} alt="0" />
             </Box>
             <Box
               sx={{

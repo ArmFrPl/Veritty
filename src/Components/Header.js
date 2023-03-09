@@ -69,7 +69,7 @@ export const Header = ({
     const isContrOpen = async () => {
       setContractOpen(await contract.isOpen());
     };
-    setTicketCount(countTickets() || 10888);
+    setTicketCount(countTickets() || 12000);
     isContrOpen();
   });
 

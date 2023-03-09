@@ -4,7 +4,6 @@ import "../../Styles/TicketsCount.css";
 
 export const TicketsCount = ({ ticketCounts }) => {
   let ticketCountsSum = 0;
-
   const countTickets = () => {
     ticketCountsSum = 0;
     ticketCounts?.forEach((ticket) => {
