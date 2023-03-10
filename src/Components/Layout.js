@@ -122,7 +122,7 @@ export const Layout = () => {
             justifyContent: "space-between",
             alignItems: "center",
             color: "rgb(110,122,140)",
-            background: "rgb(50, 18, 110)",
+            background: "rgb(50, 18, 86)",
             textAlign: "center",
           }}
           buttonStyle={{
@@ -137,7 +137,7 @@ export const Layout = () => {
           Our website uses cookies to make your browsing experience better. By
           using our website you agree to our use of cookies.{" "}
           <span
-            style={{ color: "rgb(48,77,129)", cursor: "pointer" }}
+            style={{ color: "#3898ff", cursor: "pointer" }}
             onClick={() => handleOpenCookiePrivacy()}
           >
             Learn more.
