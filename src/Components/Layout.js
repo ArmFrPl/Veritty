@@ -122,7 +122,7 @@ export const Layout = () => {
             justifyContent: "space-between",
             alignItems: "center",
             color: "rgb(110,122,140)",
-            background: "rgb(50, 18, 86)",
+            background: "linear-gradient(180deg, #000000 0%, #10003E 100%)",
             textAlign: "center",
           }}
           buttonStyle={{
